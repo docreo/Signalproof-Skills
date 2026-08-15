@@ -9,7 +9,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-build` | 0.1.0 | Active public baseline | Governed implementation, bounded change, protected execution, and verification | Active |
 | `signalproof-debug` | 0.1.0 | Active public baseline | Evidence-led debugging, bounded correction, and regression protection | Active |
-| `signalproof-router` | 0.1.0-rc1 | Initial public release candidate | Active-skill selection, sequencing, and authority-preserving dispatch | Candidate |
+| `signalproof-router` | 0.1.0 | Active public baseline | Active-skill selection, sequencing, and authority-preserving dispatch | Active |
 
 ## Planned Specialist Lanes
 
