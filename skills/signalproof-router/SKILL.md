@@ -1,6 +1,6 @@
 ---
 name: signalproof-router
-description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority, treating planned skills as active, or executing consequential work merely because routing identified a capable specialist. Use when choosing among active Signalproof skills, when a claim needs evidence verification, and when a meaningful completed milestone must be closed out before the next development phase.
+description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority, treating planned skills as active, or executing consequential work merely because routing identified a capable specialist. Use when choosing among active Signalproof skills, when a claim needs evidence verification, when completed work needs quality/change-integrity review, and when a meaningful completed milestone must be closed out before the next development phase.
 ---
 
 # Signalproof Router
@@ -39,6 +39,7 @@ The active routing set includes:
 - `signalproof-build` — execute an already bounded/authorized implementation;
 - `signalproof-debug` — reproduce, localize, correct, and regression-test a demonstrable defect;
 - `signalproof-verify` — determine whether a specific claim is actually proven by the required evidence and what remains unverified;
+- `signalproof-review` — determine whether the work itself is sound, scoped correctly, consistent with protected state/contracts, and free of material review findings within the reviewed scope;
 - `signalproof-closeout` — close a meaningful milestone, update or stage Build Ledger continuity, extract reusable learning, preserve open gates, and govern transition to the next phase.
 
 Future specialists become routable only after their registry status is Active.
@@ -46,17 +47,19 @@ Future specialists become routable only after their registry status is Active.
 ## Router Contract
 
 1. **Read the objective, not just the vocabulary.** A request containing “build” may still require investigation first if current state is unclear.
-2. **Check evidence state.** Determine whether the task is primarily investigation, planning, implementation, defect correction, verification, milestone closeout, or root-level governance.
+2. **Check evidence state.** Determine whether the task is primarily investigation, planning, implementation, defect correction, verification, review, milestone closeout, or root-level governance.
 3. **Use only active skills.** Never route to a planned or candidate skill as though it were available.
 4. **Prefer the smallest sufficient skill.** Do not invoke a chain when one active specialist can responsibly handle the task.
-5. **Sequence when evidence demands it.** Example: unclear failure -> investigate -> debug; ambiguous consequential change -> plan -> build; completed change with a consequential success claim -> verify.
-6. **Verify consequential claims before treating them as established.** When acceptance, release, non-regression, “fixed,” “ready,” “secure,” “works,” or similar claims depend on evidence not yet classified, route through `signalproof-verify` before promotion/closeout decisions that rely on those claims.
-7. **Close meaningful milestones before the next phase.** When a meaningful phase boundary has been reached, route through `signalproof-closeout` before selecting the next development-phase skill unless the human owner explicitly records a justified deferral.
-8. **Do not invent permission.** Routing to build/debug/verify/closeout does not authorize destructive, privileged, credential-sensitive, security-sensitive, publication-sensitive, release-sensitive, or canonical-ledger actions.
-9. **Preserve explicit human scope.** Do not broaden “diagnose only” into “diagnose and fix.”
-10. **Do not route around STOP conditions.** If an active skill says STOP/blocked/awaiting authority, the router must not select another skill merely to bypass that boundary.
-11. **Return to the router when state changes materially.** A task may move from investigate to plan, debug to verify, verify to closeout, or another bounded route after evidence changes the next responsible action.
-12. **Leave a route decision trace.** State why the selected skill or sequence fits, what was not selected, and any authority/evidence limitation that remains.
+5. **Sequence when evidence demands it.** Example: unclear failure -> investigate -> debug; ambiguous consequential change -> plan -> build; material success claim -> verify; completed work needing scope/architecture/change-integrity assessment -> review.
+6. **Verify consequential claims before treating them as established.** When acceptance, release, non-regression, “fixed,” “ready,” “secure,” “works,” or similar claims depend on evidence not yet classified, route through `signalproof-verify` before decisions that rely on those claims.
+7. **Review work quality when acceptance depends on more than proof of a claim.** Route through `signalproof-review` when the question is whether the actual change respected scope, protected state, architecture/contracts, dependency/provenance boundaries, privacy/security hazards, recovery, and maintainability.
+8. **Do not substitute Review for Verify or Verify for Review.** A green test can coexist with a bad change; a clean review can coexist with an unverified runtime claim.
+9. **Close meaningful milestones before the next phase.** When a meaningful phase boundary has been reached, route through `signalproof-closeout` before selecting the next development-phase skill unless the human owner explicitly records a justified deferral.
+10. **Do not invent permission.** Routing to build/debug/verify/review/closeout does not authorize destructive, privileged, credential-sensitive, security-sensitive, publication-sensitive, release-sensitive, or canonical-ledger actions.
+11. **Preserve explicit human scope.** Do not broaden “diagnose only” into “diagnose and fix.”
+12. **Do not route around STOP conditions.** If an active skill says STOP/blocked/awaiting authority, the router must not select another skill merely to bypass that boundary.
+13. **Return to the router when state changes materially.** A task may move from investigate to plan, debug to verify, verify to review, review back to plan/build/debug, or review/verify to closeout after evidence changes the next responsible action.
+14. **Leave a route decision trace.** State why the selected skill or sequence fits, what was not selected, and any authority/evidence limitation that remains.
 
 ## Routing Decision Model
 
@@ -72,7 +75,7 @@ Future specialists become routable only after their registry status is Active.
 
 - the objective is known but consequential implementation needs scope, protected state, authority, dependencies, acceptance, recovery, or sequencing;
 - a material architecture or scope choice must be bounded before execution;
-- new investigation evidence invalidated or expanded the prior implementation contract.
+- new investigation/review evidence invalidated or expanded the prior implementation contract.
 
 ### Route to `signalproof-build` when
 
@@ -99,6 +102,18 @@ Future specialists become routable only after their registry status is Active.
 - a milestone/release/acceptance decision depends on whether a claim is actually established.
 
 Do **not** route every implementation or micro-edit through Verify. Verification is required when a material claim or acceptance gate needs proof.
+
+### Route to `signalproof-review` when
+
+- completed or proposed work needs assessment against the approved plan/scope;
+- tests pass but the user asks whether the change itself should be accepted;
+- protected-state, interface, architecture, dependency, maintainability, privacy/security-hazard, or recovery concerns must be checked;
+- the actual diff/change surface may diverge from the PR/author summary;
+- a dependency or external-service boundary was introduced;
+- a verified result may still hide unsound implementation choices;
+- acceptance depends on more than one narrow functional claim.
+
+Do **not** route every trivial edit through Review. Use Review when work-quality/change-integrity assessment is materially relevant.
 
 ### Route to `signalproof-closeout` when
 
@@ -128,8 +143,11 @@ Use sequences only when necessary. Common patterns:
 - `plan -> build` — current state is sufficiently known but implementation needs a formal bounded contract;
 - `debug -> verify` — a defect was corrected and the “fixed without regression” claim must be proven;
 - `build -> verify` — implementation is complete and a material acceptance claim needs evidence;
-- `verify -> closeout` — the milestone claim is established (or bounded limitations are explicit) and the phase boundary can be durably closed;
-- `build/debug/... -> verify -> closeout -> next-phase plan/build/...` — common consequential milestone path.
+- `build/debug -> review` — the implementation/change itself needs scope/architecture/change-integrity review;
+- `verify -> review` — a material claim is proven, but acceptance still depends on whether the work itself is sound;
+- `review -> plan/build/debug` — review found material issues and the smallest authorized correction path determines the next specialist;
+- `verify/review -> closeout` — evidence and work-quality gates are sufficiently resolved for a meaningful milestone to close;
+- `build/debug -> verify -> review -> closeout -> next-phase plan/build/...` — common consequential path when both evidence proof and work-quality review matter.
 
 Do not force every request through every skill.
 
@@ -168,9 +186,10 @@ Return one of:
 - **ROOT FALLBACK** — no active specialist cleanly fits;
 - **AWAITING AUTHORITY** — routing is clear but the next consequential action is not authorized;
 - **VERIFICATION REQUIRED** — a material claim/acceptance decision needs `signalproof-verify`;
+- **REVIEW REQUIRED** — work-quality/change-integrity acceptance needs `signalproof-review`;
 - **MILESTONE CLOSEOUT REQUIRED** — next-phase work should wait for `signalproof-closeout` or explicit owner deferral;
 - **BLOCKED** — evidence/registry/current-state information is insufficient to route responsibly;
-- **STOP** — proceeding would bypass an explicit protection, authority boundary, verification requirement, closeout requirement, or prior STOP condition.
+- **STOP** — proceeding would bypass an explicit protection, authority boundary, verification/review requirement, closeout requirement, or prior STOP condition.
 
 ## Anti-Patterns
 
@@ -180,7 +199,9 @@ Fail this skill when a router:
 - treats planned/candidate skills as active;
 - routes directly to build when current state must first be investigated;
 - accepts a consequential “fixed/ready/production-ready” claim without verification when evidence is incomplete;
-- forces Verify on every micro-edit despite no material claim or acceptance gate;
+- assumes green tests make Review unnecessary when acceptance depends on scope/architecture/change integrity;
+- substitutes Review PASS for unexecuted runtime/security/release verification;
+- forces Verify or Review on every micro-edit despite no material gate;
 - routes a meaningful accepted milestone directly into the next phase while skipping required closeout;
 - forces full closeout on every micro-commit despite no phase boundary;
 - routes “diagnose only” to a fixing workflow;
@@ -191,15 +212,15 @@ Fail this skill when a router:
 
 ## Completion Criteria
 
-A Signalproof routing decision is complete when the smallest appropriate active skill or sequence has been selected from the canonical registry, the rationale reflects the objective and evidence state, material claims are routed through verification when required, meaningful milestone transitions are routed through closeout when required, authority remains separate from capability, planned/candidate skills were not misrepresented as active, and the next handoff condition is clear when sequencing is required.
+A Signalproof routing decision is complete when the smallest appropriate active skill or sequence has been selected from the canonical registry, the rationale reflects the objective and evidence state, material claims are routed through verification when required, work-quality/change-integrity questions are routed through Review when required, meaningful milestone transitions are routed through closeout when required, authority remains separate from capability, planned/candidate skills were not misrepresented as active, and the next handoff condition is clear when sequencing is required.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.2`
-- **Maturity:** Active public baseline
+- **Version:** `0.1.3-rc1`
+- **Maturity:** Review integration candidate
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
-- **Domain:** Capability routing, skill sequencing, verification routing, milestone closeout routing, evidence-state selection, authority-preserving dispatch
+- **Domain:** Capability routing, skill sequencing, verification routing, review routing, milestone closeout routing, evidence-state selection, authority-preserving dispatch
 - **Created by:** Doc Reo / Signalproof
