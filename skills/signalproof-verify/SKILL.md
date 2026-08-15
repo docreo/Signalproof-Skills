@@ -232,8 +232,8 @@ Verification is complete when the exact claim, required evidence, available evid
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-verify`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Claim verification, evidence grading, acceptance gates, non-regression proof, evidence conflict resolution
 - **Created by:** Doc Reo / Signalproof
