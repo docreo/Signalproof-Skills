@@ -4,7 +4,7 @@ This registry identifies public Signalproof skills and their current maturity.
 
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
-| `signalproof` | 0.1.0-rc1 | Initial public release candidate | Root governing contract for human-controlled, evidence-backed AI collaboration | Candidate |
+| `signalproof` | 0.1.0 | Active public baseline | Root governing contract for human-controlled, evidence-backed AI collaboration | Active |
 
 ## Planned Specialist Lanes
 
