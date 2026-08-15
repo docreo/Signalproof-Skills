@@ -1,0 +1,40 @@
+name: Signalproof Suite Consistency
+
+on:
+  pull_request:
+    paths:
+      - 'SKILL-REGISTRY.md'
+      - 'README.md'
+      - 'skills/**/SKILL.md'
+      - 'tools/check_suite_consistency.py'
+      - 'tests/consistency/**'
+      - '.github/workflows/suite-consistency.yml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'SKILL-REGISTRY.md'
+      - 'README.md'
+      - 'skills/**/SKILL.md'
+      - 'tools/check_suite_consistency.py'
+      - 'tests/consistency/**'
+      - '.github/workflows/suite-consistency.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  suite-consistency:
+    name: suite-consistency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Show Python version
+        run: python3 --version
+
+      - name: Run fixture regression tests
+        run: python3 -m unittest discover -s tests/consistency -p 'test_*.py' -v
+
+      - name: Check live repository consistency
+        run: python3 tools/check_suite_consistency.py
