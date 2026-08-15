@@ -133,7 +133,7 @@ This skill has been followed successfully when:
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Domain:** Human-controlled AI collaboration, governed execution, continuity, verification, recovery, and evidence
 - **Created by:** Doc Reo / Signalproof
