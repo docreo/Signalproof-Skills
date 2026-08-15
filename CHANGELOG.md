@@ -2,6 +2,20 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-build 0.1.0] - Active
+
+### Promoted
+
+- `signalproof-build` promoted from `0.1.0-rc1` to the active public baseline after its bounded JSON-export Scenario 1 runtime acceptance passed and PR #7 was merged into protected `main`.
+
+### Verified
+
+- 10/10 required build behaviors passed with 0 fail conditions.
+- JSON export was added through a separate bounded component.
+- Existing CSV output remained byte-for-byte equivalent to baseline.
+- Protected CSV-engine SHA-256 remained unchanged before and after the candidate build.
+- No external dependency or unrelated refactor was introduced.
+
 ## [signalproof-plan 0.1.0] - Active
 
 ### Promoted
