@@ -1,6 +1,6 @@
 ---
 name: signalproof-router
-description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority, treating planned skills as active, or executing consequential work merely because routing identified a capable specialist. Use when choosing among active Signalproof skills, including verification, Review, Recovery, Security, and milestone Closeout.
+description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority, treating planned skills as active, or executing consequential work merely because routing identified a capable specialist. Use when choosing among active Signalproof skills, including Verify, Review, Recovery, Security, Release, and milestone Closeout.
 ---
 
 # Signalproof Router
@@ -30,28 +30,29 @@ A skill is routable only when the canonical Signalproof Skill Registry marks it 
 - `signalproof-review` — determine whether the work itself is sound, scoped correctly, and consistent with protected state/contracts;
 - `signalproof-recovery` — select/verify a trustworthy rollback, protect persistent data/evidence, and verify restored state;
 - `signalproof-security` — assess security-sensitive trust boundaries, secrets, privilege, untrusted execution, dependency/provenance, network/data exposure, control regressions, and security STOP conditions;
+- `signalproof-release` — govern promotion of the exact accepted artifact to a defined distribution boundary with evidence binding, provenance, recovery, truthful claims, and release authority;
 - `signalproof-closeout` — close meaningful milestones, preserve Build Ledger continuity, extract learning, and govern phase transition.
 
 ## Router Contract
 
-1. **Read the objective, not just vocabulary.**
-2. **Check evidence state.** Determine whether the task is primarily investigation, planning, implementation, defect correction, verification, review, recovery, security, closeout, or root governance.
-3. **Use only active skills.**
-4. **Prefer the smallest sufficient route.** Do not invoke a chain when one specialist can responsibly handle the task.
-5. **Sequence only when evidence demands it.**
-6. **Route material claims through Verify when proof is required.**
-7. **Route work-quality/change-integrity acceptance through Review when materially relevant.**
-8. **Route restoration/rollback through Recovery rather than generic Build/Debug.**
-9. **Route materially security-sensitive trust, privilege, secret, execution, dependency, network/data, or control questions through Security.**
-10. **Do not force Security onto every edit, bug, dependency mention, or general review.** Security is selected when security risk materially affects the decision.
-11. **Do not substitute Security for Review or Verify.** Review asks whether the work is sound; Security asks about security-sensitive risk within a defined boundary; Verify proves a specific claim.
-12. **Do not substitute Security for Recovery.** When the safest objective is restoring a known-good state, Recovery governs restoration; Security may identify that handoff.
-13. **Close meaningful milestones before the next development phase.**
-14. **Do not invent permission.** Routing never authorizes destructive, privileged, credential-sensitive, security-sensitive, publication-sensitive, release-sensitive, or canonical-ledger actions.
-15. **Preserve explicit human scope.** “Inspect security” does not mean “change firewall/ACL/credentials.” “Inspect rollback options” does not mean “restore now.”
-16. **Do not route around STOP conditions.**
-17. **Return to Router when state changes materially.**
-18. **Leave a route decision trace.** State why the route fits, what was not selected, and remaining authority/evidence limits.
+1. Read the objective, not just vocabulary.
+2. Check evidence state and identify the actual discipline required.
+3. Use only active skills.
+4. Prefer the smallest sufficient route.
+5. Sequence only when evidence demands it.
+6. Route material claim proof through Verify.
+7. Route work-quality/change-integrity acceptance through Review when materially relevant.
+8. Route restoration/rollback through Recovery rather than generic Build/Debug.
+9. Route materially security-sensitive trust, privilege, secret, execution, dependency, network/data, or control questions through Security.
+10. Route exact-artifact promotion/distribution decisions through Release.
+11. Do not substitute Release for Verify, Review, Security, or Recovery. Their outputs are inputs to Release, not automatic release authority.
+12. Do not force Release onto ordinary builds, test runs, internal edits, or pre-release development work.
+13. Close meaningful milestones before the next development phase.
+14. Do not invent permission. Routing never authorizes publication, deployment, signing, destructive recovery, privilege changes, credential use, or canonical-ledger mutation.
+15. Preserve explicit human scope.
+16. Do not route around STOP conditions.
+17. Return to Router when state changes materially.
+18. Leave a route decision trace.
 
 ## Routing Decision Model
 
@@ -64,13 +65,13 @@ A skill is routable only when the canonical Signalproof Skill Registry marks it 
 
 ### Route to `signalproof-plan` when
 
-- a consequential implementation needs scope, protected state, authority, dependencies, acceptance, recovery, or sequencing;
-- a material architecture/security remediation choice must be bounded before execution.
+- consequential implementation needs scope, protected state, authority, dependencies, acceptance, recovery, or sequencing;
+- a material architecture/security/release-preparation choice must be bounded before execution.
 
 ### Route to `signalproof-build` when
 
 - the objective/change surface is already bounded and authorized;
-- implementation—not investigation, restoration, or security assessment—is the current task.
+- implementation—not investigation, restoration, security assessment, or release governance—is the current task.
 
 ### Route to `signalproof-debug` when
 
@@ -81,8 +82,8 @@ A skill is routable only when the canonical Signalproof Skill Registry marks it 
 ### Route to `signalproof-verify` when
 
 - the question is whether a claim is proven, fixed, ready, complete, signed, non-regressing, safe, or production-ready;
-- a build/debug/recovery/security remediation result needs proof against an acceptance condition;
-- evidence classes/gates are being conflated.
+- a build/debug/recovery/security/remediation result needs proof against an acceptance condition;
+- release evidence binding or a specific release claim needs proof.
 
 Do not force Verify on every micro-edit.
 
@@ -90,16 +91,16 @@ Do not force Verify on every micro-edit.
 
 - completed/proposed work needs assessment against plan/scope/protected state/contracts;
 - tests pass but the work itself may be unsound;
-- architecture, interface, dependency, maintainability, privacy/security-hazard, or recovery concerns need broad change-integrity review.
+- architecture, interface, dependency, maintainability, privacy/security-hazard, recovery, or release-preparation concerns need broad change-integrity review.
 
-Do not treat Review as a complete security assessment unless the defined security review actually occurred.
+Do not treat Review as a complete Security assessment or Release decision.
 
 ### Route to `signalproof-recovery` when
 
 - a failed, unsafe, corrupted, or rejected state should be rolled back;
 - the user asks which backup/rollback is trustworthy;
 - persistent data/evidence must survive restoration;
-- a restore needs bounded target, authority, staging, and verification.
+- a release requires validating or preserving the designated rollback.
 
 Read-only rollback inspection does not authorize restore.
 
@@ -107,22 +108,33 @@ Read-only rollback inspection does not authorize restore.
 
 - secrets, credentials, tokens, keys, or sensitive logs may be exposed;
 - administrator/root/elevated privilege or ACL/firewall/identity changes materially affect the decision;
-- an external executable, script, package, plugin, model, updater, or dependency needs trust/provenance assessment before execution or acceptance;
+- external executable/script/package/plugin/model/updater/dependency trust must be assessed;
 - a new external API/service/network/data flow crosses a trust boundary;
 - authentication, TLS/certificate validation, signature/hash validation, sandboxing, allowlists, path validation, secret redaction, ACLs, or update-source verification may be weakened;
-- the user asks for a bounded defensive security assessment or for security gates before release;
-- a Review surfaces a material security finding requiring specialist treatment;
-- a security remediation needs defined risk/severity and STOP conditions before Plan/Build/Debug;
-- a security-sensitive action may destroy recovery or require Recovery first.
+- security gates materially affect whether a candidate may proceed toward release.
 
-Do **not** route automatically to Security merely because a request mentions “safe,” a dependency, or a scanner. If the actual question is claim proof, use Verify; if it is general work quality, use Review; if it is restoration, use Recovery.
+Security routing does not authorize offensive testing, destructive remediation, credential use/rotation, privilege elevation, control bypass, publication, or release.
 
-Security routing does not authorize penetration testing, exploitation, credential use, privilege elevation, control bypass, destructive remediation, credential rotation, or publication.
+### Route to `signalproof-release` when
+
+- the user asks whether an exact candidate is ready to publish, distribute, promote, ship, deploy, tag, or designate as a release;
+- a release artifact must be tied to the exact accepted bytes/version/commit;
+- build/test/Verify/Review/Security/Recovery results must be assembled into a release gate matrix;
+- signing/checksum/provenance state must be represented accurately for distribution;
+- rollback designation must be confirmed before promotion;
+- version, package, manifest, filename, tag, and release-note identity must be coherent;
+- technical readiness must be separated from owner/publication/deployment authority;
+- a rebuilt/repacked/re-signed artifact may have drifted from the accepted candidate;
+- release notes or public claims may overstate what the evidence proves.
+
+Do **not** route to Release merely because a build completed or a test passed. Release is selected when the current decision is promotion/distribution of a specific candidate to a defined boundary.
+
+Release routing does not itself authorize publishing, deploying, signing, tagging, overwriting a distribution channel, rotating rollback baselines, or broadening the intended audience.
 
 ### Route to `signalproof-closeout` when
 
 - a meaningful milestone/baseline has been accepted or promoted;
-- a major defect, governance, security, licensing, or recovery decision has closed;
+- a major defect, governance, security, licensing, recovery, or release decision has closed;
 - the project is about to enter a new phase;
 - work is being handed off.
 
@@ -145,12 +157,17 @@ Use only when necessary:
 - `debug -> verify`
 - `build -> verify`
 - `build/debug -> review`
-- `review -> security` — broad review finds a material security-sensitive boundary requiring specialist assessment;
-- `security -> plan/build/debug -> verify` — a security finding is bounded, corrected with authority, then the remediation claim is proven;
-- `security -> recovery -> verify` — safer action is return to known-good state, then prove recovery;
+- `review -> security`
+- `security -> plan/build/debug -> verify`
+- `security -> recovery -> verify`
 - `verify -> review`
 - `failed/rejected build -> recovery -> verify`
-- `verify/review/recovery/security -> closeout` when the meaningful milestone is actually resolved.
+- `verify/review/security/recovery -> release` — required gates are assembled for the exact candidate and distribution boundary;
+- `release -> verify` — Release identifies a specific claim/artifact-binding question that requires direct proof;
+- `release -> recovery` — rollback identity or recoverability is unresolved;
+- `release -> security` — a security gate is unresolved or candidate drift introduces a new trust boundary;
+- `release -> closeout` — the release/promotion decision is resolved and forms a meaningful milestone;
+- `build -> verify -> review -> security/recovery as applicable -> release -> closeout` — common consequential release path.
 
 Do not force every request through every skill.
 
@@ -163,7 +180,8 @@ Routing never grants:
 - credentials/secrets access;
 - security-control changes;
 - penetration-testing authority;
-- production/publication/release authority;
+- signing authority;
+- publication/deployment/release authority;
 - canonical Build Ledger mutation authority.
 
 The selected skill must independently honor all applicable boundaries.
@@ -189,6 +207,7 @@ For meaningful decisions return:
 - **REVIEW REQUIRED**
 - **RECOVERY REQUIRED**
 - **SECURITY REVIEW REQUIRED**
+- **RELEASE REVIEW REQUIRED**
 - **MILESTONE CLOSEOUT REQUIRED**
 - **BLOCKED**
 - **STOP**
@@ -201,27 +220,28 @@ Fail routing when it:
 - treats a planned/candidate skill as active;
 - routes rollback to Build/Debug merely because they can change files;
 - routes a general quality question to Security when Review is sufficient;
-- routes a specific security claim to Security alone when Verify is needed to prove it;
-- treats a Review security note as equivalent to a complete Security assessment;
+- routes a specific claim to Release when Verify is needed to prove it;
 - treats Security SCOPED PASS as release authority or universal certification;
-- uses Security to justify unauthorized offensive activity;
-- executes recovery when only read-only inspection was authorized;
+- treats a Release decision as evidence that an untested claim is true;
+- routes every successful build to Release even when no promotion/distribution decision exists;
+- allows Release to bypass unresolved Verify/Review/Security/Recovery gates;
+- infers publication/deployment authority from technical readiness;
 - uses another skill to bypass STOP/authority;
-- forces Verify/Review/Recovery/Security on every micro-edit;
+- forces all specialists on every micro-edit;
 - skips meaningful milestone Closeout;
 - invents permission from capability selection.
 
 ## Completion Criteria
 
-Routing is complete when the smallest appropriate **active** skill or sequence is selected from the canonical registry; the rationale matches the objective/evidence state; Verify, Review, Recovery, and Security remain distinct; security-sensitive questions route through Security only when materially relevant; authority remains separate from capability; STOP conditions are preserved; and the next handoff condition is clear.
+Routing is complete when the smallest appropriate **active** skill or sequence is selected from the canonical registry; the rationale matches objective/evidence state; Verify, Review, Recovery, Security, and Release remain distinct; release decisions route through Release only when promotion/distribution of an exact candidate is materially at issue; authority remains separate from capability; STOP conditions are preserved; and the next handoff condition is clear.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.5`
-- **Maturity:** Active public baseline
+- **Version:** `0.1.6-rc1`
+- **Maturity:** Release-routing integration candidate
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
-- **Domain:** Capability routing, skill sequencing, Verify/Review/Recovery/Security/Closeout routing, evidence-state selection, authority-preserving dispatch
+- **Domain:** Capability routing, skill sequencing, Verify/Review/Recovery/Security/Release/Closeout routing, evidence-state selection, authority-preserving dispatch
 - **Created by:** Doc Reo / Signalproof
