@@ -57,176 +57,61 @@ Do not collapse these into one boolean until the final readiness decision.
 
 ### 1. Declare the Readiness Objective
 
-Capture:
-
-- intended action or deployment;
-- target machine/environment;
-- exact component/artifact/version when applicable;
-- required performance or compatibility boundary;
-- authority needed;
-- external dependencies/services;
-- recovery expectation;
-- acceptance condition for “ready.”
-
-Examples:
-
-- ready to run a local ONNX model;
-- ready to install an R&D build;
-- ready to use GPU acceleration;
-- ready to connect an external API;
-- ready to perform a signed public release;
-- ready to restore a known-good baseline.
+Capture the intended action or deployment, target machine/environment, exact component/artifact/version when applicable, required performance or compatibility boundary, authority needed, external dependencies/services, recovery expectation, and acceptance condition for “ready.”
 
 ### 2. Establish Target Identity
 
-Record material target facts such as:
-
-- OS/edition/build;
-- architecture;
-- CPU/GPU and driver state;
-- RAM/disk capacity;
-- runtime/tool versions;
-- filesystem/install locations;
-- active user/privilege context;
-- network state;
-- device/security policy;
-- relevant service/process state;
-- application/build identity.
+Record material target facts such as OS/edition/build, architecture, CPU/GPU and driver state, RAM/disk capacity, runtime/tool versions, filesystem/install locations, active user/privilege context, network state, device/security policy, relevant service/process state, and application/build identity.
 
 Readiness evidence must bind to this target, not a vaguely similar machine.
 
 ### 3. Build the Requirement Matrix
 
-For each requirement record:
-
-| Requirement | Why required | Evidence | State | Blocking? |
-|---|---|---|---|---|
-| Runtime version | model/app requirement | direct version check | VERIFIED | Yes |
-| GPU driver | acceleration path | device/driver evidence | DETECTED / VERIFIED | Maybe |
-| Model asset | inference path | path + hash | INSTALLED / VERIFIED | Yes |
-| API credential | external integration | configuration presence without exposing secret | CONFIGURED | Yes |
-| Admin rights | installer only | authority statement | AUTHORIZED / NOT REQUIRED | Maybe |
-| Rollback | consequential change | verified recovery target | VERIFIED | Yes |
-
-A requirement may be technically present but still block readiness because configuration, authority, verification, security, or recovery is incomplete.
+For each requirement record why it is required, the evidence, current state, and whether it blocks the objective. A requirement may be technically present but still block readiness because configuration, authority, verification, security, or recovery is incomplete.
 
 ### 4. Check Hardware / Resource Readiness
 
-When relevant, evaluate:
-
-- architecture compatibility;
-- CPU instruction/runtime requirements;
-- GPU model/VRAM;
-- driver/CUDA/DirectML/ONNX provider compatibility;
-- RAM;
-- free disk space;
-- writable staging/install locations;
-- thermal/power constraints when materially relevant.
+When relevant, evaluate architecture compatibility, CPU instruction/runtime requirements, GPU model/VRAM, driver/CUDA/DirectML/ONNX provider compatibility, RAM, free disk space, writable staging/install locations, and thermal/power constraints when materially relevant.
 
 Do not claim GPU readiness from “NVIDIA GPU detected” alone if the actual objective requires a specific provider/runtime/version combination.
 
 ### 5. Check Runtime / Dependency Readiness
 
-Validate required:
-
-- .NET/Java/Python/Node/native runtime versions;
-- virtual environments;
-- package versions;
-- model formats/assets;
-- PATH/environment configuration;
-- services/ports;
-- database/schema version;
-- browser/WebView/runtime components;
-- installer prerequisites.
-
-Presence on disk is not necessarily executable or compatible readiness.
+Validate required runtimes, virtual environments, package versions, model formats/assets, PATH/environment configuration, services/ports, database/schema version, browser/WebView/runtime components, and installer prerequisites. Presence on disk is not necessarily executable or compatible readiness.
 
 ### 6. Check Configuration Readiness
 
-Confirm objective-specific configuration:
-
-- expected file paths;
-- environment variables without exposing secret values;
-- feature flags;
-- provider selection;
-- ports/interfaces;
-- service URLs;
-- model directories;
-- permissions/ACLs;
-- application settings;
-- default/fallback paths.
+Confirm objective-specific configuration including expected paths, environment variables without exposing secret values, feature flags, provider selection, ports/interfaces, service URLs, model directories, permissions/ACLs, application settings, and fallback paths.
 
 Configuration should be validated without broad mutation when readiness is the only authorized task.
 
 ### 7. Check External Service / Network Readiness
 
-When the objective depends on external systems, determine:
-
-- endpoint identity;
-- network reachability as allowed;
-- authentication configuration;
-- credential presence/authority;
-- quota/subscription/project boundary when required;
-- TLS/certificate expectations;
-- data-flow/security approval;
-- offline fallback if required.
+When the objective depends on external systems, determine endpoint identity, allowed reachability, authentication configuration, credential presence/authority, quota/subscription boundary when required, TLS expectations, data-flow/security approval, and offline fallback if required.
 
 “Internet works” does not prove a specific service/integration is ready.
 
 ### 8. Check Authority Readiness
 
-Identify whether the intended action requires:
-
-- administrator/root elevation;
-- credential use;
-- repository write/merge rights;
-- signing key access;
-- deployment/publication authority;
-- firewall/service changes;
-- protected filesystem writes;
-- external API spend or data transfer.
+Identify whether the intended action requires administrator/root elevation, credential use, repository write/merge rights, signing key access, deployment/publication authority, firewall/service changes, protected filesystem writes, or external API spend/data transfer.
 
 If capability exists but authority does not, return **TECHNICALLY CAPABLE / AWAITING AUTHORITY**, not READY.
 
 ### 9. Check Security Readiness
 
-When security-sensitive conditions are material, verify or route to `signalproof-security` for:
-
-- dependency/provenance trust;
-- secrets handling;
-- least privilege;
-- external data-flow boundary;
-- executable/script trust;
-- signing/integrity requirements;
-- control regressions.
+When security-sensitive conditions are material, verify or route to `signalproof-security` for dependency/provenance trust, secrets handling, least privilege, external data-flow boundaries, executable/script trust, signing/integrity requirements, and control regressions.
 
 Readiness must not bypass unresolved Security STOP conditions.
 
 ### 10. Check Recovery Readiness
 
-For consequential actions determine whether:
-
-- a known-good rollback exists;
-- its identity is verified;
-- user/persistent data is protected;
-- restore instructions are current;
-- the intended action will not overwrite the only good recovery target;
-- rollback has adequate authority.
+For consequential actions determine whether a known-good rollback exists, its identity is verified, user/persistent data is protected, restore instructions are current, the intended action will not overwrite the only good recovery target, and rollback has adequate authority.
 
 Use `signalproof-recovery` when the recovery target itself is uncertain or restore execution is required.
 
 ### 11. Check Evidence Freshness
 
-For each material requirement ask:
-
-- Was this evidence collected from the current target?
-- Is the version/build still the same?
-- Has configuration changed since the check?
-- Has the credential/service state expired or changed?
-- Has the artifact been rebuilt/replaced?
-- Does this result prove the exact readiness requirement or only a weaker condition?
-
-Stale evidence should be marked accordingly rather than silently reused.
+Ask whether evidence came from the current target, whether version/build/configuration/service/credential state has changed, whether artifacts were rebuilt/replaced, and whether the evidence proves the exact requirement or only a weaker condition. Mark stale evidence rather than silently reusing it.
 
 ### 12. Readiness Decision
 
@@ -242,124 +127,33 @@ Return one of:
 
 ## Readiness Is Objective-Specific
 
-A machine can simultaneously be:
-
-- READY for CPU inference;
-- NOT READY for CUDA inference;
-- READY for local R&D;
-- NOT READY for public release signing;
-- READY to inspect a rollback;
-- AWAITING AUTHORITY to execute the restore.
-
-Do not produce a universal machine-wide READY unless the objective truly defines that scope.
+A machine can simultaneously be READY for CPU inference, NOT READY for CUDA inference, READY for local R&D, NOT READY for public release signing, READY to inspect a rollback, and AWAITING AUTHORITY to execute the restore. Do not produce a universal machine-wide READY unless the objective truly defines that scope.
 
 ## Detection Is Not Readiness
 
-Examples:
-
-```text
-python.exe exists
-    ≠ correct Python environment ready
-
-NVIDIA GPU detected
-    ≠ CUDA/provider/model path verified
-
-API key configured
-    ≠ authorized external data flow
-
-backup folder exists
-    ≠ verified recovery readiness
-
-installer compiled
-    ≠ target install lifecycle ready
-```
+`python.exe` existing does not prove the correct Python environment is ready. An NVIDIA GPU being detected does not prove CUDA/provider/model-path readiness. An API key being configured does not authorize external data flow. A backup folder existing does not prove recovery readiness. An installer compiling does not prove the target install lifecycle is ready.
 
 ## No-Mutation Readiness Rule
 
-A readiness assessment should be non-destructive and inspection-first by default.
-
-Do not automatically:
-
-- install missing packages;
-- change PATH;
-- enable services;
-- open firewall ports;
-- download models;
-- add credentials;
-- elevate privileges;
-- modify ACLs;
-- rewrite configuration;
-- deploy/publish artifacts.
-
-Instead return the smallest remediation path unless the user separately authorizes execution.
+A readiness assessment should be non-destructive and inspection-first by default. Do not automatically install missing packages, change PATH, enable services, open firewall ports, download models, add credentials, elevate privileges, modify ACLs, rewrite configuration, or deploy/publish artifacts. Return the smallest remediation path unless separately authorized.
 
 ## Readiness vs Plan, Verify, Security, Recovery, Release
 
-`signalproof-plan` asks:
-> **What bounded execution contract should govern the work?**
+`signalproof-plan` asks what bounded execution contract should govern the work. `signalproof-readiness` asks whether the required conditions for that objective are actually present on the target before execution begins. `signalproof-verify` proves a specific readiness claim. `signalproof-security` assesses material security blockers. `signalproof-recovery` establishes or executes a trustworthy recovery path. `signalproof-release` decides whether the exact accepted artifact may be promoted to a defined distribution boundary.
 
-`signalproof-readiness` asks:
-> **Are the required conditions for that objective actually present on the target before execution begins?**
-
-`signalproof-verify` asks:
-> **Is a specific readiness claim proven by direct evidence?**
-
-`signalproof-security` asks:
-> **Do material security risks block readiness or execution?**
-
-`signalproof-recovery` asks:
-> **Is there a trustworthy recovery path, or should we restore now?**
-
-`signalproof-release` asks:
-> **May the exact accepted artifact be promoted to a defined distribution boundary?**
-
-Readiness may consume evidence from all of these but does not replace them.
+Readiness may consume evidence from these disciplines but does not replace them.
 
 ## Readiness Is Not Execution Authority
 
-A READY decision does not automatically authorize:
-
-- installation;
-- destructive changes;
-- privilege elevation;
-- credential use;
-- external data transfer;
-- publishing/deployment;
-- signing;
-- release;
-- canonical Build Ledger mutation.
-
-It states that prerequisites for the declared objective are satisfied, subject to the explicit authority already recorded.
+A READY decision does not automatically authorize installation, destructive changes, privilege elevation, credential use, external data transfer, publishing/deployment, signing, release, or canonical Build Ledger mutation.
 
 ## STOP Conditions
 
-Stop when:
-
-- the target environment cannot be identified sufficiently;
-- a required prerequisite would need consequential mutation merely to test readiness and no authority exists;
-- readiness depends on unknown/untrusted executable content;
-- required credentials would need to be exposed to verify them;
-- a security STOP condition is unresolved;
-- a consequential action lacks a verified recovery path where project policy requires one;
-- evidence from another host/version is being reused as current target proof without justification;
-- the requested readiness claim is broader than the defined evidence can support;
-- proceeding would destroy the only known-good state or bypass owner authority.
+Stop when the target environment cannot be identified sufficiently; a required prerequisite would need consequential mutation merely to test readiness and no authority exists; readiness depends on unknown/untrusted executable content; required credentials would need to be exposed; a Security STOP is unresolved; a consequential action lacks required verified recovery; evidence from another host/version is being reused without justification; the readiness claim exceeds the evidence; or proceeding would destroy the only known-good state or bypass owner authority.
 
 ## Anti-Patterns
 
-Fail this skill when Readiness:
-
-- marks READY because software is merely installed;
-- marks GPU READY because a GPU name appears;
-- treats configured credentials as authorization to use them;
-- installs missing dependencies during a read-only readiness assessment;
-- ignores version/architecture compatibility;
-- ignores recovery for a consequential installation/update;
-- reuses stale evidence from another machine/build;
-- weakens the requirement to make the result green;
-- treats “no blocker detected” as verified readiness;
-- turns readiness into release authority;
-- hides partial/unknown gates behind one green status.
+Fail this skill when Readiness marks READY because software is merely installed; marks GPU READY because a GPU name appears; treats configured credentials as authorization; installs dependencies during a read-only assessment; ignores compatibility or recovery; reuses stale evidence; weakens requirements to make the result green; treats “no blocker detected” as verified readiness; turns readiness into release authority; or hides partial/unknown gates behind one green status.
 
 ## Completion Criteria
 
@@ -369,8 +163,8 @@ Readiness is complete when the declared objective, exact target environment, req
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-readiness`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-verify`, `signalproof-review`, `signalproof-security`, `signalproof-recovery`, `signalproof-release`, `signalproof-closeout`
 - **Domain:** Target-environment readiness, prerequisites, capabilities, configuration, authority, dependency/service checks, recovery and evidence gates
