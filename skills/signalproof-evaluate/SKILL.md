@@ -23,284 +23,113 @@ Evaluation does not automatically authorize adoption, purchase, installation, ex
 
 ## Evaluation Contract
 
-1. **Define the decision before scoring options.** State what decision must be made and what outcomes are possible.
-2. **Use explicit criteria.** Strategic fit, technical fit, licensing, cost, security, readiness burden, reversibility, integration effort, supportability, provenance, performance, privacy, or other criteria must be visible.
-3. **Separate hard gates from weighted preferences.** A licensing prohibition, security blocker, unsupported platform, or missing authority cannot be averaged away by popularity or performance.
-4. **Bind every judgment to evidence.** Distinguish direct facts, researched claims, target-environment evidence, assumptions, inference, and owner/design authority.
-5. **Preserve uncertainty.** Unknowns stay unknown. Missing evidence should not receive an invented neutral score.
-6. **Compare alternatives consistently.** Apply the same criteria and evidence bar across candidates unless a documented reason requires different treatment.
-7. **Evaluate the status quo and build-from-scratch option when materially relevant.** Adoption is not the only possible disposition.
-8. **Include reversibility and exit cost.** Prefer decisions that preserve recovery and optionality when benefits are otherwise similar.
-9. **Include readiness burden.** A technically attractive option may still be poor if it requires fragile dependencies, unsupported hardware, excessive privilege, or major environment changes.
-10. **Include security/provenance/licensing boundaries.** Do not postpone known blockers merely because the feature fit is strong.
-11. **Avoid precision theater.** Weighted scores are decision aids, not evidence. Small numeric differences must not imply certainty the evidence does not support.
-12. **Return a disposition, rationale, confidence, unresolved gates, and next smallest action.**
-13. **Do not self-execute the decision.** Hand off implementation to Plan/Build, validation to Readiness/Verify, security to Security, rollback to Recovery, or release to Release.
+1. Define the decision before scoring options.
+2. Use explicit decision criteria and visible constraints.
+3. Separate hard gates from weighted preferences; a licensing, security, platform, authority, or policy blocker cannot be averaged away.
+4. Bind material judgments to evidence and preserve evidence class/source.
+5. Preserve uncertainty; UNKNOWN is not an invented neutral score.
+6. Compare candidates consistently and include status quo/build-from-scratch when materially relevant.
+7. Evaluate reversibility, exit cost, readiness burden, integration effort, security, provenance, licensing, and long-term replacement risk.
+8. Avoid precision theater: weighted scores are aids, not evidence or authority.
+9. Return a disposition, rationale, confidence, unresolved gates, and smallest next action.
+10. Do not self-execute the decision; hand off to the appropriate active specialist.
 
-## Evaluation Workflow
+## Workflow
 
 ### 1. Define the Decision
 
-Capture:
+Capture the decision question, candidates, status quo, build-from-scratch option when relevant, intended users/environment, non-negotiable constraints, decision authority, and acceptable dispositions.
 
-- decision question;
-- candidates/options;
-- current/status-quo option;
-- build-from-scratch option when relevant;
-- intended users/environment;
-- non-negotiable constraints;
-- decision authority;
-- acceptable dispositions.
-
-Possible dispositions include:
+Valid dispositions include:
 
 - **ADOPT**
 - **ADAPT**
 - **INTEGRATE**
-- **PILOT / TEST IN ISOLATION**
+- **PILOT / ISOLATE**
 - **DEFER**
 - **RESEARCH MORE**
 - **REJECT**
 - **BUILD FROM SCRATCH**
-- **REPLACE LATER / WATCHLIST**
+- **WATCHLIST**
 
 ### 2. Establish the Evidence Package
 
-Identify the evidence basis for each option:
+Use the strongest available Research, official documentation/repository identity, license/dependency evidence, architecture/runtime requirements, target-platform support, readiness evidence, security/provenance findings, cost evidence, maintenance/project-health evidence, benchmarks, reversibility/migration evidence, and owner/design authority.
 
-- Research findings and freshness;
-- official documentation/repository identity;
-- license and dependency evidence;
-- architecture/runtime requirements;
-- Windows/target-platform support;
-- target-machine readiness evidence when available;
-- security/provenance findings;
-- cost/pricing evidence when relevant;
-- maintenance/community/project health evidence;
-- benchmark/performance evidence;
-- reversibility/migration evidence;
-- owner/project design authority.
-
-If the evidence package is materially incomplete, Evaluate may return **RESEARCH MORE** rather than manufacture a decision.
+If decision-critical evidence is missing, return **RESEARCH MORE** rather than manufacture certainty.
 
 ### 3. Define Hard Gates
 
-Hard gates are requirements that cannot be compensated for by another metric.
+Hard gates cannot be compensated for by another score. Examples include prohibited/incompatible license, unsupported required platform, unresolved security blocker, prohibited external data transfer, dependency/runtime conflict with protected state, unacceptable recovery/exit path, explicit cost ceiling, or unavailable required authority.
 
-Examples:
-
-- incompatible or prohibited license;
-- unsupported required operating system;
-- unresolvable security blocker;
-- missing mandatory offline/local operation;
-- required external data transfer prohibited by policy;
-- dependency/runtime conflict with protected state;
-- no acceptable recovery/exit path for a consequential integration;
-- cost outside an explicit maximum;
-- required authority unavailable.
-
-A candidate that fails a hard gate should normally be REJECT, DEFER, or RESEARCH MORE until the gate changes.
+A hard-gate failure normally produces REJECT, DEFER, or RESEARCH MORE until the governing condition changes.
 
 ### 4. Define Weighted Criteria
 
-Only after hard gates are explicit may weighted criteria be used.
+Only after hard gates are explicit, evaluate relevant preferences such as strategic fit, capability coverage, architecture fit, Windows/local-first fit, integration complexity, runtime burden, maintainability, ecosystem maturity, performance, extensibility, privacy, security posture, licensing fit, cost, migration/exit cost, reversibility, testability, observability, recovery fit, and replacement risk.
 
-Possible criteria:
-
-- strategic fit;
-- capability coverage;
-- technical architecture fit;
-- Windows/local-first fit;
-- integration complexity;
-- runtime/dependency burden;
-- maintainability;
-- ecosystem maturity;
-- performance/resource efficiency;
-- extensibility;
-- provenance/transparency;
-- privacy/local-data fit;
-- security posture;
-- licensing fit;
-- direct/ongoing cost;
-- migration/exit cost;
-- reversibility;
-- testability;
-- observability;
-- recovery fit;
-- long-term replacement risk.
-
-Weights should reflect the declared decision, not generic preferences.
+Weights must reflect the declared decision rather than generic preferences.
 
 ### 5. Score Carefully
 
-If scoring is useful, use an explicit scale such as:
+When useful, use an explicit scale such as 5 strong fit, 4 good fit, 3 acceptable tradeoff, 2 weak fit, 1 poor fit, 0 failed criterion, and **UNKNOWN** for insufficient evidence.
 
-- **5 — strong fit / directly supported**
-- **4 — good fit / minor caveat**
-- **3 — acceptable / material tradeoff**
-- **2 — weak fit / significant concern**
-- **1 — poor fit / major disadvantage**
-- **0 — fails criterion or hard blocker when applicable**
-- **UNKNOWN — insufficient evidence**
-
-Do not convert UNKNOWN to 0, 3, or another invented value merely to calculate a total.
+Do not convert UNKNOWN to a fabricated numeric value merely to create a total.
 
 ### 6. Separate Evidence from Judgment
 
-For every material criterion record:
+For each material criterion preserve evidence, evidence class/source, judgment, confidence, unresolved questions, and hard-gate status.
 
-- evidence;
-- evidence class/source;
-- judgment;
-- confidence;
-- unresolved question;
-- whether it is a hard gate.
-
-Example:
-
-```text
-Windows support
-Evidence: official project documentation lists Linux/macOS; Windows path is community-supported only.
-Evidence class: Artifact-backed external research.
-Judgment: weak fit for Windows-first core runtime.
-Confidence: medium-high.
-Gate: potentially yes, depending on isolation strategy.
-```
+Research claims and target-machine readiness are different evidence layers.
 
 ### 7. Evaluate Reversibility
 
-Ask:
-
-- Can it be tested in quarantine/staging?
-- Can it be removed cleanly?
-- Does it alter protected runtime state?
-- Does it create proprietary lock-in?
-- Is data export portable?
-- Can the current working path remain available?
-- Does the option introduce an irreversible schema/data migration?
-- Can it be replaced later without rewriting the product?
-
-Reversibility is often strategically valuable even when not the top feature metric.
+Ask whether the candidate can be tested in isolation, removed cleanly, preserve the working path, avoid irreversible schema/data migration, export data portably, limit lock-in, and remain replaceable later.
 
 ### 8. Evaluate Readiness Burden
 
-A candidate may look strong in Research but impose substantial readiness work.
+Consider runtime/version conflicts, GPU/provider requirements, model assets, build toolchains, privileges, services, external APIs/credentials, internet dependence, installer complexity, target-machine support, observability, and rollback preparation.
 
-Consider:
-
-- runtime/version conflicts;
-- GPU/provider requirements;
-- model assets/storage;
-- build toolchains;
-- administrator privileges;
-- background services;
-- external APIs/credentials;
-- internet dependence;
-- packaging/installer complexity;
-- target-machine support;
-- logging/observability requirements;
-- rollback preparation.
-
-Use `signalproof-readiness` for target-specific proof when needed.
+Use `signalproof-readiness` for target-specific proof.
 
 ### 9. Evaluate Security / Provenance / Licensing
 
-If material, include:
+Include canonical source/maintainer identity, dependency chain, install/execution behavior, privileges, network/data flow, license/redistribution terms, security findings, integrity/provenance, and update-channel trust when material.
 
-- canonical source and maintainer identity;
-- dependency chain;
-- installation/execution behavior;
-- privileges;
-- network/data flow;
-- license and redistribution constraints;
-- security advisories/findings;
-- signature/hash/release provenance;
-- update-channel trust.
+Use `signalproof-security` for the defined security assessment rather than overstating Evaluate as a security audit.
 
-Use `signalproof-security` for security-specific decisions and do not overstate Evaluation as a security audit.
+### 10. Compare and Disposition
 
-### 10. Compare Options
+Make tradeoffs visible. Do not hide a hard-gate failure behind an average score. Return the disposition, strongest advantages/disadvantages, readiness burden, security/licensing/provenance notes, reversibility, confidence, unresolved evidence, and next action.
 
-Produce a comparison that makes tradeoffs visible.
+### 11. Confidence
 
-Do not hide a hard-gate failure behind a high average score.
+Use **HIGH**, **MEDIUM**, or **LOW** based on the quality and completeness of decision-critical evidence. A high numeric score does not automatically mean high confidence.
 
-A useful output may include:
+### 12. Handoff
 
-- candidate;
-- disposition;
-- hard-gate status;
-- strongest advantages;
-- strongest disadvantages;
-- readiness burden;
-- security/licensing/provenance notes;
-- reversibility;
-- confidence;
-- unresolved evidence.
-
-### 11. Make the Disposition
-
-Return one of:
-
-- **ADOPT** — evidence supports moving toward implementation within stated boundaries.
-- **ADAPT** — useful foundation, but bounded modification is required.
-- **INTEGRATE** — retain as a distinct component/service rather than absorb/rewrite it.
-- **PILOT / ISOLATE** — promising but needs sandboxed/runtime validation before commitment.
-- **DEFER** — not currently worth the burden or blockers; reconsider when a named condition changes.
-- **RESEARCH MORE** — decision-critical evidence is missing or contradictory.
-- **REJECT** — fails hard gates or is inferior to available alternatives for this decision.
-- **BUILD FROM SCRATCH** — external candidates do not meet governing requirements and the capability is valuable enough to justify internal implementation.
-- **WATCHLIST** — not actionable now but worth monitoring.
-
-### 12. Declare Decision Confidence
-
-Use:
-
-- **HIGH** — decisive evidence for the material gates/criteria;
-- **MEDIUM** — decision is reasonable but one or more material uncertainties remain;
-- **LOW** — provisional recommendation; substantial evidence remains missing.
-
-Do not use a high numeric score as a substitute for high confidence.
-
-### 13. Handoff
-
-Possible next routes:
-
-- missing external evidence -> `signalproof-research`;
-- target compatibility/prerequisites -> `signalproof-readiness`;
-- security-sensitive blocker -> `signalproof-security`;
-- adoption path design -> `signalproof-plan`;
-- bounded implementation -> `signalproof-build`;
-- exact claim proof -> `signalproof-verify`;
-- recovery/rollback design -> `signalproof-recovery`;
-- release decision -> `signalproof-release`.
+- missing external evidence -> `signalproof-research`
+- target prerequisites/compatibility -> `signalproof-readiness`
+- security-sensitive blocker -> `signalproof-security`
+- adoption path design -> `signalproof-plan`
+- bounded implementation -> `signalproof-build`
+- exact claim proof -> `signalproof-verify`
+- recovery/rollback -> `signalproof-recovery`
+- release decision -> `signalproof-release`
 
 Evaluation itself does not perform those actions.
 
 ## Research vs Evaluate
 
-`signalproof-research` asks:
+`signalproof-research` asks: **What does the available evidence support?**
 
-> **What does the available evidence support?**
-
-`signalproof-evaluate` asks:
-
-> **Given that evidence, our explicit criteria, and our constraints, what disposition best serves this decision?**
+`signalproof-evaluate` asks: **Given that evidence, our explicit criteria, and our constraints, what disposition best serves this decision?**
 
 Research should not secretly choose the winner. Evaluate should not invent missing research.
 
 ## Scores Are Not Authority
 
-A weighted score may summarize a comparison, but:
-
-- weights are design choices;
-- scores contain judgment;
-- UNKNOWN is not neutral;
-- hard gates remain separate;
-- small score differences may be meaningless;
-- owner authority still controls adoption/execution.
-
-Therefore:
+Weights are design choices, scores contain judgment, UNKNOWN is not neutral, hard gates remain separate, and small numeric differences may not be meaningful.
 
 ```text
 HIGHEST SCORE
@@ -310,58 +139,26 @@ AUTOMATIC ADOPTION
 
 ## Evaluation Is Not Execution Authority
 
-An ADOPT/ADAPT/INTEGRATE disposition does not automatically authorize:
-
-- cloning/downloading;
-- installation;
-- package/runtime modification;
-- privilege elevation;
-- credential/API use;
-- purchase/spend;
-- migration;
-- security exceptions;
-- release/deployment;
-- canonical Build Ledger mutation.
+An ADOPT/ADAPT/INTEGRATE disposition does not authorize cloning/downloading, installation, runtime modification, elevation, credentials/API use, spending, migration, security exceptions, deployment/release, or canonical Build Ledger mutation.
 
 ## STOP Conditions
 
-Stop when:
-
-- the decision criteria are materially undefined or contradictory;
-- a candidate's identity/version is ambiguous;
-- decisive evidence is missing and would change the disposition;
-- hard-gate evidence is being ignored because another metric scores highly;
-- incompatible options are being scored as though they are equivalent;
-- security/licensing/provenance blockers are being averaged away;
-- scores are being fabricated for unknown evidence;
-- evaluation scope is being expanded into unauthorized execution or purchase;
-- a requested disposition would bypass an active Security/Recovery/authority STOP condition.
+Stop when criteria are materially undefined/contradictory; candidate identity is ambiguous; decisive evidence is missing; hard-gate evidence is being ignored because another metric scores highly; incompatible options are scored as equivalent; security/licensing/provenance blockers are averaged away; scores are fabricated for unknown evidence; evaluation expands into unauthorized execution/purchase; or a disposition would bypass Security/Recovery/authority STOP conditions.
 
 ## Anti-Patterns
 
-Fail this skill when Evaluate:
-
-- recommends a tool because it is popular;
-- picks the highest benchmark without considering target environment or integration burden;
-- averages a failed license/security hard gate into a favorable score;
-- treats UNKNOWN as an arbitrary middle score;
-- changes weights after seeing the winner without documenting why;
-- evaluates only new candidates and ignores the status quo/build-from-scratch option when relevant;
-- confuses research claims with target-machine validation;
-- hides reversibility/lock-in costs;
-- converts recommendation into installation/adoption without authority;
-- presents a recommendation as objective fact rather than evidence-backed judgment.
+Fail this skill when it recommends a tool because it is popular; picks a benchmark winner without target/integration context; averages failed license/security gates into a favorable score; treats UNKNOWN as a middle score; changes weights after seeing the winner without explanation; ignores status quo/build-from-scratch when relevant; confuses Research with target Readiness; hides lock-in/reversibility costs; executes adoption without authority; or presents recommendation as objective fact rather than evidence-backed judgment.
 
 ## Completion Criteria
 
-Evaluation is complete when the decision, options, evidence package, hard gates, weighted criteria, assumptions, uncertainties, target/readiness implications, security/provenance/licensing boundaries, reversibility, comparison, disposition, confidence, unresolved gates, authority limitations, and next smallest action are explicit enough that another competent human or agent can reconstruct why the recommendation was made and what would cause it to change.
+Evaluation is complete when the decision, options, evidence package, hard gates, criteria, assumptions, uncertainties, readiness/security/provenance/licensing implications, reversibility, comparison, disposition, confidence, unresolved gates, authority limits, and next smallest action are explicit enough that another competent human or agent can reconstruct why the recommendation was made and what would change it.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-evaluate`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-research`, `signalproof-readiness`, `signalproof-plan`, `signalproof-build`, `signalproof-verify`, `signalproof-review`, `signalproof-security`, `signalproof-recovery`, `signalproof-release`, `signalproof-closeout`
 - **Domain:** Evidence-to-decision evaluation, technology disposition, explicit criteria, hard gates, weighted tradeoffs, reversibility, strategic/technical fit, licensing/security/readiness implications
