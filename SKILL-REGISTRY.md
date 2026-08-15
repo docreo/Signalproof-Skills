@@ -17,10 +17,10 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-security` | 0.1.0 | Active public baseline | Defensive security governance, trust boundaries, secrets, least privilege, dependency provenance, unsafe execution, network/data exposure, integrity evidence, and security STOP conditions | Active |
 | `signalproof-release` | 0.1.0 | Active public baseline | Exact-artifact release governance, evidence binding, provenance, rollback designation, release claims, and distribution authority | Active |
 | `signalproof-readiness` | 0.1.0 | Active public baseline | Target-environment readiness, prerequisites, capabilities, configuration, authority, dependency/service checks, recovery and evidence gates | Active |
+| `signalproof-research` | 0.1.0-rc1 | Initial public release candidate | Evidence-controlled research, source quality/freshness, contradiction handling, claim classification, provenance, and research handoff | Candidate |
 
 ## Planned Specialist Lanes
 
-- `signalproof-research`
 - `signalproof-evaluate`
 - `signalproof-document`
 - `signalproof-learn`
