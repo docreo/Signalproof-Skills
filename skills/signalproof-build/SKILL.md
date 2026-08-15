@@ -183,8 +183,8 @@ A Signalproof build is complete when the authorized objective has been implement
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-build`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Works with:** `signalproof-plan`, `signalproof-investigate`
 - **Domain:** Governed implementation, bounded change, protected execution, verification, recovery
