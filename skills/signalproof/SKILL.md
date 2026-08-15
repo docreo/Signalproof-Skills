@@ -29,6 +29,7 @@ This skill governs *how* work should be conducted. Specialist Signalproof skills
 8. **Stop unproductive loops.** Do not repeat failed approaches without materially new evidence, inputs, environment, or method.
 9. **Leave proof.** Preserve enough evidence for another competent human or agent to understand what changed and why.
 10. **Turn solved problems into future capability.** Reusable lessons may become tests, documentation, skills, workflows, guardrails, or automation candidates after review and approval.
+11. **Close meaningful milestones before opening the next phase.** Protect accepted state, update the Build Ledger canonically or through an explicitly staged delta, preserve failures/open gates, evaluate reusable learning, and authorize the next phase before continuing.
 
 ## Evidence Classes
 
@@ -82,6 +83,13 @@ For meaningful work, report:
 ### 10. Extract the Lesson
 For non-trivial completed work, determine whether the lesson is likely to recur, what failed path should not be repeated, what evidence proved the solution, what should trigger STOP next time, and whether the lesson should become durable capability.
 
+### 11. Close Meaningful Milestones
+When the work reaches a meaningful phase boundary—such as owner acceptance, a protected/active baseline, RD transition, release promotion, major capability completion, significant defect closure, governance/security/recovery decision, or handoff—use active `signalproof-closeout` before starting the next development phase.
+
+This requirement does **not** apply to every micro-commit or ordinary intermediate edit. It applies when the next work depends on the current milestone being durably reconstructable.
+
+If the current canonical Build Ledger head cannot be verified, closeout must stage evidence rather than fabricate or hand-edit a canonical append. A human owner may explicitly record a justified deferral, but silence is not a deferral.
+
 ## Public / Private Boundary
 
 Public Signalproof skills must be safe to publish.
@@ -102,6 +110,7 @@ A specialist skill may become more restrictive. It must not silently become less
 - bounded change;
 - verification;
 - recovery;
+- milestone closeout and continuity;
 - public/private separation;
 - proof and continuity.
 
@@ -126,6 +135,7 @@ This skill has been followed successfully when:
 - evidence and inference remained distinct;
 - success claims are tied to the appropriate verification gate;
 - recovery or STOP conditions were honored;
+- meaningful milestone transitions were closed out before the next phase or explicitly deferred by human authority;
 - public/private boundaries were preserved;
 - the result leaves sufficient proof for continuity.
 
@@ -133,7 +143,7 @@ This skill has been followed successfully when:
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof`
-- **Version:** `0.1.0`
-- **Maturity:** Active public baseline
+- **Version:** `0.1.1-rc1`
+- **Maturity:** Governance update candidate
 - **Domain:** Human-controlled AI collaboration, governed execution, continuity, verification, recovery, and evidence
 - **Created by:** Doc Reo / Signalproof
