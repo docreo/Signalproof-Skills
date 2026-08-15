@@ -15,13 +15,13 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity, change integrity, architecture/contract review, maintainability, provenance, privacy/security hazard, and recovery review | Active |
 | `signalproof-recovery` | 0.1.0 | Active public baseline | Rollback selection, restore integrity, user-data protection, staged recovery, mixed-version prevention, and recovery verification | Active |
 | `signalproof-security` | 0.1.0 | Active public baseline | Defensive security governance, trust boundaries, secrets, least privilege, dependency provenance, unsafe execution, network/data exposure, integrity evidence, and security STOP conditions | Active |
+| `signalproof-release` | 0.1.0-rc1 | Initial public release candidate | Exact-artifact release governance, evidence binding, provenance, rollback designation, release claims, and distribution authority | Candidate |
 
 ## Planned Specialist Lanes
 
 - `signalproof-research`
 - `signalproof-evaluate`
 - `signalproof-readiness`
-- `signalproof-release`
 - `signalproof-document`
 - `signalproof-learn`
 
