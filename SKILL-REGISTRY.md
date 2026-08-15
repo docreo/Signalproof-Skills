@@ -19,7 +19,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-readiness` | 0.1.0 | Active public baseline | Target-environment readiness, prerequisites, capabilities, configuration, authority, dependency/service checks, recovery and evidence gates | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | Evidence-controlled research, source quality/freshness, contradiction handling, claim classification, provenance, and research handoff | Active |
 | `signalproof-evaluate` | 0.1.0 | Active public baseline | Evidence-to-decision evaluation, hard gates, weighted tradeoffs, reversibility, strategic/technical fit, licensing/security/readiness implications, and disposition | Active |
-| `signalproof-document` | 0.1.0-rc1 | Initial public release candidate | Durable documentation, source-of-truth control, version binding, staleness management, provenance, evidence-preserving prose, and public/private boundaries | Candidate |
+| `signalproof-document` | 0.1.0 | Active public baseline | Durable documentation, source-of-truth control, version binding, staleness management, provenance, evidence-preserving prose, and public/private boundaries | Active |
 
 ## Planned Specialist Lanes
 
