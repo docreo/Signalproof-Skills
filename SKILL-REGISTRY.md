@@ -8,7 +8,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-build` | 0.1.0 | Active public baseline | Governed implementation, bounded change, protected execution, and verification | Active |
-| `signalproof-debug` | 0.1.0-rc1 | Initial public release candidate | Evidence-led debugging, bounded correction, and regression protection | Candidate |
+| `signalproof-debug` | 0.1.0 | Active public baseline | Evidence-led debugging, bounded correction, and regression protection | Active |
 
 ## Planned Specialist Lanes
 
