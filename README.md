@@ -1,12 +1,12 @@
 # Signalproof Skills
 
-**Human-controlled, evidence-backed skills for building with AI without losing authority, continuity, research integrity, decision integrity, documentation integrity, readiness, recovery, security boundaries, release integrity, or proof.**
+**Human-controlled, evidence-backed skills for building with AI without losing authority, continuity, research integrity, decision integrity, documentation integrity, readiness, recovery, security boundaries, release integrity, institutional learning, or proof.**
 
 > **Control first. AI second. Software third.**
 >
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, and future learning workflows.
+Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, and governed institutional learning.
 
 ## Root operating contract
 
@@ -27,7 +27,7 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.10 | Selects the smallest appropriate active skill/sequence, including Document routing |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.11 | Selects the smallest appropriate active skill or sequence |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
@@ -40,7 +40,8 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.1.0 | Selects and verifies trustworthy rollback/restoration |
 | [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.1.0 | Governs defensive security assessment |
 | [`signalproof-release`](skills/signalproof-release/SKILL.md) | 0.1.0 | Governs exact-artifact promotion/distribution |
-| [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Creates durable documentation without weakening source-of-truth, evidence, version, privacy, or staleness boundaries |
+| [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Creates durable documentation without weakening source-of-truth or evidence boundaries |
+| [`signalproof-learn`](skills/signalproof-learn/SKILL.md) | 0.1.0 | Extracts governed reusable lessons, tests, policy/skill candidates, and STOP conditions |
 | [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.1.0 | Closes meaningful milestones and preserves Build Ledger continuity |
 
 The authoritative status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md).
@@ -66,57 +67,52 @@ DOCUMENT when established state/results need durable representation
   ↓
 CLOSEOUT
   ↓
-BUILD LEDGER
+LEARN when material reusable capability should be extracted
+  ↓
+GOVERNED CANDIDATE / TEST / POLICY / DOCUMENTATION UPDATE
 ```
 
 This is not a mandatory conveyor belt. The router selects the smallest responsible path.
-
-## Documentation integrity
-
-`signalproof-document` asks:
-
-> **How do we represent established state, decisions, procedures, evidence, provenance, limitations, and history without changing their evidentiary meaning?**
-
-Its governing rule is:
-
-> **Document the strongest supported state, identify its source and scope, and never let polished prose outrank verified system evidence.**
-
-A README, handoff, SOP, report, or generated document is not automatically canonical truth. Candidate is not Active. Planned is not implemented. Compile is not runtime verification. Staged Build Ledger evidence is not a canonical append. Security/Release/Readiness claims remain bounded to the evidence that actually established them.
-
-When the factual truth itself is unresolved, Document hands back to Verify or Investigate rather than inventing a clean narrative.
 
 ## Discipline boundaries
 
 - **Research:** What does current external evidence establish?
 - **Evaluate:** What disposition best fits explicit criteria and constraints?
+- **Investigate:** What actually failed or what state is true?
+- **Plan:** What bounded execution contract should govern the work?
 - **Readiness:** Are required conditions satisfied on this exact target?
+- **Build:** What approved bounded implementation should be executed?
+- **Debug:** What demonstrable defect should be corrected?
 - **Verify:** Is this specific claim proven?
 - **Review:** Is the work itself sound and contract-faithful?
 - **Security:** What material security-sensitive risks affect the decision?
 - **Recovery:** What trustworthy state should be restored and how is recovery proven?
 - **Release:** May this exact accepted artifact be promoted to this exact distribution boundary?
 - **Document:** How should established state/evidence be represented durably without strengthening the claim?
-- **Closeout:** Is the meaningful milestone recorded and safe to transition from?
+- **Closeout:** Is the meaningful milestone preserved and safe to transition from?
+- **Learn:** What reusable capability should be extracted from completed evidence, and what governance path should it follow?
 
-## Skill governance
+## Learning governance
+
+Signalproof learning follows:
 
 ```text
 DISCOVERED → CANDIDATE → TESTED → APPROVED → ACTIVE → DEPRECATED / RETIRED
 ```
 
-Discovery is not disposition. Recommendation is not authority. Documentation is not proof or promotion.
+The governing Learn rule is:
 
-## Planned specialist lane
+> **Extract reusable capability from proven work, but do not promote an observation into doctrine until its scope, evidence, tests, and authority justify it.**
 
-Only one original planned specialist lane remains:
+One successful case is not automatically a universal rule. Automatic discovery is not automatic activation. A regression test or documentation update may be the correct durable output instead of another skill.
 
-- `signalproof-learn`
+## Original V0.1 planned set
 
-It is **not active** until its skill, tests, governance review, and acceptance state exist.
+The original planned specialist set is now fully implemented and Active. Future specialists and updates must follow the same governed candidate, testing, approval, promotion, and closeout lifecycle.
 
 ## What Signalproof Skills does not claim
 
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Documentation cannot create technical, security, architecture, release, or execution authority merely by stating it.
+Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission.
 
 ## Repository protection
 
@@ -130,4 +126,4 @@ Signalproof Skills is licensed under the **Apache License 2.0**. See [`LICENSE`]
 
 **Doc Reo / Signalproof**
 
-Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, continuity, recovery, and proof.
+Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, continuity, recovery, institutional learning, and proof.
