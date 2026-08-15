@@ -37,7 +37,7 @@ The canonical `main` branch currently contains these active public baselines:
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract for human-controlled, evidence-backed AI collaboration and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.2-rc1 | Selects the smallest appropriate active skill/sequence, including verification and milestone routing; candidate integration update on this branch |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.2 | Selects the smallest appropriate active skill/sequence, including verification and milestone routing |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what actually failed or what state is actually true before correction |
 | [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Turns intent into a bounded execution contract with scope, authority, acceptance, and recovery |
 | [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.0 | Executes an approved bounded implementation while preserving protected state |
