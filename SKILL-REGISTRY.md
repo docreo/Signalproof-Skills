@@ -12,12 +12,12 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-router` | 0.1.2 | Active public baseline | Active-skill selection plus evidence-verification and meaningful-milestone closeout routing | Active |
 | `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout, Build Ledger continuity, phase-transition governance, and skill extraction | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification, evidence grading, acceptance-gate separation, and non-regression proof | Active |
+| `signalproof-review` | 0.1.0-rc1 | Initial public release candidate | Scope fidelity, change integrity, architecture/contract review, maintainability, provenance, privacy/security hazard, and recovery review | Candidate |
 
 ## Planned Specialist Lanes
 
 The following are planned lanes, not active skills yet:
 
-- `signalproof-review`
 - `signalproof-research`
 - `signalproof-evaluate`
 - `signalproof-security`
