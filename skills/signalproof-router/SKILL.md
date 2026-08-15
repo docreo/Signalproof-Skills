@@ -11,17 +11,13 @@ description: Route a request to the smallest appropriate active Signalproof skil
 
 > **Route by objective and evidence state, not by keyword—and never confuse capability selection with permission to execute.**
 
-The router does not create authority, activate planned skills, or bypass STOP conditions.
-
-## Active-Skill Rule
-
 Only skills marked **Active** in the canonical Skill Registry are routable.
 
 ## Current Routing Set
 
 - `signalproof` — root governing contract/fallback;
-- `signalproof-research` — acquire and synthesize external evidence while preserving source quality, freshness, contradictions, provenance, and the boundary between findings and decisions;
-- `signalproof-evaluate` — judge researched options against explicit criteria, hard gates, strategic/technical fit, licensing, security/readiness implications, reversibility, and alternatives, then recommend a bounded disposition;
+- `signalproof-research` — establish what current external evidence supports;
+- `signalproof-evaluate` — decide disposition from that evidence using explicit criteria, hard gates, reversibility, readiness/security/licensing implications, and alternatives;
 - `signalproof-investigate` — establish what failed or what state is true in a specific system/runtime;
 - `signalproof-plan` — create a bounded execution contract;
 - `signalproof-readiness` — determine whether objective-specific prerequisites/capabilities actually exist on the target;
@@ -37,125 +33,77 @@ Only skills marked **Active** in the canonical Skill Registry are routable.
 ## Router Contract
 
 1. Read the objective, not vocabulary alone.
-2. Check evidence state and select the governing discipline.
-3. Use only Active skills.
-4. Prefer the smallest sufficient route.
-5. Sequence only when one discipline needs evidence from another.
-6. Route external evidence acquisition/synthesis through Research when the central question is what current sources establish.
-7. Route option comparison/disposition through Evaluate when the central question is what should be adopted, rejected, deferred, piloted, integrated, adapted, or built after evidence exists.
-8. Do not confuse Research with Evaluate: Research establishes evidence; Evaluate applies explicit criteria and constraints to recommend disposition.
-9. Do not confuse Evaluate with Plan/Build: recommendation is not implementation authority.
-10. Do not confuse Research with Investigate or Readiness: external evidence is different from system-state diagnosis and target-environment proof.
-11. Route specific material claims through Verify when proof is required.
-12. Route work-quality/change-integrity acceptance through Review when materially relevant.
-13. Route restoration/rollback through Recovery.
-14. Route material security-sensitive questions through Security.
-15. Route exact-artifact promotion/distribution decisions through Release.
-16. Close meaningful milestones before the next development phase.
-17. Do not invent permission. Routing never authorizes install, purchase, adoption, elevation, credentials, destructive recovery, security-control changes, signing, publication/deployment, or canonical-ledger mutation.
-18. Preserve explicit human scope and STOP conditions.
-19. Return to Router when state changes materially and leave a route decision trace.
+2. Use only Active skills.
+3. Prefer the smallest sufficient route and sequence only when evidence demands it.
+4. Research establishes evidence; Evaluate recommends disposition; Plan/Build execute only after separate authority.
+5. Do not use Evaluate to invent missing Research, target Readiness, Security evidence, or Verify proof.
+6. Hard-gate failures cannot be bypassed by routing or averaged away through another specialist.
+7. Route exact claim proof to Verify, work-quality acceptance to Review, restoration to Recovery, security-sensitive trust questions to Security, and exact-artifact promotion to Release.
+8. Close meaningful milestones before the next development phase.
+9. Routing never creates install, purchase, adoption, privilege, credential, security-exception, signing, publication/deployment, or canonical-ledger authority.
+10. Preserve explicit scope, STOP conditions, and a route decision trace.
 
 ## Routing Decision Model
 
-### Route to `signalproof-research` when
+### Research
+Use when the central question is what current external evidence says, especially when source quality, freshness, provenance, contradictions, or claim classification matter.
 
-- the central question is what current external evidence says about a technology, model, product, framework, competitor, license, standard, API, capability, or policy;
-- source freshness, provenance, contradictions, or primary-vs-secondary quality materially matter;
-- decision-critical facts must be established before Evaluate, Readiness, Security, Plan, or Release.
+### Evaluate
+Use when evidence is sufficiently developed and the central question is what to **ADOPT, ADAPT, INTEGRATE, PILOT, DEFER, RESEARCH MORE, REJECT, BUILD FROM SCRATCH, or WATCHLIST** against explicit project criteria.
 
-Research does not authorize adoption or execution.
+Evaluate is selected when strategic/technical fit, licensing, cost, readiness burden, security implications, reversibility, integration effort, or alternatives must be judged together. Popularity, benchmarks, or one attractive metric do not decide adoption.
 
-### Route to `signalproof-evaluate` when
+If decision-critical evidence is missing, hand back to Research. If target-specific compatibility is missing, route to Readiness. If action is approved, route to Plan/Build only with explicit authority.
 
-- the evidence package is sufficiently developed and the central question is what disposition best fits explicit project criteria;
-- candidates must be compared against hard gates and weighted preferences;
-- strategic fit, technical fit, licensing, cost, readiness burden, security implications, reversibility, integration effort, or alternatives must be judged together;
-- the user asks whether to adopt, adapt, integrate, pilot, defer, reject, build internally, or place a candidate on watchlist;
-- popularity, benchmarks, vendor claims, or one attractive metric must be prevented from silently deciding adoption;
-- status quo and build-from-scratch should be considered as alternatives.
+### Investigate
+Use for unknown system/runtime state or competing failure causes.
 
-If decision-critical evidence is missing, Evaluate may hand back to Research. If target-specific compatibility is missing, route to Readiness. If the decision requires action, route to Plan/Build only after authority is explicit.
+### Plan
+Use when a known objective or authorized disposition needs bounded scope, authority, acceptance, recovery, dependencies, or sequencing before implementation.
 
-### Route to `signalproof-investigate` when
+### Readiness
+Use when a specific target machine/environment must be checked against objective-specific prerequisites.
 
-- the failed layer or true state of a specific system/runtime is unknown;
-- competing causes require discriminating tests.
+### Build / Debug
+Use for bounded authorized implementation or correction.
 
-### Route to `signalproof-plan` when
+### Verify
+Use when a specific material claim must be proven.
 
-- a known objective or authorized disposition needs scope, authority, acceptance, recovery, dependencies, or sequencing before implementation.
+### Review
+Use when work quality, scope fidelity, protected state, architecture/contracts, dependencies, maintainability, privacy/security hazards, or recovery integrity must be assessed.
 
-### Route to `signalproof-readiness` when
+### Recovery
+Use when a failed, unsafe, corrupted, or rejected state should be restored to a trustworthy known-good state.
 
-- a specific target machine/environment must be checked against objective-specific prerequisites.
+### Security
+Use when secrets, privilege, executable/dependency trust, network/data flow, authentication/TLS/signing validation, ACLs, or security controls materially affect the decision.
 
-### Route to `signalproof-build` when
+### Release
+Use when an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
 
-- implementation is already bounded and authorized.
-
-### Route to `signalproof-debug` when
-
-- a demonstrable defect requires bounded correction.
-
-### Route to `signalproof-verify` when
-
-- a specific material claim must be proven rather than researched or evaluated.
-
-### Route to `signalproof-review` when
-
-- work quality, scope fidelity, protected state, architecture/contracts, dependencies, maintainability, privacy/security hazards, or recovery integrity must be assessed.
-
-### Route to `signalproof-recovery` when
-
-- a failed/unsafe/corrupted/rejected state should be rolled back.
-
-### Route to `signalproof-security` when
-
-- secrets, privilege, executable/dependency trust, network/data flow, authentication/TLS/signing validation, ACLs, or security controls materially affect the decision.
-
-### Route to `signalproof-release` when
-
-- an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
-
-### Route to `signalproof-closeout` when
-
-- a meaningful milestone/baseline has been accepted or promoted;
-- a major research, evaluation, readiness, security, recovery, release, governance, or defect decision has closed;
-- the project is about to enter a new phase or handoff.
-
-### Route to root `signalproof` when
-
-- no active specialist cleanly fits or a higher-level governance boundary must be resolved first.
+### Closeout
+Use after a meaningful research, evaluation, readiness, build, security, recovery, release, governance, or defect milestone has resolved.
 
 ## Sequencing Patterns
 
-Use only when necessary:
-
-- `research -> evaluate` — establish evidence, then determine disposition;
-- `evaluate -> research` — decision-critical evidence remains missing;
-- `evaluate -> readiness` — a promising option needs target-specific proof;
-- `evaluate -> security` — a security-sensitive gate needs defined assessment;
-- `evaluate -> plan -> build` — an authorized disposition becomes bounded implementation;
-- `research -> readiness`;
-- `research -> security`;
-- `research -> verify`;
-- `plan -> readiness -> build`;
-- `debug/build -> verify`;
-- `build/debug -> review`;
-- `failed/rejected build -> recovery -> verify`;
-- `verify/review/security/recovery/readiness as applicable -> release`;
-- `research/evaluate/readiness/release -> closeout` when the decision forms a meaningful milestone.
+- `research -> evaluate`
+- `evaluate -> research`
+- `evaluate -> readiness`
+- `evaluate -> security`
+- `evaluate -> plan -> build`
+- `plan -> readiness -> build`
+- `debug/build -> verify`
+- `build/debug -> review`
+- `failed/rejected build -> recovery -> verify`
+- `verify/review/security/recovery/readiness as applicable -> release`
+- `research/evaluate/readiness/release -> closeout` when the result forms a meaningful milestone.
 
 Do not force every request through every skill.
 
 ## Authority Gate
 
 Routing never grants write/destructive authority, installation/adoption authority, purchase authority, privilege elevation, credentials/secrets access, security-control changes, signing authority, publication/deployment/release authority, or canonical Build Ledger mutation authority.
-
-## Routing Output
-
-For meaningful decisions return **Objective**, **Evidence state**, **Selected route**, **Why**, **Not selected**, **Authority note**, and **Next handoff condition**.
 
 ## Router Status
 
@@ -176,7 +124,7 @@ For meaningful decisions return **Objective**, **Evidence state**, **Selected ro
 
 ## Anti-Patterns
 
-Fail routing when it routes by keyword instead of objective/evidence state; treats planned/candidate skills as active; uses Research to make an ungoverned adoption decision; routes a recommendation problem to Research when Evaluate is required; routes an evidence-acquisition problem to Evaluate and invents missing facts; treats Evaluate ADOPT/INTEGRATE as installation authority; routes target readiness to Research/Evaluate instead of Readiness; routes a specific claim to Research/Evaluate when Verify is needed; averages security/licensing blockers away through routing; allows another skill to bypass STOP/authority; treats READY/Security PASS/Evaluate recommendation as Release authority; forces all specialists on every micro-edit; or skips meaningful milestone Closeout.
+Fail routing when it confuses Research with Evaluate; uses Evaluate to invent missing evidence; treats Evaluate ADOPT/INTEGRATE as execution authority; sends target readiness to Research/Evaluate instead of Readiness; sends a specific claim to Research/Evaluate instead of Verify; averages security/licensing blockers away; treats READY/Security PASS/Evaluate recommendation as Release authority; bypasses STOP/authority; forces all specialists on every micro-edit; or skips meaningful milestone Closeout.
 
 ## Completion Criteria
 
@@ -186,8 +134,8 @@ Routing is complete when the smallest appropriate Active skill/sequence is selec
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.9-rc1`
-- **Maturity:** Router Evaluate integration candidate
+- **Version:** `0.1.9`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
 - **Domain:** Capability routing, sequencing, Research/Evaluate/Readiness/Verify/Review/Recovery/Security/Release/Closeout routing, evidence-state selection, authority-preserving dispatch
