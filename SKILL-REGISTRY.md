@@ -4,12 +4,12 @@ This registry identifies public Signalproof skills and their current maturity.
 
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
-| `signalproof` | 0.1.0 | Active public baseline | Root governing contract for human-controlled, evidence-backed AI collaboration | Active |
+| `signalproof` | 0.1.1-rc1 | Governance update candidate | Root governing contract plus mandatory meaningful-milestone closeout | Candidate |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-build` | 0.1.0 | Active public baseline | Governed implementation, bounded change, protected execution, and verification | Active |
 | `signalproof-debug` | 0.1.0 | Active public baseline | Evidence-led debugging, bounded correction, and regression protection | Active |
-| `signalproof-router` | 0.1.0 | Active public baseline | Active-skill selection, sequencing, and authority-preserving dispatch | Active |
+| `signalproof-router` | 0.1.1-rc1 | Governance update candidate | Active-skill selection plus meaningful-milestone closeout routing | Candidate |
 | `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout, Build Ledger continuity, phase-transition governance, and skill extraction | Active |
 
 ## Planned Specialist Lanes
