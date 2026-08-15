@@ -82,17 +82,7 @@ Use when secrets, privilege, executable/dependency trust, network/data flow, aut
 Use when an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
 
 ### Document
-Use when the objective is to create or update durable project records such as:
-
-- handoffs;
-- SOPs/runbooks;
-- ADRs;
-- README/overview material;
-- acceptance/build reports;
-- release documentation;
-- state summaries;
-- operator instructions;
-- milestone records.
+Use when the objective is to create or update durable project records such as handoffs, SOPs/runbooks, ADRs, README/overview material, acceptance/build reports, release documentation, state summaries, operator instructions, or milestone records.
 
 Select Document when the central problem is accurate representation of already established state, decisions, procedures, evidence, provenance, status, and limitations.
 
@@ -157,8 +147,8 @@ Routing is complete when the smallest appropriate Active skill/sequence is selec
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.10-rc1`
-- **Maturity:** Document-routing integration candidate
+- **Version:** `0.1.10`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
 - **Domain:** Capability routing, sequencing, Research/Evaluate/Readiness/Verify/Review/Recovery/Security/Release/Document/Closeout routing, evidence-state selection, authority-preserving dispatch
