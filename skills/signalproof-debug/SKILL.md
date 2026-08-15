@@ -176,8 +176,8 @@ A Signalproof debug cycle is complete when the symptom and reproduction are clea
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-debug`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-build`
 - **Domain:** Evidence-led debugging, bounded correction, regression protection, failed-loop control
