@@ -5,6 +5,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
 | `signalproof` | 0.1.0 | Active public baseline | Root governing contract for human-controlled, evidence-backed AI collaboration | Active |
+| `signalproof-investigate` | 0.1.0-rc1 | Initial public release candidate | Root-cause investigation and failure localization | Candidate |
 
 ## Planned Specialist Lanes
 
@@ -12,7 +13,6 @@ The following are planned lanes, not active skills yet:
 
 - `signalproof-router`
 - `signalproof-plan`
-- `signalproof-investigate`
 - `signalproof-build`
 - `signalproof-debug`
 - `signalproof-review`
