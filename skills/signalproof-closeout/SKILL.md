@@ -255,8 +255,8 @@ A Signalproof milestone is closed when the accepted state, evidence, failures, r
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-closeout`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Domain:** Milestone closeout, Build Ledger continuity, phase transition, skill extraction, institutional learning
 - **Created by:** Doc Reo / Signalproof
