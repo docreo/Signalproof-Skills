@@ -1,4 +1,5 @@
 import importlib.util
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +8,7 @@ CHECKER_PATH = Path(__file__).resolve().parents[2] / "tools" / "check_suite_cons
 spec = importlib.util.spec_from_file_location("sp_suite_consistency", CHECKER_PATH)
 checker = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
+sys.modules[spec.name] = checker
 spec.loader.exec_module(checker)
 
 
