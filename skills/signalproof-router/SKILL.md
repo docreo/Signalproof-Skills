@@ -60,54 +60,44 @@ Only skills marked **Active** in the canonical Skill Registry are routable.
 
 - the user asks what current evidence says about a technology, framework, model, standard, product, competitor, market claim, license, capability, API, policy, or external development;
 - source freshness, primary-vs-secondary evidence, contradictions, provenance, or claim classification materially matters;
-- the task requires comparing what multiple external sources actually establish before a decision is made;
+- multiple external sources must be compared before a decision is made;
 - current external facts must be established before Evaluate, Plan, Readiness, Security, or Release can proceed;
-- vendor/project claims need to be separated from independent evidence.
-
-Do **not** route to Research merely because a task uses the word “find” or “look.” Use it when external evidence acquisition/synthesis is the central discipline.
+- vendor/project claims need separation from independent evidence.
 
 Research does not authorize installing, cloning, executing, purchasing, adopting, publishing, or modifying protected state.
 
 ### Route to `signalproof-investigate` when
 
 - the failed layer or true state of a specific system/runtime is unknown;
-- evidence is inconsistent or competing causes need discriminating tests;
-- a prior hypothesis/fix failed.
-
-Research and Investigate can sequence when external documentation must be compared with observed runtime behavior.
+- competing causes require discriminating tests.
 
 ### Route to `signalproof-plan` when
 
-- a known objective needs scope, protected state, authority, acceptance, recovery, dependencies, or sequencing before implementation.
+- a known objective needs scope, authority, acceptance, recovery, dependencies, or sequencing before implementation.
 
 ### Route to `signalproof-readiness` when
 
-- the central question is whether a specific target machine/environment satisfies the prerequisites for a defined objective;
-- installed/detected capabilities may not be configured, authorized, compatible, or verified.
-
-Research may identify the requirements; Readiness tests target fulfillment.
+- a specific target machine/environment must be checked against objective-specific prerequisites.
 
 ### Route to `signalproof-build` when
 
-- the objective/change surface is bounded and authorized and the task is implementation.
+- implementation is already bounded and authorized.
 
 ### Route to `signalproof-debug` when
 
-- a demonstrable defect exists and bounded correction is requested.
+- a demonstrable defect requires bounded correction.
 
 ### Route to `signalproof-verify` when
 
-- a specific claim must be proven: fixed, ready, complete, signed, safe, non-regressing, current, or production-ready;
-- research evidence must be adjudicated against a defined claim rather than merely synthesized.
+- a specific material claim must be proven rather than merely researched.
 
 ### Route to `signalproof-review` when
 
-- completed/proposed work needs assessment against plan, scope, protected state, architecture/contracts, dependencies, maintainability, privacy/security hazards, recovery, or release-preparation integrity.
+- work quality, scope fidelity, protected state, architecture/contracts, dependencies, maintainability, privacy/security hazards, or recovery integrity must be assessed.
 
 ### Route to `signalproof-recovery` when
 
-- a failed/unsafe/corrupted/rejected state should be rolled back;
-- a rollback candidate must be identified/verified.
+- a failed/unsafe/corrupted/rejected state should be rolled back.
 
 ### Route to `signalproof-security` when
 
@@ -115,7 +105,7 @@ Research may identify the requirements; Readiness tests target fulfillment.
 
 ### Route to `signalproof-release` when
 
-- the current decision is whether an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
+- an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
 
 ### Route to `signalproof-closeout` when
 
@@ -123,29 +113,23 @@ Research may identify the requirements; Readiness tests target fulfillment.
 - a major research, readiness, security, recovery, release, governance, or defect decision has closed;
 - the project is about to enter a new phase or handoff.
 
-Do not close every micro-commit.
-
 ### Route to root `signalproof` when
 
-- no active specialist cleanly fits;
-- a higher-level authority/governance boundary must be resolved first.
+- no active specialist cleanly fits or a higher-level governance boundary must be resolved first.
 
 ## Sequencing Patterns
 
 Use only when necessary:
 
-- `research -> evaluate` — evidence is established and an explicit option/disposition decision is next (only when Evaluate is Active);
-- `research -> readiness` — external requirements are known and target-specific readiness must be checked;
-- `research -> security` — research surfaces material security/trust concerns;
-- `research -> verify` — a specific claim arising from research needs adjudication;
-- `research -> plan` — evidence is sufficient and an authorized implementation plan is needed;
-- `research -> investigate` — external documentation must be reconciled with observed system behavior;
-- `investigate -> readiness`;
+- `research -> evaluate` when Evaluate is Active;
+- `research -> readiness`;
+- `research -> security`;
+- `research -> verify`;
+- `research -> plan`;
+- `research -> investigate`;
 - `plan -> readiness -> build`;
-- `readiness -> verify/security/recovery` as needed;
 - `debug/build -> verify`;
 - `build/debug -> review`;
-- `review -> security`;
 - `failed/rejected build -> recovery -> verify`;
 - `verify/review/security/recovery/readiness as applicable -> release`;
 - `research/readiness/release -> closeout` when the decision forms a meaningful milestone.
@@ -188,8 +172,8 @@ Routing is complete when the smallest appropriate Active skill/sequence is selec
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.8-rc1`
-- **Maturity:** Integration release candidate
+- **Version:** `0.1.8`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
 - **Domain:** Capability routing, sequencing, Research/Readiness/Verify/Review/Recovery/Security/Release/Closeout routing, evidence-state selection, authority-preserving dispatch
