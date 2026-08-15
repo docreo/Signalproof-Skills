@@ -356,8 +356,8 @@ Recovery is complete when the failed state, accepted recovery target, evidence f
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-recovery`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-verify`, `signalproof-review`, `signalproof-closeout`
 - **Domain:** Rollback selection, restore integrity, data preservation, staged recovery, mixed-version prevention, recovery verification
