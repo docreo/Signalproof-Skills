@@ -7,13 +7,13 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof` | 0.1.0 | Active public baseline | Root governing contract for human-controlled, evidence-backed AI collaboration | Active |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
+| `signalproof-build` | 0.1.0-rc1 | Initial public release candidate | Governed implementation, bounded change, protected execution, and verification | Candidate |
 
 ## Planned Specialist Lanes
 
 The following are planned lanes, not active skills yet:
 
 - `signalproof-router`
-- `signalproof-build`
 - `signalproof-debug`
 - `signalproof-review`
 - `signalproof-research`
