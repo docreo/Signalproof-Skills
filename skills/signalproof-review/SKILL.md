@@ -263,8 +263,8 @@ Review is complete when the governing intent, actual change surface, scope fidel
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-review`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-plan`, `signalproof-build`, `signalproof-debug`, `signalproof-verify`, `signalproof-closeout`
 - **Domain:** Scope review, change integrity, architecture/contract fidelity, maintainability, dependency/provenance review, privacy/security hazard review, recovery review
