@@ -6,7 +6,7 @@
 >
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for planning, investigation, implementation, debugging, routing, verification-oriented evidence handling, milestone closeout, and future specialist workflows.
+Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for planning, investigation, implementation, debugging, routing, verification, milestone closeout, and future specialist workflows.
 
 The suite is designed to help people use capable AI systems without treating capability as permission, replacing working systems without evidence, hiding failed attempts, overstating verification, or losing the path back to a known state.
 
@@ -37,11 +37,12 @@ The canonical `main` branch currently contains these active public baselines:
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract for human-controlled, evidence-backed AI collaboration and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.1 | Selects the smallest appropriate active skill or sequence without inventing authority |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.2-rc1 | Selects the smallest appropriate active skill/sequence, including verification and milestone routing; candidate integration update on this branch |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what actually failed or what state is actually true before correction |
 | [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Turns intent into a bounded execution contract with scope, authority, acceptance, and recovery |
 | [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.0 | Executes an approved bounded implementation while preserving protected state |
 | [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.0 | Reproduces, localizes, corrects, and regression-tests demonstrable defects |
+| [`signalproof-verify`](skills/signalproof-verify/SKILL.md) | 0.1.0 | Verifies whether claims are actually supported by the required evidence and states what remains unverified |
 | [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.1.0 | Closes meaningful milestones, preserves Build Ledger continuity, extracts reusable learning, and governs the next phase |
 
 The authoritative maturity/status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md).
@@ -50,7 +51,7 @@ The authoritative maturity/status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.m
 
 Not every task needs every skill. The router selects the smallest responsible path based on the objective and evidence state.
 
-A typical development flow may look like:
+A typical consequential development flow may look like:
 
 ```text
 REQUEST
@@ -63,7 +64,9 @@ PLAN               when consequential implementation needs a bounded contract
    ↓
 BUILD / DEBUG      implement or correct within the approved boundary
    ↓
-VERIFY / REVIEW    specialist lanes being added as the suite evolves
+VERIFY             prove the material claim/acceptance condition
+   ↓
+REVIEW             planned specialist lane for quality/architecture review
    ↓
 CLOSEOUT           at meaningful milestones and phase boundaries
    ↓
@@ -72,7 +75,7 @@ BUILD LEDGER       canonical append when verified, staged delta otherwise
 LESSON / SKILL CANDIDATE
 ```
 
-The suite deliberately does **not** force every micro-commit or ordinary edit through full milestone closeout. Closeout is for meaningful boundaries where later work depends on the current state being reconstructable.
+The suite deliberately does **not** force every micro-commit or ordinary edit through Verify or full milestone closeout. Verify is for material claims and acceptance gates; closeout is for meaningful boundaries where later work depends on the current state being reconstructable.
 
 ## How to use the skills
 
@@ -86,7 +89,8 @@ For consequential work, the skill should help make these questions explicit:
 - What evidence describes the current state?
 - What already works and must remain protected?
 - What is the smallest authorized change?
-- What evidence would prove the result?
+- What exact claim must be proven?
+- What evidence class and acceptance gate prove that claim?
 - What remains unverified?
 - How do we recover if the change fails?
 - Has a meaningful milestone been durably closed before the next phase?
@@ -102,7 +106,9 @@ Signalproof keeps evidence classes distinct:
 - **Inference**
 - **Proposal**
 
-A compile success is not automatically a runtime success. A runtime success is not automatically a security audit. A human observation is real evidence, but it is not silently upgraded into independent reproduction.
+A compile success is not automatically a runtime success. A runtime success is not automatically a security audit. A static dependency scan is not automatically a security review. A human observation is real evidence, but it is not silently upgraded into independent reproduction.
+
+`signalproof-verify` converts that discipline into a dedicated claim/evidence gate with bounded statuses such as PASS, PARTIAL, FAIL, BLOCKED, and UNVERIFIED.
 
 ## Skill governance
 
@@ -133,7 +139,7 @@ Signalproof treats continuity as part of engineering, not as optional documentat
 At a meaningful milestone, the preferred sequence is:
 
 ```text
-VALIDATE
+VERIFY MATERIAL CLAIMS
    ↓
 PROTECT ACCEPTED STATE
    ↓
@@ -157,7 +163,6 @@ The following lanes are planned but **must not be treated as active until their 
 - `signalproof-review`
 - `signalproof-research`
 - `signalproof-evaluate`
-- `signalproof-verify`
 - `signalproof-security`
 - `signalproof-readiness`
 - `signalproof-recovery`
