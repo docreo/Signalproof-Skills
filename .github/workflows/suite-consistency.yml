@@ -2,22 +2,8 @@ name: Signalproof Suite Consistency
 
 on:
   pull_request:
-    paths:
-      - 'SKILL-REGISTRY.md'
-      - 'README.md'
-      - 'skills/**/SKILL.md'
-      - 'tools/check_suite_consistency.py'
-      - 'tests/consistency/**'
-      - '.github/workflows/suite-consistency.yml'
   push:
     branches: [ main ]
-    paths:
-      - 'SKILL-REGISTRY.md'
-      - 'README.md'
-      - 'skills/**/SKILL.md'
-      - 'tools/check_suite_consistency.py'
-      - 'tests/consistency/**'
-      - '.github/workflows/suite-consistency.yml'
 
 permissions:
   contents: read
