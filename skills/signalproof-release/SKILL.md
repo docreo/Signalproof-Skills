@@ -308,8 +308,8 @@ Release governance is complete when the exact candidate identity, source/provena
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-release`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-plan`, `signalproof-build`, `signalproof-verify`, `signalproof-review`, `signalproof-security`, `signalproof-recovery`, `signalproof-closeout`
 - **Domain:** Release governance, artifact identity, evidence binding, provenance, versioning, checksums/signatures, rollback designation, release notes, distribution authority
