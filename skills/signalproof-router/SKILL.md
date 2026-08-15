@@ -171,8 +171,8 @@ Routing is complete when the smallest appropriate Active skill/sequence is selec
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.11-rc1`
-- **Maturity:** Router Learn integration candidate
+- **Version:** `0.1.11`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
 - **Domain:** Capability routing, sequencing, Research/Evaluate/Readiness/Verify/Review/Recovery/Security/Release/Document/Learn/Closeout routing, evidence-state selection, authority-preserving dispatch
