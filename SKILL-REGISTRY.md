@@ -14,7 +14,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification, evidence grading, acceptance-gate separation, and non-regression proof | Active |
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity, change integrity, architecture/contract review, maintainability, provenance, privacy/security hazard, and recovery review | Active |
 | `signalproof-recovery` | 0.1.0 | Active public baseline | Rollback selection, restore integrity, user-data protection, staged recovery, mixed-version prevention, and recovery verification | Active |
-| `signalproof-security` | 0.1.0-rc1 | Initial public release candidate | Defensive security governance, trust boundaries, secrets, least privilege, dependency provenance, unsafe execution, network/data exposure, integrity evidence, and security STOP conditions | Candidate |
+| `signalproof-security` | 0.1.0 | Active public baseline | Defensive security governance, trust boundaries, secrets, least privilege, dependency provenance, unsafe execution, network/data exposure, integrity evidence, and security STOP conditions | Active |
 
 ## Planned Specialist Lanes
 
