@@ -240,8 +240,8 @@ A Signalproof routing decision is complete when the smallest appropriate active 
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.4-rc1`
-- **Maturity:** Recovery integration release candidate
+- **Version:** `0.1.4`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
 - **Domain:** Capability routing, skill sequencing, verification routing, review routing, recovery routing, milestone closeout routing, evidence-state selection, authority-preserving dispatch
