@@ -13,6 +13,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout, Build Ledger continuity, phase-transition governance, and skill extraction | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification, evidence grading, acceptance-gate separation, and non-regression proof | Active |
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity, change integrity, architecture/contract review, maintainability, provenance, privacy/security hazard, and recovery review | Active |
+| `signalproof-recovery` | 0.1.0-rc1 | Initial public release candidate | Rollback selection, restore integrity, user-data protection, staged recovery, mixed-version prevention, and recovery verification | Candidate |
 
 ## Planned Specialist Lanes
 
@@ -22,7 +23,6 @@ The following are planned lanes, not active skills yet:
 - `signalproof-evaluate`
 - `signalproof-security`
 - `signalproof-readiness`
-- `signalproof-recovery`
 - `signalproof-release`
 - `signalproof-document`
 - `signalproof-learn`
