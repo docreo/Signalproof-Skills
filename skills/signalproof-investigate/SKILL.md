@@ -170,8 +170,8 @@ An investigation is complete when the symptom is characterized, protected state 
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-investigate`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Domain:** Root-cause investigation, failure localization, evidence discipline, protected diagnosis
 - **Created by:** Doc Reo / Signalproof
