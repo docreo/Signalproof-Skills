@@ -215,8 +215,8 @@ A Signalproof plan is complete when another competent human or agent can tell wh
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-plan`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Domain:** Governed planning, scope control, acceptance design, authority, recovery, execution handoff
 - **Created by:** Doc Reo / Signalproof
