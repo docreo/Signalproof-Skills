@@ -2,6 +2,20 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-plan 0.1.0] - Active
+
+### Promoted
+
+- `signalproof-plan` promoted from `0.1.0-rc1` to the active public baseline after its GPU-acceleration planning Scenario 1 behavioral acceptance passed and PR #5 was merged into protected `main`.
+
+### Verified
+
+- 10/10 required planning behaviors passed with 0 fail conditions.
+- CPU fallback and the current model remained protected state.
+- GPU/runtime assumptions remained unproven until inspection.
+- System-wide installation and elevation remained explicit authority checkpoints.
+- Acceptance criteria, rollback, and STOP conditions were defined before execution.
+
 ## [signalproof-investigate 0.1.0] - Active
 
 ### Promoted
