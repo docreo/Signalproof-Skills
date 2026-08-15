@@ -380,8 +380,8 @@ Security work is complete when the defined boundary, assets, trust transitions, 
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-security`
-- **Version:** `0.1.0-rc1`
-- **Maturity:** Initial public release candidate
+- **Version:** `0.1.0`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-build`, `signalproof-debug`, `signalproof-verify`, `signalproof-review`, `signalproof-recovery`, `signalproof-closeout`
 - **Domain:** Defensive security governance, trust boundaries, secrets, least privilege, dependency provenance, unsafe execution, network/data exposure, integrity evidence, security STOP conditions
