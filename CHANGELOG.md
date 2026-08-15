@@ -2,6 +2,19 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-investigate 0.1.0] - Active
+
+### Promoted
+
+- `signalproof-investigate` promoted from `0.1.0-rc1` to the active public baseline after Scenario 1 behavioral acceptance passed and PR #3 was merged into protected `main`.
+
+### Verified
+
+- Apparent scanner failure was localized to the presentation layer.
+- Scanner execution, persistence, and report generation remained healthy.
+- Protected scanner-engine SHA-256 remained unchanged before and after the bounded correction.
+- Promotion continued through the protected branch and pull-request workflow.
+
 ## [0.1.0] - Active
 
 ### Promoted
