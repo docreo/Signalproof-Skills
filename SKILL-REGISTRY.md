@@ -18,7 +18,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-release` | 0.1.0 | Active public baseline | Exact-artifact release governance, evidence binding, provenance, rollback designation, release claims, and distribution authority | Active |
 | `signalproof-readiness` | 0.1.0 | Active public baseline | Target-environment readiness, prerequisites, capabilities, configuration, authority, dependency/service checks, recovery and evidence gates | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | Evidence-controlled research, source quality/freshness, contradiction handling, claim classification, provenance, and research handoff | Active |
-| `signalproof-evaluate` | 0.1.0-rc1 | Initial public release candidate | Evidence-to-decision evaluation, hard gates, weighted tradeoffs, reversibility, strategic/technical fit, licensing/security/readiness implications, and disposition | Candidate |
+| `signalproof-evaluate` | 0.1.0 | Active public baseline | Evidence-to-decision evaluation, hard gates, weighted tradeoffs, reversibility, strategic/technical fit, licensing/security/readiness implications, and disposition | Active |
 
 ## Planned Specialist Lanes
 
