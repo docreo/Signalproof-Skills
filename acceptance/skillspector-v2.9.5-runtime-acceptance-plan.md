@@ -1,6 +1,6 @@
 # Signalproof SkillSpector v2.9.5 Runtime Acceptance Plan
 
-**Status:** V4 TEST INSTRUMENT PREPARED — VALID RUNTIME EVIDENCE PENDING  
+**Status:** BINARY-ONLY DEPENDENCY GATE BLOCKED — TARGET RUNTIME TESTS NOT REACHED  
 **Target:** `NVIDIA/SkillSpector` v2.9.5  
 **Exact upstream commit:** `27fd9620dbfed1a2f405fd8c519661e51511f06e`  
 **Expected release wheel SHA-256:** `e8a514d620107ae9aaf4d9600aedf474c69e9bdfd40032ca51a478480484db9f`  
@@ -46,31 +46,30 @@ The governed V3 hash matched. V3 correctly marked downstream required stages `NO
 
 Classification: **HARNESS UV FLAG-CONFIGURATION FAILURE / NO SKILLSPECTOR INSTALLATION PERFORMED**.
 
-This is not evidence that SkillSpector's dependency graph is unsatisfiable and is not evidence that a required binary wheel is unavailable.
+### V4 — binary-only supply-chain gate finding
+Run: `F:\SP\SkillSpector-Test\run-20260816-024701`
 
-## V4 correction
+The governed V4 hash matched. V4 verified the exact NVIDIA release wheel and then reached real uv dependency solving under the retained binary-only/no-cache/hash-lock boundary.
 
-Astral uv documents `--no-build` as an alias for `--only-binary :all:`. V4 removes the redundant `--no-build` argument and retains `--only-binary :all:` as the single source-build prohibition.
+Diagnostic resolution chain:
 
-V4 therefore keeps:
+`SkillSpector 2.9.5`
+→ `langgraph-cli[inmem] >=0.4.14`
+→ `langgraph-runtime-inmem >=0.7`
+→ `blockbuster >=1.5.24`
+→ `forbiddenfruit >=0.1.4`
 
-- exact NVIDIA v2.9.5 release wheel download;
-- NVIDIA-published wheel SHA-256 verification before resolution or install;
-- existing uv resolver only;
-- public PyPI as the package index;
-- `--only-binary :all:`;
-- `--no-cache`;
-- `--generate-hashes` during compile;
-- `--require-hashes` during sync;
-- `--no-python-downloads`;
-- exact SkillSpector wheel digest required in the generated lock;
-- disposable isolated Python runtime;
-- V3 fail-closed required-stage accounting;
-- no-LLM boundary;
-- protected-state verification;
-- firewall rollback and runtime cleanup.
+The uv diagnostic reported that `forbiddenfruit==0.1.4` had no usable wheels under this acceptance boundary. Because `blockbuster>=1.5.24` depends on `forbiddenfruit>=0.1.4`, uv concluded that `blockbuster` could not be used; that made `langgraph-runtime-inmem` and then `langgraph-cli[inmem]` unusable, preventing a complete SkillSpector dependency solution.
 
-Removing `--no-build` does not weaken the binary-only boundary because uv treats that option as the alias of the retained `--only-binary :all:` setting.
+Classification:
+
+**BINARY-ONLY SUPPLY-CHAIN GATE BLOCKED / NO SKILLSPECTOR INSTALLATION PERFORMED**
+
+This is not a harness defect. It is a real compatibility result for the current Signalproof acceptance policy.
+
+The result does not prove SkillSpector cannot be installed by upstream-supported methods that allow source distributions. It proves that the full v2.9.5 dependency graph cannot pass this Signalproof acceptance run while `--only-binary :all:` is an absolute requirement.
+
+Protected local SkillSpector state remained unchanged and the disposable runtime was removed.
 
 ## Required acceptance stages
 
@@ -88,7 +87,20 @@ Removing `--no-build` does not weaken the binary-only boundary because uv treats
 12. operational failure handling;
 13. junction boundary.
 
-Any required stage not executed is `NOT_RUN` and forces FAIL. The main sequence must also reach explicit completion before PASS is possible.
+V4 completed artifact verification but did not complete the dependency lock. All downstream stages remained `NOT_RUN` and therefore no SkillSpector runtime-behavior acceptance claim is supported.
+
+## Current decision boundary
+
+Do not silently weaken `--only-binary :all:`.
+
+The next Evaluate decision must choose one of the following governed paths:
+
+1. **Keep binary-only as a hard gate** — full upstream v2.9.5 runtime remains BLOCKED and the candidate is not operationally approved.
+2. **Review a narrowly scoped source-distribution exception** — inspect the exact source-only dependency, its provenance/license/build behavior/toolchain/network requirements, then decide whether a controlled build is acceptable. This requires new authority and evidence before execution.
+3. **Evaluate a reduced/static-only integration path** — determine whether Signalproof can use a bounded subset or adapter that does not require the `langgraph-cli[inmem]` dependency chain. This must be proven from upstream packaging/runtime behavior and must not involve silently editing or repackaging upstream requirements.
+4. **Wait for upstream packaging change** — monitor for a usable wheel or dependency change and repeat acceptance against a new exact version.
+
+No path is automatically authorized by this finding.
 
 ## Result model
 
@@ -96,16 +108,14 @@ Any required stage not executed is `NOT_RUN` and forces FAIL. The main sequence 
 - **PARTIAL** — every required stage reached an evaluated state, no check failed, but at least one required proof is BLOCKED.
 - **FAIL** — any check failed, any required stage is NOT_RUN, or the main sequence did not reach explicit completion.
 
-Exit codes: `0` PASS, `3` PARTIAL, `2` FAIL.
-
 ## Gate after execution
 
-A valid runtime PASS still does not make the scanner an authority source.
+A valid runtime PASS still would not make the scanner an authority source.
 
 `SCANNER RESULT → EVIDENCE → SIGNALPROOF EVALUATION → HUMAN AUTHORITY`
 
 ## Current milestone state
 
-**V1 FAIL PRESERVED / V2 INVALID PASS PRESERVED / V3 HARNESS FLAG FAILURE PRESERVED / V4 BUILT / V4 EXECUTION PENDING**
+**V1 FAIL PRESERVED / V2 INVALID PASS PRESERVED / V3 HARNESS FLAG FAILURE PRESERVED / V4 BINARY-ONLY SUPPLY-CHAIN GATE BLOCKED**
 
-Do not close the full SkillSpector Case 2 milestone until a valid V4 evidence package has been reviewed and recorded.
+Full SkillSpector Case 2 remains open for Evaluate disposition. No upgrade, activation, or operational integration is authorized.

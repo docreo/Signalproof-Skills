@@ -1,38 +1,28 @@
 # Signalproof Skills V0.2 Intake Case — NVIDIA SkillSpector
 
 **Case class:** Capability inspection tooling  
-**Research status:** Source/provenance/security-boundary review complete; independent Signalproof runtime acceptance pending  
+**Research status:** Source/provenance/security-boundary review complete; independent runtime acceptance reached a binary-only dependency gate  
 **Current disposition:** **INTEGRATE CANDIDATE — bounded static-first adapter; NOT OPERATIONALLY APPROVED**  
-**Authority:** Research/Evaluate only. This record does not authorize an upgrade, activation, external data transfer, public MCP exposure, or automatic installation decisions.
+**Authority:** Research/Evaluate only. This record does not authorize an upgrade, activation, external data transfer, public MCP exposure, automatic installation decisions, or source-build exception.
 
 ## Evidence boundary
 
 This case distinguishes verified upstream source facts, publisher-supplied validation, Signalproof source-supported inferences, and independent Signalproof runtime evidence.
 
-Independent v2.9.5 runtime validation is not yet complete. An attempt to fetch the exact release artifact into the isolated research sandbox was blocked by that environment's lack of external network resolution before SkillSpector could be installed or executed. This is an environment limitation, not a SkillSpector failure.
+Independent v2.9.5 acceptance has now reached a real supply-chain compatibility gate before installation. The exact NVIDIA wheel was verified, but the complete dependency graph could not be resolved while Signalproof's binary-only requirement remained absolute.
 
 ## Exact upstream identity
 
 - Repository: `NVIDIA/SkillSpector`
 - Version: `v2.9.5`
 - Exact commit: `27fd9620dbfed1a2f405fd8c519661e51511f06e`
-- Current `main` and tag `v2.9.5` resolved to the same commit during this review.
 - GitHub release publication observed: `2026-08-15T21:03:32Z`
-
-Release artifacts reported by GitHub:
-
-- wheel SHA-256: `e8a514d620107ae9aaf4d9600aedf474c69e9bdfd40032ca51a478480484db9f`
+- release wheel SHA-256: `e8a514d620107ae9aaf4d9600aedf474c69e9bdfd40032ca51a478480484db9f`
 - source archive SHA-256: `2e7a61c7e3b38d23e9fbb86a1253577a0adf7a7c1425290fa35dbc1ddea38932`
-
-Future runtime acceptance must bind to an exact release artifact and verify its digest before execution.
 
 ## License
 
-SkillSpector v2.9.5 is Apache-2.0 licensed. The observed `LICENSE` blob was:
-
-`48afca9e235dc4e1c05cf1aca7b111328ce6fa86`
-
-Runtime dependencies remain a separate provenance/licensing surface.
+SkillSpector v2.9.5 is Apache-2.0 licensed. Runtime dependencies remain a separate provenance/licensing surface.
 
 ## Prior Signalproof version versus current upstream
 
@@ -40,99 +30,67 @@ Prior Signalproof capability state recorded local SkillSpector `2.8.2` as detect
 
 `2bc641fd0639550a1cae9557491f483e30520afb`
 
-Comparison from v2.8.2 to v2.9.5 shows v2.9.5 ahead by 18 commits. The delta touches security-relevant areas including input handling, analyzer logic, provider support, MCP handling, supply-chain checks, YARA paths, tests, and new static detection surfaces.
-
-Therefore:
-
-**Detected 2.8.2 is historical local state, not approval of current 2.9.5.**
-
-No upgrade is authorized by this research record.
+Detected 2.8.2 remains protected historical local state, not approval of v2.9.5. No upgrade has been authorized or performed by this case.
 
 ## Runtime/dependency surface
 
-Project metadata for v2.9.5 declares Python `>=3.12,<3.15`, Alpha development status, a substantial Python dependency set, and an optional MCP dependency.
+Project metadata for v2.9.5 declares Python `>=3.12,<3.15`, Alpha development status, and a substantial dependency set including `langgraph-cli[inmem]>=0.4.14`.
 
-The scanner's own dependency identity is part of its supply-chain boundary and must be captured in any governed integration.
+Independent V4 acceptance on Windows used Python 3.13.5, existing uv 0.12.3, the exact NVIDIA release wheel, public PyPI, `--only-binary :all:`, `--no-cache`, generated hashes, required hashes, and no automatic Python downloads.
+
+The resolver reached this dependency chain:
+
+`SkillSpector 2.9.5`
+→ `langgraph-cli[inmem] >=0.4.14`
+→ `langgraph-runtime-inmem >=0.7`
+→ `blockbuster >=1.5.24`
+→ `forbiddenfruit >=0.1.4`
+
+uv reported that `forbiddenfruit==0.1.4` had no usable wheels under the binary-only boundary. Therefore `blockbuster>=1.5.24` could not be used, which blocked `langgraph-runtime-inmem`, then `langgraph-cli[inmem]`, and ultimately the complete SkillSpector dependency solution.
+
+Independent classification:
+
+**BINARY-ONLY SUPPLY-CHAIN GATE BLOCKED / NO SKILLSPECTOR INSTALLATION PERFORMED**
+
+This is not evidence that SkillSpector is generally uninstallable. It establishes a narrower fact: the full upstream v2.9.5 dependency graph cannot pass the current Signalproof acceptance workflow while every dependency is required to arrive as a usable binary distribution.
 
 ## Target execution boundary in inspected static paths
 
-The inspected static runner operates on text already loaded into a file cache. Python analysis uses `ast.parse` and syntax-tree inspection. The build-context path reads regular files with symlink/junction protections and records exclusions/failures rather than executing target files.
+The inspected static runner operates on text already loaded into a file cache. Python analysis uses syntax-tree parsing and inspection rather than importing or executing target files in the inspected paths.
 
-Bounded conclusion:
-
-**The static target-analysis paths inspected in this case read and parse target content rather than importing or executing it.**
-
-This does not mean the SkillSpector process performs no execution: acquisition, scanner runtime, provider, and transport paths have their own execution/network boundaries.
-
-## Input acquisition boundary
-
-SkillSpector accepts local files/directories/archives and remote repositories/URLs. Observed defensive controls include bounded ingest size/member counts, allowlisted remote hosts, private-address checks, archive traversal protections, and no-follow local file handling.
-
-Remote repository acquisition invokes the local Git client and uses network access. Therefore target-source non-execution and scanner-tool execution must remain distinct claims.
+The static target-analysis paths inspected in source read and parse target content rather than importing or executing it. Acquisition, scanner runtime, providers, network access, and transports remain separate execution/trust boundaries.
 
 ## Static-only is not offline
 
-The CLI provides `--no-llm` for static analysis only. However the static supply-chain analyzer can query OSV.dev for dependency vulnerability information and falls back to built-in data when OSV is unavailable.
-
-Required Signalproof rule:
+The CLI provides `--no-llm`, but static supply-chain analysis can query OSV.dev. Signalproof therefore preserves:
 
 > **STATIC-ONLY ≠ OFFLINE**
 
-A future adapter must state network mode independently from LLM mode.
+Network mode and inference mode require separate declarations.
 
 ## Semantic/provider boundary
 
-The LLM analyzer path batches or chunks source from the file cache, line-numbers it, constructs analysis prompts, and sends those prompts to the selected inference provider.
-
-Therefore remote semantic analysis can transmit reviewed skill contents outside the local machine. Local inference paths may reduce that boundary but still require explicit provider/runtime identity and egress guarantees.
-
-Credentialed provider use is a separate authority decision from permission to perform local static inspection.
-
-## Local agent-CLI provider boundary
-
-SkillSpector contains a hardened helper for supported local agent CLI providers. Source-level controls include no shell interpolation, prompt delivery through stdin, secret-environment scrubbing, bounded input/output, timeout/fail-closed behavior, temporary working directories, and provider-specific capability restrictions.
-
-These are positive defensive controls, but the provider operation still constitutes inference using the user's authenticated provider path and can receive analyzed content.
-
-## Reporting and evidence
-
-SkillSpector supports terminal, JSON, Markdown, and SARIF output. Its documentation distinguishes inference-usage telemetry from security validity and states that missing usage evidence does not prove that no LLM ran.
-
-This aligns with Signalproof's rule that absence of evidence must not be upgraded into a stronger claim.
+Semantic analysis can send reviewed target content to an inference provider. Remote semantic use therefore requires explicit data-egress authority. Local inference still requires provider/runtime identity and proof that remote fallback cannot occur.
 
 ## MCP boundary
 
-SkillSpector can expose scanning through MCP. Source shows local-target access is permitted for trusted local/stdio use and disabled for HTTP requests. Current documentation states HTTP transport is unauthenticated unless an external authentication layer is supplied.
-
-Signalproof initial boundary should therefore be local/stdio or loopback behind Signalproof authorization. Routable unauthenticated HTTP is a STOP condition.
+Initial Signalproof scope remains local/stdio or loopback behind Signalproof authorization. Routable unauthenticated HTTP remains a STOP condition.
 
 ## Scanner result is evidence, not authority
 
-SkillSpector returns risk scoring, recommendations, and a `safe_to_install` field.
-
-Signalproof must preserve this separation:
-
 `SCANNER VERDICT → EVIDENCE INPUT → SIGNALPROOF EVALUATION / HUMAN AUTHORITY`
 
-A scanner must never self-authorize installation or activation.
+A scanner result never self-authorizes installation or activation.
 
 ## Baseline/suppression boundary
 
-v2.9.5 can discover an author-shipped baseline, but applying it is opt-in. Signalproof should preserve that conservative posture and bind accepted suppressions to exact source identity, scanner version, reviewer authority, and retained suppressed-finding evidence.
-
-## Publisher validation evidence
-
-NVIDIA's v2.9.5 test suite includes both intentionally problematic and benign controls across static detection paths, including deserialization and false-positive regression cases. Release notes state targeted/regression tests and required CI checks passed for the prepared release.
-
-Evidence classification:
-
-**Publisher-supplied validation — not independent Signalproof runtime verification.**
+Author-shipped baselines remain opt-in. Suppression identity, reason, exact source/scanner version, and adverse findings must be preserved.
 
 ## Capability gap versus existing Signalproof skills
 
-SkillSpector does not replace Signalproof Security, Research, Verify, Evaluate, or human authority. Those govern trust, interpretation, acceptance, and permission.
+SkillSpector remains complementary automation rather than a replacement for Signalproof Security, Research, Verify, Evaluate, Review, or human authority.
 
-SkillSpector does add a real automation layer:
+Potential value remains:
 
 - repeatable multi-rule artifact scanning;
 - language-aware static analysis;
@@ -140,33 +98,9 @@ SkillSpector does add a real automation layer:
 - machine-readable findings;
 - inspection-completeness accounting;
 - optional semantic analysis;
-- possible pre-install guardrail integration.
+- pre-install evidence generation.
 
-This is complementary automation rather than a duplicate governing specialist.
-
-## Proposed Signalproof modes
-
-### `STATIC-CONNECTED`
-
-LLM disabled; explicitly authorized remote acquisition and/or vulnerability lookup may use the network. Report records scanner identity and network mode.
-
-### `STATIC-OFFLINE`
-
-LLM disabled; local target only; outbound network denied by policy/environment; vulnerability lookup necessarily uses offline fallback. Report must make reduced freshness/completeness visible.
-
-`--no-llm` alone does not establish this mode.
-
-### `SEMANTIC-LOCAL`
-
-Explicitly approved local model/runtime endpoint; no remote fallback; provider/model identity recorded.
-
-### `SEMANTIC-REMOTE`
-
-Reviewed content may leave the machine; provider endpoint, model, data boundary, and credential use require explicit authorization.
-
-### MCP
-
-Local/stdio or loopback first. Routable HTTP remains out of scope until authentication, request provenance, and abuse controls are proven.
+The unresolved issue is operational packaging under the current Signalproof supply-chain policy.
 
 ## Hard gates
 
@@ -183,31 +117,35 @@ STOP operationalization if:
 9. scanner output is treated as install/activation authority;
 10. scanner/source version changes without revalidation;
 11. rollback/removal cannot be verified;
-12. runtime evidence cannot distinguish target execution from scanner/provider execution.
+12. runtime evidence cannot distinguish target execution from scanner/provider execution;
+13. a source-only dependency is silently allowed after a binary-only acceptance failure.
 
-## Independent Signalproof runtime acceptance required
+## Independent runtime acceptance history
 
-Before operational integration, run the exact v2.9.5 artifact in an isolated disposable environment with controlled benign and intentionally risky fixtures.
+### V1
+pip resolver stopped with `resolution-too-deep` before installation.
 
-Acceptance must cover:
+### V2
+Harness emitted an invalid PASS after incomplete execution. Result rejected.
 
-- expected detection of representative security-sensitive instructions/code;
-- expected clean result for corresponding benign controls;
-- incomplete/oversized/unsupported input producing explicit completeness evidence rather than silent pass;
-- path/symlink boundary handling;
-- connected static mode and vulnerability-service fallback behavior;
-- offline static mode with outbound network denied;
-- proof that no semantic provider is used in no-LLM mode;
-- suppression opt-in behavior;
-- partial-failure behavior that cannot become an unqualified Signalproof approval.
+### V3
+Fail-closed stage accounting worked; uv CLI was misconfigured with mutually exclusive alias flags. No installation occurred.
 
-A separately authorized semantic-provider test, if performed, must use synthetic non-sensitive content and record the exact provider/data boundary.
+### V4
+Exact artifact verification passed and real dependency solving ran. Resolution was blocked because the transitive `forbiddenfruit` dependency had no usable wheel under `--only-binary :all:`. No installation occurred; protected local state remained unchanged; disposable runtime cleanup passed.
 
-Runtime evidence should retain exact artifact digest, runtime/dependency versions, invocation, network mode, exit code, report digest, completeness, expected versus observed findings, and cleanup verification.
+Downstream runtime behavior tests remain `NOT_RUN` because the dependency gate prevented installation.
 
-## Recovery/removal
+## Evaluate decision paths
 
-Evaluation should use a dedicated virtual environment or container rather than the protected Signalproof runtime. The integration should remain replaceable/disableable behind an adapter so scanner failure or upgrade cannot disable Signalproof's governing security functions.
+The next governed decision is not another blind harness revision. Evaluate must choose among:
+
+1. **RETAIN BINARY-ONLY HARD GATE** — keep full v2.9.5 operational acceptance blocked.
+2. **SOURCE-DISTRIBUTION EXCEPTION REVIEW** — inspect exact `forbiddenfruit` source artifact, provenance, license, build process, toolchain, network behavior, produced wheel identity, and recovery; requires explicit owner authority before any build or install.
+3. **REDUCED STATIC-INTEGRATION RESEARCH** — determine whether an upstream-supported or clean adapter boundary can avoid the `langgraph-cli[inmem]` chain without modifying or misrepresenting upstream requirements.
+4. **WATCHLIST** — wait for upstream dependency/package changes or usable binary publication, then rerun acceptance against a new exact version.
+
+No option is automatically approved.
 
 ## Current disposition
 
@@ -215,23 +153,25 @@ Evaluation should use a dedicated virtual environment or container rather than t
 
 **INTEGRATE CANDIDATE**
 
-Rationale: permissive license, exact release provenance, materially useful automated scanning, substantial defensive source design, machine-readable evidence, and a capability gap that complements rather than replaces existing Signalproof governance.
+The source-level capability remains strategically useful and permissively licensed.
 
 ### Operational state
 
-**NOT APPROVED — INDEPENDENT RUNTIME ACCEPTANCE PENDING**
+**NOT APPROVED — BINARY-ONLY SUPPLY-CHAIN GATE BLOCKED**
 
-No approval is granted for upgrading local 2.8.2, remote semantic scanning, automatic installation decisions, or public MCP exposure.
+No approval is granted for upgrading protected local 2.8.2, allowing a source-distribution build, remote semantic scanning, automatic installation decisions, or public MCP exposure.
 
 ## Reusable lessons
 
-1. **“Static analyzer” is a mode, not a complete trust boundary.** Acquisition, live intelligence, semantic providers, local agent CLIs, transport, suppression, output, and scanner dependencies are separate boundaries.
-2. **`NO-LLM` does not necessarily mean `OFFLINE`.** Network and inference modes need separate declarations.
+1. **“Static analyzer” is a mode, not a complete trust boundary.**
+2. **`NO-LLM` does not necessarily mean `OFFLINE`.**
 3. **A scanner verdict is evidence, not authority.**
-4. **Inspection completeness matters as much as finding count.** A zero-finding result with required failed/skipped/uninspected material is not a clean complete scan.
+4. **Inspection completeness matters as much as finding count.**
+5. **Declared interpreter support does not prove dependency acceptability under a stricter supply-chain policy.**
+6. **A binary-only gate can legitimately block an otherwise supported upstream installation when a transitive dependency is source-only. The correct response is disposition, not silently weakening the gate.**
 
 ## Milestone status
 
-**SOURCE REVIEW COMPLETE / RUNTIME ACCEPTANCE REQUIRED**
+**SOURCE REVIEW COMPLETE / BINARY-ONLY RUNTIME GATE RESOLVED AS BLOCKED / EVALUATE DISPOSITION REQUIRED**
 
-The next authorized subphase is controlled v2.9.5 runtime acceptance. Case 3 should not begin until that subphase is resolved or the owner explicitly records a justified deferral.
+Case 3 should not begin until this Case 2 disposition is explicitly closed or deferred by the owner.
