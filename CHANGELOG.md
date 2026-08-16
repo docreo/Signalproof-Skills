@@ -2,7 +2,7 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
-## [Core Runtime hardening lessons] - Candidate
+## [Core Runtime hardening lessons] - Active
 
 ### Updated
 
@@ -23,7 +23,7 @@ All notable public changes to the Signalproof Skill Suite should be recorded her
 - No new specialist skill was created. The lessons fit existing Build, Debug, Recovery, Security, Closeout, and Learn boundaries; only the three skills needing new operational doctrine were changed.
 - `signalproof-security` already governs least privilege, identity/integrity boundaries, and bounded remediation.
 - `signalproof-closeout` already requires failed evidence preservation and staged/noncanonical Build Ledger handling when the live canonical head cannot be verified.
-- Candidate changes remain noncanonical until reviewed, checks pass, and the pull request is merged to protected `main`.
+- The Build, Debug, Recovery, registry, README, and changelog updates were promoted through PR #72 and merged to protected `main` after the governed candidate flow.
 
 ## [signalproof-build 0.1.0] - Active
 
