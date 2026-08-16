@@ -33,11 +33,11 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
 | [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Creates a bounded execution contract |
 | [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Determines whether target prerequisites and authority are actually present |
-| [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.0 | Executes an approved bounded implementation |
-| [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.0 | Reproduces, localizes, corrects, and regression-tests defects |
+| [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Executes an approved bounded implementation and contains partial actuation |
+| [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Reproduces, localizes, corrects, regression-tests, and distinguishes wrapper failures from product failures |
 | [`signalproof-verify`](skills/signalproof-verify/SKILL.md) | 0.1.0 | Determines whether a specific claim is proven |
 | [`signalproof-review`](skills/signalproof-review/SKILL.md) | 0.1.0 | Reviews scope fidelity and change integrity |
-| [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.1.0 | Selects and verifies trustworthy rollback/restoration |
+| [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.1.1 | Selects and verifies trustworthy rollback/restoration while preserving uncertain partial-operation ownership |
 | [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.1.0 | Governs defensive security assessment |
 | [`signalproof-release`](skills/signalproof-release/SKILL.md) | 0.1.0 | Governs exact-artifact promotion/distribution |
 | [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Creates durable documentation without weakening source-of-truth or evidence boundaries |
