@@ -35,6 +35,7 @@ When the failing layer is unclear, use `signalproof-investigate` first. When the
 10. **Preserve recovery.** Keep a baseline, branch, backup, candidate copy, or other practical way back.
 11. **Stop failed-fix loops.** After repeated failed corrections, return to investigation instead of varying the same guess indefinitely.
 12. **Separate correction from improvement.** Optional refactors, cleanup, redesign, dependency changes, and enhancements remain proposals unless independently authorized.
+13. **Separate product failure from harness/wrapper failure.** If the source or system changed successfully and a later validation wrapper fails, inspect the persisted state before any retry. Do not repeat a mutating step merely because its surrounding script ended in failure.
 
 ## Debug Workflow
 
@@ -67,7 +68,8 @@ Determine which layer actually fails:
 - environment/runtime;
 - dependency/integration;
 - permission/security;
-- expectation/contract.
+- expectation/contract;
+- test/harness/wrapper.
 
 If this cannot be established, hand off to `signalproof-investigate`.
 
@@ -116,7 +118,23 @@ A defect correction passes only if:
 - the original failure is corrected; and
 - required protected behavior still passes.
 
-### 9. Failed-Fix Loop Rule
+### 9. Wrapper / Harness Failure Rule
+
+Treat the product or source under test, the test harness, and the outer execution/evidence wrapper as separate layers.
+
+When a wrapper or post-validation step fails:
+
+1. determine whether the mutating operation already completed;
+2. hash or otherwise identify the persisted state before deciding to retry;
+3. preserve the failed wrapper evidence;
+4. do **not** blindly rerun a mutation against already-modified state;
+5. use a bounded follow-up validator when the implementation exists but closeout evidence is incomplete.
+
+Static safety checks must also match the semantic boundary being protected. Prefer checks scoped to the changed function/module plus explicit tests over repository-wide substring bans that can confuse safe operations with dangerous ones. For example, a process-existence probe and a process-termination call may share an API name while having materially different semantics.
+
+A wrapper failure after a successful source write is not automatically a failed source correction. Conversely, a green wrapper cannot override a real product regression.
+
+### 10. Failed-Fix Loop Rule
 
 After a failed correction:
 
@@ -126,7 +144,7 @@ After a failed correction:
 
 After **three materially unsuccessful correction attempts against the same unresolved symptom**, default to STOP and return to deeper investigation unless explicit human authority says otherwise. Do not manufacture superficial variations to reset the count.
 
-### 10. Closure
+### 11. Closure
 
 Report:
 
@@ -165,20 +183,22 @@ Fail this skill when a debugger:
 - declares success because code compiles;
 - fixes the symptom but skips protected-state regression tests;
 - repeats failed guesses without materially new evidence;
+- reruns a mutating patch solely because a later wrapper/check failed, without first inspecting whether the patch already persisted;
+- uses a broad literal/static prohibition when the actual safety distinction is semantic and scope-specific;
 - destroys logs/history/rollback evidence;
 - folds optional redesign into a bounded defect correction.
 
 ## Completion Criteria
 
-A Signalproof debug cycle is complete when the symptom and reproduction are clear, the cause or failed layer is honestly supported by evidence, the correction stayed within the authorized boundary, the original defect was re-tested, protected behavior was regression-tested, recovery remained intact, and the final status reflects the strongest verification actually performed.
+A Signalproof debug cycle is complete when the symptom and reproduction are clear, the cause or failed layer is honestly supported by evidence, the correction stayed within the authorized boundary, the original defect was re-tested, protected behavior was regression-tested, recovery remained intact, wrapper/harness failures were distinguished from product failures when relevant, and the final status reflects the strongest verification actually performed.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-debug`
-- **Version:** `0.1.0`
+- **Version:** `0.1.1`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-build`
-- **Domain:** Evidence-led debugging, bounded correction, regression protection, failed-loop control
+- **Domain:** Evidence-led debugging, bounded correction, regression protection, failed-loop control, wrapper/harness failure discrimination
 - **Created by:** Doc Reo / Signalproof

@@ -35,6 +35,7 @@ Recovery may require destructive replacement, privilege elevation, service inter
 10. **Verify the recovered state.** Recovery is incomplete until the target identity and required behavior are proven at the appropriate evidence level.
 11. **Preserve a path forward.** Record what was restored, what remained untouched, what failed, what evidence supports success, and what remains open.
 12. **Stop when the recovery source is ambiguous or untrustworthy.** Do not overwrite a failing system with an unverified artifact merely because it is labeled “backup.”
+13. **Preserve uncertain ownership after failed cleanup.** If a resource was created or controlled by the current operation and cleanup cannot be verified, retain enough identity/ownership state for explicit later recovery. Do not erase the record merely to make the failure look closed.
 
 ## Recovery Workflow
 
@@ -65,6 +66,15 @@ Record the strongest available evidence for:
 - security/permission boundary.
 
 If the failure cause is unclear and matters to safe recovery, route through `signalproof-investigate` before destructive action.
+
+When a prior attempt partially actuated a process/service/resource, explicitly distinguish:
+
+- resource proven absent;
+- resource proven present and owned;
+- resource present but externally owned;
+- ownership uncertain/unverifiable.
+
+Do not collapse these into a generic “cleanup failed” label.
 
 ### 3. Inventory Recovery Candidates
 
@@ -100,7 +110,8 @@ Before replacement, determine whether to preserve:
 - user projects/content;
 - models/assets;
 - license/activation state;
-- environment/runtime metadata.
+- environment/runtime metadata;
+- partial-operation ownership identities such as PID + process start identity, child handle, service identity, lock/token, transaction ID, or recovery journal where applicable.
 
 Preservation must not itself overwrite the accepted rollback or consume the only safe recovery copy.
 
@@ -164,7 +175,19 @@ ACCEPT OR REVERT RECOVERY ATTEMPT
 
 Project-specific dependency order controls when it differs.
 
-### 8. Stage When Practical
+### 8. Partial-Operation Cleanup and Ownership
+
+When recovery follows a failed start, install, migration, registration, or other partial operation:
+
+1. use the identity captured by the operation that created/owned the resource;
+2. do not substitute a resource merely because it has the expected name, PID, path, port, or executable;
+3. verify current identity again before destructive cleanup when reuse/drift is possible;
+4. clear ownership/recovery state only after cleanup is verified;
+5. if cleanup fails or cannot be verified, preserve the ownership record and return a partial/blocked status rather than pretending the resource is gone.
+
+For process recovery specifically, PID alone may be insufficient. Pair it with process start identity, executable identity, child-handle ownership, ownership token, or equivalent evidence appropriate to the implementation.
+
+### 9. Stage When Practical
 
 Prefer restoring to an isolated staging location or alternate slot when feasible.
 
@@ -179,7 +202,7 @@ Check:
 
 A staged PASS reduces risk but does not replace post-switch runtime verification.
 
-### 9. Execute Only With Authority
+### 10. Execute Only With Authority
 
 Before destructive replacement confirm:
 
@@ -192,7 +215,7 @@ Before destructive replacement confirm:
 
 Do not silently elevate privileges or broaden the restore scope.
 
-### 10. Verify Recovery
+### 11. Verify Recovery
 
 Recovery verification should include, as applicable:
 
@@ -204,11 +227,12 @@ Recovery verification should include, as applicable:
 - persistent user data unchanged/present;
 - configuration loaded;
 - rollback/recovery controls still available;
-- no mixed-version residue affecting operation.
+- no mixed-version residue affecting operation;
+- partially created resources from the failed attempt are either proven removed or still explicitly tracked for follow-up.
 
 Use `signalproof-verify` when the exact claim needs formal evidence grading.
 
-### 11. Accept or Contain
+### 12. Accept or Contain
 
 If recovery passes:
 
@@ -304,6 +328,8 @@ A successful rollback proves the recovered state to the tested boundary. It does
 - delete failed artifacts/evidence;
 - mutate the canonical Build Ledger without its own verified authority.
 
+Those remain separately governed.
+
 ## Recovery Status
 
 Return one of:
@@ -329,6 +355,7 @@ Stop recovery when:
 - the restore script/package provenance is unknown and execution would be consequential;
 - required privilege/elevation is not authorized;
 - current writes cannot be safely stopped and could corrupt restore state;
+- cleanup of a partially created owned resource cannot be verified and destructive follow-up would risk an external/unowned resource;
 - the same recovery attempt is failing repeatedly without new evidence;
 - recovery success cannot be meaningfully verified.
 
@@ -345,20 +372,22 @@ Fail this skill when recovery:
 - uses only “files copied successfully” as proof of recovery;
 - calls a restore successful without testing required behavior;
 - silently elevates privileges;
+- drops ownership/recovery state after cleanup failure, making a potentially live resource untracked;
+- kills/stops/deletes a resource based only on a reused identifier without verifying it is still the originally owned resource;
 - repeatedly retries a destructive restore without changing evidence or approach;
 - destroys the only remaining known-good rollback.
 
 ## Completion Criteria
 
-Recovery is complete when the failed state, accepted recovery target, evidence for target identity, restore boundary, protected user/persistent state, recovery order, authority, staging/restore actions, verification results, failed-attempt evidence, and remaining rollback options are explicit enough that another competent human or agent can reconstruct both why this target was chosen and why the recovered state should or should not be trusted.
+Recovery is complete when the failed state, accepted recovery target, evidence for target identity, restore boundary, protected user/persistent state, recovery order, authority, staging/restore actions, verification results, failed-attempt evidence, partial-operation ownership/cleanup state where relevant, and remaining rollback options are explicit enough that another competent human or agent can reconstruct both why this target was chosen and why the recovered state should or should not be trusted.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-recovery`
-- **Version:** `0.1.0`
+- **Version:** `0.1.1`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-investigate`, `signalproof-plan`, `signalproof-verify`, `signalproof-review`, `signalproof-closeout`
-- **Domain:** Rollback selection, restore integrity, data preservation, staged recovery, mixed-version prevention, recovery verification
+- **Domain:** Rollback selection, restore integrity, data preservation, staged recovery, partial-operation ownership preservation, mixed-version prevention, recovery verification
 - **Created by:** Doc Reo / Signalproof
