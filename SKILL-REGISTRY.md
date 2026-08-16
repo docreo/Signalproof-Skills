@@ -22,6 +22,14 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-document` | 0.1.0 | Active public baseline | Durable documentation, source-of-truth control, version binding, staleness management, provenance, evidence-preserving prose, and public/private boundaries | Active |
 | `signalproof-learn` | 0.1.0 | Active public baseline | Governed institutional learning, lesson extraction, generalization, regression tests, policy/skill candidates, and STOP-condition extraction | Active |
 
+## Candidate Specialist Lanes
+
+| Skill | Version | Maturity | Role | Status |
+|---|---:|---|---|---|
+| `signalproof-design` | 0.1.0-rc1 | Candidate | Product information architecture, dashboards, operational/technical information depth, replaceable brand slots, health/state communication, visual/layout acceptance | Candidate / non-routable |
+
+Candidate specialists are not available to `signalproof-router` until their required scenarios pass, owner approval is recorded, and promotion to Active is merged into canonical `main`.
+
 ## Planned Specialist Lanes
 
 No original V0.1 specialist lanes remain.
@@ -33,5 +41,6 @@ Future specialists or updates must follow the same governed lifecycle before the
 1. `main` is the canonical public state.
 2. A branch or pull request represents candidate state only.
 3. Active entries should identify version, maturity, role, and status.
-4. Deprecated or retired skills remain traceable in version history.
-5. Specialist skills inherit the root Signalproof contract.
+4. Candidate entries must remain explicitly non-routable until promotion is approved and merged.
+5. Deprecated or retired skills remain traceable in version history.
+6. Specialist skills inherit the root Signalproof contract.
