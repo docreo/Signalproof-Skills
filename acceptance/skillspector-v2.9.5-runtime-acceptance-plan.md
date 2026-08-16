@@ -8,15 +8,23 @@
 
 ## Instrument identity
 
-Runnable Windows harness prepared outside the repository:
+V1 runnable Windows harness:
 
 `SkillSpector-V295-Acceptance.ps1`
 
-Prepared harness SHA-256:
+V1 prepared harness SHA-256:
 
 `b2c0d640a65ee0ded3b2b8580b74c99404f36746edb2be31c51ce28af6a261f9`
 
-The harness itself must be hash-verified before execution. Runtime results, not this plan, determine the acceptance disposition.
+V2 corrected Windows harness:
+
+`SkillSpector-V295-Acceptance-V2.ps1`
+
+V2 prepared harness SHA-256:
+
+`e58b7f8e109b125414075800d7a440e56b3d9f6d52c3d6929d92da2443032b9a`
+
+Runtime results, not the existence of either instrument, determine acceptance disposition.
 
 ## Protected state
 
@@ -32,13 +40,64 @@ The instrument rejects a work root placed inside the protected root and records 
 
 It does not upgrade, invoke, uninstall, or overwrite the known local SkillSpector installation.
 
-## Artifact and dependency gate
+## V1 execution evidence — preserved failure
 
-The harness downloads only NVIDIA's exact v2.9.5 release wheel and verifies the published SHA-256 before installation.
+First Windows runtime attempt:
 
-Dependencies are resolved into a disposable wheelhouse from public PyPI using binary wheels only. Every resolved dependency artifact is hashed before installation. Installation then occurs offline from the captured wheelhouse into a dedicated virtual environment.
+`F:\SP\SkillSpector-Test\run-20260815-223924`
 
-`pip check` and `pip freeze --all` are preserved as runtime evidence.
+Observed sequence:
+
+- isolation guard: PASS;
+- Python 3.13.5 selected: PASS;
+- disposable venv creation: PASS;
+- exact NVIDIA v2.9.5 wheel SHA-256: PASS;
+- dependency resolution: FAIL;
+- protected local state unchanged: PASS;
+- disposable runtime cleanup: PASS;
+- temporary wheelhouse cleanup: PASS.
+
+The decisive resolver log was:
+
+`error: resolution-too-deep`
+
+Classification:
+
+**DEPENDENCY RESOLUTION FAILURE / NO SKILLSPECTOR INSTALLATION PERFORMED**
+
+This result is not classified as a missing-wheel finding and is not classified as a SkillSpector runtime failure. The V1 harness used pip's resolver against the full transitive dependency graph with a binary-only constraint. pip exhausted its resolution depth before installation.
+
+The V1 failure remains acceptance evidence and is not replaced or rewritten by V2.
+
+## Resolver correction
+
+The owner subsequently verified an existing system resolver:
+
+`uv 0.12.3 (507230998 2026-08-07 x86_64-pc-windows-msvc)`
+
+V2 uses that existing `uv`; it does not install or upgrade uv.
+
+The correction changes only the dependency resolution/install gate.
+
+### V2 dependency gate
+
+1. Download only NVIDIA's exact v2.9.5 release wheel.
+2. Verify the published release-wheel SHA-256 before dependency resolution or installation.
+3. Create a disposable Python 3.12–3.14 virtual environment outside the protected install.
+4. Create a requirements input bound to the verified local SkillSpector wheel.
+5. Resolve with `uv pip compile` using public PyPI and:
+   - `--no-build`;
+   - `--only-binary :all:`;
+   - `--no-cache`;
+   - `--generate-hashes`;
+   - `--no-python-downloads`.
+6. Require the generated lock to contain the exact NVIDIA SkillSpector wheel SHA-256.
+7. Preserve the generated hash lock and its SHA-256 as acceptance evidence.
+8. Install with `uv pip sync --require-hashes`, still with `--no-build`, `--only-binary :all:`, `--no-cache`, and automatic Python downloads disabled.
+9. Validate the resulting environment with `uv pip check` and preserve `uv pip freeze`.
+10. Continue the existing controlled runtime acceptance fixtures only after the resolver/install gate passes.
+
+The use of `--no-cache` is intentional: previously source-built cached wheels must not silently satisfy the V2 binary-only acceptance boundary.
 
 ## No-LLM boundary
 
@@ -58,21 +117,24 @@ This proves the report contract observed for the acceptance invocation. It does 
 
 1. **Exact artifact identity** — downloaded wheel digest matches the NVIDIA-published v2.9.5 SHA-256 before installation.
 2. **Disposable runtime** — compatible Python 3.12–3.14 and an isolated venv outside the protected installation.
-3. **Dependency capture** — binary dependency wheels resolved, hashed, installed from the local wheelhouse, and `pip check` passes.
-4. **Benign fixture** — controlled negative safety constraints do not become a high/critical result.
-5. **Intentionally risky fixture** — controlled security-sensitive instructions/code produce material findings and a higher risk score than the benign fixture.
-6. **STATIC-CONNECTED** — no-LLM scan exercises the dependency-intelligence path with normal outbound connectivity; OSV unreachability is preserved if the environment blocks it.
-7. **STATIC-OFFLINE** — when run elevated, a temporary Windows Firewall outbound block scoped only to the disposable runtime must prove `api.osv.dev:443` reachable before the block and unreachable during it. The scan must then surface fallback/incompleteness evidence. The firewall rule is removed in `finally`.
-8. **Suppression opt-in** — an author-shipped baseline is not applied by default and suppresses findings only after explicit `--use-shipped-baseline`.
-9. **Inspection completeness** — oversized required material must produce visible completeness/limitation evidence rather than an unqualified clean result.
-10. **Operational failure** — a missing target must fail operationally and must not emit a clean approval report.
-11. **Junction boundary** — disposable directory junction input must be rejected; cleanup removes only the junction using `cmd /c rmdir`.
-12. **Protected-state preservation and cleanup** — observed protected launcher/config identity remains unchanged; disposable runtime and wheelhouse are removed by default.
+3. **Resolver identity** — existing uv executable/version is recorded before dependency resolution.
+4. **Dependency lock** — uv produces a plausible exact hash lock under binary-only/no-build/no-cache constraints, and the lock contains the expected SkillSpector wheel digest.
+5. **Hash-required install** — `uv pip sync --require-hashes` completes into the disposable venv with source builds still prohibited.
+6. **Dependency consistency** — `uv pip check` passes and `uv pip freeze` is retained.
+7. **Benign fixture** — controlled negative safety constraints do not become a high/critical result.
+8. **Intentionally risky fixture** — controlled security-sensitive instructions/code produce material findings and a higher risk score than the benign fixture.
+9. **STATIC-CONNECTED** — no-LLM scan exercises the dependency-intelligence path with normal outbound connectivity; OSV unreachability is preserved if the environment blocks it.
+10. **STATIC-OFFLINE** — when run elevated, a temporary Windows Firewall outbound block scoped only to the disposable runtime must prove `api.osv.dev:443` reachable before the block and unreachable during it. The scan must then surface fallback/incompleteness evidence. The firewall rule is removed in `finally`.
+11. **Suppression opt-in** — an author-shipped baseline is not applied by default and suppresses findings only after explicit `--use-shipped-baseline`.
+12. **Inspection completeness** — oversized required material must produce visible completeness/limitation evidence rather than an unqualified clean result.
+13. **Operational failure** — a missing target must fail operationally and must not emit a clean approval report.
+14. **Junction boundary** — disposable directory junction input must be rejected; cleanup removes only the junction using `cmd /c rmdir`.
+15. **Protected-state preservation and cleanup** — observed protected launcher/config identity remains unchanged; disposable runtime is removed by default.
 
 ## Result model
 
 - **PASS** — all required acceptance checks completed without failure or blocking gap.
-- **PARTIAL** — no check failed, but at least one required proof was BLOCKED. The most likely example is running non-elevated, which prevents the scoped firewall proof.
+- **PARTIAL** — no check failed, but at least one required proof was BLOCKED.
 - **FAIL** — at least one acceptance check failed.
 
 Exit codes:
@@ -85,12 +147,13 @@ A PARTIAL result cannot be promoted to operational approval without resolving or
 
 ## Evidence package
 
-Each run writes a timestamped evidence directory containing, as applicable:
+Each V2 run writes a timestamped evidence directory containing, as applicable:
 
 - exact release-wheel hash evidence;
-- dependency wheel hashes;
-- venv/install/pip logs;
-- package inventory;
+- uv version evidence;
+- uv compile log;
+- generated hash lock and lock SHA-256;
+- uv sync/check/freeze evidence;
 - JSON reports for each acceptance fixture;
 - connected/offline network probe logs;
 - baseline-generation and baseline-application evidence;
@@ -103,7 +166,7 @@ Each run writes a timestamped evidence directory containing, as applicable:
 
 Temporary Windows Firewall rules are removed in `finally` even after an earlier failure.
 
-The disposable runtime and wheelhouse are removed by default. Operator switches that preserve them intentionally downgrade cleanup proof rather than silently claiming recovery success.
+The disposable runtime is removed by default. An operator switch that preserves it intentionally downgrades cleanup proof rather than silently claiming recovery success.
 
 ## Gate after execution
 
@@ -113,6 +176,6 @@ Runtime PASS does **not** make the scanner an authority source. A successful acc
 
 ## Current milestone state
 
-**HARNESS BUILT / EXECUTION PENDING**
+**V1 FAIL PRESERVED / V2 HARNESS BUILT / V2 EXECUTION PENDING**
 
-Do not close the full SkillSpector Case 2 milestone until the Windows evidence package has been reviewed and the runtime result has been recorded.
+Do not close the full SkillSpector Case 2 milestone until the V2 Windows evidence package has been reviewed and the runtime result has been recorded.
