@@ -35,6 +35,7 @@ When an approved Signalproof plan exists, its scope, protected-state declaration
 10. **Stop on material plan divergence.** If implementation requires changing protected state, expanding scope, crossing an authority boundary, or invalidating the recovery/acceptance model, stop and return to plan/investigate/human decision.
 11. **Preserve evidence.** Retain diffs, hashes, test results, logs, changed-file inventory, or other proof proportionate to the work.
 12. **Close with exact status.** State what changed, what did not, what passed, what remains unverified, and whether the build is candidate, accepted, blocked, or reverted.
+13. **Contain partial actuation before returning failure.** When a consequential operation creates a process, service, file, listener, lock, mount, or other live resource before a later verification gate fails, the build must either clean up that resource within the same verified ownership boundary or preserve explicit recoverable ownership/state for later containment. Do not silently orphan partially created state.
 
 ## Build Workflow
 
@@ -93,6 +94,8 @@ For each material change:
 - keep optional improvements separate;
 - avoid broad cleanup merely because the code is open.
 
+For operations that create live resources, define ownership before actuation and carry enough identity to distinguish the resource later. A PID alone may be insufficient when PID reuse is possible; process start identity, executable identity, handle identity, token, or another scoped ownership anchor may be required by the platform and consequence.
+
 ### 5. Checkpoint Verification
 
 After a meaningful boundary changes, run the cheapest relevant verification before expanding further.
@@ -108,7 +111,20 @@ Examples:
 
 A failed checkpoint is evidence. Do not bury it under additional changes.
 
-### 6. Divergence Handling
+### 6. Partial-Actuation Failure Rule
+
+If actuation succeeds but a later health, identity, ownership, policy, or acceptance check fails:
+
+1. preserve the identity of the resource actually created;
+2. attempt cleanup only through authority that is scoped to that created resource;
+3. never substitute an adjacent/external resource merely because it occupies the expected port/path/name;
+4. verify cleanup before clearing ownership state;
+5. if cleanup cannot be verified, retain explicit ownership/recovery state and report the failure as unresolved;
+6. do not claim the failed actuation was rolled back unless disappearance/restoration is actually verified.
+
+This rule applies beyond processes: partial file writes, service registrations, listeners, mounts, locks, temporary credentials, transactions, and migration state may require analogous containment.
+
+### 7. Divergence Handling
 
 If new evidence shows the approved plan is wrong or incomplete, classify the divergence:
 
@@ -118,13 +134,13 @@ If new evidence shows the approved plan is wrong or incomplete, classify the div
 - **Dependency/environment conflict** — investigate or stop.
 - **Acceptance-model invalidation** — stop and redefine verification before continuing.
 
-### 7. Final Acceptance
+### 8. Final Acceptance
 
 Run every applicable acceptance condition that the current environment can actually support.
 
 Report unexecuted gates honestly. A build that compiles but cannot be runtime-tested is not runtime-verified.
 
-### 8. Recovery Decision
+### 9. Recovery Decision
 
 If acceptance fails:
 
@@ -133,7 +149,7 @@ If acceptance fails:
 - do not damage the known baseline trying repeated unbounded fixes;
 - hand off to `signalproof-investigate` when cause is unclear.
 
-### 9. Closure
+### 10. Closure
 
 Report:
 
@@ -172,20 +188,23 @@ Fail this skill when a builder:
 - continues after evidence proves the plan must materially change;
 - declares runtime success from compile/static checks;
 - hides test failures or unverified gates;
+- starts a resource and then forgets it when a later verification step fails;
+- cleans up a failed operation by killing/deleting an adjacent resource that was not proven to be the one it created;
+- clears ownership state before cleanup/recovery is verified;
 - mixes optional redesign with required correction;
 - removes rollback/history/evidence to make the build appear clean.
 
 ## Completion Criteria
 
-A Signalproof build is complete when the authorized objective has been implemented within the bounded change surface, protected state and authority were respected, the applicable acceptance gates were run and classified honestly, recovery remains intact or was exercised successfully, and enough evidence exists to review or reproduce the outcome.
+A Signalproof build is complete when the authorized objective has been implemented within the bounded change surface, protected state and authority were respected, the applicable acceptance gates were run and classified honestly, partial actuation was contained or left in explicit recoverable state, recovery remains intact or was exercised successfully, and enough evidence exists to review or reproduce the outcome.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-build`
-- **Version:** `0.1.0`
+- **Version:** `0.1.1`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.0+
 - **Works with:** `signalproof-plan`, `signalproof-investigate`
-- **Domain:** Governed implementation, bounded change, protected execution, verification, recovery
+- **Domain:** Governed implementation, bounded change, protected execution, partial-actuation containment, verification, recovery
 - **Created by:** Doc Reo / Signalproof
