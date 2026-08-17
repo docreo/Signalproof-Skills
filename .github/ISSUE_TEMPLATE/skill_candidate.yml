@@ -1,0 +1,57 @@
+name: Skill candidate
+description: Propose a governed addition or change to a Signalproof skill.
+title: "[SKILL CANDIDATE] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Affected skill or proposed skill
+      placeholder: signalproof-example
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or reusable lesson
+      description: Describe the problem, repeated pattern, or lesson that justifies a candidate.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed bounded change
+      description: What specific rule, behavior, test, documentation, or new skill is proposed?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Identify the evidence and distinguish fact from inference.
+    validations:
+      required: true
+  - type: dropdown
+    id: maturity
+    attributes:
+      label: Current maturity
+      options:
+        - DISCOVERED
+        - CANDIDATE
+        - TESTED
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance test or verification plan
+      description: What would prove that this candidate works without weakening protected behavior?
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Protected state and rollback considerations
+      description: Identify what must not be broken and how the change can be reverted where practical.
+    validations:
+      required: true
