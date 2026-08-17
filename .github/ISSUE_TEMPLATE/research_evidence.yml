@@ -1,7 +1,7 @@
 name: Research or evidence intake
 description: Submit public evidence that may affect Signalproof research, evaluation, documentation, or learning.
 title: "[EVIDENCE] "
-labels: ["research"]
+labels: ["enhancement"]
 body:
   - type: input
     id: subject
