@@ -7,9 +7,10 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract plus mandatory meaningful-milestone closeout | Active |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
+| `signalproof-design` | 0.1.0 | Active public baseline | Product design governance, information architecture, dashboard clarity, operational/technical depth, brand asset slots, health/state communication, and visual acceptance | Active |
 | `signalproof-build` | 0.1.1 | Active public baseline | Governed implementation, bounded change, protected execution, partial-actuation containment, and verification | Active |
 | `signalproof-debug` | 0.1.1 | Active public baseline | Evidence-led debugging, bounded correction, regression protection, and wrapper/harness failure discrimination | Active |
-| `signalproof-router` | 0.1.12 | Active public baseline | Active-skill selection plus Research, Evaluate, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and Closeout routing | Active |
+| `signalproof-router` | 0.1.13 | Active public baseline | Active-skill selection plus Research, Evaluate, Design, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and Closeout routing | Active |
 | `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout, Build Ledger continuity, phase-transition governance, and skill extraction | Active |
 | `signalproof-handoff` | 0.1.0 | Active public baseline | Conversation-boundary continuity, context-pressure control, evidence-preserving project transfer, and receiving-chat bootstrapping | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification, evidence grading, acceptance-gate separation, and non-regression proof | Active |

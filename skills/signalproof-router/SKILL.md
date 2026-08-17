@@ -1,6 +1,6 @@
 ---
 name: signalproof-router
-description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority. Use when choosing among active Signalproof skills, including Research, Evaluate, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and milestone Closeout.
+description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority. Use when choosing among active Signalproof skills, including Research, Evaluate, Design, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and milestone Closeout.
 ---
 
 # Signalproof Router
@@ -20,6 +20,7 @@ Only skills marked **Active** in the canonical Skill Registry are routable.
 - `signalproof-evaluate` - decide disposition from evidence using explicit criteria and hard gates;
 - `signalproof-investigate` - establish what failed or what state is true;
 - `signalproof-plan` - create a bounded execution contract;
+- `signalproof-design` - govern product information architecture, dashboards, operational/technical depth, state communication, brand-asset slots, and visual acceptance;
 - `signalproof-readiness` - determine whether objective-specific prerequisites/capabilities exist on the target;
 - `signalproof-build` - execute an already bounded implementation;
 - `signalproof-debug` - reproduce, localize, correct, and regression-test a defect;
@@ -38,20 +39,24 @@ Only skills marked **Active** in the canonical Skill Registry are routable.
 1. Read the objective, not vocabulary alone.
 2. Use only Active skills.
 3. Prefer the smallest sufficient route; sequence only when evidence demands it.
-4. Research establishes evidence; Evaluate recommends disposition; Plan/Build execute only after separate authority.
-5. Document records established state; Learn extracts future capability from completed evidence.
-6. Route unresolved factual truth to Investigate/Verify before authoritative documentation or learning.
-7. Route exact claim proof to Verify, work-quality acceptance to Review, restoration to Recovery, security-sensitive trust questions to Security, exact-artifact promotion to Release, durable records to Document, conversation-boundary continuity to Handoff, and reusable-lesson extraction/governance to Learn.
-8. Route an explicit handoff/new-chat/transfer/pause request to Handoff when project continuity matters.
-9. Before opening a major new phase in a long evidence-heavy chat, use Handoff when Context Pressure is YELLOW or RED.
-10. Do not allow Handoff to invent exact context-window percentages when no trustworthy platform meter exists.
-11. Do not allow Handoff to substitute for Closeout when a meaningful milestone itself must be governed.
-12. Do not allow Learn to auto-promote observations into Active doctrine.
-13. Do not allow Learn to bypass existing-intelligence checks, falsifiable acceptance testing, governance, or human approval.
-14. Do not use Document, Handoff, or Learn to override canonical registry/runtime/ledger/ADR/release evidence.
-15. Close meaningful milestones before opening the next development phase.
-16. Routing never creates install, purchase, adoption, privilege, credential, signing, publication/deployment, policy, skill-activation, or canonical-ledger authority.
-17. Preserve explicit scope, STOP conditions, and a route decision trace.
+4. Research establishes evidence; Evaluate recommends disposition; Plan/Design/Build execute only after separate authority appropriate to their scope.
+5. Design governs information architecture and visual/state communication, not arbitrary product rewrites or branding authority.
+6. Document records established state; Learn extracts future capability from completed evidence.
+7. Route unresolved factual truth to Investigate/Verify before authoritative documentation or learning.
+8. Route product information architecture, dashboard hierarchy, Operational/Technical depth, health/state presentation, brand-asset slots, or visual acceptance to Design.
+9. Route exact claim proof to Verify, work-quality acceptance to Review, restoration to Recovery, security-sensitive trust questions to Security, exact-artifact promotion to Release, durable records to Document, conversation-boundary continuity to Handoff, and reusable-lesson extraction/governance to Learn.
+10. Route an explicit handoff/new-chat/transfer/pause request to Handoff when project continuity matters.
+11. Before opening a major new phase in a long evidence-heavy chat, use Handoff when Context Pressure is YELLOW or RED.
+12. Do not allow Handoff to invent exact context-window percentages when no trustworthy platform meter exists.
+13. Do not allow Handoff to substitute for Closeout when a meaningful milestone itself must be governed.
+14. Do not allow Design to fabricate state, health, readiness, metrics, or evidence for presentation purposes.
+15. Do not allow Design to treat a mockup as runtime acceptance or to overwrite the only accepted working baseline.
+16. Do not allow Learn to auto-promote observations into Active doctrine.
+17. Do not allow Learn to bypass existing-intelligence checks, falsifiable acceptance testing, governance, or human approval.
+18. Do not use Design, Document, Handoff, or Learn to override canonical registry/runtime/ledger/ADR/release evidence.
+19. Close meaningful milestones before opening the next development phase.
+20. Routing never creates install, purchase, adoption, privilege, credential, signing, publication/deployment, branding, architecture-rewrite, policy, skill-activation, or canonical-ledger authority.
+21. Preserve explicit scope, STOP conditions, and a route decision trace.
 
 ## Routing Decision Model
 
@@ -66,6 +71,26 @@ Use for unknown system/runtime state or competing failure causes.
 
 ### Plan
 Use when a known objective or authorized disposition needs bounded scope, authority, acceptance, recovery, dependencies, or sequencing before implementation.
+
+### Design
+Use when the central question is how a Signalproof product should organize and communicate its real workflows and state.
+
+Select Design for:
+
+- product information architecture;
+- dashboard structure and hierarchy;
+- Operational versus Technical/Evidence depth;
+- persistent navigation and workspace layout;
+- health/state semantics;
+- evidence drill-down;
+- replaceable brand-asset slots;
+- mockup/concept direction;
+- resize/readability expectations;
+- product-specific visual acceptance contracts.
+
+Design must preserve product-specific semantics. It does not require every substantial Signalproof product to use the same shell. Competition Radar may use a true Operational + Technical split while Media Studio may expose evidence through production inspectors, QA, engine/model, and provenance workspaces.
+
+Design must not invent live metrics, turn UNKNOWN into healthy state, call concept approval runtime acceptance, or rewrite the only accepted baseline.
 
 ### Readiness
 Use when a specific target machine/environment must be checked against objective-specific prerequisites.
@@ -122,26 +147,28 @@ Do not route every successful task to Learn. Use it when reusable extraction is 
 Learn does not make observations Active. It cannot bypass `DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE` governance.
 
 ### Closeout
-Use after a meaningful research, evaluation, readiness, build, security, recovery, release, documentation, learning/governance, or defect milestone has resolved.
+Use after a meaningful research, evaluation, design, readiness, build, security, recovery, release, documentation, learning/governance, or defect milestone has resolved.
 
 Closeout asks whether a reusable lesson exists; Learn performs the deeper extraction when warranted.
 
 ## Sequencing Patterns
 
 - `research -> evaluate`
-- `evaluate -> research/readiness/security/plan`
+- `evaluate -> research/readiness/security/plan/design`
+- `plan -> design -> build` when information architecture or visual/state contracts materially affect implementation;
 - `plan -> readiness -> build`
+- `design -> build -> verify/review` for an authorized product-design implementation;
 - `build/debug -> verify -> review`
 - `failed/rejected build -> recovery -> verify`
 - `verify -> document`
-- `research/evaluate/readiness/security/recovery/release -> document`
+- `research/evaluate/design/readiness/security/recovery/release -> document`
 - `closeout -> handoff` when a completed milestone should move to a fresh chat before the next phase;
 - `open work -> handoff -> fresh chat -> continue` when context pressure requires transfer without milestone closure;
 - `closeout -> learn` when the milestone surfaces material reusable learning requiring deeper extraction;
 - `learn -> research` when generalization evidence is insufficient;
 - `learn -> verify/review` when a candidate requires claim proof or change-quality assessment;
 - `learn -> document` when the smallest durable output is documentation;
-- `learn -> plan/build` only after a separately approved candidate requires implementation;
+- `learn -> plan/design/build` only after a separately approved candidate requires implementation;
 - `learn -> closeout` when a meaningful learning/governance milestone resolves;
 - `release -> document -> closeout -> handoff` when the next major release phase should begin in a fresh conversation;
 - `release -> document -> closeout -> learn` for a consequential completed cycle with material reusable lessons.
@@ -150,7 +177,7 @@ Do not force every request through every skill.
 
 ## Authority Gate
 
-Routing never grants write/destructive authority, installation/adoption authority, purchase authority, privilege elevation, credentials/secrets access, security-control changes, signing authority, publication/deployment/release authority, architecture/policy authority, skill activation authority, or canonical Build Ledger mutation authority.
+Routing never grants write/destructive authority, installation/adoption authority, purchase authority, privilege elevation, credentials/secrets access, security-control changes, signing authority, publication/deployment/release authority, branding replacement, architecture rewrite, policy authority, skill activation authority, or canonical Build Ledger mutation authority.
 
 ## Router Status
 
@@ -159,6 +186,7 @@ Routing never grants write/destructive authority, installation/adoption authorit
 - **AWAITING AUTHORITY**
 - **RESEARCH REQUIRED**
 - **EVALUATION REQUIRED**
+- **DESIGN REQUIRED**
 - **READINESS ASSESSMENT REQUIRED**
 - **VERIFICATION REQUIRED**
 - **REVIEW REQUIRED**
@@ -178,6 +206,10 @@ Fail routing when it:
 
 - confuses Research with Evaluate;
 - treats an Evaluate recommendation as execution authority;
+- sends product information architecture to generic Build without Design when a real design contract is needed;
+- uses Design to invent metrics, health, readiness, or evidence;
+- treats a design concept or mockup as runtime acceptance;
+- forces a generic dashboard shell onto a product whose workflow requires a different information architecture;
 - sends target readiness to Research/Evaluate instead of Readiness;
 - sends unresolved factual truth to Document/Learn instead of Investigate/Verify;
 - treats Handoff as automatic milestone Closeout;
@@ -187,22 +219,22 @@ Fail routing when it:
 - treats one observation as Active doctrine;
 - lets Learn bypass candidate/testing/approval governance;
 - lets Learn duplicate an existing skill/policy without checking existing intelligence;
-- uses Document, Handoff, or Learn to override canonical state;
+- uses Design, Document, Handoff, or Learn to override canonical state;
 - bypasses STOP/authority;
 - forces all specialists on every micro-edit;
 - skips meaningful milestone Closeout.
 
 ## Completion Criteria
 
-Routing is complete when the smallest appropriate Active skill/sequence is selected; Handoff remains distinct from Closeout and Document; Learn remains distinct from Closeout, Document, Research, Evaluate, Verify, and Review; reusable lessons do not become doctrine without governance; authority remains separate from capability; STOP conditions are preserved; and the next handoff condition is clear.
+Routing is complete when the smallest appropriate Active skill/sequence is selected; Design remains distinct from Plan, Build, Review, and branding authority; Handoff remains distinct from Closeout and Document; Learn remains distinct from Closeout, Document, Research, Evaluate, Verify, and Review; reusable lessons do not become doctrine without governance; authority remains separate from capability; STOP conditions are preserved; and the next handoff condition is clear.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.12`
+- **Version:** `0.1.13`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Routes among:** active Signalproof specialist skills only
-- **Domain:** Capability routing, sequencing, Research/Evaluate/Readiness/Verify/Review/Recovery/Security/Release/Document/Handoff/Learn/Closeout routing, evidence-state selection, authority-preserving dispatch
+- **Domain:** Capability routing, sequencing, Research/Evaluate/Design/Readiness/Verify/Review/Recovery/Security/Release/Document/Handoff/Learn/Closeout routing, evidence-state selection, authority-preserving dispatch
 - **Created by:** Doc Reo / Signalproof
