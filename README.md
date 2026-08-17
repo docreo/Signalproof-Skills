@@ -1,12 +1,12 @@
 # Signalproof Skills
 
-**Human-controlled, evidence-backed skills for building with AI without losing authority, continuity, research integrity, decision integrity, documentation integrity, readiness, recovery, security boundaries, release integrity, institutional learning, or proof.**
+**Human-controlled, evidence-backed skills for building with AI without losing authority, continuity, research integrity, decision integrity, documentation integrity, readiness, recovery, security boundaries, release integrity, institutional learning, design integrity, or proof.**
 
 > **Control first. AI second. Software third.**
 >
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
+Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, product design, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
 
 ## Root operating contract
 
@@ -28,11 +28,12 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.12 | Selects the smallest appropriate active skill or sequence |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.13 | Selects the smallest appropriate active skill or sequence |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
 | [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Creates a bounded execution contract |
+| [`signalproof-design`](skills/signalproof-design/SKILL.md) | 0.1.0 | Governs Signalproof product information architecture, dashboards, operational/technical depth, health/state communication, brand-asset slots, and visual acceptance |
 | [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Determines whether target prerequisites and authority are actually present |
 | [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Executes an approved bounded implementation and contains partial actuation |
 | [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Reproduces, localizes, corrects, regression-tests, and distinguishes wrapper failures from product failures |
@@ -57,7 +58,7 @@ ROUTER
   ↓
 RESEARCH -> EVALUATE
   ↓
-INVESTIGATE / PLAN / READINESS
+INVESTIGATE / PLAN / DESIGN / READINESS
   ↓
 BUILD / DEBUG
   ↓
@@ -84,6 +85,7 @@ This is not a mandatory conveyor belt. The router selects the smallest responsib
 - **Evaluate:** What disposition best fits explicit criteria and constraints?
 - **Investigate:** What actually failed or what state is true?
 - **Plan:** What bounded execution contract should govern the work?
+- **Design:** How should product state, workflows, dashboards, technical evidence, navigation, health, and visual hierarchy be organized without erasing product-specific meaning?
 - **Readiness:** Are required conditions satisfied on this exact target?
 - **Build:** What approved bounded implementation should be executed?
 - **Debug:** What demonstrable defect should be corrected?
@@ -96,6 +98,14 @@ This is not a mandatory conveyor belt. The router selects the smallest responsib
 - **Closeout:** Is the meaningful milestone preserved and safe to transition from?
 - **Handoff:** Is conversation context approaching a continuity boundary, and what exact state must transfer to a fresh chat?
 - **Learn:** What reusable capability should be extracted from completed evidence, and what governance path should it follow?
+
+## Design governance
+
+Signalproof Design treats design as information architecture and state communication, not decorative reskinning. Substantial stateful products should provide proportionate owner-facing summaries and deeper evidence access, but the exact shell must fit the product.
+
+Competition Radar validated a true Operational + Technical split. Media Studio validated that the same design discipline can instead use a production workspace, contextual inspector, QA/provenance surfaces, and fixed transport without becoming a business-dashboard reskin.
+
+Unknown state must never silently count as healthy, dashboard values must come from actual product state, and concept approval must remain distinct from runtime acceptance.
 
 ## Learning governance
 
@@ -125,7 +135,7 @@ The original planned specialist set is now fully implemented and Active. Future 
 
 ## What Signalproof Skills does not claim
 
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
+Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
 
 ## Repository protection
 
@@ -139,4 +149,4 @@ Signalproof Skills is licensed under the **Apache License 2.0**. See [`LICENSE`]
 
 **Doc Reo / Signalproof**
 
-Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, continuity, recovery, institutional learning, and proof.
+Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, design integrity, continuity, recovery, institutional learning, and proof.
