@@ -7,7 +7,7 @@ description: Govern authorized source ingestion, source identity, rights-aware k
 
 ## Status
 
-**CANDIDATE / NOT ACTIVE — RD0.5B EVIDENCE UPDATE**
+**CANDIDATE / NOT ACTIVE — RD0.5C EVIDENCE UPDATE**
 
 This candidate is staged for governance review. It is not an Active Signalproof skill and must not be represented as one until testing, owner approval, registry promotion, and the applicable closeout path are complete.
 
@@ -55,6 +55,11 @@ It does not provide legal advice or determine whether a source is legally author
 24. **Do not silently repurpose a package.** A Knowledge Base adapter must require a package compiled specifically for the `knowledge_base` intended output instead of treating authorization for another output as transferable intent.
 25. **Keep Knowledge Base ingestion distinct from activation.** Producing an ingestion bundle does not authorize activation, embeddings, model calls, content rewriting, or publication.
 26. **Preserve policy at the consumer boundary.** A Knowledge Base handoff must carry the effective policy forward and explicitly require the consumer to enforce it.
+27. **Verify before Knowledge Base import.** The receiving store must verify archive structure, member checksums, bundle identity, policy, and entry evidence before trust.
+28. **Import as candidate state only.** Imported bundles and entries remain `CANDIDATE`; import is not activation.
+29. **Make receiving-state integrity checkable.** Candidate-store records must remain independently hash-verifiable, and integrity failure blocks trusted inspection.
+30. **Keep candidate inspection read-only.** Inspection must not silently activate entries, generate embeddings, call models, rewrite content, or repair failed evidence.
+31. **Make exact re-import idempotent.** Exact re-import may be a no-op; conflicting evidence under the same bundle identity must stop.
 
 ## Workflow
 
@@ -104,7 +109,20 @@ When a governed package is prepared for a Knowledge Base:
 8. explicitly deny activation, embedding generation, model calls, and content rewriting at this stage;
 9. require the eventual consumer to enforce the carried effective policy.
 
-### 10. Skill Candidate Handoff
+### 10. Knowledge Base Candidate Import and Inspection
+
+When a verified Knowledge Base bundle enters an isolated receiving store:
+
+1. verify the bundle archive and carried policy/provenance evidence;
+2. import the exact bundle as candidate-only state;
+3. preserve bundle identity, entry identity/content hashes, policy references, provenance references, and root ancestry;
+4. verify persisted receiving-state row/content hashes after import;
+5. make exact re-import idempotent;
+6. provide read-only integrity-aware inspection;
+7. block trusted inspection if store integrity fails;
+8. keep activation, embeddings, model calls, semantic rewriting, and publication outside this milestone and authority boundary.
+
+### 11. Skill Candidate Handoff
 
 When the output is a Signalproof skill candidate, preserve source/policy provenance, mark it `CANDIDATE / NOT ACTIVE`, remove content not authorized for the publication boundary, define tests/non-scope, and route through the governed review/verification/approval lifecycle.
 
@@ -114,35 +132,35 @@ For multiple parents, effective permission is the least-privilege intersection. 
 
 ## STOP Conditions
 
-Stop when rights are unknown or blocked; transformation or derivation is unauthorized; requested output is not permitted; source bytes changed under a reused version; ancestry cannot be reproduced; a downstream operation would broaden permissions; a portable package fails checksum/evidence validation; a package is being silently repurposed for a different output; Knowledge Base adaptation is being treated as activation; a generated skill is being activated without lifecycle governance; private/restricted material would cross a public boundary; or acceptance evidence is missing for a consequential provenance/authorization claim.
+Stop when rights are unknown or blocked; transformation or derivation is unauthorized; requested output is not permitted; source bytes changed under a reused version; ancestry cannot be reproduced; a downstream operation would broaden permissions; a portable package fails checksum/evidence validation; a package is being silently repurposed for a different output; Knowledge Base adaptation or import is being treated as activation; receiving-store integrity fails; conflicting evidence attempts to reuse an existing bundle identity; a generated skill is being activated without lifecycle governance; private/restricted material would cross a public boundary; or acceptance evidence is missing for a consequential provenance/authorization claim.
 
 ## Current Candidate Evidence
 
-Signalproof Knowledge Forge RD0.3A through RD0.5B provide candidate evidence for source identity and rights envelopes; fail-closed authorization; source/policy ancestry; least-privilege derivation; multi-generation provenance; persistent registry integrity; human provenance review; governed multi-object package compilation; deterministic package identity and archives; package tamper detection; verified governed-package intake for Knowledge Base adaptation; input archive member/checksum verification and purpose blocking; deterministic Knowledge Base candidate entry/bundle identity; carried effective policy and provenance references at the consumer boundary; and explicit evidence that adaptation performs no activation, embeddings, model calls, or content rewriting.
+Signalproof Knowledge Forge RD0.3A through RD0.5C provide candidate evidence for source identity and rights envelopes; fail-closed authorization; source/policy ancestry; least-privilege derivation; multi-generation provenance; persistent registry integrity; human provenance review; governed multi-object package compilation; deterministic package identity and archives; package tamper detection; verified governed-package intake for Knowledge Base adaptation; deterministic Knowledge Base candidate bundle/entry identity; carried effective policy and provenance references; isolated Knowledge Base candidate-store import with post-import integrity verification; idempotent exact re-import and conflict/tamper failure behavior; read-only candidate inspection preserving policy, provenance references, and root ancestry; and direct receiving-store tamper detection that changes review trust to `BLOCKED`.
 
-This evidence supports Candidate status only. Production Knowledge Base ingestion, richer semantic transformation, and Active skill promotion remain future work.
+This evidence supports Candidate status only. Production Knowledge Base activation, embeddings, model calls, richer semantic transformation, and Active skill promotion remain future work.
 
 ## Build Ledger Evidence Linkage
 
-The RD0.5B candidate is linked to staged Signalproof Build Ledger evidence using stable event identities:
+The RD0.5C candidate is linked to staged Signalproof Build Ledger evidence using stable event identities:
 
-- `stage-skills:knowledge-forge:rd0.5b:signalproof-knowledge:0.1.0-candidate`
-- `milestone-closeout:knowledge-forge:rd0.5b`
-- `artifact-bind:knowledge-forge:rd0.5b`
+- `stage-skills:knowledge-forge:rd0.5c:signalproof-knowledge:0.1.0-candidate`
+- `milestone-closeout:knowledge-forge:rd0.5c`
+- `artifact-bind:knowledge-forge:rd0.5c`
 
 Bound artifact evidence:
 
-- Artifact: `Signalproof-Knowledge-Forge-RD0.5B.zip`
-- SHA-256: `cbdd8ed6af3ce8f918d4d24575d75acc69b6c593619adea74b936f90387a3bcc`
-- Automated acceptance evidence: `45 PASS / 0 FAIL`
-- Packaged-artifact retest: `45 PASS / 0 FAIL`
+- Artifact: `Signalproof-Knowledge-Forge-RD0.5C.zip`
+- SHA-256: `f07a5ae33d67f7ac28b571b91f634b58eb746d329e1cb10bf8274c858a4a70f9`
+- Automated acceptance evidence: `54 PASS / 0 FAIL`
+- Packaged-artifact retest: `54 PASS / 0 FAIL`
 - Public-boundary review: `PASS`
 
 Ledger status is **STAGED / NONCANONICAL / PENDING CHAIN-SAFE INGESTION**. These references provide continuity between the skill candidate and milestone evidence but must not be represented as a canonical Build Ledger append until the live ledger head and chain are verified.
 
 ## Candidate Acceptance Before Promotion
 
-Promotion should require at minimum owner approval of scope and name; no overlap/conflict with `signalproof-learn`; regression tests for source identity, rights gating, derivation propagation, tamper detection, provenance review, governed package compilation, and Knowledge Base adapter handoff; a representative isolated Knowledge Base import/inspection scenario; an end-to-end Skill Candidate scenario; negative authorization tests; registry/router review where applicable; public/private boundary review; and milestone closeout with Build Ledger evidence.
+RD0.5C completes the governed-package → Knowledge Base adapter → isolated candidate-store import/inspection scenario. Promotion still requires at minimum an end-to-end authorized Skill Candidate scenario; repetition of the restricted-source negative test at the final skill adapter boundary; overlap review against `signalproof-learn`; router review where applicable; public-boundary verification; owner approval of skill name/scope/activation; governed closeout; chain-safe Build Ledger ingestion; and only then canonical registry/changelog promotion.
 
 ## Identity
 
@@ -153,5 +171,5 @@ Promotion should require at minimum owner approval of scope and name; no overlap
 - **Status:** Not Active
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-learn`, `signalproof-research`, `signalproof-document`, `signalproof-verify`, `signalproof-review`, `signalproof-closeout`
-- **Domain:** Governed knowledge transformation, knowledge-package compilation, knowledge-base preparation, source provenance, rights-aware derivation, skill-candidate preparation
+- **Domain:** Governed knowledge transformation, knowledge-package compilation, knowledge-base preparation/import inspection, source provenance, rights-aware derivation, skill-candidate preparation
 - **Created by:** Doc Reo / Signalproof
