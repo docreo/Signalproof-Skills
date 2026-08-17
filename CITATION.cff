@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use Signalproof Skills in research, teaching, development, evaluation, or published work, please cite this repository."
+title: "Signalproof Skills"
+type: software
+authors:
+  - family-names: "Lawson"
+    given-names: "Mareo-Ahmir"
+    alias: "Doc Reo"
+repository-code: "https://github.com/docreo/Signalproof-Skills"
+url: "https://github.com/docreo/Signalproof-Skills"
+license: "Apache-2.0"
+keywords:
+  - artificial intelligence
+  - human AI maturity
+  - AI governance
+  - evidence integrity
+  - software governance
+  - research integrity
+  - human controlled AI
+  - Signalproof
+abstract: >-
+  Signalproof Skills is a governed public skill suite for human-controlled,
+  evidence-backed AI-assisted work across research, evaluation, planning,
+  design, implementation, debugging, verification, security, recovery,
+  release, documentation, milestone closeout, continuity, and institutional learning.
