@@ -2,6 +2,29 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-design 0.1.0] - Active
+
+### Added
+
+- `signalproof-design` `0.1.0` adds governed product-design and information-architecture discipline for dashboards, Operational versus Technical/Evidence depth, health/state communication, persistent navigation/workspaces, replaceable brand-asset slots, visual acceptance, and product-specific adaptation.
+- Newly originated Signalproof software candidates use `V1 RD1` prospectively unless a governed exception exists; existing product histories are not retroactively renumbered.
+- Dashboard values and health/readiness communication must be tied to real product state. UNKNOWN does not silently count as healthy.
+- `signalproof-router` `0.1.13` routes substantive product information-architecture and design-contract work to Design without turning routing into redesign authority.
+
+### Verified
+
+- Two-product acceptance passed 15/15 required behaviors with 0 fail conditions.
+- Competition Radar validated a true owner-facing Operational Dashboard plus separate dense Technical View against real persisted scan/report/evidence state and a protected C4 UI lock.
+- Media Studio / Signal Flow validated that the same design discipline generalizes to a materially different media-production workstation without forcing a Greenlight, Radar, or generic business-dashboard reskin.
+- The Media Studio scenario is explicitly design-direction evidence and does not claim full redesign runtime completion.
+- Owner promotion approval was explicitly given after the Radar C4 lock.
+
+### Governance
+
+- Candidate origin: `signalproof-design` `0.1.0-rc1` on `signalproof-design-v0.1-candidate`.
+- Active promotion preserves product-specific semantics, protected baselines, separate mockup/visual/runtime evidence classes, and the public/private artwork boundary.
+- Canonical production artwork remains outside the public skill specification; the skill governs how products consume approved assets.
+
 ## [signalproof-handoff 0.1.0] - Active
 
 ### Added
