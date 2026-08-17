@@ -9,8 +9,9 @@ This registry identifies public Signalproof skills and their current maturity.
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-build` | 0.1.1 | Active public baseline | Governed implementation, bounded change, protected execution, partial-actuation containment, and verification | Active |
 | `signalproof-debug` | 0.1.1 | Active public baseline | Evidence-led debugging, bounded correction, regression protection, and wrapper/harness failure discrimination | Active |
-| `signalproof-router` | 0.1.11 | Active public baseline | Active-skill selection plus Research, Evaluate, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, and Closeout routing | Active |
+| `signalproof-router` | 0.1.12 | Active public baseline | Active-skill selection plus Research, Evaluate, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and Closeout routing | Active |
 | `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout, Build Ledger continuity, phase-transition governance, and skill extraction | Active |
+| `signalproof-handoff` | 0.1.0 | Active public baseline | Conversation-boundary continuity, context-pressure control, evidence-preserving project transfer, and receiving-chat bootstrapping | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification, evidence grading, acceptance-gate separation, and non-regression proof | Active |
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity, change integrity, architecture/contract review, maintainability, provenance, privacy/security hazard, and recovery review | Active |
 | `signalproof-recovery` | 0.1.1 | Active public baseline | Rollback selection, restore integrity, user-data protection, partial-operation ownership preservation, staged recovery, mixed-version prevention, and recovery verification | Active |

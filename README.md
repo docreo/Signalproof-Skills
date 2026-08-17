@@ -6,7 +6,7 @@
 >
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, and governed institutional learning.
+Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
 
 ## Root operating contract
 
@@ -21,13 +21,14 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 9. Leave proof.
 10. Turn solved problems into future capability.
 11. Close meaningful milestones before opening the next development phase.
+12. Preserve project state across conversation boundaries before context pressure becomes a continuity risk.
 
 ## Active skills
 
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.11 | Selects the smallest appropriate active skill or sequence |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.12 | Selects the smallest appropriate active skill or sequence |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
@@ -41,6 +42,7 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.1.0 | Governs defensive security assessment |
 | [`signalproof-release`](skills/signalproof-release/SKILL.md) | 0.1.0 | Governs exact-artifact promotion/distribution |
 | [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Creates durable documentation without weakening source-of-truth or evidence boundaries |
+| [`signalproof-handoff`](skills/signalproof-handoff/SKILL.md) | 0.1.0 | Preserves project state across conversation boundaries and governs context pressure |
 | [`signalproof-learn`](skills/signalproof-learn/SKILL.md) | 0.1.0 | Extracts governed reusable lessons, tests, policy/skill candidates, and STOP conditions |
 | [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.1.0 | Closes meaningful milestones and preserves Build Ledger continuity |
 
@@ -53,26 +55,28 @@ REQUEST
   ↓
 ROUTER
   ↓
-RESEARCH → EVALUATE
+RESEARCH -> EVALUATE
   ↓
 INVESTIGATE / PLAN / READINESS
   ↓
 BUILD / DEBUG
   ↓
-VERIFY → REVIEW → SECURITY / RECOVERY as applicable
+VERIFY -> REVIEW -> SECURITY / RECOVERY as applicable
   ↓
 RELEASE when an exact candidate is being promoted
   ↓
 DOCUMENT when established state/results need durable representation
   ↓
-CLOSEOUT
+CLOSEOUT when a meaningful milestone resolves
+  ↓
+HANDOFF when conversation continuity requires a fresh chat
   ↓
 LEARN when material reusable capability should be extracted
   ↓
 GOVERNED CANDIDATE / TEST / POLICY / DOCUMENTATION UPDATE
 ```
 
-This is not a mandatory conveyor belt. The router selects the smallest responsible path.
+This is not a mandatory conveyor belt. The router selects the smallest responsible path. Handoff may occur while a phase is still open and does not require a product milestone.
 
 ## Discipline boundaries
 
@@ -90,6 +94,7 @@ This is not a mandatory conveyor belt. The router selects the smallest responsib
 - **Release:** May this exact accepted artifact be promoted to this exact distribution boundary?
 - **Document:** How should established state/evidence be represented durably without strengthening the claim?
 - **Closeout:** Is the meaningful milestone preserved and safe to transition from?
+- **Handoff:** Is conversation context approaching a continuity boundary, and what exact state must transfer to a fresh chat?
 - **Learn:** What reusable capability should be extracted from completed evidence, and what governance path should it follow?
 
 ## Learning governance
@@ -97,7 +102,7 @@ This is not a mandatory conveyor belt. The router selects the smallest responsib
 Signalproof learning follows:
 
 ```text
-DISCOVERED → CANDIDATE → TESTED → APPROVED → ACTIVE → DEPRECATED / RETIRED
+DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED
 ```
 
 The governing Learn rule is:
@@ -106,13 +111,21 @@ The governing Learn rule is:
 
 One successful case is not automatically a universal rule. Automatic discovery is not automatic activation. A regression test or documentation update may be the correct durable output instead of another skill.
 
+## Conversation continuity governance
+
+Signalproof Handoff uses qualitative **GREEN / YELLOW / RED Context Pressure** when no trustworthy platform context meter is available. It must not invent an exact remaining-context percentage.
+
+When a real meter is available, the default conservative policy is to refresh the handoff by 50% used, treat 60% as YELLOW, treat 70% as RED, and avoid intentionally driving complex governed work beyond 80% used.
+
+A conversation boundary is not automatically a product milestone. `signalproof-handoff` preserves session continuity; `signalproof-closeout` governs meaningful milestone transition.
+
 ## Original V0.1 planned set
 
 The original planned specialist set is now fully implemented and Active. Future specialists and updates must follow the same governed candidate, testing, approval, promotion, and closeout lifecycle.
 
 ## What Signalproof Skills does not claim
 
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission.
+Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
 
 ## Repository protection
 

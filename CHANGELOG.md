@@ -2,6 +2,27 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-handoff 0.1.0] - Active
+
+### Added
+
+- `signalproof-handoff` `0.1.0` adds governed conversation-boundary continuity so long AI work chats transfer protected state, failures, evidence classes, repository state, Build Ledger boundaries, STOP conditions, and the exact next action before context pressure becomes a project risk.
+- Context Pressure uses GREEN / YELLOW / RED rather than fabricated token estimates when no trustworthy platform meter exists.
+- When a trustworthy real meter exists, the default conservative policy refreshes the handoff by 50% used, marks 60% as YELLOW, marks 70% as RED, and avoids intentionally driving complex governed work beyond 80% used.
+- `signalproof-router` `0.1.12` routes explicit handoff/new-chat/transfer requests and YELLOW/RED conversation boundaries to the new skill while keeping Handoff distinct from milestone Closeout.
+
+### Verified
+
+- Candidate acceptance passed 15/15 required behaviors with 0 fail conditions.
+- The acceptance scenario preserved a completed protected milestone, material failed-attempt history, staged/noncanonical Build Ledger state, last-known repository state, and an exact next-phase boot instruction without requiring the human to reconstruct the work.
+- No exact ChatGPT or platform context-window size is claimed by the skill.
+
+### Governance
+
+- The capability grew from repeated Signalproof work-chat transfers and the earlier Signalproof Chat-Boundary Handoff Protocol.
+- The broader resumable-handoff concept was also studied through Matt Pocock's public handoff work under the existing Signalproof upstream-learning/provenance framework.
+- Private operational handoffs remain private by default; the public skill contains only reusable governance doctrine.
+
 ## [Core Runtime hardening lessons] - Active
 
 ### Updated
@@ -22,7 +43,7 @@ All notable public changes to the Signalproof Skill Suite should be recorded her
 
 - No new specialist skill was created. The lessons fit existing Build, Debug, Recovery, Security, Closeout, and Learn boundaries; only the three skills needing new operational doctrine were changed.
 - `signalproof-security` already governs least privilege, identity/integrity boundaries, and bounded remediation.
-- `signalproof-closeout` already requires failed evidence preservation and staged/noncanonical Build Ledger handling when the live canonical head cannot be verified.
+- `signalproof-closeout` already requires failed evidence preservation and staged/noncanonical Build Ledger handling when the live head cannot be verified.
 - The Build, Debug, Recovery, registry, README, and changelog updates were promoted through PR #72 and merged to protected `main` after the governed candidate flow.
 
 ## [signalproof-build 0.1.0] - Active

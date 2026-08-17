@@ -33,7 +33,11 @@ README_ROW_RE = re.compile(
 FRONTMATTER_NAME_RE = re.compile(r"^name:\s*(?P<name>[A-Za-z0-9._-]+)\s*$", re.MULTILINE)
 IDENTITY_VERSION_RE = re.compile(r"^- \*\*Version:\*\*\s*`(?P<version>[^`]+)`\s*$", re.MULTILINE)
 IDENTITY_MATURITY_RE = re.compile(r"^- \*\*Maturity:\*\*\s*(?P<maturity>.+?)\s*$", re.MULTILINE)
-ROUTER_BULLET_RE = re.compile(r"^\s*-\s*`(?P<name>signalproof(?:-[A-Za-z0-9._-]+)?)`\s+—", re.MULTILINE)
+# Router entries historically used an em dash. Hyphen-delimited entries are also valid.
+ROUTER_BULLET_RE = re.compile(
+    r"^\s*-\s*`(?P<name>signalproof(?:-[A-Za-z0-9._-]+)?)`\s+(?:\u2014|-)\s+",
+    re.MULTILINE,
+)
 PLANNED_SKILL_RE = re.compile(r"`(?P<name>signalproof(?:-[A-Za-z0-9._-]+)?)`")
 
 
