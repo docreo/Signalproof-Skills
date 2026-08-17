@@ -6,6 +6,7 @@ authors:
   - family-names: "Lawson"
     given-names: "Mareo-Ahmir"
     alias: "Doc Reo"
+    email: "docreo@mail.signalproof.com"
 repository-code: "https://github.com/docreo/Signalproof-Skills"
 url: "https://github.com/docreo/Signalproof-Skills"
 license: "Apache-2.0"
