@@ -1,0 +1,51 @@
+name: Research or evidence intake
+description: Submit public evidence that may affect Signalproof research, evaluation, documentation, or learning.
+title: "[EVIDENCE] "
+labels: ["research"]
+body:
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+      placeholder: Skill, policy, tool, standard, paper, or technical claim
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Public source or artifact
+      description: Provide enough information to identify and inspect the source.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Evidence class
+      options:
+        - Artifact-Backed Fact
+        - Runtime-Verified Fact
+        - Human-Observed Fact
+        - Design Authority
+        - Inference
+        - Proposal
+    validations:
+      required: true
+  - type: textarea
+    id: establishes
+    attributes:
+      label: What the evidence establishes
+      description: State the narrowest claim actually supported by the evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations or uncertainty
+      description: Record contradictory evidence, unknowns, scope limits, or reasons not to generalize.
+    validations:
+      required: true
+  - type: textarea
+    id: disposition
+    attributes:
+      label: Suggested disposition
+      description: Optional suggestion such as research further, evaluate, document, create a candidate, or take no action.

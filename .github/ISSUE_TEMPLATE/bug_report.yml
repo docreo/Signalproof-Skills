@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a reproducible defect in the public Signalproof Skills repository.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report only public-repository defects here. Do not include secrets, credentials, private customer data, or suspected security vulnerabilities.
+  - type: input
+    id: affected
+    attributes:
+      label: Affected skill, file, or component
+      placeholder: skills/signalproof-verify/SKILL.md
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction evidence
+      description: Provide the smallest reproducible sequence and relevant public evidence.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence class
+      options:
+        - Artifact-Backed Fact
+        - Runtime-Verified Fact
+        - Human-Observed Fact
+        - Inference
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public safety check
+      options:
+        - label: I have not included secrets, credentials, private customer data, or private infrastructure details.
+          required: true
+        - label: This is not a security vulnerability report.
+          required: true
