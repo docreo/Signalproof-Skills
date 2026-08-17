@@ -1,0 +1,29 @@
+name: Documentation issue
+description: Report unclear, incomplete, contradictory, or outdated public documentation.
+title: "[DOCS] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      placeholder: README.md, GOVERNANCE.md, wiki/Home.md, or a skill file
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Documentation problem
+      description: Describe what is unclear, missing, contradictory, or stale.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction or clarification
+      description: Optional. Documentation must not strengthen a claim beyond its evidence.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting source or established state
+      description: Identify the authoritative public source when the correction depends on one.
