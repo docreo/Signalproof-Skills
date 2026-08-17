@@ -12,7 +12,7 @@
 
 CANDIDATE
 
-The problem is now runtime-confirmed and preserved in a closed working product milestone, but the proposed shared-style correction has not yet been implemented and accepted. The skill lifecycle therefore remains Candidate rather than Tested or Active.
+The problem is now runtime-confirmed across more than one accepted Competition Radar correction surface, but the proposed shared-style correction has not yet been implemented and accepted. The skill lifecycle therefore remains Candidate rather than Tested or Active.
 
 ## Trigger
 
@@ -68,7 +68,7 @@ A visual-state theme correction must not change control semantics, selection ide
 
 The correction target must remain independently readable outside a selected DataGrid row so future visual-state changes cannot become the sole source of target identity.
 
-## Known product evidence
+## Build 3B product evidence
 
 Competition Radar RD2 C1-E Build 3B correction preparation passed automated and owner visual acceptance with:
 
@@ -97,6 +97,38 @@ Protected milestone evidence recorded by the product closeout:
 - closeout evidence SHA-256: `A9AB82EDA19B8F9A361B5D0C4C2FD294195FFE60724CB65FEAC20186823CF7B6`
 
 The protected milestone explicitly classifies the WPF state-theme issue as `LOGGED / NON-BLOCKING / DEFERRED` and does not reopen the accepted correction workflow.
+
+## Build 3C confirming evidence
+
+Competition Radar RD2 C1-E Build 3C owner visual acceptance independently reproduced the same state-dependent theme behavior on the correction surface while the governed correction flow itself remained readable and functional.
+
+Observed Build 3C behavior:
+
+- the `Owner disposition` ComboBox rendered as a light/white surface inside the otherwise dark correction page;
+- the effect was present before and after the in-memory correction preview;
+- the fixed `Corrected` review-state field, correction notes surface, target summary, chain-semantics panel, and final owner-confirmation panel remained readable;
+- the normal-launch owner-confirmation checkbox and append button were correctly disabled by governance, demonstrating that the visual defect did not imply a permission-state failure;
+- the final preview accurately displayed classification-run identity, signal identity, target sequence/event identity, target review state, target owner disposition, proposed disposition, correction notes, and prepared timestamp;
+- no correction event was written during visual acceptance.
+
+Build 3C automated acceptance immediately preceding that visual observation proved:
+
+- static UI / authority checks passed;
+- Release builds passed;
+- complete Radar regression checks passed;
+- one-shot correction fixture passed;
+- blind-retry prevention passed;
+- `SignalReviewStore` remained unchanged;
+- raw `radar.db`, `signals.db`, and live `reviews.db` remained unchanged.
+
+Accepted Build 3C automated evidence identifiers:
+
+- manifest SHA-256: `91D5F984C289F15BCC914695010DAB874702A85E8D97217DA3824C2F67063A38`
+- phase record SHA-256: `671BF2DEDF7FF82CFCBF33A972EF65341C5C863313EA6890BB6947B1376C6791`
+- staged/noncanonical ledger SHA-256: `1E11413433F25DDDC4DF6006D3295C48D7160D8C40B9C87F432D21F14F5AC8BF`
+- Recovery 3 evidence SHA-256: `DD646D65A9F99F1E738F34D6D18C78588EB8A209FA1B094C5EB4FA951D318434`
+
+Build 3C is not represented here as formally closed and this candidate does not grant live-write authority. The value of the Build 3C observation is narrower: it provides an independent second runtime reproduction of the inactive/default WPF light-state leakage while functional authority controls behave correctly.
 
 ## Candidate acceptance requirement
 
