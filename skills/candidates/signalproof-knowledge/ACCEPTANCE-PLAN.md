@@ -1,4 +1,4 @@
-# signalproof-knowledge Candidate Acceptance Plan — RD0.5C
+# signalproof-knowledge Candidate Acceptance Plan — RD0.6A
 
 **Status:** CANDIDATE / NOT ACTIVE
 
@@ -10,21 +10,30 @@
 - Governed knowledge-package compilation.
 - Verified Knowledge Base adapter handoff.
 - Isolated candidate-only Knowledge Base import and inspection.
-- Receiving-store integrity verification and tamper-blocked trust.
-- Full RD0.5C suite: **54 PASS / 0 FAIL**.
-- Exact packaged-artifact retest: **54 PASS / 0 FAIL**.
+- Governed Skill Candidate compilation from purpose-bound `skill_candidate` packages.
+- Candidate preserves source package identity, object hashes, provenance digests, root-source/root-policy ancestry, effective policy, scope, non-scope, and acceptance tests.
+- Candidate compilation performs no activation, publication, automatic registry promotion, model calls, or semantic rewriting.
+- Full RD0.6A suite: **63 PASS / 0 FAIL**.
+- Exact packaged-artifact retest: **63 PASS / 0 FAIL**.
 - Public-boundary scan: **PASS**.
-- Bound RD0.5C artifact SHA-256: `f07a5ae33d67f7ac28b571b91f634b58eb746d329e1cb10bf8274c858a4a70f9`.
+- Bound RD0.6A artifact SHA-256: `9875a55dc0cce2461ca6f4692acf7b129f34b4272067a63b153b778f4abd53b2`.
+
+## Staged Build Ledger linkage
+
+- `stage-skills:knowledge-forge:rd0.6a:signalproof-knowledge:0.1.0-candidate`
+- `milestone-closeout:knowledge-forge:rd0.6a`
+- `artifact-bind:knowledge-forge:rd0.6a`
+
+Ledger status remains **STAGED / NONCANONICAL / PENDING CHAIN-SAFE INGESTION** until the live canonical Build Ledger head is verified.
 
 ## Remaining promotion gates
 
-1. End-to-end governed Skill Candidate compiler scenario.
-2. Restricted-source negative test at the final Skill Candidate adapter boundary.
-3. Review overlap with `signalproof-learn` and router implications.
-4. Owner approval of the skill name, scope, and activation.
-5. Chain-safe ingestion of staged Build Ledger evidence.
-6. Canonical registry/changelog update only after approved promotion.
+1. RD0.6B restricted-source negative test at the final Skill Candidate compiler boundary.
+2. Review overlap with `signalproof-learn` and router implications.
+3. Owner approval of the skill name, scope, and activation.
+4. Chain-safe ingestion of staged Build Ledger evidence.
+5. Canonical registry/changelog update only after approved promotion.
 
 ## Current decision
 
-**CANDIDATE EVIDENCE ADVANCED — NOT READY FOR ACTIVE PROMOTION.**
+**CANDIDATE EVIDENCE ADVANCED THROUGH RD0.6A — NOT READY FOR ACTIVE PROMOTION.**
