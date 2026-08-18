@@ -95,6 +95,35 @@ Independent post-live verification evidence SHA-256:
 
 `C8026B9FCE05366F0762532C54C8B8FCE898C29CB33717DB12468BA165CE7A8C`
 
+## Formal milestone closeout evidence
+
+Radar RD2 C1-E Build 3C was subsequently closed through the governed closeout sequence and reported:
+
+- milestone `RADAR-RD2-C1E-B3C`;
+- status `CLOSED / PROTECTED / WORKING`;
+- automated acceptance PASS;
+- owner visual acceptance PASS;
+- live correction acceptance PASS;
+- independent post-live persisted verification PASS;
+- original event immutable PASS;
+- correction sequence `2`;
+- raw `radar.db` unchanged;
+- `signals.db` unchanged;
+- accepted `reviews.db` head preserved;
+- no additional correction authorized by closeout;
+- next product mutation not authorized by closeout;
+- Build Ledger chronology staged/noncanonical pending chain-safe ingestion.
+
+Protected closeout evidence:
+
+- lock manifest SHA-256: `A50DD60BA5705A785130A23B92879C8116AFA7BB59DBFC8294205BE499C052D7`
+- closeout SHA-256: `93F7274AD47A655326B59D03156FB156D4E8128AFB80A899D9A8300837AD9222`
+- known limitations SHA-256: `9B3E419CE627706E003AF30F54CDE80A0718EB0B6304042728BD67AA232DD87D`
+- lessons SHA-256: `E3467D3F8ABC71A04AD92514E224AAA69D7FC7986668B971E13B9EE18E218237`
+- next-phase record SHA-256: `334B5825ACAC439122A9811292A4648789E38368BEA8E7972CC7F8D5767376BE`
+- staged closeout ledger SHA-256: `2D057F8A81F4B36B5E56A8543B4FC0E30527854399AA424C490DEBB8A557D855`
+- closeout transcript/evidence SHA-256: `144DC59D18BE05E327073FD126B802AB38839EC05F17A73C20B4E15AE4E01BA4`
+
 ## Evidence boundary
 
 Evidence class now supporting this Candidate:
@@ -103,12 +132,13 @@ Evidence class now supporting this Candidate:
 - Runtime Visual Evidence
 - Automated Build Evidence
 - Independent Read-Only Persisted-State Evidence
+- Governed Milestone Closeout Evidence
 
-The one live case now has both in-application and post-process persisted-state proof. Formal milestone closeout remains a separate governance gate and is not inferred from this evidence.
+The one live case now has end-to-end acceptance and closeout proof. That strengthens the Candidate but does not by itself justify public Active doctrine.
 
 ## Why Candidate, not Tested or Active
 
-The pattern has worked in one meaningful live-write case with independent persisted-state verification, but broader reuse is still required before it should become public Active doctrine.
+The pattern has worked in one meaningful live-write case with independent persisted-state verification and formal milestone closeout, but broader reuse is still required before it should become public Active doctrine.
 
 Remaining minimum evidence before promotion:
 
