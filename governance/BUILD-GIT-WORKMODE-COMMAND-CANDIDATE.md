@@ -85,6 +85,24 @@ The command should establish and maintain these fields proportionately:
 
 These fields may be represented compactly in conversation state; they do not need to be repeated verbatim in every response.
 
+## Output Typography Rule
+
+While `/build-git` or `build-git` workmode is active, generated output MUST NOT contain Unicode em dash U+2014 characters.
+
+This applies to all user-facing and generated build material, including:
+
+- conversational instructions and explanations;
+- PowerShell, shell, batch, configuration, and code-generation output;
+- comments and strings added to generated scripts when those strings are not required by an external protocol;
+- build notes, manifests, acceptance records, evidence summaries, handoffs, closeout records, release notes, and documentation;
+- generated filenames or labels when punctuation is under Signalproof control.
+
+When punctuation is needed, use context-appropriate alternatives such as commas, colons, semicolons, parentheses, or ASCII hyphen-minus `-`.
+
+Before emitting or writing generated material under `/build-git`, perform a final text check for U+2014 and replace it unless the exact character is required as immutable source data, quoted external evidence, a checksum-covered artifact, or another protected byte-for-byte input. Protected source evidence must not be silently altered merely to satisfy presentation style.
+
+The rule is a build-output constraint, not authority to rewrite accepted source artifacts or external evidence.
+
 ## Authority Boundary
 
 Invoking `/build-git` authorizes Git-backed skill retrieval and routing for build work. It does **not** by itself authorize:
@@ -169,7 +187,8 @@ Before `/build-git` becomes an Active command contract, demonstrate at least:
 6. protected-state and rollback contracts survive use of the shortcut;
 7. route transitions correctly trigger additional skills only when needed;
 8. prompt/context duplication is measurably reduced in practice without losing critical continuity;
-9. closeout and learning remain governed rather than automatic doctrine promotion.
+9. closeout and learning remain governed rather than automatic doctrine promotion;
+10. generated `/build-git` output is verified to contain no U+2014 em dash characters except immutable/protected source evidence that must remain byte-identical.
 
 ## Failure Conditions
 
@@ -183,7 +202,8 @@ Fail this Candidate if it:
 - silently mutates protected state;
 - directly changes protected `main` merely because `/build-git` was invoked;
 - automatically activates skill/policy candidates;
-- skips milestone closeout because the shortcut makes the workflow feel continuous.
+- skips milestone closeout because the shortcut makes the workflow feel continuous;
+- emits U+2014 em dash characters in generated `/build-git` output when the text is under Signalproof control.
 
 ## Candidate Identity
 
