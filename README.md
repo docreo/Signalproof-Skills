@@ -22,12 +22,13 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 10. Turn solved problems into future capability.
 11. Close meaningful milestones before opening the next development phase.
 12. Preserve project state across conversation boundaries before context pressure becomes a continuity risk.
+13. Use the declared Signalproof quarantine root and standard intake/review/approval/evidence lifecycle for consequential local testing instead of inventing ad hoc test/download locations.
 
 ## Active skills
 
 | Skill | Version | Purpose |
 |---|---:|---|
-| [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
+| [`signalproof`](skills/signalproof/SKILL.md) | 0.1.2 | Root governing contract, milestone continuity, and standardized quarantine testing |
 | [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.13 | Selects the smallest appropriate active skill or sequence |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
@@ -78,6 +79,23 @@ GOVERNED CANDIDATE / TEST / POLICY / DOCUMENTATION UPDATE
 ```
 
 This is not a mandatory conveyor belt. The router selects the smallest responsible path. Handoff may occur while a phase is still open and does not require a product milestone.
+
+## Standard quarantine testing
+
+Consequential local testing uses one common logical quarantine lifecycle rather than per-project ad hoc download folders:
+
+```text
+<QUARANTINE-ROOT>\
+  00-Incoming\
+  10-Under-Review\
+  20-Approved\
+  80-Hold\
+  90-Rejected\
+  Evidence\
+  Reports\
+```
+
+The root path is environment-specific configuration and is not hard-coded in the public suite. New/untrusted material is identified and hashed before review, rehashed before approval, and executed only from an approved or explicitly designated controlled test/evidence workspace. Failed evidence is preserved rather than erased. Quarantine status does not itself grant production, release, adoption, network, credential, or permission authority.
 
 ## Discipline boundaries
 
@@ -135,18 +153,8 @@ The original planned specialist set is now fully implemented and Active. Future 
 
 ## What Signalproof Skills does not claim
 
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
+Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision. Quarantine does not certify an artifact safe merely because it was placed in an approved folder.
 
 ## Repository protection
 
-`main` is the canonical public branch. Normal development uses branches and pull requests. Governance preserves review-thread resolution, blocks force pushes/deletion, constrains bypass authority, and avoids requiring CI checks that do not actually exist yet.
-
-## License and marks
-
-Signalproof Skills is licensed under the **Apache License 2.0**. See [`LICENSE`](LICENSE), [`NOTICE`](NOTICE), and [`TRADEMARKS.md`](TRADEMARKS.md).
-
-## Created by
-
-**Doc Reo / Signalproof**
-
-Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, design integrity, continuity, recovery, institutional learning, and proof.
+`main` is the canonical public state. Branches and pull requests are candidates until merged through the repository's governed process.
