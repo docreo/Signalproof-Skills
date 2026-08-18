@@ -145,6 +145,29 @@ Relevant formal closeout evidence:
 - staged closeout ledger SHA-256: `2D057F8A81F4B36B5E56A8543B4FC0E30527854399AA424C490DEBB8A557D855`
 - closeout transcript SHA-256: `144DC59D18BE05E327073FD126B802AB38839EC05F17A73C20B4E15AE4E01BA4`
 
+## Additional continuation evidence — governed Rating / Promotion phase
+
+The same workflow then continued into a materially distinct product-definition and design phase without requiring the user to restate the build objective:
+
+1. `/build-git` loaded the next Radar governed-rating/promotion requirement from Git-backed project intelligence;
+2. a DEFINE / INTAKE script was generated for human execution with source/database mutation explicitly disabled;
+3. its first version failed at PowerShell parse time before the `try` block, so no product state was touched;
+4. the parser defect was corrected with a one-line Recovery 1 rather than broad script/source reconstruction;
+5. Recovery 1 passed, proving the protected B3C heads unchanged and recording intake/inventory evidence;
+6. the router advanced automatically to PLAN / DESIGN rather than stopping after the intake milestone;
+7. a separate Plan / Design operator artifact inspected the actual Radar source read-only, identified candidate integration surfaces, wrote bounded Plan/Design/change-surface artifacts, preserved all three protected database heads, and left implementation unauthorized;
+8. because this phase produced no genuinely new reusable doctrine beyond existing recovery and planning rules, no redundant skill Candidate was created; the workflow returned directly to the next `/build-git` gate.
+
+Accepted Rating / Promotion Plan / Design evidence:
+
+- change-surface SHA-256: `9E910544047CEA3C2CC80B5611BC77F5B0A9D7E2058DFD681E63C3E69E848E80`
+- Plan SHA-256: `99990E7C4B62A918195C85199666895B24A1DC8A0DBCB54A95B2BEA87A31EC4B`
+- Design SHA-256: `D0934B641862179EC60AAB4BD33E57355B7086E278A4BD95EA59A531B1D15149`
+- staged Plan / Design ledger SHA-256: `2ED3CF92B2D494C06C921058C787FD9A4641334C580A0DB6C9F98290BA236D10`
+- Plan / Design transcript SHA-256: `5AB9E5DC200A21DE571FD3EF19C5E58B0EEACE387AD85C20A751192D289892E8`
+
+This is additional evidence that the continuation pointer can survive a closeout, a learning checkpoint, a parser recovery, intake, and Plan/Design transition while keeping implementation authority explicit.
+
 This workflow materially reduced continuity loss while preserving evidence and governance boundaries.
 
 ## Acceptance criteria before promotion
