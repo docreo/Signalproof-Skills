@@ -61,28 +61,62 @@ Observed new event ID:
 
 `F8BAFC528678BA782662D337AF082E29EC7A38EF4F1C541E4166A5379B3BEDB1`
 
+## Independent persisted-state evidence
+
+A separate read-only post-process verifier was run after Radar was closed.
+
+It independently proved:
+
+- history count = `2` exactly;
+- original event ID remained `DD949ADD39495F1F2274A5CB745DE2C1FA96E2FA8B607BBE294F3A94A08DF996`;
+- original sequence remained `1`;
+- original `previous_event_id` remained absent;
+- original review state remained `Reviewed`;
+- original owner disposition remained `Investigate`;
+- original `correction_of_event_id` remained absent;
+- new event ID = `F8BAFC528678BA782662D337AF082E29EC7A38EF4F1C541E4166A5379B3BEDB1`;
+- new event sequence = `2`;
+- new `previous_event_id` = original event ID;
+- new `correction_of_event_id` = original semantic target event ID;
+- new review state = `Corrected`;
+- new owner disposition = `Investigate`;
+- new notes = `Let's Investigate and Watch`;
+- new actor role = `Owner`;
+- current owner state resolves to the correction event;
+- classifier disposition remains `Investigate`;
+- raw `radar.db` remained unchanged;
+- `signals.db` remained unchanged.
+
+Current accepted `reviews.db` SHA-256 after the append:
+
+`4057B3D0BECD93B1B42C9CF3C663B703DCE47B4EA87F4F4713E1214EECBBF672`
+
+Independent post-live verification evidence SHA-256:
+
+`C8026B9FCE05366F0762532C54C8B8FCE898C29CB33717DB12468BA165CE7A8C`
+
 ## Evidence boundary
 
-Evidence class currently supporting this Candidate:
+Evidence class now supporting this Candidate:
 
 - Human-Observed / Owner Acceptance
 - Runtime Visual Evidence
-- Automated Build Evidence from the immediately preceding Build 3C acceptance
+- Automated Build Evidence
+- Independent Read-Only Persisted-State Evidence
 
-The in-application success state is proven visually. Independent post-process persisted-state verification and formal milestone closeout are separate gates and must not be inferred from the screenshots alone.
+The one live case now has both in-application and post-process persisted-state proof. Formal milestone closeout remains a separate governance gate and is not inferred from this evidence.
 
 ## Why Candidate, not Tested or Active
 
-The pattern has worked in one meaningful live-write case, but promotion requires independent persisted-state evidence and broader reuse before it should become public Active doctrine.
+The pattern has worked in one meaningful live-write case with independent persisted-state verification, but broader reuse is still required before it should become public Active doctrine.
 
-Minimum additional evidence before promotion:
+Remaining minimum evidence before promotion:
 
-1. read-only post-actuation verification proves exactly one persisted append;
-2. original target immutability is independently verified;
-3. protected non-target stores remain unchanged;
-4. a second materially different one-shot live-write workflow applies the pattern successfully;
-5. an uncertainty/failure exercise demonstrates that retry remains blocked until state inspection;
-6. recovery remains available without automatic destructive restore.
+1. a second materially different one-shot live-write workflow applies the pattern successfully;
+2. an uncertainty/failure exercise demonstrates that retry remains blocked until state inspection;
+3. recovery remains available without automatic destructive restore;
+4. fresh-session recovery applies the pattern without depending on chat memory;
+5. if promoted into `signalproof-build`, the change passes the skill suite acceptance/governance path.
 
 ## Non-regression constraints
 
