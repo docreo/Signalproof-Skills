@@ -1,4 +1,4 @@
-# Git-Backed Workmode Command Candidates v0.1 — Acceptance Contract
+# Git-Backed Workmode Command Candidates v0.1 - Acceptance Contract
 
 **Status:** CANDIDATE ACCEPTANCE CONTRACT
 
@@ -44,20 +44,24 @@ A Candidate PASS requires all applicable invariants below.
 16. Readiness/Security/Verify/Review/Recovery are loaded only when their evidence-state triggers occur.
 17. A build shortcut does not silently convert discovered defects into scope expansion.
 18. Meaningful completed milestones still route through Closeout.
+19. Generated `/build-git` output contains no Unicode em dash U+2014 characters when the text is under Signalproof control.
+20. The no-em-dash rule applies to user-facing instructions, generated scripts, comments, strings, manifests, evidence summaries, handoffs, closeout records, release notes, labels, and documentation.
+21. Immutable source evidence, quoted external evidence, checksum-covered artifacts, or protected byte-for-byte inputs are not rewritten merely to remove an em dash.
+22. A final text check for U+2014 is performed before generated `/build-git` material is emitted or written when practical.
 
 ### `/design-git`
 
-19. `signalproof-design` is loaded when product design is the central objective.
-20. Product-specific workflows are preserved rather than forced into a universal shell.
-21. Design direction/mockup approval remains distinct from runtime acceptance.
-22. Health/state/metrics remain evidence-backed.
-23. Implementation remains separately authorized through Build.
+23. `signalproof-design` is loaded when product design is the central objective.
+24. Product-specific workflows are preserved rather than forced into a universal shell.
+25. Design direction/mockup approval remains distinct from runtime acceptance.
+26. Health/state/metrics remain evidence-backed.
+27. Implementation remains separately authorized through Build.
 
 ### Existing-intelligence / learning
 
-24. The commands do not create duplicate specialist skills solely for convenience.
-25. Reusable learning follows existing `signalproof-learn` lifecycle rather than auto-activation.
-26. Command changes themselves remain Candidate until tested, approved, and promoted.
+28. The commands do not create duplicate specialist skills solely for convenience.
+29. Reusable learning follows existing `signalproof-learn` lifecycle rather than auto-activation.
+30. Command changes themselves remain Candidate until tested, approved, and promoted.
 
 ## Candidate Scenarios
 
@@ -70,7 +74,8 @@ Minimum suggested evidence:
 - one governed agent/runtime integration build;
 - one desktop/media/application feature build;
 - one build that triggers Security or Readiness in addition to Build;
-- one build where `main` advances during the conversation and the command correctly refreshes/rebinds governance.
+- one build where `main` advances during the conversation and the command correctly refreshes/rebinds governance;
+- one generated-script or build-instruction scenario proving U+2014 em dash characters are absent from Signalproof-controlled output while protected source evidence remains byte-identical.
 
 ### `/design-git`
 
@@ -91,7 +96,8 @@ For each qualifying use, retain proportionately:
 - consequential route transitions;
 - acceptance/STOP results;
 - whether prompt duplication was reduced in practice;
-- unresolved failures/limitations.
+- unresolved failures/limitations;
+- no-em-dash verification result for generated `/build-git` output when applicable.
 
 ## Promotion Rule
 
@@ -99,7 +105,7 @@ Do not mark either command Active merely because its specification exists.
 
 Promotion requires:
 
-`DISCOVERED → CANDIDATE → TESTED → APPROVED → ACTIVE`
+`DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE`
 
 with human approval and evidence that the command reduces repeated context work without weakening Signalproof governance.
 
