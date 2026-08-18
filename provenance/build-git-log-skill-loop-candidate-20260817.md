@@ -129,6 +129,22 @@ The pattern was exercised repeatedly during a governed Radar build:
 - after each `log-skill` action, work returned directly to the next Radar `/build-git` gate;
 - milestone closeout remained distinct from skill logging.
 
+Build 3C then exercised the complete closeout-to-continuation path:
+
+1. controlled live correction acceptance passed;
+2. independent post-close persisted-state verification passed;
+3. the one-shot append lesson was strengthened but deliberately kept `CANDIDATE / NOT ACTIVE`;
+4. formal milestone closeout passed with `CLOSED / PROTECTED / WORKING` status;
+5. closeout preserved the accepted source/data heads and staged/noncanonical Build Ledger boundary;
+6. the workflow immediately returned to `/build-git` to load the next Radar define/intake requirement from Git rather than relying only on chat memory.
+
+Relevant formal closeout evidence:
+
+- Build 3C lock manifest SHA-256: `A50DD60BA5705A785130A23B92879C8116AFA7BB59DBFC8294205BE499C052D7`
+- Build 3C closeout SHA-256: `93F7274AD47A655326B59D03156FB156D4E8128AFB80A899D9A8300837AD9222`
+- staged closeout ledger SHA-256: `2D057F8A81F4B36B5E56A8543B4FC0E30527854399AA424C490DEBB8A557D855`
+- closeout transcript SHA-256: `144DC59D18BE05E327073FD126B802AB38839EC05F17A73C20B4E15AE4E01BA4`
+
 This workflow materially reduced continuity loss while preserving evidence and governance boundaries.
 
 ## Acceptance criteria before promotion
