@@ -4,7 +4,7 @@ This registry identifies public Signalproof skills and their current maturity.
 
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
-| `signalproof` | 0.1.1 | Active public baseline | Root governing contract plus mandatory meaningful-milestone closeout | Active |
+| `signalproof` | 0.1.2 | Active public baseline | Root governing contract plus mandatory meaningful-milestone closeout and standardized quarantine testing | Active |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-design` | 0.1.0 | Active public baseline | Product design governance, information architecture, dashboard clarity, operational/technical depth, brand asset slots, health/state communication, and visual acceptance | Active |
