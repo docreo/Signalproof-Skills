@@ -1,16 +1,20 @@
-# `build-git` — Operator Command V0.1 Candidate
+# `build-git` — Operator Command V0.2 Candidate
 
 **Status:** CANDIDATE / NOT ACTIVE  
-**Version:** 0.1.0-candidate  
+**Version:** 0.2.0-candidate  
 **Date:** 2026-08-18
 
 ## Purpose
 
-`build-git` is the governed Signalproof build-orchestration command for repository-backed implementation work.
+`build-git` is the governed Signalproof **next-action execution workmode** for repository-backed work.
 
 Its central rule is:
 
-> **Verify current Git, learn from prior failures, route the smallest governed build path, preserve rollback, and leave proof.**
+> **Verify current Git, learn from prior failures, route the smallest governed next action, execute only that action, preserve rollback where applicable, and leave proof.**
+
+The word `build` in this operator command does **not** mean every invocation must write code. `build-git` may route the next governed action to Research, Investigate, Query/Inspect, Evaluate, Plan, Design, Readiness, Build, Debug, Verify, Review, Security, Recovery, Release, Document, Learn, Handoff, or Closeout according to current evidence and authority.
+
+`signalproof-build` remains the implementation specialist and is loaded only when implementation is actually the routed action.
 
 `build-git` is an operator command, not a separate authority source. It coordinates current Active Signalproof skills and Git evidence. It does not grant canonical Build Ledger, release, security-change, privilege, licensing, legal, or skill-activation authority.
 
@@ -18,16 +22,58 @@ Its central rule is:
 
 For consequential work:
 
-1. **Git preflight** — refetch the current relevant repository branch/head and verify the intended base before design/build writes.
-2. **Router preflight** — load the smallest applicable Active Signalproof skills; do not load the whole suite without need.
+1. **Git preflight** — refetch the current relevant repository branch/head and verify the intended base before consequential action.
+2. **Router preflight** — determine the smallest applicable Active Signalproof route; do not assume `signalproof-build` is required.
 3. **Known Failure Preflight** — search applicable Signalproof failure intelligence and prior evidence for the tool/runtime/action/boundary before repeating costly, failure-prone, or previously failed work.
-4. **Protected-state contract** — establish baseline, rollback, forbidden-change boundaries, and current build-stream identity.
-5. **Plan/design as required** — do not let implementation silently replace product requirements.
-6. **Build** — implement the smallest authorized change surface.
-7. **Incremental verify** — test the changed boundary before stacking additional uncertain changes.
+4. **Protected-state / evidence contract** — establish baseline, rollback or non-mutation boundary, forbidden changes, current build-stream identity, and evidence needed for the routed action.
+5. **Consume the current Next Action Contract** — when `design-git` or another governed plan already produced one, execute that contract rather than silently redesigning it.
+6. **Execute the routed action** — investigate, query, inspect, research, evaluate, plan, design, test, verify, build, debug, review, recover, document, or otherwise act only within the selected route and authority.
+7. **Incremental verification** — verify the affected boundary before stacking additional uncertain actions.
 8. **Independent review/security/provenance checks as applicable.**
-9. **Git recheck before consequential publication/promotion** — detect concurrent branch/main movement rather than assuming the earlier preflight remains current.
-10. **Closeout** — preserve evidence, failures, known-failure recurrence/mitigation updates, rollback, learning, Build Ledger state, and next authority.
+9. **Git recheck before consequential write/publication/promotion** — detect concurrent branch/main movement rather than assuming the earlier preflight remains current.
+10. **Closeout / continuity update** — preserve evidence, failures, known-failure recurrence/mitigation updates, rollback or non-mutation state, learning, Build Ledger/build-stream state, and next authority when a meaningful boundary is reached.
+
+## Routed next-action classes
+
+### Read-only truth finding
+
+Examples:
+
+- `signalproof-research` — current external/source evidence;
+- `signalproof-investigate` — unknown system/build/runtime state or failure cause;
+- `signalproof-verify` — prove a specific claim;
+- repository/file/query inspection using the appropriate connected source and evidence class.
+
+Read-only action must remain read-only unless later evidence and authority establish a separate write step.
+
+### Decision / design
+
+Examples:
+
+- `signalproof-evaluate` — disposition;
+- `signalproof-plan` — bounded execution contract;
+- `signalproof-design` — product information architecture / state presentation when that is actually central;
+- `signalproof-security` — security-sensitive trust/authority review;
+- `signalproof-readiness` — prerequisite/capability state.
+
+### Actuation
+
+Examples:
+
+- `signalproof-build` — bounded implementation;
+- `signalproof-debug` — bounded defect correction;
+- `signalproof-recovery` — rollback/restoration;
+- `signalproof-release` — exact-artifact promotion when separately authorized.
+
+### Continuity / durable state
+
+Examples:
+
+- `signalproof-document`;
+- `signalproof-learn`;
+- `signalproof-handoff`;
+- `signalproof-closeout`;
+- Active operator commands such as `log-skill` when their trigger is satisfied.
 
 ## Known Failure Preflight
 
@@ -86,7 +132,7 @@ Never treat a projected C-number as reserved. Recheck canonical chronology immed
 
 ## Build-stream continuity
 
-A build may pause while unrelated Build Ledger events continue.
+A build/work stream may pause while unrelated Build Ledger events continue.
 
 `build-git` must preserve a stable build-stream identity and the stream's own last accepted anchor. On resume:
 
@@ -95,6 +141,25 @@ A build may pause while unrelated Build Ledger events continue.
 - connect the new milestone to the prior stream anchor;
 - append canonically only at the then-current global head when authorized;
 - never renumber historical work merely to make the stream appear contiguous.
+
+## Relationship to `design-git`
+
+`design-git` is the Git-backed **next-action design/routing workmode**. It produces a compact Next Action Contract based on current Git, prior evidence, known failures, protected state, and the Router.
+
+`build-git` consumes that contract and performs the routed action.
+
+This distinction prevents two common errors:
+
+- using `design-git` as if it always means UI/product design;
+- using `build-git` as if it always means code implementation.
+
+## Relationship to `log-build-git`
+
+`log-build-git` is the ordered composite:
+
+`log-skill -> design-git -> build-git`
+
+The first step preserves current state/learning, the second designs the next governed action, and the third executes that routed action.
 
 ## `build-git spawn`
 
@@ -107,6 +172,8 @@ A build may pause while unrelated Build Ledger events continue.
 If independent spawning is unavailable, execute the same role-separated protocol as logical lanes and state that accurately.
 
 Known Failure Preflight occurs **before delegation** so all subordinate roles receive the relevant failure constraints. Any new recurrence discovered by a subordinate role returns to the Orchestrator for evidence reconciliation and later closeout/update.
+
+`build-git spawn` should be used only when multi-role separation provides material value. A read-only query or simple investigation does not need three subagents merely because the command exists.
 
 ## Closeout failure-intelligence update
 
@@ -139,24 +206,27 @@ When permission is unresolved, preserve `UNKNOWN` and route to the appropriate p
 
 STOP when:
 
-- Git current state cannot be established before a consequential write;
+- Git current state cannot be established before a consequential action;
 - the same known high-confidence failure is about to be repeated under unchanged conditions;
 - the proposed mitigation violates security/licensing/legal/authority boundaries;
 - protected state must be changed outside authority;
 - a concurrent Git change invalidates the candidate base;
 - a projected Build Ledger sequence is being treated as reserved;
+- `build-git` is being forced into implementation when the evidence requires investigation/verification first;
 - an output would falsely claim independent agents ran;
 - a candidate skill/policy is being silently promoted;
 - canonical ledger/release/production authority is being inferred from the command itself.
 
 ## Promotion requirements
 
-Before Active promotion, test `build-git` on real repository-backed builds and prove:
+Before Active promotion, test `build-git` on real repository-backed work and prove:
 
-1. Git current-state recheck catches at least one concurrent-state condition or stale base;
-2. Known Failure Preflight avoids at least one repeated failure or selects a prior tested mitigation earlier;
-3. changed-condition retest is not overblocked;
-4. protected state/rollback remain intact;
-5. closeout updates recurrence intelligence without duplicate IDs;
-6. build-stream continuity survives unrelated global ledger advancement;
-7. `build-git spawn` integration does not confuse Orchestrator/subagent authority.
+1. at least one invocation correctly routes to a non-build action such as Investigate/Verify before implementation;
+2. at least one invocation correctly routes to bounded implementation when implementation is actually justified;
+3. Git current-state recheck catches at least one concurrent-state condition or stale base;
+4. Known Failure Preflight avoids at least one repeated failure or selects a prior tested mitigation earlier;
+5. changed-condition retest is not overblocked;
+6. protected state/rollback or read-only non-mutation boundary remains intact;
+7. closeout updates recurrence intelligence without duplicate IDs;
+8. build-stream continuity survives unrelated global ledger advancement;
+9. `build-git spawn` integration does not confuse Orchestrator/subagent authority.
