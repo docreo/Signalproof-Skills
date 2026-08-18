@@ -99,11 +99,42 @@ Accepted Build 1 evidence:
 - staged Build 1 ledger SHA-256: `70CD8DD00677D012649A7410435264602B40F1653F83383CE31CCEBFBACCA293`
 - Build 1 transcript SHA-256: `639CE47BDF5BB8B4E184C04C238CCB8C1842F5219A75325EA0E7228A7F685F72`
 
-This is stronger than design-only evidence because the separated domain compiled and passed runtime semantic tests while the tempting pre-existing domain remained protected.
+The owner visual gate also passed in the unified Radar shell. The page visibly separated **HARD GATES**, **UNKNOWN IS EXPLICIT**, and **OWNER AUTHORITY**, presented an honest no-sidecar empty state, exposed no write/promotion/endorsement control, and showed no material clipping, overlap, or significant inactive-state leakage.
+
+Owner visual screenshot SHA-256:
+
+`E48BF517554703AF0032373B6501970BDAD3E3B82CDBE94D732857D818A7CB65`
+
+## Formal Build 1 closeout evidence
+
+`RADAR-RD2-RATING-B1` was then closed through the governed milestone sequence and reported:
+
+- status `CLOSED / PROTECTED / WORKING`;
+- automated acceptance PASS;
+- owner visual acceptance PASS;
+- capability-domain separation PASS;
+- Build 1 UI authority READ ONLY;
+- live `capability-assessments.db` absent;
+- `radar.db`, `signals.db`, and `reviews.db` unchanged;
+- Build Ledger closeout staged/noncanonical;
+- next phase restricted to `DEFINE / INTAKE ONLY`;
+- Build 2 mutation, live capability-assessment writes, and GitHub star/unstar not authorized by closeout.
+
+Formal closeout evidence:
+
+- lock manifest SHA-256: `45909462000E67113B0F01343DD35B8D5A84E358180EBFB5519728793AD0D5AF`
+- closeout SHA-256: `60BA691C3F86497F6BEE248A0609C293E839CDC9A428D3E9B9C7DAD0CEE9477F`
+- known limitations SHA-256: `B785743C97FDEE5596033C93FF3AC2763EBAF06FE22E50F7FB6105437A382E1B`
+- lessons SHA-256: `BB0C9E5051C42047509FE10C17FE703F1AF56AC5F9519610B09C2404F2892849`
+- next-phase SHA-256: `904B8D0F0001483D94F9342F582FB6DB1C46A17E5ED6DE1DE17F846E35B8D8A2`
+- staged closeout ledger SHA-256: `664B09D403327CF26082946B77C051009629EF7731EFE20AC8EB50CE3CF6B3CB`
+- closeout transcript SHA-256: `190351CC928759D1750F76703B023FC1E16A4E4BAF569621BD6FA1F0BA31F19A`
+
+This is stronger than design-only evidence because the separated domain compiled, passed runtime semantic tests, passed owner visual acceptance, and completed formal governed closeout while the tempting pre-existing domain remained protected.
 
 ## Why Candidate
 
-The rule is now supported by one consequential design/authorization/implementation case, but it has not yet been validated across multiple materially different product domains.
+The rule is now supported by one consequential design/authorization/implementation/closeout case, but it has not yet been validated across multiple materially different product domains.
 
 Before promotion, test it against at least two additional cases where vocabulary overlap tempts model/store reuse, and verify that the rule prevents semantic coupling without causing unnecessary duplication.
 
