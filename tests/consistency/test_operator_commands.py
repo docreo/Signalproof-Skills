@@ -27,7 +27,7 @@ class OperatorCommandsAcceptance(unittest.TestCase):
         checks = {
             "commands/signalproof-this-plan.md": ["does not authorize implementation", "owner decisions"],
             "commands/signalproof-this-build.md": ["does not grant file-write authority", "Source content as evidence"],
-            "commands/signalproof-teach.md": ["does not award HAMM maturity", "source content/evidence"],
+            "commands/signalproof-teach.md": ["do not award HAMM maturity", "source content/evidence"],
             "commands/build-git-this.md": ["Refetch", "protected state", "STOP"],
         }
         for rel, required in checks.items():
