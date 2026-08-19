@@ -1,262 +1,120 @@
 ---
 name: signalproof-closeout
-description: Close a meaningful build milestone before the next development phase by protecting accepted state, recording evidence in the Build Ledger or a staged delta, preserving failures and open gates, evaluating reusable lessons for skill extraction, and explicitly authorizing the next phase. Use at phase boundaries, baseline promotions, owner acceptance, major capability completion, significant defect closure, security/governance decisions, releases, or handoffs.
+description: Close a meaningful Signalproof milestone by protecting accepted state, recording evidence canonically or as a staged delta, preserving failures and recovery, evaluating reusable learning and Skill architecture, and explicitly authorizing or deferring the next phase.
 ---
 
 # Signalproof Closeout
 
 ## Purpose
 
-`signalproof-closeout` is the milestone-closeout and continuity specialist in the Signalproof Skill Suite. It inherits the active root `signalproof` contract.
-
-Its central rule is:
+`signalproof-closeout` is the milestone-transition specialist.
 
 > **Close the milestone before opening the next one.**
 
-For meaningful milestones, the default sequence is:
+Default sequence:
 
-**Validate → Record → Extract → Govern → Authorize Next Phase**
+`VALIDATE -> RECORD -> EXTRACT -> GOVERN -> AUTHORIZE NEXT PHASE`
 
-A milestone is not complete merely because a feature works, a pull request merged, or a human says “next.” The accepted state, evidence, failures, recovery, and reusable learning must be preserved so the next phase starts from a reconstructable state rather than conversation memory.
+A feature working or a PR merging is not enough. Accepted state, evidence, failures, recovery, library/skill impacts, and next authority must remain reconstructable without conversation memory.
 
 ## Inheritance
 
-This skill inherits the root Signalproof requirements for human authority, protected state, evidence classification, verification, recovery, STOP conditions, public/private boundaries, proof, and continuity.
+Inherits the active root `signalproof` contract. Closeout does not create release, destructive, security, privilege, or canonical Build Ledger authority.
 
-It coordinates closeout. It does not create release authority, destructive authority, security clearance, or permission to mutate an unverified canonical Build Ledger.
+## Trigger
 
-## Milestone Trigger
+Use full closeout at meaningful boundaries such as owner acceptance, protected baseline designation, RD/phase transition, release promotion, major capability completion, significant defect closure, architecture/governance/security/recovery decision, or transfer where the next work depends on exact current state.
 
-Use full milestone closeout when work reaches a meaningful boundary such as:
+Micro-commits do not each require full closeout.
 
-- owner acceptance of a working candidate;
-- designation of a protected or active baseline;
-- RD/phase transition;
-- release candidate or release promotion;
-- completion of a major capability;
-- closure of a significant defect;
-- architecture/governance boundary decision;
-- security, privacy, licensing, or recovery decision;
-- transfer/handoff to another builder, account, model, or team;
-- a point where the next work depends on the current state being remembered accurately.
+## Contract
 
-Ordinary micro-commits and intermediate edits do not each require full closeout unless explicitly designated as a milestone.
-
-## Closeout Contract
-
-1. **Declare the milestone.** State project, build/release/milestone identity, owner, objective achieved, and exact status.
-2. **Protect accepted state.** Identify parent/baseline, rollback/recovery, hashes/manifests where practical, persistent data, and forbidden-change boundaries.
-3. **Gather actual evidence.** Record repository/branch/commit/PR/tag, changed files, tests actually run, runtime results, owner observations, artifact hashes, dependencies/licenses where relevant, and known limitations.
-4. **Preserve evidence classes.** Static, compile, automated, runtime, owner-observed, security, signing, and release acceptance remain separate.
-5. **Update the Build Ledger safely.** Verify the actual canonical ledger identity/head/chain/projection before append. Never hand-edit canonical JSONL or SQLite.
-6. **Stage when canonical head is unavailable.** Produce a clearly labeled noncanonical delta and identify the last verified checkpoint instead of inventing a sequence/hash.
-7. **Preserve failures and uncertainty.** Later success may supersede state but must not erase failed attempts, blockers, deferred gates, disagreements, or unverified claims.
-8. **Extract reusable learning.** Ask whether the milestone created a generalizable lesson, test, policy, checklist, or skill candidate.
-9. **Govern reusable capability.** A discovered lesson is not automatically Active. It must follow candidate/testing/approval governance.
-10. **Close with explicit next-phase authority.** Begin the next phase only after closeout passes or the human authority explicitly records a justified deferral.
+1. Declare project/milestone, objective achieved, owner, exact status, and proposed next phase.
+2. Protect accepted state, parent/baseline, rollback/recovery, persistent data, and forbidden-change boundaries.
+3. Gather actual evidence: repository/ref, changed files, tests actually run, runtime/owner observations, hashes/manifests, dependencies/licenses where relevant.
+4. Keep static, compile, automated, runtime, visual, owner-observed, security, signing, and release evidence distinct.
+5. Verify canonical Build Ledger identity/head/count/chain/projection and deduplicate stable event IDs before any append. Never hand-edit canonical JSONL/SQLite.
+6. When canonical state is unavailable/unverifiable, preserve a clearly labeled `STAGED / NONCANONICAL / PENDING CHAIN-SAFE INGESTION` delta without invented sequence/hash.
+7. Preserve failures, blockers, uncertainty, and deferred gates; later success may supersede but not erase them.
+8. Evaluate reusable learning and choose the smallest durable mechanism.
+9. When Skills changed, run Skill Atomicity/Context Budget checks before promotion.
+10. Govern reusable capability through the lifecycle; discovery or successful use is not automatic activation.
+11. Explicitly authorize or defer the next phase.
 
 ## Workflow
 
-### 1. Declare Milestone
+### 1. Declare and Freeze
 
-Capture:
+Capture product/project, milestone identity, current status, owner, source ref/package, accepted baseline, rollback targets, persistent data, security/permission boundary, and next proposed phase.
 
-- project/product;
-- milestone/release/build identity;
-- human owner;
-- objective achieved;
-- current status: candidate, accepted, active, blocked, reverted, retired, etc.;
-- next proposed phase.
+### 2. Gather Proof
 
-### 2. Freeze / Protect State
+Record only evidence needed to reconstruct the milestone. Do not copy secrets, customer data, private reasoning, or unnecessary local/private details into public artifacts.
 
-Identify:
+### 3. Determine Ledger Path
 
-- source ref / commit / package;
-- accepted baseline;
-- protected rollback target(s);
-- artifact hashes/manifests where practical;
-- customer/user data that must survive;
-- security and permission boundaries;
-- active configuration/runtime identity where relevant.
+**Canonical path:** verify actual working-ledger identity, event count/head, hash chain, SQLite projection, and deduplication; append only through approved chain-safe tooling; reverify afterward.
 
-A temporary backup is not automatically an approved rollback.
+**Staged path:** when any canonical prerequisite is unavailable, create a staged delta with stable identities and enough evidence for later deduplicated ingestion. Do not fabricate chronology.
 
-### 3. Gather Evidence
+### 4. Preserve Failure and Uncertainty
 
-Collect only evidence relevant to reconstructing the milestone:
+Do not rewrite failed candidates away, convert pending to PASS, or claim security/signing/release evidence that was not performed.
 
-- repository, branch, commits, PRs, tags;
-- changed-file inventory;
-- test names and actual results;
-- compile/runtime/visual/owner acceptance distinctions;
-- artifact hashes;
-- SBOM/license/signing status when applicable;
-- failures and lessons;
-- open blockers and deferred work;
-- handoff/report artifacts.
+### 5. Extract Learning
 
-Do not copy secrets, raw credentials, customer data, private reasoning, or unnecessary conversation content into evidence.
+Ask what solved the problem, what failed/wasted time, what evidence proved success, what should STOP next time, what generalizes across tools/vendors/models, and whether the right durable output is documentation, regression test, checklist/gate, policy, loop, schema, Skill Candidate, deprecation, or research question.
 
-### 4. Determine Ledger Path
+### 6. Skill Architecture Check
 
-#### Canonical append path
+When a `SKILL.md` was created or materially changed:
 
-Use only when the actual current private Build Ledger is available and can be verified.
+- record exact UTF-8 bytes before/after where available;
+- classify HEALTHY / WATCH / REVIEW / OVER LIMIT;
+- at 12,000–14,999 bytes require decomposition/conciseness review before material expansion;
+- at 15,000+ bytes block promotion/material expansion until below limit;
+- assess responsibility cohesion even below the threshold;
+- remove duplicated root/other-Skill doctrine where safe;
+- prefer independently routeable specialists, loops, schemas, policies, tests, registries, or documentation over an ever-growing Skill;
+- verify Router/registry/README/test consequences of decomposition.
 
-Before append:
+Do not meet the byte budget by deleting required governance.
 
-1. locate the canonical `working-ledger` pair;
-2. verify ledger ID;
-3. verify event count and current head;
-4. verify sequence/hash chain;
-5. verify SQLite projection;
-6. deduplicate proposed stable event IDs.
+### 7. Govern
 
-Then append through approved Build Ledger tooling and re-run chain/projection verification.
+Reusable capability follows:
 
-#### Staged path
+`DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED`
 
-Use when the canonical head is unavailable, inaccessible, stale, or cannot be verified.
+Public promotion must also preserve public/private boundaries and supersession history.
 
-Required behavior:
+### 8. Close
 
-- do not assign a fake canonical sequence;
-- do not invent a new canonical event hash;
-- do not hand-edit JSONL/SQLite;
-- create a staged milestone delta;
-- identify the last verified checkpoint;
-- mark the record `STAGED / NONCANONICAL / PENDING CHAIN-SAFE INGESTION`;
-- preserve enough evidence for later deduplicated ingestion.
+Report outcome, changed/protected state, proof, failures/lessons, rollback/recovery, ledger status, Skill/library decision, open gates, and next-phase authority.
 
-### 5. Preserve Failure / Uncertainty
+## Status
 
-Record material failures that influenced the current state.
-
-Do not:
-
-- rewrite a failed candidate as though it never existed;
-- remove blockers to make a promotion look cleaner;
-- convert a pending gate into PASS;
-- describe security/signing/release clearance that was not actually performed.
-
-### 6. Extract Reusable Learning
-
-Ask:
-
-1. What problem was solved?
-2. Is it likely to recur?
-3. Is the solution generalizable?
-4. What authority was required?
-5. What protected state mattered?
-6. What failed or wasted time?
-7. What test proved success?
-8. What should cause STOP next time?
-9. Can the lesson survive a model/tool/vendor change?
-10. Should it become documentation, a regression test, a policy, or a formal skill?
-
-Classify as:
-
-- no reusable lesson;
-- documentation update;
-- test/regression update;
-- Skill Candidate;
-- governance/policy candidate.
-
-### 7. Govern Skill / Policy Changes
-
-Use the Signalproof lifecycle:
-
-**Discovered → Candidate → Tested → Approved → Active → Deprecated/Retired**
-
-Automatic lesson detection must not mean automatic activation.
-
-For public skills, remove private paths, credentials, customer data, private reasoning, and proprietary internals before publication.
-
-### 8. Close the Milestone
-
-Report:
-
-- **Outcome**
-- **Changed**
-- **Protected**
-- **Proof**
-- **Failures / lessons**
-- **Rollback / recovery**
-- **Ledger status** — canonical append or staged delta
-- **Skill extraction decision**
-- **Open gates**
-- **Next phase authorization**
-
-## Closeout Status
-
-Return one of:
-
-- **CLOSED / NEXT PHASE AUTHORIZED** — closeout complete and required authority exists.
-- **CLOSED / NEXT PHASE DEFERRED** — closeout complete but next work intentionally deferred.
-- **STAGED / PENDING LEDGER INGESTION** — milestone evidence preserved safely but canonical append awaits local-head verification.
-- **AWAITING OWNER ACCEPTANCE** — technical evidence exists but required human acceptance is missing.
-- **BLOCKED** — required state/evidence/ledger access prevents responsible closeout.
-- **STOP** — proceeding would hide failure, lose recovery, expose private data, or mutate an unverified canonical ledger.
+- **CLOSED / NEXT PHASE AUTHORIZED**
+- **CLOSED / NEXT PHASE DEFERRED**
+- **STAGED / PENDING LEDGER INGESTION**
+- **AWAITING OWNER ACCEPTANCE**
+- **BLOCKED**
+- **STOP**
 
 ## PASS Criteria
 
-Closeout passes when:
-
-- current state can be reconstructed without conversation memory;
-- protected state/rollback is explicit where applicable;
-- evidence level is honest;
-- Build Ledger continuity is canonical or explicitly staged;
-- material failures/open gates are preserved;
-- reusable lessons were evaluated for skill/test/policy extraction;
-- the next builder can identify the correct starting state;
-- next phase is explicitly authorized or deliberately deferred.
+Closeout passes only when current state is reconstructable, protected state/recovery is explicit where applicable, evidence classes are honest, ledger continuity is canonical or explicitly staged, material failures/open gates survive, reusable learning and Skill architecture were evaluated, and next-phase authority is explicit.
 
 ## STOP Conditions
 
-Stop phase transition when:
-
-- canonical ledger mutation is attempted without verifying the current head;
-- the accepted parent/baseline cannot be identified;
-- required owner acceptance is missing;
-- a failure is being hidden by promotion;
-- rollback/recovery would be lost;
-- private/secrets content would enter public evidence;
-- a proposed skill is being promoted without governance/testing;
-- the evidence does not support the success claim being made.
-
-## Standard Phase Boundary
-
-```text
-WORK
-  ↓
-VALIDATE
-  ↓
-MILESTONE REACHED
-  ↓
-PROTECT CURRENT STATE
-  ↓
-UPDATE BUILD LEDGER
-  ↓
-EXTRACT LESSON / SKILL CANDIDATE
-  ↓
-GOVERN + TEST REUSABLE CAPABILITY
-  ↓
-CLOSE OPEN GATES / RECORD DEFERRALS
-  ↓
-AUTHORIZE NEXT PHASE
-```
-
-## Completion Criteria
-
-A Signalproof milestone is closed when the accepted state, evidence, failures, recovery, ledger continuity, reusable learning decision, open gates, and next-phase authority are explicit enough that the project can continue without reconstructing the milestone from chat history.
+STOP when canonical ledger mutation would occur without verified head/chain/projection, accepted baseline cannot be identified, material failures would be hidden, recovery would be lost, private data would cross a public boundary, a Skill at/over 15,000 bytes would be promoted without refactor, or the next phase would begin without required authority.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-closeout`
-- **Version:** `0.1.0`
+- **Version:** `0.2.0`
 - **Maturity:** Active public baseline
-- **Parent:** `signalproof` 0.1.0+
-- **Domain:** Milestone closeout, Build Ledger continuity, phase transition, skill extraction, institutional learning
+- **Parent:** `signalproof` 0.1.1+
+- **Domain:** Milestone closeout, Build Ledger continuity, Skill/library governance, phase transition
 - **Created by:** Doc Reo / Signalproof
