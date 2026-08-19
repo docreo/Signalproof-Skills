@@ -1,0 +1,20 @@
+version: 0.1
+status: RD1_CANDIDATE
+purpose: reusable bounded iteration protocols; loops never grant authority
+
+defaults:
+  evidence_each_iteration: true
+  explicit_stop_required: true
+  protected_state_required_when_consequential: true
+  governor_required_for_side_effects: true
+
+loops:
+  - {id: SP-LOOP-DEBUG, file: SP-LOOP-DEBUG.md, principal: signalproof-debug, default_max_iterations: 3}
+  - {id: SP-LOOP-BUILD-VERIFY, file: SP-LOOP-BUILD-VERIFY.md, principal: signalproof-build, default_max_iterations: 3}
+  - {id: SP-LOOP-RESEARCH, file: SP-LOOP-RESEARCH.md, principal: signalproof-research, default_max_iterations: 4}
+  - {id: SP-LOOP-INGEST, file: SP-LOOP-INGEST.md, principal: signalproof-knowledge-ingest, default_max_iterations: 3}
+  - {id: SP-LOOP-RECOVERY, file: SP-LOOP-RECOVERY.md, principal: signalproof-recovery, default_max_iterations: 2}
+  - {id: SP-LOOP-AGENT-ACTION, file: SP-LOOP-AGENT-ACTION.md, principal: signalproof-router, default_max_iterations: 1}
+  - {id: SP-LOOP-LEARN, file: SP-LOOP-LEARN.md, principal: signalproof-learn, default_max_iterations: 2}
+  - {id: SP-LOOP-OPTIMIZE, file: SP-LOOP-OPTIMIZE.md, principal: signalproof-evaluate, default_max_iterations: 5}
+  - {id: SP-LOOP-RETRY, file: SP-LOOP-RETRY.md, principal: signalproof-known-errors, default_max_iterations: 3}
