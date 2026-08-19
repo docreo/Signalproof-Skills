@@ -1,73 +1,56 @@
 # Signalproof Library
 
-**Status:** RD1 / architecture candidate  
+**Status:** RD1 implementation candidate  
 **Owner:** Doc Reo  
-**Authority:** This directory defines the proposed library architecture. Existing Active skills remain governed by their current accepted contracts until decomposition candidates are tested and promoted.
+**Authority:** On a branch/PR this remains Candidate public state. Promotion to `main` requires repository acceptance and owner-authorized merge. Private Build Ledger chronology remains separately governed.
 
 ## Purpose
 
-The **Signalproof Library** is the governed capability library for Signalproof. It is broader than a collection of long prompt files. It organizes small, routeable operating contracts, reusable loops, policies, patterns, schemas, registries, tests, and evidence so a human or agent can load only the minimum context needed for the current job.
-
-Core rule:
+The **Signalproof Library** is the governed capability library for Signalproof. It organizes small routeable operating contracts, reusable bounded loops, compact registries, deterministic validators, tests, provenance, and supporting knowledge so a human or agent can load only the minimum context needed for a job.
 
 > **Grow the library, not the file.**
 
-A capability should become more precise as Signalproof grows, not larger merely because more lessons have accumulated.
+A capability should become more precise as Signalproof grows, not larger merely because more lessons accumulate.
 
-## Two primary libraries
+## Primary libraries
 
-### 1. Skill Library
+### Skill Library
 
-The existing `skills/` tree remains the executable specialist library.
+`skills/` contains routeable specialist capability contracts. A Skill owns one coherent operating responsibility and inherits universal Signalproof governance from the root contract rather than repeating it.
 
-A Skill is a bounded operating contract for one coherent capability. Skills inherit universal Signalproof governance from the root contract and should not duplicate that doctrine unnecessarily.
+RD1 decomposes oversized categories into compact coordinator/specialist families:
 
-Examples:
+- Security -> Secrets, Permissions, Supply Chain, Network, Execution Security.
+- Recovery -> Rollback, Restore, Cleanup, Recovery Continuity.
+- Design -> UI Polish, Accessibility.
+- Router -> compact registry-driven routing kernel.
+- Candidate Knowledge -> Ingest, Provenance, Transform, Package.
+- Candidate Failure Intelligence -> compact recurrence coordinator plus Retry Loop/registry model.
 
-- `signalproof-build`
-- `signalproof-debug`
-- `signalproof-research`
-- `signalproof-security`
-- future narrow specialists such as secrets, permissions, supply-chain review, UI polish, or loop execution.
+### Loop Library
 
-### 2. Loop Library
+`loops/` contains reusable bounded iteration protocols. A Loop never grants authority. See [`../loops/LOOP-REGISTRY.yaml`](../loops/LOOP-REGISTRY.yaml).
 
-The new `loops/` tree stores reusable bounded iteration protocols.
+RD1 defines Candidate protocols for Debug, Build/Verify, Research, Ingest, Recovery, Agent Action, Learn, Optimize, and Retry.
 
-A Loop is not a general Skill and does not grant authority. It defines a repeatable cycle such as measure -> act -> verify -> stop. The Router may select a loop, but the Signalproof Governor must determine whether the loop may run with the proposed permissions, risk, cost, and protected state.
+## Supporting layers
 
-Examples:
+- `library/` — architecture, budgets, inventory, compact capability metadata.
+- `skills/` — Active routeable capability contracts.
+- `skills/candidates/` — capability not yet Active.
+- `loops/` — bounded iteration protocols.
+- `commands/` — operator shorthand coordinating skills.
+- `tests/` — acceptance/consistency evidence.
+- `tools/` — deterministic validation/maintenance tooling.
+- `provenance/` — promotion, supersession, architecture evidence.
+- `research/` — external evidence; research is not operating authority.
+- `wiki/` — human explanation; wiki prose is not automatically executable doctrine.
 
-- debug loop
-- research loop
-- build/test loop
-- optimization loop
-- recovery loop
-- ingestion loop
-- agent-action loop
-- learning loop
-
-## Supporting library layers
-
-The Signalproof Library may also contain:
-
-- `library/` — architecture, budgets, decomposition maps, manifests, and governance.
-- `skills/` — routeable specialist capability contracts.
-- `loops/` — reusable bounded iteration protocols.
-- `commands/` — operator shorthand that coordinates skills but is not itself a specialist skill.
-- `tests/` — acceptance and consistency evidence.
-- `tools/` — deterministic validators and library maintenance tooling.
-- `provenance/` — promotion, supersession, and architectural decision evidence.
-- `research/` — external intake and comparison evidence; research is not operating authority.
-- `wiki/` — human-readable explanatory material; wiki prose is not automatically executable doctrine.
-
-Future layers may include `patterns/`, `policies/`, `schemas/`, and machine-readable registries when their contracts are sufficiently stable.
+Future stable needs may justify `patterns/`, `policies/`, `schemas/`, or additional machine-readable registries.
 
 ## Context-budget principle
 
-The number of files in the library is not the primary token cost. The loaded context is.
-
-The desired runtime pattern is:
+The number of files is not the primary token cost. Loaded context is.
 
 ```text
 ROOT SIGNALPROOF CONTRACT
@@ -81,92 +64,72 @@ COMPACT CAPABILITY INDEX
 TASK EVIDENCE
 ```
 
-The undesired pattern is loading every related skill because a category name happens to match.
+Avoid loading an entire family when one specialist is sufficient.
 
 ## Skill size budget
 
-`SKILL.md` is measured as exact UTF-8 bytes.
+Every `SKILL.md` is measured as exact UTF-8 bytes.
 
 | Size | Status | Required action |
 |---:|---|---|
 | 0-9,999 | HEALTHY | normal governance |
-| 10,000-11,999 | WATCH | monitor growth and duplication |
-| 12,000-14,999 | REVIEW | decomposition/conciseness review required before material expansion |
-| 15,000+ | OVER LIMIT | block promotion or material expansion until refactored below 15,000 bytes |
+| 10,000-11,999 | WATCH | monitor growth/duplication |
+| 12,000-14,999 | REVIEW | decomposition/conciseness review before material expansion |
+| 15,000+ | OVER LIMIT | block promotion/material expansion until refactored below ceiling |
 
-15 KB is a ceiling, not a target.
+15 KB is a ceiling, not a target. CI enforces the hard limit through `tools/check_skill_budget.py`.
 
 ## Atomicity principle
 
-Size alone does not decide architecture. A Skill should be decomposed when it contains independently routeable responsibilities even if it is still below the ceiling.
+Size alone does not decide architecture. Review decomposition whenever responsibilities are independently routeable, sections apply only to distinct request classes, one section can evolve independently, doctrine duplicates another owner, or lazy loading would materially reduce context.
 
-Ask:
-
-1. Does the Skill perform more than one independently routeable job?
-2. Are large sections relevant only to certain request classes?
-3. Can a section evolve independently without changing the parent capability contract?
-4. Is doctrine duplicated from the root contract or another Skill?
-5. Would runtime context improve if the model could load only this portion?
-
-Several YES answers justify decomposition review.
+Do not meet the budget by deleting required authority, evidence, STOP, security, recovery, or lifecycle semantics.
 
 ## Routing principle
 
-The Router should become smaller as the library grows.
-
-The Router should not contain full descriptions of every Skill. It should consult compact registry metadata and select the minimum applicable capability set.
+The Router should become smaller as the library grows. Detailed specialist doctrine remains inside each specialist; Router consults compact metadata in `CAPABILITY-REGISTRY.yaml`.
 
 ```text
 INTENT
-  -> RISK / AUTHORITY
+  -> EVIDENCE STATE / RISK / AUTHORITY
   -> CAPABILITY INDEX
   -> PRINCIPAL SKILL
   -> OPTIONAL SPECIALIST / LOOP
-  -> GOVERNOR
+  -> GOVERNOR when actuation/side effects require it
   -> EXECUTION
 ```
 
 ## Authority boundaries
 
-- A Skill defines how to perform a bounded capability.
-- A Loop defines how to iterate a bounded process.
-- The Router selects applicable capability.
-- The Governor decides whether proposed action is authorized.
-- The Build Ledger records what actually happened.
-- Learn decides what reusable capability may be extracted.
-- The lifecycle governs whether a candidate becomes Active.
+- Skill: how to perform one bounded capability.
+- Loop: how to iterate a bounded process.
+- Router: which capability applies.
+- Governor: whether proposed action is authorized.
+- Build Ledger: what actually happened.
+- Learn: what reusable capability may be extracted.
+- Lifecycle: whether a Candidate becomes Active.
 
-```text
-DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED
-```
+`DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED`
 
-No file becomes Active merely because it was added to the library.
+A file, loop, branch, or PR never becomes authority merely by existing.
 
 ## Build Ledger integration
 
-Meaningful Skill events should record, where applicable:
+Meaningful Skill events should record when applicable: Skill/version, UTF-8 bytes before/after, budget status, atomicity/decomposition decision, extracted/new Skills, duplicate doctrine removed, routing changes, tests, protected behavior, and supersession/rollback.
 
-- Skill identity and version;
-- UTF-8 bytes before and after;
-- budget status before and after;
-- decomposition review result;
-- extracted/new Skill candidates;
-- duplicate doctrine removed;
-- routing changes;
-- tests run;
-- protected behavior;
-- supersession/rollback path.
+`log-skill` and Closeout now require a Skill Architecture Check when Skills materially change. If the private canonical Build Ledger identity/head/chain/projection cannot be verified, preserve staged/noncanonical evidence instead of fabricating chronology.
 
-If the private canonical Build Ledger head cannot be verified, stage the library milestone rather than fabricating canonical chronology.
+## RD1 acceptance gates
 
-## RD1 objective
+RD1 is ready for promotion only when:
 
-RD1 starts by:
+1. every Active/Candidate `SKILL.md` is below 15,000 bytes;
+2. suite registry/README/Skill identities and versions are consistent;
+3. compact capability registry covers every Active Skill exactly;
+4. every registered loop has a file, STOP section, and evidence contract;
+5. CI runs fixture tests, suite consistency, Skill budget, and Library consistency successfully;
+6. oversized Active families preserve their core responsibilities through coordinator/specialist decomposition;
+7. Candidate Knowledge and Failure Intelligence remain non-Active;
+8. no canonical private Build Ledger append is claimed without live chain verification.
 
-1. establishing the 15,000-byte ceiling and atomicity rules;
-2. creating deterministic budget tooling;
-3. inventorying all current Skills;
-4. designing decomposition for over-limit and near-limit Skills;
-5. creating the first Loop Library registry;
-6. moving toward registry-driven lazy loading;
-7. preserving current Active behavior until replacement candidates pass acceptance.
+See [`SKILL-INVENTORY-RD1.md`](SKILL-INVENTORY-RD1.md) for measured state.
