@@ -5,12 +5,15 @@ This registry identifies public Signalproof skills and their current maturity. `
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract and meaningful-milestone continuity | Active |
-| `signalproof-router` | 0.2.0 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
+| `signalproof-router` | 0.2.1 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
 | `signalproof-known-errors` | 0.1.0 | Active public baseline | Repeatable-error lookup and prevention preflight | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | External evidence and source-grounded research | Active |
 | `signalproof-evaluate` | 0.1.0 | Active public baseline | Evidence-to-disposition evaluation | Active |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and state localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Bounded execution planning and acceptance design | Active |
+| `signalproof-grill` | 0.1.0 | Active public baseline | Decision hardening and ambiguity reduction through evidence-aware frontier interviewing | Active |
+| `signalproof-grill-with-docs` | 0.1.0 | Active public baseline | Decision hardening with governed glossary and ADR capture | Active |
+| `signalproof-teach` | 0.1.0 | Active public baseline | Mission-grounded source-backed teaching and durable skill development | Active |
 | `signalproof-design` | 0.2.0 | Active public baseline | Product information architecture and state communication | Active |
 | `signalproof-ui-polish` | 0.1.0 | Active public baseline | UI readability, wrapping, responsive finish and micro-interactions | Active |
 | `signalproof-accessibility` | 0.1.0 | Active public baseline | Accessible interaction and presentation | Active |
@@ -50,3 +53,4 @@ No untested specialist names are declared as planned Active capability here. Fut
 6. Active `SKILL.md` files must remain below 15,000 exact UTF-8 bytes. Files at 12,000–14,999 bytes require decomposition/conciseness review before material expansion.
 7. New or decomposed skills follow `DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED`.
 8. Deprecated or retired capability remains traceable through history/provenance.
+9. External skill collections are inspiration/evidence only until selectively adapted and promoted through Signalproof governance; upstream runtime invocation is not implied by provenance.

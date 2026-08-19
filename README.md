@@ -9,7 +9,7 @@ Signalproof Skills is the public operating-skill library for Signalproof. It pro
 
 ## Signalproof Library
 
-The repository now follows the **Signalproof Library** architecture:
+The repository follows the **Signalproof Library** architecture:
 
 - [`library/README.md`](library/README.md) — architecture and authority boundaries.
 - [`library/SKILL-BUDGET.md`](library/SKILL-BUDGET.md) — Skill Atomicity and Context Budget.
@@ -53,12 +53,15 @@ ROOT SIGNALPROOF CONTRACT
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.0 | Registry-driven minimum-context routing |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.1 | Registry-driven minimum-context routing |
 | [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Repeatable-error lookup/prevention preflight |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | External evidence and source-grounded research |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Evidence-to-disposition evaluation |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Unknown-state and root-cause investigation |
 | [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Bounded execution planning |
+| [`signalproof-grill`](skills/signalproof-grill/SKILL.md) | 0.1.0 | Evidence-aware decision hardening and ambiguity reduction |
+| [`signalproof-grill-with-docs`](skills/signalproof-grill-with-docs/SKILL.md) | 0.1.0 | Decision hardening with governed glossary and ADR capture |
+| [`signalproof-teach`](skills/signalproof-teach/SKILL.md) | 0.1.0 | Mission-grounded source-backed teaching and durable skill development |
 | [`signalproof-design`](skills/signalproof-design/SKILL.md) | 0.2.0 | Product information architecture and state communication |
 | [`signalproof-ui-polish`](skills/signalproof-ui-polish/SKILL.md) | 0.1.0 | Wrapping, readability, responsive finish and micro-interactions |
 | [`signalproof-accessibility`](skills/signalproof-accessibility/SKILL.md) | 0.1.0 | Accessible interaction and presentation |
@@ -91,16 +94,19 @@ The authoritative public status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md)
 The Router chooses by objective and evidence state, not by keyword alone. For narrow work it should route directly to a narrow specialist rather than load its entire coordinator family.
 
 ```text
-API key exposure          -> signalproof-secrets
-OAuth/ACL privilege       -> signalproof-permissions
-new dependency trust      -> signalproof-supply-chain
-external data flow        -> signalproof-network
-prompt/code injection     -> signalproof-execution-security
-rollback selection        -> signalproof-rollback
-actual restoration        -> signalproof-restore
-partial-operation cleanup -> signalproof-cleanup
-UI clipping/wrapping      -> signalproof-ui-polish
-keyboard/screen-reader    -> signalproof-accessibility
+stress-test a plan         -> signalproof-grill
+stress-test + glossary/ADR -> signalproof-grill-with-docs
+teach/learn a capability   -> signalproof-teach
+API key exposure           -> signalproof-secrets
+OAuth/ACL privilege        -> signalproof-permissions
+new dependency trust       -> signalproof-supply-chain
+external data flow         -> signalproof-network
+prompt/code injection      -> signalproof-execution-security
+rollback selection         -> signalproof-rollback
+actual restoration         -> signalproof-restore
+partial-operation cleanup  -> signalproof-cleanup
+UI clipping/wrapping       -> signalproof-ui-polish
+keyboard/screen-reader     -> signalproof-accessibility
 ```
 
 Coordinators remain useful when several specialist domains materially interact.
@@ -112,7 +118,7 @@ REQUEST
   -> ROUTER
   -> KNOWN-ERROR PREFLIGHT when consequential/failure-prone
   -> RESEARCH / EVALUATE / INVESTIGATE
-  -> PLAN / DESIGN / READINESS
+  -> GRILL / PLAN / DESIGN / READINESS / TEACH as needed
   -> BUILD / DEBUG / RECOVERY
   -> VERIFY / REVIEW / SECURITY as applicable
   -> RELEASE / DOCUMENT

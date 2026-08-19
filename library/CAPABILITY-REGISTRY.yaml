@@ -1,4 +1,4 @@
-version: 0.2
+version: 0.3
 status: RD1_CANDIDATE
 purpose: >-
   Compact routing metadata for the Signalproof Library. This registry helps the
@@ -20,6 +20,9 @@ capabilities:
   - {id: signalproof-evaluate, state: ACTIVE, kind: skill, purpose: convert evidence into bounded disposition, triggers: [evaluate, adopt, adapt, integrate, reject, watch]}
   - {id: signalproof-investigate, state: ACTIVE, kind: skill, purpose: establish unknown state or cause, triggers: [investigate, diagnose state, root cause]}
   - {id: signalproof-plan, state: ACTIVE, kind: skill, purpose: define bounded execution contract, triggers: [plan, scope, acceptance, sequence]}
+  - {id: signalproof-grill, state: ACTIVE, kind: skill, purpose: harden decisions and expose unresolved assumptions before action, triggers: [grill, stress-test decision, challenge plan, ambiguity hardening]}
+  - {id: signalproof-grill-with-docs, state: ACTIVE, kind: composition_skill, purpose: harden decisions while capturing resolved terminology and durable ADR-worthy tradeoffs, triggers: [grill with docs, glossary while planning, adr while designing], specialists: [signalproof-grill, signalproof-document]}
+  - {id: signalproof-teach, state: ACTIVE, kind: skill, purpose: mission-grounded source-backed durable teaching and skill development, triggers: [teach, learn topic, training, hamm advancement]}
 
   - id: signalproof-design
     state: ACTIVE
