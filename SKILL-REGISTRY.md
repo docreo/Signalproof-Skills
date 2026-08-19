@@ -34,7 +34,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-document` | 0.1.0 | Active public baseline | Durable evidence-bound documentation | Active |
 | `signalproof-learn` | 0.1.0 | Active public baseline | Governed institutional learning and candidate extraction | Active |
 | `signalproof-handoff` | 0.1.0 | Active public baseline | Conversation-boundary continuity | Active |
-| `signalproof-closeout` | 0.1.0 | Active public baseline | Milestone closeout and Build Ledger continuity | Active |
+| `signalproof-closeout` | 0.2.0 | Active public baseline | Milestone closeout, Build Ledger continuity, and Skill/library architecture governance | Active |
 
 ## Planned Specialist Lanes
 
