@@ -25,6 +25,9 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-evaluate` - evidence-to-disposition decision;
 - `signalproof-investigate` - unknown state/root-cause localization;
 - `signalproof-plan` - bounded execution contract;
+- `signalproof-grill` - decision hardening and ambiguity reduction before action;
+- `signalproof-grill-with-docs` - decision hardening plus governed glossary/ADR capture;
+- `signalproof-teach` - mission-grounded source-backed teaching and skill development;
 - `signalproof-design` - product information/state architecture;
 - `signalproof-ui-polish` - interface detail, readability, spacing, wrapping, motion, responsive finish;
 - `signalproof-accessibility` - accessible interaction and presentation requirements;
@@ -55,7 +58,7 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 ## Compact Routing Contract
 
 1. Read the actual objective; do not route from a keyword alone.
-2. Establish whether the request is read-only, decision/design, actuation, or continuity work.
+2. Establish whether the request is read-only, decision/design, teaching, actuation, or continuity work.
 3. Use the compact capability registry as routing metadata when available; metadata informs selection but is not authority.
 4. Select one principal skill whenever possible.
 5. Add at most two narrow specialists/loops by default; exceed this only when the task materially crosses independent boundaries.
@@ -76,10 +79,13 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 - Verify: proof of a specific material claim.
 - Known Errors: prior supported failure/mitigation match.
 
-### Decision and design
+### Decision, design, and learning
 
 - Evaluate: disposition from established evidence.
 - Plan: scope, sequencing, authority, acceptance, recovery.
+- Grill: stress-test unresolved decisions before execution.
+- Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs; repository writes still require authority.
+- Teach: source-backed progressive learning tied to a human mission; teaching does not award maturity/certification/authority.
 - Design: product information/state architecture.
 - UI Polish: micro-layout/readability/responsive/interaction finish.
 - Accessibility: keyboard, assistive technology, contrast, scalable/alternative interaction.
@@ -148,16 +154,19 @@ Avoid loading entire capability families merely because the request mentions a b
 
 ## Sequencing Examples
 
-- `known-errors -> investigate -> debug -> verify`
-- `research -> evaluate`
-- `plan -> design -> build -> verify/review`
-- `design -> ui-polish/accessibility -> build`
-- `security -> narrow specialist(s) -> verify`
-- `rollback -> restore -> verify`
-- `cleanup -> recovery-continuity -> verify`
-- `release -> document -> closeout`
-- `closeout -> learn` when reusable learning is material
-- `handoff -> fresh session -> continue` when the milestone itself remains open
+- `grill -> plan -> build` when unresolved owner decisions must be hardened first;
+- `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
+- `teach -> reassess/readiness` when human capability must grow before more autonomy;
+- `known-errors -> investigate -> debug -> verify`;
+- `research -> evaluate`;
+- `plan -> design -> build -> verify/review`;
+- `design -> ui-polish/accessibility -> build`;
+- `security -> narrow specialist(s) -> verify`;
+- `rollback -> restore -> verify`;
+- `cleanup -> recovery-continuity -> verify`;
+- `release -> document -> closeout`;
+- `closeout -> learn` when reusable learning is material;
+- `handoff -> fresh session -> continue` when the milestone itself remains open.
 
 These are patterns, not mandatory conveyor belts.
 
@@ -167,9 +176,10 @@ STOP when:
 
 - current repository/system state cannot be established for consequential work;
 - a known high-confidence failure would be repeated under unchanged conditions;
-- a route would silently expand privilege, security, release, publication, or ledger authority;
+- a route would silently expand privilege, security, release, publication, documentation-write, or ledger authority;
 - non-Active candidate capability would be treated as canonical Active capability;
 - unresolved truth is being sent directly to implementation or authoritative documentation;
+- a teaching result is being treated as certification, HAMM maturity, or operational permission without the required gate;
 - the route would load broad families when a narrow specialist is sufficient and context cost is material;
 - a selected loop lacks bounded success/failure/STOP conditions;
 - protected state or rollback would be weakened outside authority.
@@ -182,7 +192,7 @@ Routing is complete when the minimum justified capability set is selected, known
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.2.0`
+- **Version:** `0.2.1`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
