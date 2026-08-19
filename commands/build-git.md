@@ -1,7 +1,7 @@
-# `build-git` — Operator Command V0.2 Candidate
+# `build-git` — Operator Command V0.2.1 Candidate
 
 **Status:** CANDIDATE / NOT ACTIVE  
-**Version:** 0.2.0-candidate  
+**Version:** 0.2.1-candidate  
 **Date:** 2026-08-18
 
 ## Purpose
@@ -24,7 +24,7 @@ For consequential work:
 
 1. **Git preflight** — refetch the current relevant repository branch/head and verify the intended base before consequential action.
 2. **Router preflight** — determine the smallest applicable Active Signalproof route; do not assume `signalproof-build` is required.
-3. **Known Failure Preflight** — search applicable Signalproof failure intelligence and prior evidence for the tool/runtime/action/boundary before repeating costly, failure-prone, or previously failed work.
+3. **Known Failure Preflight** — search applicable Signalproof failure intelligence and prior evidence for the tool/runtime/action/boundary before repeating costly, failure-prone, or previously failed work. This search must include current `main` plus relevant open/draft Signalproof candidate PRs or candidate records when the needed failure intelligence may not yet be merged. Candidate evidence may inform prevention and routing but must not be treated as Active doctrine or authority.
 4. **Protected-state / evidence contract** — establish baseline, rollback or non-mutation boundary, forbidden changes, current build-stream identity, and evidence needed for the routed action.
 5. **Consume the current Next Action Contract** — when `design-git` or another governed plan already produced one, execute that contract rather than silently redesigning it.
 6. **Execute the routed action** — investigate, query, inspect, research, evaluate, plan, design, test, verify, build, debug, review, recover, document, or otherwise act only within the selected route and authority.
@@ -79,6 +79,21 @@ Examples:
 
 Before consequential execution, ask whether the intended path matches a known Signalproof failure fingerprint.
 
+### Retrieval scope
+
+Known Failure Preflight is not satisfied by checking only merged files on `main`.
+
+Search, in order of relevance:
+
+1. current canonical `main` skills, commands, acceptance evidence, and failure intelligence;
+2. current work-stream evidence and handoff material;
+3. relevant **open or draft Signalproof pull requests and candidate records** when they may contain newer failure intelligence not yet merged;
+4. private Build Ledger/failure continuity only when available and needed for the action.
+
+Open/draft candidate material may be used as **historical evidence and prevention intelligence**. It remains Candidate / Not Active unless separately promoted and must not grant authority by itself.
+
+If a known failure is discovered in an open/draft candidate after a generated harness has already repeated it, classify the event as a **Known Failure Preflight miss** and correct the retrieval path before generating the next harness.
+
 Search by combinations of:
 
 - shell/interpreter/runtime;
@@ -108,7 +123,21 @@ Do not turn a keyword match into a diagnosis. Match the supported conditions and
 
 ### Generated PowerShell or changed wrapper syntax
 
-Parse/validate before consequential execution when syntax changed or the wrapper is not already accepted.
+Before authoring or executing a generated/modified PowerShell harness, Known Failure Preflight must include relevant PowerShell harness reliability evidence, including applicable open/draft candidate PRs when that evidence has not landed on `main`.
+
+For Windows PowerShell / `pshell` harnesses:
+
+- deliver interactive launch logic as one complete statement, preferably one `& { ... }` block; never split an `if` and its `else` across separate submissions;
+- parser-preflight the exact final staged `.ps1` with `System.Management.Automation.Language.Parser.ParseFile` before execution;
+- calculate SHA-256 after final serialization and verify the same hash immediately before execution;
+- preserve failed runners separately and do not broad-patch or overwrite them;
+- do not use `ConvertFrom-Json` under Windows PowerShell 5.1 for external JSON whose property names may be arbitrary or empty, such as modern npm lockfile shapes, unless that exact schema has been proven compatible;
+- distinguish generic `Dictionary[string,object]` `.ContainsKey()` from non-generic `IDictionary` `.Contains()` before key lookup;
+- validate property presence before dereferencing heterogeneous report objects;
+- compute ambiguous multiline function-call/index values first rather than relying on parser-sensitive inline expressions;
+- treat parser/harness STOP as harness evidence, not product failure, unless separate evidence proves product actuation;
+- keep expected console output outside executable command blocks so transcript text cannot be accidentally re-entered as commands;
+- canonicalize filesystem paths before deriving relative paths; do not derive byte-sensitive child paths from serialized raw-string lengths.
 
 ### PowerShell 5.1 native stderr
 
@@ -208,6 +237,7 @@ STOP when:
 
 - Git current state cannot be established before a consequential action;
 - the same known high-confidence failure is about to be repeated under unchanged conditions;
+- relevant newer failure intelligence is known to exist in an open/draft Signalproof candidate but has not been inspected before generating the next failure-prone harness;
 - the proposed mitigation violates security/licensing/legal/authority boundaries;
 - protected state must be changed outside authority;
 - a concurrent Git change invalidates the candidate base;
@@ -225,8 +255,10 @@ Before Active promotion, test `build-git` on real repository-backed work and pro
 2. at least one invocation correctly routes to bounded implementation when implementation is actually justified;
 3. Git current-state recheck catches at least one concurrent-state condition or stale base;
 4. Known Failure Preflight avoids at least one repeated failure or selects a prior tested mitigation earlier;
-5. changed-condition retest is not overblocked;
-6. protected state/rollback or read-only non-mutation boundary remains intact;
-7. closeout updates recurrence intelligence without duplicate IDs;
-8. build-stream continuity survives unrelated global ledger advancement;
-9. `build-git spawn` integration does not confuse Orchestrator/subagent authority.
+5. Known Failure Preflight retrieves relevant open/draft candidate PR evidence when newer failure intelligence is not yet merged on `main`;
+6. at least one PowerShell harness generation case applies the relevant known-failure set before authoring and avoids a previously documented parser/interactive/JSON/native-boundary recurrence;
+7. changed-condition retest is not overblocked;
+8. protected state/rollback or read-only non-mutation boundary remains intact;
+9. closeout updates recurrence intelligence without duplicate IDs;
+10. build-stream continuity survives unrelated global ledger advancement;
+11. `build-git spawn` integration does not confuse Orchestrator/subagent authority.
