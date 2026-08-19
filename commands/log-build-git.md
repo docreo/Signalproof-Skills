@@ -1,4 +1,4 @@
-# `/log-build-git` — Ordered Operator Command V0.1 Candidate
+# `log-build-git` — Ordered Operator Command V0.1 Candidate
 
 **Status:** CANDIDATE / NOT ACTIVE  
 **Version:** 0.1.0-candidate  
@@ -6,66 +6,233 @@
 
 ## Purpose
 
-`/log-build-git` is the ordered Signalproof orchestration command for continuing governed work after meaningful progress, discoveries, failures, corrections, decisions, or phase transitions.
+`log-build-git` is the ordered Signalproof orchestration command for continuing governed work after meaningful progress, discoveries, failures, corrections, decisions, or phase transitions.
 
-Required order:
+Its required order is:
 
 ```text
-/log-skill
+log-skill
    ↓
-/design-git
+design-git
    ↓
-/build-git
+build-git
 ```
 
-Core rule:
+The command means:
 
-> Preserve what was learned, design the next governed action from current truth, then execute that action, whether it is investigation, query, examination, research, verification, design, recovery, or implementation.
+> **Preserve what we have learned, design the next governed action from current evidence, then execute that action through the current Git-backed Signalproof workmode.**
 
-## Phase 1 — `/log-skill`
+This is an operator-command composition, not a new specialist skill and not a new authority source.
 
-Preserve/synchronize the current meaningful work state, failures, uncertainty, reusable learning candidates, known-failure recurrence, public/private boundaries, build/work-stream identity, and closeout obligations. Use plain `/log-skill` by default; do not falsely close an open milestone or fabricate canonical chronology.
+## Core semantics
 
-## Phase 2 — `/design-git`
+`log-build-git` does not imply that the next action is software implementation.
 
-Verify Git/current truth, protected state, unresolved gates, known failures, and route the smallest next action. Emit a bounded Next Action Contract with acceptance evidence and STOP conditions.
+The `design-git` phase may determine that the next correct action is to:
 
-## Phase 3 — `/build-git`
+- investigate;
+- query/search/read;
+- inspect/examine;
+- research;
+- evaluate;
+- plan;
+- design;
+- check readiness;
+- test;
+- verify;
+- review;
+- perform security/provenance analysis;
+- build;
+- debug;
+- recover;
+- document;
+- close/handoff;
+- or STOP pending human authority/evidence.
 
-Execute only the selected Next Action Contract using the smallest applicable Active route. If the contract says investigate/query/examine/research/verify, perform that action and stop at its evidence gate rather than forcing implementation.
+`build-git` then executes only the routed action.
 
-## Legitimate outcomes
+## Phase 1 — `log-skill`
 
-The composite may end in investigation complete, query/inspection complete, research complete, design/plan complete, verification complete, build candidate pass, blocked, owner decision required, or milestone closeout required.
+Run the Active `log-skill` command first.
 
-## Build-stream / chronology rule
+Purpose:
 
-Preserve stable build/work-stream lineage separately from global canonical Build Ledger chronology. Never reserve a C-number.
+- preserve/synchronize the current meaningful work state;
+- record failures and uncertainty rather than losing them between actions;
+- extract reusable learning candidates when warranted;
+- update or reference known-failure intelligence when a recurring pattern exists;
+- preserve public/private boundaries;
+- preserve current build/work-stream identity and closeout obligations;
+- stage rather than fabricate canonical Build Ledger chronology when canonical append is not available/authorized.
 
-## Idempotency
+Default `log-build-git` uses plain `log-skill`, not `log-skill close`, unless the current milestone is actually complete and the user/current governance explicitly calls for closure.
 
-Repeated invocation must not duplicate stable log records, failure IDs, C projections, or blindly repeat an unchanged failed path.
+Therefore invocation of `log-build-git` must not falsely close an open phase.
+
+## Phase 2 — `design-git`
+
+After logging/synchronization, invoke `design-git` against the **newly preserved current state**.
+
+Required outputs:
+
+- current governing Git/ref;
+- current work/build stream;
+- protected state / non-mutation boundary;
+- relevant prior failures and proven mitigations;
+- unresolved evidence/authority/security/provenance/licensing/legal gates;
+- smallest appropriate Active Signalproof route;
+- one bounded **Next Action Contract**;
+- acceptance evidence and STOP conditions.
+
+The next action must be selected from current evidence, not from momentum or an assumption that a build must follow every log.
+
+## Phase 3 — `build-git`
+
+Execute the Next Action Contract through `build-git`.
+
+`build-git` must:
+
+- recheck current Git as required;
+- consume the designed route instead of silently substituting another objective;
+- apply Known Failure Preflight before failure-prone/consequential execution;
+- use the smallest relevant Active specialist(s);
+- preserve protected state/rollback or read-only boundary;
+- stop and return to design/investigation if material evidence changes;
+- leave proof of what was actually done;
+- maintain work-stream continuity without reserving Build Ledger C-numbers.
+
+## Default status behavior
+
+The composite may end with different legitimate outcomes:
+
+- `LOGGED -> INVESTIGATION COMPLETE`
+- `LOGGED -> QUERY/INSPECTION COMPLETE`
+- `LOGGED -> RESEARCH COMPLETE`
+- `LOGGED -> DESIGN/PLAN COMPLETE`
+- `LOGGED -> VERIFICATION COMPLETE`
+- `LOGGED -> BUILD CANDIDATE PASS`
+- `LOGGED -> BLOCKED`
+- `LOGGED -> STOP / OWNER DECISION REQUIRED`
+- `LOGGED -> MILESTONE CLOSEOUT REQUIRED`
+
+The command must not manufacture a build success simply because its name includes `build`.
+
+## Examples
+
+### Example A — recurring PowerShell failure
+
+Current run fails with a PowerShell parser pattern already known to Signalproof.
+
+`log-build-git` should:
+
+1. `log-skill` — preserve the failed attempt/recurrence without closing the open build;
+2. `design-git` — match known-failure intelligence and define a parser-validation/inspection action rather than another blind execution;
+3. `build-git` — perform the inspection/verified correction path.
+
+### Example B — unknown runtime condition
+
+Current app appears broken but cause is unclear.
+
+1. log current evidence;
+2. design next action as `signalproof-investigate`;
+3. execute read-only/runtime investigation;
+4. do not modify product code merely because `log-build-git` was invoked.
+
+### Example C — implementation is ready
+
+Design, protected baseline, acceptance matrix, dependencies, and authority are already established.
+
+1. log prior design/decision state;
+2. design next action as bounded `signalproof-build`;
+3. execute implementation through `build-git`;
+4. verify/close according to the contract.
+
+### Example D — evidence requires external research
+
+A dependency/license/API behavior is uncertain and material.
+
+1. log current uncertainty;
+2. route next action to Research/provenance review;
+3. execute research;
+4. return to design/build only after evidence resolves the gate.
+
+## Relationship to `build-git spawn`
+
+If `design-git` determines the next action is a consequential multi-role build where independent Builder/Design/Governor challenge provides material value, its Next Action Contract may select:
+
+`build-git spawn`
+
+The main LLM/session remains the Signalproof Orchestrator. Spawn is not the default for simple queries, inspections, or narrow actions.
+
+## Build Ledger / build-stream rule
+
+The command maintains two distinct concepts:
+
+- stable build/work-stream lineage;
+- global canonical Build Ledger chronology.
+
+`log-build-git` never reserves a `C###` number. Logging a paused/open build keeps its stream state durable. When work resumes, current chronology is rechecked and any future canonical event appends at the then-current valid head under separate authority.
+
+## Idempotency / repeated invocation
+
+Repeated `log-build-git` must not duplicate the same log record or failure identity merely because the command is invoked again.
+
+Each invocation should determine:
+
+- whether current state already has a stable log identity;
+- whether new evidence materially changes it;
+- whether a known failure is recurrence under an existing failure ID;
+- whether a new Next Action Contract is actually required.
 
 ## Authority boundary
 
-Invocation authorizes the ordered command sequence and ordinary governed routing only. It does not itself grant destructive host changes, privilege elevation, secret use, security-control modification, licensing/legal exceptions, protected-state overwrite, release/deployment, direct protected-main mutation, skill/policy activation, or canonical Build Ledger append.
+Invocation authorizes the command sequence and ordinary read/Git-governed routing needed to perform it. It does **not** by itself authorize:
 
-## Relationship to `/build-git spawn`
+- destructive host changes;
+- privilege elevation;
+- credentials/secrets use;
+- security-control modification;
+- third-party licensing/legal exceptions;
+- protected-state overwrite;
+- release/deployment;
+- direct protected-main mutation;
+- skill/policy activation;
+- canonical Build Ledger append when its separate gates are unsatisfied.
 
-`/design-git` may select `/build-git spawn` only when role separation materially helps. The main LLM/session remains the Signalproof Orchestrator.
+The routed action may require explicit human authority before execution.
 
-## STOP conditions
+## Failure / STOP conditions
 
-STOP when logging would falsify closure/chronology or leak private data, Git/current project state materially changed, design cannot establish a trustworthy next action, a high-confidence known failure would be repeated unchanged, protected-state/authority/security/provenance/legal gates remain unresolved, or continuing would silently convert an open milestone into a closed one.
+STOP the composite before Phase 3 when:
 
-## Promotion requirements
+- `log-skill` cannot preserve the current state without fabricating chronology or leaking private data;
+- governing Git/current project state materially changed and must be reconciled;
+- `design-git` cannot establish a trustworthy next action;
+- the proposed next action repeats a high-confidence known failure with unchanged conditions;
+- protected state/authority/security/provenance/license/legal gates remain unresolved;
+- the next action requires a human-owned decision;
+- the designed action and available execution capability do not match;
+- continuing would silently convert an open milestone into a closed one.
 
-Before Active promotion, demonstrate materially different real cases ending in investigation/query, verification/review, bounded implementation, and blocked/owner decision; prove idempotency, known-failure preflight, protected-state preservation, Git freshness, correct routing, and no authority laundering.
+## Acceptance requirements
+
+Before Active promotion, exercise `log-build-git` on materially different real workflows and demonstrate at minimum:
+
+1. one case where the final action is investigation/query rather than code build;
+2. one case where the final action is bounded implementation;
+3. one case where known-failure intelligence changes the chosen next step;
+4. open work remains open after plain `log-skill`;
+5. completed work can separately route to proper closeout;
+6. current Git is checked across the sequence and concurrent/stale state is not silently ignored;
+7. build/work-stream continuity survives unrelated Build Ledger advancement;
+8. public/private and security/licensing/legal boundaries remain intact;
+9. repeated invocation is idempotent for existing log/failure identities;
+10. `build-git spawn` is selected only when multi-role orchestration is actually justified.
 
 ## Identity
 
-- **Command:** `/log-build-git`
-- **Conversational shorthand:** `log-build-git`
-- **Order:** `/log-skill -> /design-git -> /build-git`
+- **Command:** `log-build-git`
+- **Type:** ordered Git-backed Signalproof orchestration command
+- **Order:** `log-skill -> design-git -> build-git`
 - **Maturity:** Candidate / Not Active
-- **Owner approval for merge:** 2026-08-18 via private `/merge-candidates`
+- **Created by:** Doc Reo / Signalproof
