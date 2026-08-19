@@ -1,15 +1,12 @@
-# `log-skill` — Active Operator Command V0.1
+# `log-skill` — Active Operator Command V0.2
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
-**Activated:** 2026-08-18  
-**Owner approval:** Doc Reo
+**Version:** 0.2.0  
+**Owner:** Doc Reo
 
 ## Purpose
 
-`log-skill` is an Active Signalproof operator command shorthand. It is not a separate specialist skill. It coordinates existing Active Signalproof disciplines, especially Closeout, Learn, Verify, Document, Handoff, and Router, while preserving public/private evidence boundaries and Build Ledger chronology.
-
-Core rule:
+`log-skill` is the Active Signalproof operator shorthand for preserving and synchronizing milestone/learning state. It coordinates Closeout, Learn, Verify, Document, Handoff, Router, and the Signalproof Library architecture while preserving public/private evidence boundaries and Build Ledger chronology.
 
 > **Logging does not reserve a canonical event number. Canonical chronology is assigned only by a verified chain-safe append.**
 
@@ -17,65 +14,75 @@ Core rule:
 
 ### `log-skill`
 
-Preserve and synchronize the current milestone or learning state without claiming closure unless closure is already established and authorized.
+Preserve/synchronize current milestone or learning state without claiming closure unless closure is established and authorized.
 
 Required behavior:
 
-- identify the milestone/work unit and current evidence state;
-- deduplicate existing public and private records where available;
-- extract reusable learning through governed lifecycle rules;
-- publish only public-safe records;
-- preserve private/internal evidence separately;
-- stage only when canonical append is unavailable, unnecessary, or unauthorized;
-- do not reserve a C-number;
-- do not activate a candidate merely because it was logged.
+- identify work unit and evidence state;
+- deduplicate existing records where available;
+- extract reusable learning under lifecycle governance;
+- run the Skill Architecture Check when a Skill is created or materially changed;
+- publish only public-safe records and preserve private evidence separately;
+- stage when canonical append is unavailable/unnecessary/unauthorized;
+- do not reserve a C-number or auto-activate a candidate.
 
 ### `log-skill close`
 
-Request full immediate closeout for a milestone that is actually complete.
+Request full immediate closeout for work that is actually complete.
 
 Route:
 
 `Validate -> Record -> Extract -> Govern -> Closeout -> Verify`
 
-Before canonical append, verify the actual ledger identity/head/chain/projection, deduplicate stable identities, use approved chain-safe tooling, and run native/original verification immediately after append. If canonical append cannot be safely performed, preserve a staged/noncanonical closeout instead of fabricating chronology.
+Before canonical append, verify actual ledger identity/head/chain/projection, deduplicate stable identities, use approved chain-safe tooling, and run native/original verification after append. Otherwise preserve a staged/noncanonical closeout.
 
 ### `log-skill close-when-complete`
 
-Mark the current milestone as **closure-required before phase transition** while leaving it open.
-
-This is a governance latch, not a scheduler or background automation. Preserve milestone identity and explicit acceptance criteria. When completion is later established, route through `log-skill close`. Never reserve a future Build Ledger number.
+Latch the current milestone as closure-required before phase transition while leaving it open. Preserve acceptance criteria; when complete, route through `log-skill close`. Never reserve a future sequence.
 
 ### `log-skill close C###`
 
-Optional strict conditional close. The requested number is an assertion, never a reservation.
+Strict conditional close. The requested number is an assertion, never a reservation. Proceed only when verified canonical chronology makes it the next valid sequence and all normal gates pass; otherwise STOP.
 
-Requested `C###` may proceed only when the verified canonical current sequence is exactly the requested predecessor and every normal closeout/authority/dedup gate passes. If chronology has moved, **STOP**. Do not overwrite or silently renumber.
+## Skill Architecture Check
 
-## Preview rule
+When the work creates or materially changes a `SKILL.md`:
 
-Projected labels such as `C405-C415` remain **PROJECTION / PREVIEW / NOT CANONICAL** until native append actually assigns those sequences. If the canonical head changes, regenerate the preview.
+1. measure exact UTF-8 bytes before and after where a prior version exists;
+2. classify the new file using the Signalproof Skill Budget;
+3. check responsibility cohesion and duplicate doctrine, not size alone;
+4. prefer root inheritance, registries, loops, schemas, tests, policies, or separate routeable specialists over repeated prose;
+5. at **12,000–14,999 bytes**, require decomposition/conciseness review before material expansion;
+6. at **15,000+ bytes**, block promotion/material expansion until the Skill is refactored below the ceiling;
+7. verify Router/registry/test effects of any split.
 
-## Idempotency
+Record when applicable:
 
-Repeated `log-skill` verifies and synchronizes existing stable identities rather than creating duplicates. New evidence may update/supersede prior staged state, but history is preserved.
+- `skill_bytes_before` / `skill_bytes_after`;
+- budget status before/after;
+- atomicity/decomposition decision;
+- extracted/new Skill candidates;
+- duplicate doctrine removed;
+- routing changes;
+- tests and protected behavior;
+- supersession/rollback path.
+
+A small Skill can still require decomposition if it contains independently routeable responsibilities. A large Skill must not be shortened by deleting required governance merely to satisfy the budget.
+
+## Preview / Idempotency
+
+Projected C-labels remain **PROJECTION / PREVIEW / NOT CANONICAL** until native append assigns them. Repeated `log-skill` verifies/synchronizes stable identities rather than creating duplicates.
 
 ## Public/private boundary
 
-Public Signalproof-Skills may contain public-safe lessons, tests, generic governance records, and candidate changes. Private Build Ledger evidence may contain internal continuity, hashes, recovery, and staged closeout details. Never leak private ledger heads, local paths, credentials, customer/private data, or recovery internals into public records without explicit publication authority.
+Public Signalproof-Skills may contain public-safe lessons, tests, governance records, and candidate changes. Private Build Ledger evidence may contain internal chronology, hashes, recovery, and staged closeout details. Never leak private ledger heads, local paths, credentials, customer/private data, or recovery internals publicly without authority.
 
 ## Lifecycle
 
-The command itself is Active. Outputs produced by it are not automatically Active.
-
-Reusable capability still follows:
+Outputs are not automatically Active:
 
 `DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED`
 
-## Update rule
-
-Active does not mean immutable. Changes to this command must be versioned, reviewed, tested proportionately to the change, owner-approved, and supersede rather than erase prior command behavior.
-
 ## STOP conditions
 
-STOP when chronology cannot be verified, a projected number is being treated as canonical, a duplicate would be appended, completion is being falsely claimed, private evidence would leak publicly, an output is being auto-promoted, or command scope would silently expand into unauthorized canonical mutation.
+STOP when chronology cannot be verified, a projection is treated as canonical, a duplicate would be appended, completion is falsely claimed, private evidence would leak publicly, an output is auto-promoted, a changed Skill violates the 15,000-byte ceiling, or command scope would expand into unauthorized canonical mutation.
