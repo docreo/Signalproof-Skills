@@ -1,0 +1,85 @@
+version: 0.1
+status: RD1_CANDIDATE
+purpose: >-
+  Compact routing metadata for Signalproof capabilities. This registry is not
+  authority and does not activate candidates. It exists so the Router can select
+  minimal context without embedding full skill doctrine.
+
+routing_defaults:
+  principal_skill_max: 1
+  optional_specialists_max: 2
+  lazy_load: true
+  governor_required_for_side_effects: true
+
+capabilities:
+  - id: signalproof-build
+    state: ACTIVE
+    kind: skill
+    purpose: bounded implementation under protected-state and verification controls
+    triggers: [build, implement, modify, create software]
+
+  - id: signalproof-debug
+    state: ACTIVE
+    kind: skill
+    purpose: reproduce, localize, correct, and regression-test defects
+    triggers: [bug, defect, failing behavior, regression]
+    loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]
+
+  - id: signalproof-research
+    state: ACTIVE
+    kind: skill
+    purpose: establish external evidence and source-grounded findings
+    triggers: [research, source review, external evidence]
+    loops: [SP-LOOP-RESEARCH]
+
+  - id: signalproof-security
+    state: ACTIVE_REFACTOR_REQUIRED
+    kind: coordinator_skill
+    purpose: coordinate defensive security governance and route to narrow specialists
+    triggers: [security, trust boundary, privilege, secret, dependency risk, network exposure]
+    proposed_specialists:
+      - signalproof-secrets
+      - signalproof-permissions
+      - signalproof-supply-chain
+      - signalproof-network
+      - signalproof-execution-security
+
+  - id: signalproof-router
+    state: ACTIVE_REFACTOR_REQUIRED
+    kind: routing_kernel
+    purpose: select the smallest justified capability set from registry metadata
+    triggers: [route, select skill, coordinate]
+
+  - id: signalproof-recovery
+    state: ACTIVE_REFACTOR_REQUIRED
+    kind: coordinator_skill
+    purpose: coordinate recovery and restoration under protected-state controls
+    triggers: [rollback, restore, recover, cleanup after failure]
+    proposed_specialists:
+      - signalproof-rollback
+      - signalproof-restore
+      - signalproof-cleanup
+      - signalproof-continuity
+
+  - id: signalproof-design
+    state: ACTIVE_REFACTOR_REQUIRED
+    kind: coordinator_skill
+    purpose: product, interaction, information, and state architecture
+    triggers: [design, UX, UI architecture, interaction]
+    proposed_specialists:
+      - signalproof-ui-polish
+      - signalproof-accessibility
+
+  - id: signalproof-failure-intelligence
+    state: CANDIDATE_REFACTOR_REQUIRED
+    kind: candidate_skill
+    purpose: match prior failure evidence before consequential retry
+    triggers: [known failure, retry, recurrence, prior mitigation]
+    loops: [SP-LOOP-RETRY]
+
+  - id: signalproof-knowledge
+    state: CANDIDATE_REFACTOR_REQUIRED
+    kind: candidate_skill
+    purpose: governed knowledge transformation and serving
+    triggers: [knowledge transformation, ingestion, normalization, retrieval]
+    loops: [SP-LOOP-INGEST]
