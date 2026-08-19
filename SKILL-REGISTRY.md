@@ -5,6 +5,7 @@ This registry identifies public Signalproof skills and their current maturity.
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract plus mandatory meaningful-milestone closeout | Active |
+| `signalproof-known-errors` | 0.1.0 | Active public baseline | Mandatory repeatable-error lookup and prevention preflight for consequential build, debug, test, verify, recovery, packaging, readiness, security, and release work | Active |
 | `signalproof-investigate` | 0.1.0 | Active public baseline | Root-cause investigation and failure localization | Active |
 | `signalproof-plan` | 0.1.0 | Active public baseline | Governed planning, scope control, acceptance design, and execution handoff | Active |
 | `signalproof-design` | 0.1.0 | Active public baseline | Product design governance, information architecture, dashboard clarity, operational/technical depth, brand asset slots, health/state communication, and visual acceptance | Active |
@@ -37,3 +38,4 @@ Future specialists or updates must follow the same governed lifecycle before the
 3. Active entries should identify version, maturity, role, and status.
 4. Deprecated or retired skills remain traceable in version history.
 5. Specialist skills inherit the root Signalproof contract.
+6. `signalproof-known-errors` is a mandatory preflight dependency for consequential failure-prone work; matching a known error constrains method selection but never grants execution authority.

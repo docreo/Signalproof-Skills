@@ -6,7 +6,7 @@
 >
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, investigation, planning, product design, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
+Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, known-error prevention, investigation, planning, product design, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
 
 ## Root operating contract
 
@@ -29,6 +29,7 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
 | [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.13 | Selects the smallest appropriate active skill or sequence |
+| [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Force-checks repeatable error fingerprints before consequential failure-prone work so previously learned failures are not repeated |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
 | [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
@@ -56,6 +57,8 @@ REQUEST
   ↓
 ROUTER
   ↓
+KNOWN-ERROR PREFLIGHT when consequential/failure-prone
+  ↓
 RESEARCH -> EVALUATE
   ↓
 INVESTIGATE / PLAN / DESIGN / READINESS
@@ -77,10 +80,11 @@ LEARN when material reusable capability should be extracted
 GOVERNED CANDIDATE / TEST / POLICY / DOCUMENTATION UPDATE
 ```
 
-This is not a mandatory conveyor belt. The router selects the smallest responsible path. Handoff may occur while a phase is still open and does not require a product milestone.
+This is not a mandatory conveyor belt. The router selects the smallest responsible path. Known-error preflight is mandatory only for consequential or materially failure-prone work. Handoff may occur while a phase is still open and does not require a product milestone.
 
 ## Discipline boundaries
 
+- **Known Errors:** Has Signalproof already documented this materially similar repeatable error, and what prevention/mitigation applies?
 - **Research:** What does current external evidence establish?
 - **Evaluate:** What disposition best fits explicit criteria and constraints?
 - **Investigate:** What actually failed or what state is true?
@@ -135,7 +139,7 @@ The original planned specialist set is now fully implemented and Active. Future 
 
 ## What Signalproof Skills does not claim
 
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
+Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Known Errors does not turn a fingerprint match into authority or a diagnosis without materially matching conditions. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
 
 ## Repository protection
 
