@@ -38,7 +38,7 @@ class LearningDialogueSkillsAcceptance(unittest.TestCase):
             "12 STEPS = learning path",
             "10 LEVELS = maturity spectrum",
             "not awarded by this skill",
-            "source content/evidence",
+            "untrusted content/evidence",
         ]:
             self.assertIn(required.lower(), text.lower())
 
