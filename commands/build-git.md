@@ -202,6 +202,24 @@ A known technical workaround is not automatically allowed. Before reuse, preserv
 
 When permission is unresolved, preserve `UNKNOWN` and route to the appropriate provenance/legal/governance review rather than inventing authority.
 
+## Generated output typography rule
+
+When `build-git` generates Signalproof-controlled build output, it MUST NOT emit Unicode em dash U+2014 characters.
+
+This applies to generated:
+
+- user-facing build instructions;
+- PowerShell and shell wrappers;
+- comments and strings created by the build when punctuation is under Signalproof control;
+- handoffs, manifests, evidence summaries, closeout records, release notes, and build documentation;
+- labels and filenames when punctuation is under Signalproof control.
+
+Use context-appropriate alternatives such as commas, colons, semicolons, parentheses, or ASCII hyphen-minus `-`.
+
+Before emitting or writing generated build material, perform a final U+2014 check and replace it when the text is under Signalproof control.
+
+This rule does not authorize rewriting immutable source evidence, quoted external evidence, checksum-covered artifacts, or protected byte-for-byte inputs merely to satisfy presentation style.
+
 ## STOP conditions
 
 STOP when:
@@ -215,7 +233,8 @@ STOP when:
 - `build-git` is being forced into implementation when the evidence requires investigation/verification first;
 - an output would falsely claim independent agents ran;
 - a candidate skill/policy is being silently promoted;
-- canonical ledger/release/production authority is being inferred from the command itself.
+- canonical ledger/release/production authority is being inferred from the command itself;
+- generated Signalproof-controlled build output contains U+2014 when the character is not required by immutable/protected source evidence.
 
 ## Promotion requirements
 
@@ -229,4 +248,5 @@ Before Active promotion, test `build-git` on real repository-backed work and pro
 6. protected state/rollback or read-only non-mutation boundary remains intact;
 7. closeout updates recurrence intelligence without duplicate IDs;
 8. build-stream continuity survives unrelated global ledger advancement;
-9. `build-git spawn` integration does not confuse Orchestrator/subagent authority.
+9. `build-git spawn` integration does not confuse Orchestrator/subagent authority;
+10. generated Signalproof-controlled build output contains no U+2014 except where immutable/protected evidence requires byte preservation.
