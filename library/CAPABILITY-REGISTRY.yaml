@@ -1,85 +1,85 @@
-version: 0.1
+version: 0.2
 status: RD1_CANDIDATE
 purpose: >-
-  Compact routing metadata for Signalproof capabilities. This registry is not
-  authority and does not activate candidates. It exists so the Router can select
-  minimal context without embedding full skill doctrine.
+  Compact routing metadata for the Signalproof Library. This registry helps the
+  Router select minimal context. It is not execution authority and does not
+  activate Candidate capabilities.
 
 routing_defaults:
   principal_skill_max: 1
   optional_specialists_max: 2
   lazy_load: true
+  root_contract_inherited: true
   governor_required_for_side_effects: true
 
 capabilities:
-  - id: signalproof-build
-    state: ACTIVE
-    kind: skill
-    purpose: bounded implementation under protected-state and verification controls
-    triggers: [build, implement, modify, create software]
-
-  - id: signalproof-debug
-    state: ACTIVE
-    kind: skill
-    purpose: reproduce, localize, correct, and regression-test defects
-    triggers: [bug, defect, failing behavior, regression]
-    loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]
-
-  - id: signalproof-research
-    state: ACTIVE
-    kind: skill
-    purpose: establish external evidence and source-grounded findings
-    triggers: [research, source review, external evidence]
-    loops: [SP-LOOP-RESEARCH]
-
-  - id: signalproof-security
-    state: ACTIVE_REFACTOR_REQUIRED
-    kind: coordinator_skill
-    purpose: coordinate defensive security governance and route to narrow specialists
-    triggers: [security, trust boundary, privilege, secret, dependency risk, network exposure]
-    proposed_specialists:
-      - signalproof-secrets
-      - signalproof-permissions
-      - signalproof-supply-chain
-      - signalproof-network
-      - signalproof-execution-security
-
-  - id: signalproof-router
-    state: ACTIVE_REFACTOR_REQUIRED
-    kind: routing_kernel
-    purpose: select the smallest justified capability set from registry metadata
-    triggers: [route, select skill, coordinate]
-
-  - id: signalproof-recovery
-    state: ACTIVE_REFACTOR_REQUIRED
-    kind: coordinator_skill
-    purpose: coordinate recovery and restoration under protected-state controls
-    triggers: [rollback, restore, recover, cleanup after failure]
-    proposed_specialists:
-      - signalproof-rollback
-      - signalproof-restore
-      - signalproof-cleanup
-      - signalproof-continuity
+  - {id: signalproof, state: ACTIVE, kind: root, purpose: universal human-authority and evidence contract, triggers: [fallback, governance]}
+  - {id: signalproof-router, state: ACTIVE, kind: routing_kernel, purpose: select minimum justified capability set, triggers: [route, select skill, coordinate]}
+  - {id: signalproof-known-errors, state: ACTIVE, kind: skill, purpose: prevent known repeatable failures, triggers: [known error, repeat failure, retry preflight]}
+  - {id: signalproof-research, state: ACTIVE, kind: skill, purpose: establish external evidence, triggers: [research, sources, current evidence], loops: [SP-LOOP-RESEARCH]}
+  - {id: signalproof-evaluate, state: ACTIVE, kind: skill, purpose: convert evidence into bounded disposition, triggers: [evaluate, adopt, adapt, integrate, reject, watch]}
+  - {id: signalproof-investigate, state: ACTIVE, kind: skill, purpose: establish unknown state or cause, triggers: [investigate, diagnose state, root cause]}
+  - {id: signalproof-plan, state: ACTIVE, kind: skill, purpose: define bounded execution contract, triggers: [plan, scope, acceptance, sequence]}
 
   - id: signalproof-design
-    state: ACTIVE_REFACTOR_REQUIRED
+    state: ACTIVE
     kind: coordinator_skill
-    purpose: product, interaction, information, and state architecture
-    triggers: [design, UX, UI architecture, interaction]
-    proposed_specialists:
-      - signalproof-ui-polish
-      - signalproof-accessibility
+    purpose: product information architecture and state communication
+    triggers: [product design, information architecture, dashboard, workflow hierarchy]
+    specialists: [signalproof-ui-polish, signalproof-accessibility]
+  - {id: signalproof-ui-polish, state: ACTIVE, kind: specialist_skill, purpose: interface wrapping/readability/responsive and micro-interaction finish, triggers: [clipping, overlap, wrapping, spacing, alignment, responsive, polish]}
+  - {id: signalproof-accessibility, state: ACTIVE, kind: specialist_skill, purpose: accessible interaction and presentation, triggers: [keyboard, focus, screen reader, contrast, scaling, captions, reduced motion]}
 
+  - {id: signalproof-readiness, state: ACTIVE, kind: skill, purpose: verify exact target prerequisites and capability readiness, triggers: [readiness, prerequisites, target environment]}
+  - {id: signalproof-build, state: ACTIVE, kind: skill, purpose: bounded implementation under protected-state controls, triggers: [build, implement, modify, create software], loops: [SP-LOOP-BUILD-VERIFY]}
+  - {id: signalproof-debug, state: ACTIVE, kind: skill, purpose: reproduce/localize/correct/regression-test defects, triggers: [bug, defect, failing behavior, regression], loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]}
+  - {id: signalproof-verify, state: ACTIVE, kind: skill, purpose: prove a specific material claim, triggers: [verify, prove, acceptance evidence]}
+  - {id: signalproof-review, state: ACTIVE, kind: skill, purpose: review scope fidelity and change integrity, triggers: [review, audit change, contract fidelity]}
+
+  - id: signalproof-recovery
+    state: ACTIVE
+    kind: coordinator_skill
+    purpose: coordinate rollback, restore, cleanup and continuity
+    triggers: [recovery, recover, multi-part rollback]
+    specialists: [signalproof-rollback, signalproof-restore, signalproof-cleanup, signalproof-recovery-continuity]
+    loops: [SP-LOOP-RECOVERY]
+  - {id: signalproof-rollback, state: ACTIVE, kind: specialist_skill, purpose: select and verify known-good rollback target, triggers: [rollback target, previous baseline, backup verification]}
+  - {id: signalproof-restore, state: ACTIVE, kind: specialist_skill, purpose: execute bounded restoration and verify it, triggers: [restore, replace with rollback, recover install]}
+  - {id: signalproof-cleanup, state: ACTIVE, kind: specialist_skill, purpose: clean up owned partial-operation resources, triggers: [cleanup, orphan process, partial install, partial resource]}
+  - {id: signalproof-recovery-continuity, state: ACTIVE, kind: specialist_skill, purpose: preserve recovery journals/ownership/remaining options, triggers: [recovery journal, unresolved ownership, recovery handoff]}
+
+  - id: signalproof-security
+    state: ACTIVE
+    kind: coordinator_skill
+    purpose: coordinate cross-cutting defensive security review
+    triggers: [security, trust boundary, security review]
+    specialists: [signalproof-secrets, signalproof-permissions, signalproof-supply-chain, signalproof-network, signalproof-execution-security]
+  - {id: signalproof-secrets, state: ACTIVE, kind: specialist_skill, purpose: credentials/tokens/keys/exposure/redaction, triggers: [secret, token, api key, credential, password, redaction]}
+  - {id: signalproof-permissions, state: ACTIVE, kind: specialist_skill, purpose: identity/authorization/privilege/least privilege, triggers: [permission, privilege, admin, acl, oauth scope, authorization]}
+  - {id: signalproof-supply-chain, state: ACTIVE, kind: specialist_skill, purpose: dependency source/license/integrity/update trust, triggers: [dependency, package, publisher, license, checksum, signature, updater]}
+  - {id: signalproof-network, state: ACTIVE, kind: specialist_skill, purpose: network exposure/transport/external data flow, triggers: [port, endpoint, telemetry, outbound, inbound, tls, network]}
+  - {id: signalproof-execution-security, state: ACTIVE, kind: specialist_skill, purpose: untrusted input and code/tool execution boundaries, triggers: [prompt injection, shell injection, plugin, dynamic execution, archive extraction, untrusted script]}
+
+  - {id: signalproof-release, state: ACTIVE, kind: skill, purpose: exact-artifact promotion and distribution governance, triggers: [release, ship, publish artifact, deploy candidate]}
+  - {id: signalproof-document, state: ACTIVE, kind: skill, purpose: durable evidence-bound documentation, triggers: [document, runbook, adr, report, readme]}
+  - {id: signalproof-learn, state: ACTIVE, kind: skill, purpose: extract governed reusable lessons/candidates, triggers: [learn, reusable lesson, regression candidate], loops: [SP-LOOP-LEARN]}
+  - {id: signalproof-handoff, state: ACTIVE, kind: skill, purpose: preserve open work across conversation/session boundary, triggers: [handoff, fresh chat, transfer context]}
+  - {id: signalproof-closeout, state: ACTIVE, kind: skill, purpose: close meaningful milestone and preserve transition evidence, triggers: [closeout, milestone complete, phase transition]}
+
+candidates:
   - id: signalproof-failure-intelligence
-    state: CANDIDATE_REFACTOR_REQUIRED
-    kind: candidate_skill
-    purpose: match prior failure evidence before consequential retry
-    triggers: [known failure, retry, recurrence, prior mitigation]
+    state: CANDIDATE
+    kind: skill
+    purpose: structured cross-project recurrence matching and mitigation memory
+    path: skills/candidates/signalproof-failure-intelligence/SKILL.md
     loops: [SP-LOOP-RETRY]
-
   - id: signalproof-knowledge
-    state: CANDIDATE_REFACTOR_REQUIRED
-    kind: candidate_skill
-    purpose: governed knowledge transformation and serving
-    triggers: [knowledge transformation, ingestion, normalization, retrieval]
-    loops: [SP-LOOP-INGEST]
+    state: CANDIDATE
+    kind: coordinator_skill
+    purpose: governed source-to-knowledge transformation coordination
+    path: skills/candidates/signalproof-knowledge/SKILL.md
+    specialists:
+      - signalproof-knowledge-ingest
+      - signalproof-knowledge-provenance
+      - signalproof-knowledge-transform
+      - signalproof-knowledge-package
