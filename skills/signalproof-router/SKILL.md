@@ -1,250 +1,189 @@
 ---
 name: signalproof-router
-description: Route a request to the smallest appropriate active Signalproof skill or skill sequence without silently expanding authority. Use when choosing among active Signalproof skills, including Known Errors, Research, Evaluate, Design, Readiness, Verify, Review, Recovery, Security, Release, Document, Learn, Handoff, and milestone Closeout.
+description: Select the smallest appropriate active Signalproof skill, specialist, or bounded sequence from current evidence and compact capability metadata without silently expanding authority or loading unnecessary context.
 ---
 
 # Signalproof Router
 
 ## Purpose
 
-`signalproof-router` selects the smallest active Signalproof discipline or ordered sequence that fits the current objective and evidence state.
+`signalproof-router` is the compact dispatch kernel for the Signalproof Library.
 
-> **Route by objective and evidence state, not by keyword, and never confuse capability selection with permission to execute.**
+> **Route by objective, evidence state, risk, and authority; load only the capability needed for the current job.**
 
-Only skills marked **Active** in the canonical Skill Registry are routable.
+The Router must get smaller as the library grows. Detailed specialist doctrine belongs in the specialist Skill, not in Router.
+
+## Inheritance
+
+This skill inherits the active root `signalproof` contract. Routing never creates write, destructive, privilege, security-change, release, publication, branding, skill-activation, or canonical Build Ledger authority.
 
 ## Current Routing Set
 
 - `signalproof` - root governing contract/fallback;
-- `signalproof-known-errors` - mandatory repeatable-error lookup/prevention preflight for consequential or materially failure-prone work;
-- `signalproof-research` - establish what current external evidence supports;
-- `signalproof-evaluate` - decide disposition from evidence using explicit criteria and hard gates;
-- `signalproof-investigate` - establish what failed or what state is true;
-- `signalproof-plan` - create a bounded execution contract;
-- `signalproof-design` - govern product information architecture, dashboards, operational/technical depth, state communication, brand-asset slots, and visual acceptance;
-- `signalproof-readiness` - determine whether objective-specific prerequisites/capabilities exist on the target;
-- `signalproof-build` - execute an already bounded implementation;
-- `signalproof-debug` - reproduce, localize, correct, and regression-test a defect;
-- `signalproof-verify` - determine whether a specific claim is proven;
-- `signalproof-review` - assess whether work itself is sound and scope/contract faithful;
-- `signalproof-recovery` - select/verify a trustworthy rollback and verify restoration;
-- `signalproof-security` - assess material security-sensitive trust, privilege, secret, dependency, network/data, and control risks;
-- `signalproof-release` - govern promotion of the exact accepted artifact to a defined distribution boundary;
-- `signalproof-document` - create durable documentation while preserving canonical-source/evidence/version/privacy boundaries;
-- `signalproof-learn` - extract governed reusable lessons, tests, policy/skill/router candidates, and deprecation candidates from completed evidence-backed work;
-- `signalproof-handoff` - preserve project state across conversation boundaries and govern context pressure before a new chat;
-- `signalproof-closeout` - close meaningful milestones and govern phase transition.
+- `signalproof-known-errors` - repeatable-error preflight;
+- `signalproof-research` - current external evidence;
+- `signalproof-evaluate` - evidence-to-disposition decision;
+- `signalproof-investigate` - unknown state/root-cause localization;
+- `signalproof-plan` - bounded execution contract;
+- `signalproof-design` - product information/state architecture;
+- `signalproof-ui-polish` - interface detail, readability, spacing, wrapping, motion, responsive finish;
+- `signalproof-accessibility` - accessible interaction and presentation requirements;
+- `signalproof-readiness` - target prerequisite/capability assessment;
+- `signalproof-build` - bounded implementation;
+- `signalproof-debug` - evidence-led defect correction;
+- `signalproof-verify` - prove a specific claim;
+- `signalproof-review` - assess scope/change integrity;
+- `signalproof-recovery` - coordinate recovery work;
+- `signalproof-rollback` - select and verify rollback identity;
+- `signalproof-restore` - execute bounded restoration;
+- `signalproof-cleanup` - clean up owned partial-operation resources safely;
+- `signalproof-recovery-continuity` - preserve recovery state, journals, remaining rollback paths, and unresolved ownership;
+- `signalproof-security` - coordinate cross-cutting defensive security review;
+- `signalproof-secrets` - credential/secret exposure and handling;
+- `signalproof-permissions` - identity, privilege, authorization, and least privilege;
+- `signalproof-supply-chain` - dependency/source/license/integrity trust;
+- `signalproof-network` - network/data-flow exposure and transport controls;
+- `signalproof-execution-security` - untrusted-input and code-execution boundaries;
+- `signalproof-release` - exact-artifact promotion/distribution;
+- `signalproof-document` - durable evidence-bound documentation;
+- `signalproof-learn` - governed reusable learning extraction;
+- `signalproof-handoff` - conversation-boundary continuity;
+- `signalproof-closeout` - meaningful milestone closeout.
 
-## Router Contract
+Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `main`. Branch/PR state is candidate state even when it proposes future Active entries.
 
-1. Read the objective, not vocabulary alone.
-2. Use only Active skills.
-3. Before consequential Build, Debug, Test, Verify, Readiness, Recovery, Security, Packaging, or Release work, route through `signalproof-known-errors` as a mandatory preflight. A high-confidence known error with materially unchanged conditions must constrain the next route or STOP the repeated path.
-4. Prefer the smallest sufficient route; sequence only when evidence demands it.
-5. Research establishes evidence; Evaluate recommends disposition; Plan/Design/Build execute only after separate authority appropriate to their scope.
-6. Design governs information architecture and visual/state communication, not arbitrary product rewrites or branding authority.
-7. Document records established state; Learn extracts future capability from completed evidence.
-8. Route unresolved factual truth to Investigate/Verify before authoritative documentation or learning.
-9. Route product information architecture, dashboard hierarchy, Operational/Technical depth, health/state presentation, brand-asset slots, or visual acceptance to Design.
-10. Route exact claim proof to Verify, work-quality acceptance to Review, restoration to Recovery, security-sensitive trust questions to Security, exact-artifact promotion to Release, durable records to Document, conversation-boundary continuity to Handoff, and reusable-lesson extraction/governance to Learn.
-11. Route an explicit handoff/new-chat/transfer/pause request to Handoff when project continuity matters.
-12. Before opening a major new phase in a long evidence-heavy chat, use Handoff when Context Pressure is YELLOW or RED.
-13. Do not allow Handoff to invent exact context-window percentages when no trustworthy platform meter exists.
-14. Do not allow Handoff to substitute for Closeout when a meaningful milestone itself must be governed.
-15. Do not allow Design to fabricate state, health, readiness, metrics, or evidence for presentation purposes.
-16. Do not allow Design to treat a mockup as runtime acceptance or to overwrite the only accepted working baseline.
-17. Do not allow Learn to auto-promote observations into Active doctrine.
-18. Do not allow Learn to bypass existing-intelligence checks, falsifiable acceptance testing, governance, or human approval.
-19. Do not use Known Errors, Design, Document, Handoff, or Learn to override canonical registry/runtime/ledger/ADR/release evidence.
-20. Close meaningful milestones before opening the next development phase.
-21. Routing never creates install, purchase, adoption, privilege, credential, signing, publication/deployment, branding, architecture-rewrite, policy, skill-activation, or canonical-ledger authority.
-22. Preserve explicit scope, STOP conditions, and a route decision trace.
+## Compact Routing Contract
 
-## Routing Decision Model
+1. Read the actual objective; do not route from a keyword alone.
+2. Establish whether the request is read-only, decision/design, actuation, or continuity work.
+3. Use the compact capability registry as routing metadata when available; metadata informs selection but is not authority.
+4. Select one principal skill whenever possible.
+5. Add at most two narrow specialists/loops by default; exceed this only when the task materially crosses independent boundaries.
+6. Before consequential or materially failure-prone work, route through `signalproof-known-errors`.
+7. If factual state is unresolved, prefer Investigate/Verify before Build, Document, Learn, Release, or authoritative claims.
+8. If a domain specialist exactly fits, prefer it over loading its broader coordinator.
+9. Use a coordinator when the request spans several specialists or requires cross-domain synthesis.
+10. Do not route every request through every governance skill; the root contract already carries universal doctrine.
+11. Preserve explicit STOP conditions and human authority.
+12. Close meaningful milestones before opening the next major phase; Handoff remains separate from Closeout.
 
-### Known Errors
-Use before consequential or materially failure-prone execution to determine whether Signalproof already has a materially matching repeatable-error fingerprint and supported prevention/mitigation. Match conditions, not keywords. A known-error match informs method selection and STOP conditions but never creates execution authority.
+## Routing Classes
 
-### Research
-Use when the central question is what current external evidence says, especially when source quality, freshness, provenance, contradictions, or claim classification matter.
+### Read-only truth finding
 
-### Evaluate
-Use when evidence is sufficiently developed and the central question is what to adopt, adapt, integrate, pilot, defer, research more, reject, build from scratch, or watchlist against explicit criteria.
+- Research: external evidence/source quality/freshness.
+- Investigate: unknown runtime/system state or competing causes.
+- Verify: proof of a specific material claim.
+- Known Errors: prior supported failure/mitigation match.
 
-### Investigate
-Use for unknown system/runtime state or competing failure causes.
+### Decision and design
 
-### Plan
-Use when a known objective or authorized disposition needs bounded scope, authority, acceptance, recovery, dependencies, or sequencing before implementation.
+- Evaluate: disposition from established evidence.
+- Plan: scope, sequencing, authority, acceptance, recovery.
+- Design: product information/state architecture.
+- UI Polish: micro-layout/readability/responsive/interaction finish.
+- Accessibility: keyboard, assistive technology, contrast, scalable/alternative interaction.
+- Readiness: exact target prerequisites/capabilities.
 
-### Design
-Use when the central question is how a Signalproof product should organize and communicate its real workflows and state.
+### Actuation
 
-Select Design for:
+- Build: bounded implementation.
+- Debug: bounded defect correction.
+- Recovery: recovery coordinator for multi-part restoration work.
+- Rollback: choose/verify known-good target.
+- Restore: perform bounded replacement/restoration.
+- Cleanup: remove/contain resources created by failed or partial operations.
 
-- product information architecture;
-- dashboard structure and hierarchy;
-- Operational versus Technical/Evidence depth;
-- persistent navigation and workspace layout;
-- health/state semantics;
-- evidence drill-down;
-- replaceable brand-asset slots;
-- mockup/concept direction;
-- resize/readability expectations;
-- product-specific visual acceptance contracts.
+### Defensive security
 
-Design must preserve product-specific semantics. It does not require every substantial Signalproof product to use the same shell. Competition Radar may use a true Operational + Technical split while Media Studio may expose evidence through production inspectors, QA, engine/model, and provenance workspaces.
+Use the narrowest matching specialist:
 
-Design must not invent live metrics, turn UNKNOWN into healthy state, call concept approval runtime acceptance, or rewrite the only accepted baseline.
+- Secrets: tokens, credentials, storage, logs, redaction, rotation implications.
+- Permissions: identity, privilege, ACL, OAuth scopes, authorization.
+- Supply Chain: dependencies, publishers, versions, licenses, hashes/signatures, install/update trust.
+- Network: endpoints, ports, telemetry, outbound/inbound flows, transport validation.
+- Execution Security: shell/dynamic-code/plugin/archive/deserialization/untrusted-input execution boundaries.
+- Security coordinator: several of the above materially interact or a cross-cutting security disposition is required.
 
-### Readiness
-Use when a specific target machine/environment must be checked against objective-specific prerequisites.
+### Continuity and durable state
 
-### Build / Debug
-Use for bounded authorized implementation or correction.
+- Release: exact candidate to exact distribution boundary.
+- Document: durable representation of established state.
+- Learn: reusable lesson extraction/governance.
+- Recovery Continuity: preserve restore journals, uncertain resource ownership, remaining rollback options.
+- Handoff: preserve active work across conversation/session boundary.
+- Closeout: preserve a meaningful milestone and authorize transition.
 
-### Verify
-Use when a specific material claim must be proven.
+## Loop Selection
 
-### Review
-Use when work quality, scope fidelity, protected state, architecture/contracts, dependencies, maintainability, privacy/security hazards, or recovery integrity must be assessed.
+The Signalproof Loop Library may supply reusable bounded iteration protocols. A Loop never grants authority.
 
-### Recovery
-Use when a failed, unsafe, corrupted, or rejected state should be restored to a trustworthy known-good state.
+Common mappings:
 
-### Security
-Use when secrets, privilege, executable/dependency trust, network/data flow, authentication/TLS/signing validation, ACLs, or security controls materially affect the decision.
+- Debug -> `SP-LOOP-DEBUG`;
+- Build/Verify -> `SP-LOOP-BUILD-VERIFY`;
+- Research -> `SP-LOOP-RESEARCH`;
+- ingestion/normalization -> `SP-LOOP-INGEST`;
+- recovery -> `SP-LOOP-RECOVERY`;
+- agent side effects -> `SP-LOOP-AGENT-ACTION`;
+- reusable learning -> `SP-LOOP-LEARN`;
+- optimization -> `SP-LOOP-OPTIMIZE`;
+- consequential retry -> `SP-LOOP-RETRY`.
 
-### Release
-Use when an exact candidate may be published, distributed, promoted, shipped, deployed, tagged, or designated as a release.
+The Governor decides whether a selected loop may run under the proposed permissions, risk, cost, and protected-state boundary.
 
-### Document
-Use when the objective is durable representation of established state: handoffs, SOPs/runbooks, ADRs, README/overview material, acceptance/build reports, release documentation, state summaries, operator instructions, or milestone records.
+## Default Context Budget
 
-Do not use Document to determine whether a claim is true. Route unresolved truth to Investigate/Verify first.
+Preferred runtime context:
 
-### Handoff
-Use when the central problem is preserving project continuity across a conversation boundary.
+```text
+ROOT CONTRACT
++ COMPACT CAPABILITY METADATA
++ 1 PRINCIPAL SKILL
++ 0-2 SPECIALISTS / LOOPS
++ TASK EVIDENCE
+```
 
-Select Handoff when:
+Avoid loading entire capability families merely because the request mentions a broad category.
 
-- the user explicitly requests a handoff, new chat, transfer, pause, or continuation elsewhere;
-- Context Pressure is YELLOW or RED;
-- a major new phase is about to begin after an already long evidence-heavy chat;
-- repeated build/test/recovery cycles have made exact failure/protected-state continuity costly to reconstruct;
-- a new agent/session must receive an exact boot path.
+## Sequencing Examples
 
-Handoff preserves objective, phase, protected state, failures, evidence classes, repository state, Build Ledger boundaries, prohibited actions, exact next action, boot instructions, and artifact hashes.
-
-Handoff must not fabricate a context percentage. It may use numeric pressure thresholds only when a trustworthy real platform meter exists.
-
-Handoff is not automatically Closeout. A chat may need transfer while the underlying phase remains open.
-
-### Learn
-Use when meaningful completed work has produced one or more potentially reusable lessons and the objective is to decide whether they should remain local, become documentation/tests/checklists, advance as policy/skill/router candidates, trigger deprecation review, or become research questions.
-
-Select Learn when the central question is:
-
-> **What should future Signalproof work permanently remember from this evidence, and through what governed mechanism?**
-
-Do not route every successful task to Learn. Use it when reusable extraction is material enough to justify deeper generalization/governance beyond the normal Closeout learning check.
-
-Learn does not make observations Active. It cannot bypass `DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE` governance.
-
-### Closeout
-Use after a meaningful research, evaluation, design, readiness, build, security, recovery, release, documentation, learning/governance, or defect milestone has resolved.
-
-Closeout asks whether a reusable lesson exists; Learn performs the deeper extraction when warranted.
-
-## Sequencing Patterns
-
-- `known-errors -> routed consequential action`
+- `known-errors -> investigate -> debug -> verify`
 - `research -> evaluate`
-- `evaluate -> research/readiness/security/plan/design`
-- `plan -> design -> build` when information architecture or visual/state contracts materially affect implementation;
-- `plan -> readiness -> build`
-- `design -> build -> verify/review` for an authorized product-design implementation;
-- `build/debug -> verify -> review`
-- `failed/rejected build -> known-errors -> recovery/investigate/debug -> verify`
-- `verify -> document`
-- `research/evaluate/design/readiness/security/recovery/release -> document`
-- `closeout -> handoff` when a completed milestone should move to a fresh chat before the next phase;
-- `open work -> handoff -> fresh chat -> continue` when context pressure requires transfer without milestone closure;
-- `closeout -> learn` when the milestone surfaces material reusable learning requiring deeper extraction;
-- `learn -> research` when generalization evidence is insufficient;
-- `learn -> verify/review` when a candidate requires claim proof or change-quality assessment;
-- `learn -> document` when the smallest durable output is documentation;
-- `learn -> plan/design/build` only after a separately approved candidate requires implementation;
-- `learn -> closeout` when a meaningful learning/governance milestone resolves;
-- `release -> document -> closeout -> handoff` when the next major release phase should begin in a fresh conversation;
-- `release -> document -> closeout -> learn` for a consequential completed cycle with material reusable lessons.
+- `plan -> design -> build -> verify/review`
+- `design -> ui-polish/accessibility -> build`
+- `security -> narrow specialist(s) -> verify`
+- `rollback -> restore -> verify`
+- `cleanup -> recovery-continuity -> verify`
+- `release -> document -> closeout`
+- `closeout -> learn` when reusable learning is material
+- `handoff -> fresh session -> continue` when the milestone itself remains open
 
-Do not force every request through every skill. Known Errors is mandatory only when work is consequential or materially failure-prone.
+These are patterns, not mandatory conveyor belts.
 
-## Authority Gate
+## STOP Conditions
 
-Routing never grants write/destructive authority, installation/adoption authority, purchase authority, privilege elevation, credentials/secrets access, security-control changes, signing authority, publication/deployment/release authority, branding replacement, architecture rewrite, policy authority, skill activation authority, or canonical Build Ledger mutation authority.
+STOP when:
 
-## Router Status
-
-- **ROUTED**
-- **ROOT FALLBACK**
-- **AWAITING AUTHORITY**
-- **KNOWN ERROR MATCH**
-- **RESEARCH REQUIRED**
-- **EVALUATION REQUIRED**
-- **DESIGN REQUIRED**
-- **READINESS ASSESSMENT REQUIRED**
-- **VERIFICATION REQUIRED**
-- **REVIEW REQUIRED**
-- **RECOVERY REQUIRED**
-- **SECURITY REVIEW REQUIRED**
-- **RELEASE REVIEW REQUIRED**
-- **DOCUMENTATION REQUIRED**
-- **HANDOFF REQUIRED**
-- **LEARNING REVIEW REQUIRED**
-- **MILESTONE CLOSEOUT REQUIRED**
-- **BLOCKED**
-- **STOP**
-
-## Anti-Patterns
-
-Fail routing when it:
-
-- skips Known Errors before consequential/failure-prone work;
-- repeats a high-confidence known error under materially unchanged conditions;
-- treats a known-error match as execution authority;
-- confuses Research with Evaluate;
-- treats an Evaluate recommendation as execution authority;
-- sends product information architecture to generic Build without Design when a real design contract is needed;
-- uses Design to invent metrics, health, readiness, or evidence;
-- treats a design concept or mockup as runtime acceptance;
-- forces a generic dashboard shell onto a product whose workflow requires a different information architecture;
-- sends target readiness to Research/Evaluate instead of Readiness;
-- sends unresolved factual truth to Document/Learn instead of Investigate/Verify;
-- treats Handoff as automatic milestone Closeout;
-- invents context-window precision to justify a Handoff decision;
-- allows a RED context-pressure state to be ignored while opening a large new phase without human override;
-- routes every successful task to Learn;
-- treats one observation as Active doctrine;
-- lets Learn bypass candidate/testing/approval governance;
-- lets Learn duplicate an existing skill/policy without checking existing intelligence;
-- uses Known Errors, Design, Document, Handoff, or Learn to override canonical state;
-- bypasses STOP/authority;
-- forces all specialists on every micro-edit;
-- skips meaningful milestone Closeout.
+- current repository/system state cannot be established for consequential work;
+- a known high-confidence failure would be repeated under unchanged conditions;
+- a route would silently expand privilege, security, release, publication, or ledger authority;
+- non-Active candidate capability would be treated as canonical Active capability;
+- unresolved truth is being sent directly to implementation or authoritative documentation;
+- the route would load broad families when a narrow specialist is sufficient and context cost is material;
+- a selected loop lacks bounded success/failure/STOP conditions;
+- protected state or rollback would be weakened outside authority.
 
 ## Completion Criteria
 
-Routing is complete when the smallest appropriate Active skill/sequence is selected; consequential/failure-prone work has passed Known Errors preflight; a known-error match constrains method without creating authority; Design remains distinct from Plan, Build, Review, and branding authority; Handoff remains distinct from Closeout and Document; Learn remains distinct from Closeout, Document, Research, Evaluate, Verify, and Review; reusable lessons do not become doctrine without governance; authority remains separate from capability; STOP conditions are preserved; and the next handoff condition is clear.
+Routing is complete when the minimum justified capability set is selected, known-error preflight is applied where required, authority remains separate from capability, unnecessary context is excluded, any loop is bounded, and the next STOP/handoff/closeout condition is explicit.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.1.13`
+- **Version:** `0.2.0`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
-- **Routes among:** active Signalproof specialist skills only
-- **Domain:** Capability routing, sequencing, Known Errors/Research/Evaluate/Design/Readiness/Verify/Review/Recovery/Security/Release/Document/Handoff/Learn/Closeout routing, evidence-state selection, authority-preserving dispatch
+- **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
 - **Created by:** Doc Reo / Signalproof
