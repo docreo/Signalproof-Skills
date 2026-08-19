@@ -14,7 +14,7 @@ The repository now follows the **Signalproof Library** architecture:
 - [`library/README.md`](library/README.md) — architecture and authority boundaries.
 - [`library/SKILL-BUDGET.md`](library/SKILL-BUDGET.md) — Skill Atomicity and Context Budget.
 - [`library/CAPABILITY-REGISTRY.yaml`](library/CAPABILITY-REGISTRY.yaml) — compact routing metadata for lazy loading.
-- [`loops/README.md`](loops/README.md) — bounded Loop Library.
+- [`loops/README.md`](loops/README.md) and [`loops/LOOP-REGISTRY.yaml`](loops/LOOP-REGISTRY.yaml) — bounded Loop Library.
 - [`tools/check_skill_budget.py`](tools/check_skill_budget.py) — deterministic UTF-8 byte-budget enforcement.
 
 Core rule:
@@ -82,15 +82,13 @@ ROOT SIGNALPROOF CONTRACT
 | [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Durable evidence-bound documentation |
 | [`signalproof-learn`](skills/signalproof-learn/SKILL.md) | 0.1.0 | Governed lesson and candidate extraction |
 | [`signalproof-handoff`](skills/signalproof-handoff/SKILL.md) | 0.1.0 | Conversation-boundary continuity |
-| [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.1.0 | Milestone closeout and Build Ledger continuity |
+| [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.2.0 | Milestone closeout, Build Ledger continuity, and Skill/library architecture governance |
 
 The authoritative public status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md).
 
 ## Routing model
 
 The Router chooses by objective and evidence state, not by keyword alone. For narrow work it should route directly to a narrow specialist rather than load its entire coordinator family.
-
-Examples:
 
 ```text
 API key exposure          -> signalproof-secrets
