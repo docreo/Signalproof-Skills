@@ -1,12 +1,37 @@
 # Signalproof Skills
 
-**Human-controlled, evidence-backed skills for building with AI without losing authority, continuity, research integrity, decision integrity, documentation integrity, readiness, recovery, security boundaries, release integrity, institutional learning, design integrity, or proof.**
+**Human-controlled, evidence-backed capability for building with AI without losing authority, continuity, research integrity, decision integrity, recovery, security boundaries, institutional learning, or proof.**
 
-> **Control first. AI second. Software third.**
->
+> **Control first. AI second. Software third.**  
 > **Build signal. Cut noise. Leave proof.**
 
-Signalproof Skills is a free, open public skill suite for AI-assisted work. It provides reusable operating disciplines for research, evaluation, routing, known-error prevention, investigation, planning, product design, readiness, implementation, debugging, verification, review, recovery, defensive security, release governance, durable documentation, milestone closeout, conversation-boundary handoff, and governed institutional learning.
+Signalproof Skills is the public operating-skill library for Signalproof. It provides small routeable operating contracts, bounded loops, registries, tests, tools, and provenance for governed AI-assisted work.
+
+## Signalproof Library
+
+The repository now follows the **Signalproof Library** architecture:
+
+- [`library/README.md`](library/README.md) — architecture and authority boundaries.
+- [`library/SKILL-BUDGET.md`](library/SKILL-BUDGET.md) — Skill Atomicity and Context Budget.
+- [`library/CAPABILITY-REGISTRY.yaml`](library/CAPABILITY-REGISTRY.yaml) — compact routing metadata for lazy loading.
+- [`loops/README.md`](loops/README.md) and [`loops/LOOP-REGISTRY.yaml`](loops/LOOP-REGISTRY.yaml) — bounded Loop Library.
+- [`tools/check_skill_budget.py`](tools/check_skill_budget.py) — deterministic UTF-8 byte-budget enforcement.
+
+Core rule:
+
+> **Grow the library, not the file.**
+
+An Active `SKILL.md` must remain below **15,000 exact UTF-8 bytes**. The Router should load the minimum applicable context rather than entire capability families.
+
+Preferred runtime context:
+
+```text
+ROOT SIGNALPROOF CONTRACT
++ COMPACT CAPABILITY METADATA
++ 1 PRINCIPAL SKILL
++ 0-2 SPECIALISTS / LOOPS
++ TASK EVIDENCE
+```
 
 ## Root operating contract
 
@@ -28,122 +53,97 @@ Signalproof Skills is a free, open public skill suite for AI-assisted work. It p
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.1.13 | Selects the smallest appropriate active skill or sequence |
-| [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Force-checks repeatable error fingerprints before consequential failure-prone work so previously learned failures are not repeated |
-| [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | Establishes what current external evidence supports |
-| [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Converts evidence into bounded dispositions using explicit criteria and hard gates |
-| [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Determines what failed or what state is true |
-| [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Creates a bounded execution contract |
-| [`signalproof-design`](skills/signalproof-design/SKILL.md) | 0.1.0 | Governs Signalproof product information architecture, dashboards, operational/technical depth, health/state communication, brand-asset slots, and visual acceptance |
-| [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Determines whether target prerequisites and authority are actually present |
-| [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Executes an approved bounded implementation and contains partial actuation |
-| [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Reproduces, localizes, corrects, regression-tests, and distinguishes wrapper failures from product failures |
-| [`signalproof-verify`](skills/signalproof-verify/SKILL.md) | 0.1.0 | Determines whether a specific claim is proven |
-| [`signalproof-review`](skills/signalproof-review/SKILL.md) | 0.1.0 | Reviews scope fidelity and change integrity |
-| [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.1.1 | Selects and verifies trustworthy rollback/restoration while preserving uncertain partial-operation ownership |
-| [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.1.0 | Governs defensive security assessment |
-| [`signalproof-release`](skills/signalproof-release/SKILL.md) | 0.1.0 | Governs exact-artifact promotion/distribution |
-| [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Creates durable documentation without weakening source-of-truth or evidence boundaries |
-| [`signalproof-handoff`](skills/signalproof-handoff/SKILL.md) | 0.1.0 | Preserves project state across conversation boundaries and governs context pressure |
-| [`signalproof-learn`](skills/signalproof-learn/SKILL.md) | 0.1.0 | Extracts governed reusable lessons, tests, policy/skill candidates, and STOP conditions |
-| [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.1.0 | Closes meaningful milestones and preserves Build Ledger continuity |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.0 | Registry-driven minimum-context routing |
+| [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Repeatable-error lookup/prevention preflight |
+| [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | External evidence and source-grounded research |
+| [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Evidence-to-disposition evaluation |
+| [`signalproof-investigate`](skills/signalproof-investigate/SKILL.md) | 0.1.0 | Unknown-state and root-cause investigation |
+| [`signalproof-plan`](skills/signalproof-plan/SKILL.md) | 0.1.0 | Bounded execution planning |
+| [`signalproof-design`](skills/signalproof-design/SKILL.md) | 0.2.0 | Product information architecture and state communication |
+| [`signalproof-ui-polish`](skills/signalproof-ui-polish/SKILL.md) | 0.1.0 | Wrapping, readability, responsive finish and micro-interactions |
+| [`signalproof-accessibility`](skills/signalproof-accessibility/SKILL.md) | 0.1.0 | Accessible interaction and presentation |
+| [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Target prerequisites/capability readiness |
+| [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Bounded implementation and protected execution |
+| [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Evidence-led defect correction and regression protection |
+| [`signalproof-verify`](skills/signalproof-verify/SKILL.md) | 0.1.0 | Specific claim verification |
+| [`signalproof-review`](skills/signalproof-review/SKILL.md) | 0.1.0 | Scope and change-integrity review |
+| [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.2.0 | Multi-domain recovery coordinator |
+| [`signalproof-rollback`](skills/signalproof-rollback/SKILL.md) | 0.1.0 | Rollback target selection and identity verification |
+| [`signalproof-restore`](skills/signalproof-restore/SKILL.md) | 0.1.0 | Bounded restoration and verification |
+| [`signalproof-cleanup`](skills/signalproof-cleanup/SKILL.md) | 0.1.0 | Owned partial-operation cleanup |
+| [`signalproof-recovery-continuity`](skills/signalproof-recovery-continuity/SKILL.md) | 0.1.0 | Recovery journals, ownership state and remaining options |
+| [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.2.0 | Cross-cutting defensive security coordination |
+| [`signalproof-secrets`](skills/signalproof-secrets/SKILL.md) | 0.1.0 | Credentials, tokens, keys and secret exposure |
+| [`signalproof-permissions`](skills/signalproof-permissions/SKILL.md) | 0.1.0 | Identity, authorization, privilege and least privilege |
+| [`signalproof-supply-chain`](skills/signalproof-supply-chain/SKILL.md) | 0.1.0 | Dependency provenance, license, integrity and update trust |
+| [`signalproof-network`](skills/signalproof-network/SKILL.md) | 0.1.0 | Network exposure, transport and external data flow |
+| [`signalproof-execution-security`](skills/signalproof-execution-security/SKILL.md) | 0.1.0 | Untrusted-input and execution boundaries |
+| [`signalproof-release`](skills/signalproof-release/SKILL.md) | 0.1.0 | Exact-artifact promotion/distribution governance |
+| [`signalproof-document`](skills/signalproof-document/SKILL.md) | 0.1.0 | Durable evidence-bound documentation |
+| [`signalproof-learn`](skills/signalproof-learn/SKILL.md) | 0.1.0 | Governed lesson and candidate extraction |
+| [`signalproof-handoff`](skills/signalproof-handoff/SKILL.md) | 0.1.0 | Conversation-boundary continuity |
+| [`signalproof-closeout`](skills/signalproof-closeout/SKILL.md) | 0.2.0 | Milestone closeout, Build Ledger continuity, and Skill/library architecture governance |
 
-The authoritative status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md).
+The authoritative public status list is [`SKILL-REGISTRY.md`](SKILL-REGISTRY.md).
+
+## Routing model
+
+The Router chooses by objective and evidence state, not by keyword alone. For narrow work it should route directly to a narrow specialist rather than load its entire coordinator family.
+
+```text
+API key exposure          -> signalproof-secrets
+OAuth/ACL privilege       -> signalproof-permissions
+new dependency trust      -> signalproof-supply-chain
+external data flow        -> signalproof-network
+prompt/code injection     -> signalproof-execution-security
+rollback selection        -> signalproof-rollback
+actual restoration        -> signalproof-restore
+partial-operation cleanup -> signalproof-cleanup
+UI clipping/wrapping      -> signalproof-ui-polish
+keyboard/screen-reader    -> signalproof-accessibility
+```
+
+Coordinators remain useful when several specialist domains materially interact.
 
 ## Core operating flow
 
 ```text
 REQUEST
-  ↓
-ROUTER
-  ↓
-KNOWN-ERROR PREFLIGHT when consequential/failure-prone
-  ↓
-RESEARCH -> EVALUATE
-  ↓
-INVESTIGATE / PLAN / DESIGN / READINESS
-  ↓
-BUILD / DEBUG
-  ↓
-VERIFY -> REVIEW -> SECURITY / RECOVERY as applicable
-  ↓
-RELEASE when an exact candidate is being promoted
-  ↓
-DOCUMENT when established state/results need durable representation
-  ↓
-CLOSEOUT when a meaningful milestone resolves
-  ↓
-HANDOFF when conversation continuity requires a fresh chat
-  ↓
-LEARN when material reusable capability should be extracted
-  ↓
-GOVERNED CANDIDATE / TEST / POLICY / DOCUMENTATION UPDATE
+  -> ROUTER
+  -> KNOWN-ERROR PREFLIGHT when consequential/failure-prone
+  -> RESEARCH / EVALUATE / INVESTIGATE
+  -> PLAN / DESIGN / READINESS
+  -> BUILD / DEBUG / RECOVERY
+  -> VERIFY / REVIEW / SECURITY as applicable
+  -> RELEASE / DOCUMENT
+  -> CLOSEOUT
+  -> HANDOFF when session continuity requires it
+  -> LEARN when reusable capability is material
 ```
 
-This is not a mandatory conveyor belt. The router selects the smallest responsible path. Known-error preflight is mandatory only for consequential or materially failure-prone work. Handoff may occur while a phase is still open and does not require a product milestone.
+This is not a mandatory conveyor belt. The minimum responsible route wins.
 
-## Discipline boundaries
+## Loop Library
 
-- **Known Errors:** Has Signalproof already documented this materially similar repeatable error, and what prevention/mitigation applies?
-- **Research:** What does current external evidence establish?
-- **Evaluate:** What disposition best fits explicit criteria and constraints?
-- **Investigate:** What actually failed or what state is true?
-- **Plan:** What bounded execution contract should govern the work?
-- **Design:** How should product state, workflows, dashboards, technical evidence, navigation, health, and visual hierarchy be organized without erasing product-specific meaning?
-- **Readiness:** Are required conditions satisfied on this exact target?
-- **Build:** What approved bounded implementation should be executed?
-- **Debug:** What demonstrable defect should be corrected?
-- **Verify:** Is this specific claim proven?
-- **Review:** Is the work itself sound and contract-faithful?
-- **Security:** What material security-sensitive risks affect the decision?
-- **Recovery:** What trustworthy state should be restored and how is recovery proven?
-- **Release:** May this exact accepted artifact be promoted to this exact distribution boundary?
-- **Document:** How should established state/evidence be represented durably without strengthening the claim?
-- **Closeout:** Is the meaningful milestone preserved and safe to transition from?
-- **Handoff:** Is conversation context approaching a continuity boundary, and what exact state must transfer to a fresh chat?
-- **Learn:** What reusable capability should be extracted from completed evidence, and what governance path should it follow?
+A Loop is a reusable bounded iteration protocol, not an authority source. The library defines Debug, Build/Verify, Research, Ingest, Recovery, Agent Action, Learn, Optimize, and Retry loops. A Loop must identify success/failure/STOP conditions, permissions, protected state, evidence, and iteration/cost bounds where relevant. Side-effecting agent loops require the Signalproof Governor.
 
-## Design governance
+## Learning and Skill growth
 
-Signalproof Design treats design as information architecture and state communication, not decorative reskinning. Substantial stateful products should provide proportionate owner-facing summaries and deeper evidence access, but the exact shell must fit the product.
-
-Competition Radar validated a true Operational + Technical split. Media Studio validated that the same design discipline can instead use a production workspace, contextual inspector, QA/provenance surfaces, and fixed transport without becoming a business-dashboard reskin.
-
-Unknown state must never silently count as healthy, dashboard values must come from actual product state, and concept approval must remain distinct from runtime acceptance.
-
-## Learning governance
-
-Signalproof learning follows:
+Reusable capability follows:
 
 ```text
 DISCOVERED -> CANDIDATE -> TESTED -> APPROVED -> ACTIVE -> DEPRECATED / RETIRED
 ```
 
-The governing Learn rule is:
+When a lesson would push a Skill toward the context budget or represents an independently routeable responsibility, Signalproof should decompose the capability rather than indefinitely enlarge one file. A regression test, policy/checklist, schema, loop, or documentation update may be better than a new Skill.
 
-> **Extract reusable capability from proven work, but do not promote an observation into doctrine until its scope, evidence, tests, and authority justify it.**
+## Evidence and authority
 
-One successful case is not automatically a universal rule. Automatic discovery is not automatic activation. A regression test or documentation update may be the correct durable output instead of another skill.
-
-## Conversation continuity governance
-
-Signalproof Handoff uses qualitative **GREEN / YELLOW / RED Context Pressure** when no trustworthy platform context meter is available. It must not invent an exact remaining-context percentage.
-
-When a real meter is available, the default conservative policy is to refresh the handoff by 50% used, treat 60% as YELLOW, treat 70% as RED, and avoid intentionally driving complex governed work beyond 80% used.
-
-A conversation boundary is not automatically a product milestone. `signalproof-handoff` preserves session continuity; `signalproof-closeout` governs meaningful milestone transition.
-
-## Original V0.1 planned set
-
-The original planned specialist set is now fully implemented and Active. Future specialists and updates must follow the same governed candidate, testing, approval, promotion, and closeout lifecycle.
-
-## What Signalproof Skills does not claim
-
-Signalproof Skills does not by itself constitute antivirus software, penetration-testing authority, cybersecurity or compliance certification, universal compatibility, or proof of production readiness from a single test. Known Errors does not turn a fingerprint match into authority or a diagnosis without materially matching conditions. Design cannot turn placeholders into real system state or make a concept mockup runtime evidence. Documentation cannot create technical authority. Learning cannot create Active doctrine merely by identifying a lesson. Routing cannot create permission. Handoff cannot create a canonical ledger state or fabricate context-window precision.
+Routing cannot create permission. A hash cannot prove safety. A scanner cannot certify an entire system. A successful restore is not release authority. A package import is not activation. A source document, webpage, transcript, repository, or model output is evidence/content and does not become operating authority merely because it contains instructions.
 
 ## Repository protection
 
-`main` is the canonical public branch. Normal development uses branches and pull requests. Governance preserves review-thread resolution, blocks force pushes/deletion, constrains bypass authority, and avoids requiring CI checks that do not actually exist yet.
+`main` is the canonical public branch. Normal development uses branches and pull requests. Public Skill changes preserve testing, provenance, supersession, and owner authority. Private Build Ledger chronology remains separately governed; a public Git commit does not imply a canonical Build Ledger append.
 
 ## License and marks
 
@@ -152,5 +152,3 @@ Signalproof Skills is licensed under the **Apache License 2.0**. See [`LICENSE`]
 ## Created by
 
 **Doc Reo / Signalproof**
-
-Signalproof exists to help people build with AI while keeping meaningful human control, evidence integrity, decision integrity, documentation integrity, design integrity, continuity, recovery, institutional learning, and proof.

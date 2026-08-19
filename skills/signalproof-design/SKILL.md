@@ -1,332 +1,133 @@
 ---
 name: signalproof-design
-description: Govern Signalproof product information architecture, native application layout, dashboards, operational-versus-technical information depth, replaceable brand-asset slots, health/state communication, readability, visual acceptance, and cross-product design consistency without overriding product-specific workflows or implementation authority.
+description: Govern Signalproof product information architecture, workflow hierarchy, operational-versus-technical depth, state semantics, navigation, evidence access, product identity slots, and design acceptance without absorbing micro-polish or accessibility doctrine that belongs to dedicated specialists.
 ---
 
 # Signalproof Design
 
 ## Purpose
 
-`signalproof-design` is the product-design and information-architecture specialist for Signalproof software.
-
-Its central rule is:
+`signalproof-design` is the product information-architecture and state-communication specialist.
 
 > **Make system state understandable without hiding the evidence underneath it.**
 
-Design is not decoration. The skill governs how a product presents state, navigation, decisions, health, evidence, and technical depth so ordinary use is clear while deeper inspection remains available.
+This skill owns product structure and meaning. Use `signalproof-ui-polish` for micro-layout/visual finish and `signalproof-accessibility` for accessible interaction/presentation requirements.
 
 ## Inheritance
 
-This skill inherits the active root `signalproof` contract for human authority, protected state, evidence classification, verification, recovery, STOP conditions, public/private boundaries, milestone closeout, handoff continuity, and governed learning.
+Inherits the active root `signalproof` contract. Design does not grant authority to rewrite a working baseline, replace branding strategy, fabricate state, or promote a release.
 
-Design does not create authority to rewrite working products, change branding strategy, modify business naming, certify security, promote a release, or bypass product-specific acceptance gates.
+## Contract
 
-## Design Contract
+1. Preserve product meaning; cross-product consistency must not erase product-specific workflows.
+2. Separate branding assets from information architecture.
+3. Newly originated Signalproof software candidates begin at `V1 RD1` unless governed otherwise; do not renumber history retroactively.
+4. Substantial stateful products should provide an owner-facing summary when multiple screens/logs would otherwise be required to understand condition.
+5. Distinguish Operational from Technical/Evidence depth when the product warrants it; this need not be two literal screens.
+6. Health/status must be evidence-backed; UNKNOWN is not healthy.
+7. Important status must be textual and evidence-drillable.
+8. Prefer persistent navigation and durable workspaces when product scale warrants them.
+9. Protect the known-working baseline; material redesign occurs in a governed candidate.
+10. Separate concept, visual, runtime, data-correctness, accessibility, and owner acceptance evidence.
+11. Stop when a generic Signalproof shell would materially harm the specific workflow.
+12. Hand UI micro-detail and accessibility requirements to their dedicated specialists instead of growing this Skill indefinitely.
 
-1. **Separate branding from layout.** Brand identity and product information architecture are related but not interchangeable.
-2. **Preserve product meaning.** Cross-product consistency must not erase product-specific workflows, terminology, or decision semantics.
-3. **Establish replaceable identity slots.** New products should provide stable logo/icon asset slots so later asset replacement does not require unrelated application rewrites.
-4. **Use the V1 RD1 rule prospectively.** Newly originated Signalproof software candidates begin at `V1 RD1` unless a governed exception exists; existing histories are not renumbered retroactively.
-5. **Require a Dashboard proportionately.** A substantial stateful product should provide an owner-facing operational summary when users would otherwise need multiple screens/logs to understand condition.
-6. **Provide two information depths when useful.** Substantial products should distinguish an Operational View from a Technical/Evidence View when the underlying system state warrants both.
-7. **Make health evidence-backed.** Unknown state is not healthy state. Percentages/meters must expose their underlying factors.
-8. **Use explicit status language.** Important states must be readable in text and not depend on color alone.
-9. **Prefer durable application structure.** Larger products should generally use persistent navigation, clear context, reusable workspaces/cards, visible system state, contextual actions, and human approval points when applicable.
-10. **Protect the known-working baseline.** Material redesign occurs in a new governed candidate/version/branch/copy with rollback preserved.
-11. **Mock up before large shell replacement when practical.** A concept image may approve direction but does not prove runtime behavior.
-12. **Keep visual and functional acceptance distinct.** Compile, runtime, layout, dashboard correctness, technical-view correctness, accessibility/readability, and owner visual acceptance are separate evidence classes.
-13. **Design from real state.** Do not fabricate metrics, health percentages, readiness, installed components, evidence, or lifecycle states merely to make a dashboard look complete.
-14. **Expose decision provenance.** A dashboard summary should allow the user to reach the evidence or technical state supporting the summary when material.
-15. **Stop on product-contract conflict.** If the standard would force a layout that materially harms the product workflow, stop and adapt the standard application rather than blindly reskinning.
+## Workflow
 
-## Design Workflow
+### 1. Establish Product Contract
 
-### 1. Identify Product Stage
+Identify product/version, protected baseline, target candidate, primary users, workflows, decisions, current state sources, existing screenshots/mockups, and non-negotiable product semantics.
 
-Establish:
+### 2. Information Architecture
 
-- product and current version/stage;
-- whether this is a new V1 RD1 candidate or an existing product;
-- protected baseline/rollback;
-- target development version;
-- product-specific workflow and user roles;
-- current UI evidence/screenshots/mockups;
-- applicable design standard and exceptions.
+Define only the workspaces needed, such as Dashboard, primary operational workspaces, evidence/history, technical/system view, settings, inspectors, queues, or contextual actions.
 
-Do not retroactively rename protected versions merely to satisfy the current standard.
+Avoid both giant single-screen control surfaces and decorative page proliferation.
 
-### 2. Define Information Architecture
+### 3. Operational View
 
-Map the product into only the workspaces it actually needs.
-
-For substantial products, consider:
-
-- Dashboard;
-- primary operational workspace(s);
-- evidence/history/reporting;
-- technical/system view;
-- settings;
-- contextual inspectors or queues when justified.
-
-Avoid a giant single-screen control surface when separate durable workspaces would reduce density and clarify decisions.
-
-Avoid creating many navigation pages merely to look sophisticated.
-
-### 3. Define Operational View
-
-The Operational View should answer quickly:
+Answer proportionately:
 
 ```text
 WHAT DO I HAVE?
 WHAT IS RUNNING?
 WHAT CHANGED?
-IS SOMETHING WRONG?
 WHAT NEEDS ATTENTION?
 WHAT SHOULD I DO NEXT?
 ```
 
-Select metrics and signals from actual product state. Do not invent universal cards.
+Values must map to real product state.
 
-### 4. Define Technical / Evidence View
+### 4. Technical / Evidence Depth
 
-Expose material underlying truth such as:
+Expose material underlying truth such as versions, hashes, dependencies, services, models/engines, paths, permissions, provenance, evidence, known limitations, or security/readiness state when relevant.
 
-- runtime state;
-- dependencies;
-- engines/models;
-- versions/hashes;
-- services/ports;
-- paths/permissions;
-- capability state;
-- provenance;
-- security/readiness checks;
-- evidence/logs;
-- known limitations.
+Technical depth should explain operational summaries rather than contradict them.
 
-The Technical/Evidence View should explain the Operational View rather than contradict it.
+### 5. State Semantics
 
-Not every product requires a separate dedicated Technical screen. A media-production product, for example, may place engine/model health, provenance, QA, and evidence in inspectors or specialized workspaces when that better serves the production workflow.
+Use explicit states such as HEALTHY, ATTENTION, DEGRADED, BLOCKED, UNKNOWN only when defined by product evidence. If percentages/meters are used, define factors and treatment of unknowns and preserve drill-down.
 
-### 5. Define Health / State Semantics
+### 6. Product Identity Slots
 
-Use explicit evidence-backed states such as:
+For applicable products, use stable replaceable assets such as:
 
 ```text
-HEALTHY
-ATTENTION
-DEGRADED
-BLOCKED
-UNKNOWN
+Assets/Brand/product-logo.png
+Assets/Brand/product-icon.png
+Assets/Brand/product-icon.ico
 ```
 
-A meter/percentage is optional. If used:
+Do not make the public Skill repository the canonical production-artwork store.
 
-- define the factors;
-- define treatment of unknown/unverified factors;
-- never silently score unknown as healthy;
-- preserve drill-down to supporting evidence;
-- avoid false precision when the model does not justify it.
+### 7. Candidate / Mockup Gate
 
-Because Signalproof red may be both brand accent and warning/error color, reinforce warning/error states with labels and/or iconography.
+For material redesign, preserve baseline and review navigation, hierarchy, workspace density, technical evidence access, product semantics, and expected resize behavior before broad implementation.
 
-### 6. Define Brand Asset Contract
+Mockup approval proves direction, not runtime behavior.
 
-For new or migrating products, provide stable product asset slots such as:
+### 8. Specialist Handoff
 
-```text
-Assets/
-  Brand/
-    product-logo.png
-    product-icon.png
-    product-icon.ico
-```
+Route micro-layout, wrapping, spacing, alignment, motion, responsive polish, control affordances, and optical detail to `signalproof-ui-polish`.
 
-Use a default approved Signalproof identity until a product-specific asset is approved.
-
-Do not make the skill repository the accidental canonical storage location for production artwork.
-
-### 7. Protect the Baseline
-
-Before large design implementation:
-
-- preserve the accepted working baseline;
-- create a new version/candidate copy/branch;
-- bind acceptance evidence to the new candidate;
-- keep rollback accessible.
-
-A redesign may change presentation architecture substantially without invalidating the previous functional baseline.
-
-### 8. Mockup / Concept Gate
-
-For material redesigns, create a concept/mockup when practical and review:
-
-- navigation structure;
-- workspace hierarchy;
-- dashboard information hierarchy;
-- technical/evidence access;
-- status/health clarity;
-- density/readability;
-- product-specific semantics;
-- expected 1080p/resizing behavior when relevant.
-
-Approval of a mockup authorizes design direction only, not runtime acceptance.
+Route keyboard navigation, screen readers, contrast, scalable display, captions, alternative input, reduced motion, and semantic accessibility to `signalproof-accessibility`.
 
 ### 9. Build Handoff
 
-When implementation is authorized, hand off a bounded design contract to `signalproof-build` including:
+Provide Build with protected baseline, target version, approved IA, data/state sources, asset slots, state semantics, resize requirements, applicable specialist requirements, acceptance matrix, and forbidden changes.
 
-- protected baseline;
-- exact target version/candidate;
-- approved layout/workspace structure;
-- required asset slots;
-- dashboard metrics and source-of-truth fields;
-- technical/evidence requirements;
-- health semantics;
-- resize/readability requirements;
-- acceptance matrix;
-- forbidden changes.
+### 10. Acceptance
 
-Do not let implementation silently redesign the approved information architecture.
+Keep separate evidence for workflow fidelity, dashboard/state correctness, technical/evidence correctness, runtime/resize, UI polish, accessibility, and owner visual acceptance.
 
-### 10. Design Acceptance
+## Lifecycle vs Disposition
 
-Applicable gates may include:
-
-- product workflow fidelity;
-- visual acceptance;
-- dashboard information correctness;
-- Operational View correctness;
-- Technical/Evidence View correctness;
-- resize/layout acceptance;
-- readability/accessibility review;
-- brand asset-slot presence;
-- health/state semantic correctness;
-- owner acceptance.
-
-Design acceptance must use real runtime/product evidence where the claim concerns live state.
-
-### 11. Closeout and Handoff
-
-After a meaningful design milestone:
-
-- preserve approved mockup/design record;
-- preserve acceptance screenshots/evidence;
-- record protected baseline and rollback;
-- record unresolved UX debt separately;
-- route through `signalproof-closeout` before the next material development phase;
-- use `signalproof-handoff` when conversation continuity requires transfer to a fresh chat.
-
-## Default Large-Application Pattern
-
-This is a starting discipline, not a mandatory identical layout:
+When both matter, keep technology lifecycle and strategic disposition separate.
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│ PRODUCT IDENTITY     GLOBAL CONTEXT            SYSTEM STATE │
-├─────────────┬───────────────────────────────────────────────┤
-│             │                                               │
-│ Navigation  │               Workspace                       │
-│             │                                               │
-│ Dashboard   │                                               │
-│ Main Tools  │                                               │
-│ Evidence    │                                               │
-│ Technical   │                                               │
-│ Settings    │                                               │
-│             │                                               │
-├─────────────┴───────────────────────────────────────────────┤
-│ Status / active operation / contextual information          │
-└─────────────────────────────────────────────────────────────┘
+DISCOVERED -> QUARANTINED -> UNDER REVIEW -> TESTED -> ACCEPTED -> INTEGRATED -> RETIRED
 ```
 
-Apply only the regions that improve the product.
-
-## Lifecycle State vs Disposition
-
-When a product governs technology/intake decisions, keep lifecycle state and owner disposition separate when both matter.
-
-Example lifecycle:
-
-```text
-DISCOVERED -> QUARANTINED -> UNDER REVIEW -> TESTED / ISOLATED -> ACCEPTED -> INTEGRATED -> RETIRED
-```
-
-Example disposition:
+is not the same field as:
 
 ```text
 ADOPT / ADAPT / INTEGRATE / WATCH / HOLD / REJECT / REPLACE
 ```
 
-Do not use one overloaded field to mean both operational state and strategic decision.
-
-## V1 RD1 Rule
-
-For newly originated Signalproof software:
-
-> **Start at V1 RD1.**
-
-V1 RD1 proves the functional candidate/baseline. Design maturation may begin during RD1 when necessary, but the full standard becomes a required consideration for subsequent governed versions after the functional baseline is established.
-
-Existing products keep their historical numbering and adopt the standard prospectively.
-
 ## STOP Conditions
 
-Stop when:
+STOP when redesign would overwrite the only accepted baseline, state/health has no trustworthy source, UNKNOWN would be represented as healthy, mockup/compile success is being represented as runtime/data acceptance, technical evidence is hidden for visual cleanliness, or a shared layout would materially reduce product usability.
 
-- the redesign would overwrite the only accepted working baseline;
-- dashboard metrics have no trustworthy source of truth;
-- a health percentage would require treating unknown as healthy;
-- the proposed standard conflicts materially with the product workflow and no approved adaptation exists;
-- branding artwork is being silently treated as canonical without controlled provenance;
-- implementation would require unrelated framework/runtime/security changes outside scope;
-- a mockup is being represented as runtime acceptance;
-- compile/runtime success is being represented as dashboard-information or visual acceptance;
-- technical evidence is being hidden to make the dashboard look cleaner;
-- a generic cross-product layout would materially reduce usability of the specific product.
+## Completion Criteria
 
-## Anti-Patterns
-
-Fail this skill when Design:
-
-- copies another Signalproof product screen-for-screen instead of applying shared layout discipline;
-- adds dashboards with fake or placeholder health numbers that look authoritative;
-- requires every tiny utility to have a complex navigation shell;
-- hides unknown/unverified state inside green aggregate scores;
-- uses color alone for material status;
-- rewrites historical versions to fit a new numbering standard;
-- scatters logo/icon references throughout code instead of using replaceable asset slots;
-- places canonical production artwork in the public skill specification as the source of truth;
-- replaces working functionality merely to achieve visual consistency;
-- mixes marketing branding decisions with information-architecture governance;
-- treats Operational View as a substitute for technical evidence;
-- treats Technical View as an excuse for an unusably dense primary interface.
-
-## Active Acceptance Basis
-
-`signalproof-design` was promoted after two materially different Signalproof design scenarios demonstrated that the contract generalizes without forcing identical products:
-
-1. **Signalproof Competition Radar** - owner-approved C4 Operational Dashboard plus separate dense Technical View, real persisted scan/evidence state, protected prior baseline, visual/runtime separation, and evidence-backed dashboard information.
-2. **Signalproof Media Studio / Signal Flow redesign** - owner-approved production-workstation information architecture using persistent navigation, project context, central creative workspace, right inspector, fixed transport, provenance/QA/engine state, and an explicit rule that Media Studio must not become a Greenlight or business-dashboard reskin.
-
-The second scenario validates adaptation to a materially different creative-production workflow rather than claiming runtime completion of the Media Studio redesign. Runtime claims remain governed by the product's own build/acceptance evidence.
-
-Owner promotion approval was given after these scenarios and after Radar's first complete UI lock.
-
-## Status
-
-- **DESIGN CONTRACT ACTIVE** - this skill may govern applicable Signalproof product-design work.
-- **DESIGN DIRECTION ACCEPTED** - concept/mockup direction accepted; runtime/product acceptance pending.
-- **DESIGN ACCEPTED** - applicable design gates pass for the defined candidate.
-- **REVISE** - design direction or information hierarchy needs bounded correction.
-- **BLOCKED** - required product truth/source-of-state/visual evidence is unavailable.
-- **STOP** - continuing would violate protected state, truthfulness, authority, or product workflow.
+Design is complete when product workflow, IA, operational/technical depth, state semantics, source-of-truth fields, identity slots, specialist handoffs, protected baseline, build contract, and acceptance evidence classes are explicit.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-design`
-- **Version:** `0.1.0`
+- **Version:** `0.2.0`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
-- **Works with:** `signalproof-plan`, `signalproof-build`, `signalproof-verify`, `signalproof-review`, `signalproof-document`, `signalproof-closeout`, `signalproof-handoff`
-- **Domain:** Product design governance, information architecture, dashboard clarity, operational/technical depth, brand asset slots, health/state communication, visual acceptance
+- **Domain:** Product information architecture and state communication
 - **Created by:** Doc Reo / Signalproof

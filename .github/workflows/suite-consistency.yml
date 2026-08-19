@@ -22,5 +22,11 @@ jobs:
       - name: Run fixture regression tests
         run: python3 -m unittest discover -s tests/consistency -p 'test_*.py' -v
 
-      - name: Check live repository consistency
+      - name: Check live suite consistency
         run: python3 tools/check_suite_consistency.py
+
+      - name: Enforce Signalproof Skill Atomicity budget
+        run: python3 tools/check_skill_budget.py
+
+      - name: Check Signalproof Library registries and loops
+        run: python3 tools/check_library_consistency.py
