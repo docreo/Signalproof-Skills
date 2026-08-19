@@ -12,7 +12,7 @@
 
 Its central rule is:
 
-> **Transfer the mission, provenance, authority, protected state, and retrieval path — not the entire chat.**
+> **Transfer the mission, provenance, authority, protected state, retrieval path, and immediate operator/runtime constraints — not the entire chat.**
 
 The handoff must contain enough information for the receiving chat to locate the authoritative current records and continue safely, but it should avoid duplicating large bodies of repository-controlled doctrine that can be retrieved from GitHub.
 
@@ -43,13 +43,14 @@ Before consequential work:
    - commands/build-git.md
    - commands/handoff-log.md
 3. Read the current signalproof-router and only the Active specialist skills it routes for the next action.
-4. If private repository access is available, refetch docreo/Signalproof-Build-Ledger main and retrieve only the task-relevant private continuity, handoff, evidence, failure intelligence, protected-state, and staged/canonical ledger records.
-5. If private access is unavailable, continue from public Signalproof-Skills plus the evidence embedded/referenced in this handoff; explicitly mark private continuity as UNAVAILABLE rather than guessing it.
-6. Record receipt of this handoff through /log-build-git before designing/executing the next action.
-7. Revalidate the stated Next Gate against current Git/evidence before mutation.
+4. Read the handoff's Operator / Runtime Vocabulary and Material Failures / Known Failure Constraints before generating or running a harness.
+5. If private repository access is available, refetch docreo/Signalproof-Build-Ledger main and retrieve only the task-relevant private continuity, handoff, evidence, failure intelligence, protected-state, and staged/canonical ledger records.
+6. If private access is unavailable, continue from public Signalproof-Skills plus the evidence embedded/referenced in this handoff; explicitly mark private continuity as UNAVAILABLE rather than guessing it.
+7. Record receipt of this handoff through /log-build-git before designing/executing the next action.
+8. Revalidate the stated Next Gate against current Git/evidence before mutation.
 ```
 
-The receiving chat must not interpret the command names or workflow from memory when current Git definitions are available.
+The receiving chat must not interpret command names, operator aliases, runtime names, or workflow from memory when current Git definitions and the handoff are available.
 
 ## Handoff-first `/log-build-git` meaning
 
@@ -58,8 +59,8 @@ When `/log-build-git` is the first command executed from a `/handoff-log` transf
 1. acknowledge and preserve the transfer identity;
 2. refetch current command and skill authority from GitHub;
 3. resolve private/public continuity according to access;
-4. deduplicate the receipt against existing handoff/log records;
-5. preserve the prior build/work-stream identity and open/closed state;
+4. preserve the prior build/work-stream identity and open/closed state;
+5. resolve material operator/runtime aliases from the handoff;
 6. run Known Failure Preflight for the intended next action;
 7. produce a fresh Next Action Contract from current truth;
 8. execute only the routed action authorized by that contract.
@@ -133,6 +134,10 @@ Forbidden changes:
 Failure IDs / symptoms / corrected paths that matter immediately:
 Do not repeat:
 
+## Operator / Runtime Vocabulary
+Project shorthand and aliases that affect routing or execution:
+Example: pshell = PowerShell
+
 ## Authority
 Already authorized:
 Not authorized:
@@ -164,6 +169,34 @@ Supersedes prior handoff:
 
 Do not add long conversational narrative unless it contains mission-critical evidence that is not durably stored elsewhere.
 
+## Operator / runtime vocabulary continuity
+
+When user shorthand materially affects routing, failure lookup, or execution, carry it explicitly in the handoff.
+
+Examples:
+
+- `pshell = PowerShell`;
+- project-specific build aliases;
+- local evidence-lane names;
+- other operator vocabulary whose loss could cause the receiving chat to select the wrong tool or runtime.
+
+Preserve the user's literal shorthand and map it to the canonical runtime/tool name. Do not broaden the alias beyond what the owner established.
+
+## PowerShell (`pshell`) continuity rule
+
+When the next gate may generate, modify, patch, stage, or execute PowerShell:
+
+1. resolve `pshell` as `PowerShell` when that alias is present in the handoff;
+2. run Known Failure Preflight before retrying a prior PowerShell/harness failure;
+3. before executing any newly generated or modified `.ps1`, run PowerShell's parser against the **exact staged file** and require zero parser errors;
+4. when the build stream uses hash-pinned runners, bind that exact staged `.ps1` by SHA-256 before execution;
+5. preserve failed scripts and failed checkpoints as evidence instead of overwriting them;
+6. create recovery scripts separately when correction is needed;
+7. classify parser, path, staging, download, wrapper, or evidence-control defects as harness/control failures unless product evidence says otherwise;
+8. do not proceed from a parser correction directly into a later build/recovery step without revalidating the transferred Next Gate and current authority.
+
+The handoff does not need to duplicate the entire PowerShell failure registry. It must carry the immediately relevant constraint so a fresh chat cannot repeat a known failure before Git bootstrap completes.
+
 ## `START-HERE-NEW-CHAT.txt`
 
 The minimal companion file should be extremely short:
@@ -173,6 +206,7 @@ This is a Signalproof governed handoff.
 Read WORK-CHAT-HANDOFF.md first.
 Then run /log-build-git.
 Use current GitHub definitions, not memory.
+Read the handoff's operator/runtime aliases and known-failure constraints before generating a harness.
 Prefer private Build Ledger continuity when accessible; otherwise use public Git and mark private state unavailable.
 Do not mutate consequential state until the transferred Next Gate is revalidated.
 ```
@@ -215,7 +249,7 @@ Before finalizing the handoff:
 - preserve meaningful milestone/learning state;
 - preserve failures and uncertainty;
 - preserve pending `close-when-complete` obligations;
-- deduplicate existing records;
+- avoid duplicate stable records when no new durable record is necessary;
 - separate public-safe from private evidence;
 - preserve build/work-stream identity;
 - do not reserve a canonical C-number;
@@ -233,12 +267,6 @@ The receiving chat must distinguish current Git presence from lifecycle authorit
 - A handoff must not activate a candidate by instruction alone.
 - If the handoff depends on Candidate behavior, state that explicitly and preserve any required owner/acceptance gate.
 
-## Idempotency
-
-Repeated `/handoff-log` on the same transfer should refresh/supersede the existing transfer identity rather than create duplicate parallel handoffs.
-
-Repeated receiving `/log-build-git` should detect an already-recorded handoff receipt and continue from current evidence rather than recording the same exchange twice.
-
 ## STOP conditions
 
 STOP when:
@@ -251,6 +279,8 @@ STOP when:
 - chronology would be fabricated;
 - a candidate would be silently treated as Active;
 - the receiver would have to reconstruct critical state from conversational memory instead of available artifacts/Git;
+- a material operator/runtime alias is unresolved;
+- a generated or modified PowerShell script would be executed without parser preflight;
 - the handoff is so verbose that it duplicates repository-controlled doctrine instead of indexing it.
 
 ## Identity
