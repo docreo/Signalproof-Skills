@@ -6,6 +6,7 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
+| `/dsp` | 0.1.0 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
 | `handoff-log` | 0.2.0 | Create a current durable handoff plus log-skill synchronization and fresh-chat bootstrap |
 | `design-git` | 0.2.0 | Design and route the smallest governed next Git-backed action |
@@ -22,6 +23,7 @@
 
 ## Canonical file mapping
 
+- `/dsp` -> `commands/dsp.md`
 - `log-skill` -> `commands/log-skill.md`
 - `handoff-log` -> `commands/handoff-log.md`
 - `design-git` -> `commands/design-git.md`
@@ -35,6 +37,23 @@
 - `signalproof-this-plan` -> `commands/signalproof-this-plan.md`
 - `signalproof-this-build` -> `commands/signalproof-this-build.md`
 - `signalproof-teach` -> `commands/signalproof-teach.md`
+
+## DSP command shell
+
+`/dsp` means **Dr. Signalproof mode**. The non-slash form `dsp` is the transport-safe fallback when a host reserves or intercepts slash commands.
+
+The DSP resolver accepts space/hyphen variants and resolves every accepted form to exactly one canonical command before routing. Examples:
+
+- `/dsp build git`, `/dsp build-git`, `dsp-build-git` -> `build-git`
+- `/dsp this plan`, `/dsp-this-plan`, `dsp this-plan` -> `signalproof-this-plan`
+- `/dsp this build`, `/dsp-this-build`, `dsp this-build` -> `signalproof-this-build`
+- `/dsp log-build-git` -> `log-build-git`
+- `/dsp teach` -> `signalproof-teach`
+- `/dsp debug` -> `build-git-debug`
+- `/dsp handoff` -> `handoff-log`
+- `/dsp log` -> `log-skill`
+
+See `commands/dsp.md` for the complete normalization and authority contract.
 
 ## Conversational aliases
 
@@ -52,13 +71,14 @@
 2. Commands route to Active Skills and evidence/governance mechanisms and do not replace those contracts.
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
-5. Planning, grilling, teaching, logging, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
+5. Planning, grilling, teaching, logging, DSP resolution, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
 6. A projected Build Ledger sequence is never a reservation.
 7. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
 8. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
 9. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
 10. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
 11. Public Git command promotion does not claim a canonical private Build Ledger append.
+12. DSP aliases must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
 
 ## Lifecycle
 
