@@ -1,60 +1,86 @@
-# `handoff-log` — Active Operator Command V0.1
+# `handoff-log` - Active Operator Command V0.2
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
-**Activated:** 2026-08-18  
-**Owner approval:** Doc Reo
+**Version:** 0.2.0  
+**Owner:** Doc Reo
 
 ## Purpose
 
-`handoff-log` is an Active Signalproof operator command shorthand. It combines a normal governed handoff with `log-skill` synchronization so continuity, pending closeout obligations, reusable learning, and public/private evidence state survive the chat boundary.
+`handoff-log` creates a governed continuity package and synchronizes meaningful work state through `log-skill` so a fresh chat can resume without reconstructing the prior conversation from memory.
 
-It is not a separate specialist skill and does not itself create canonical Build Ledger authority.
+> **Transfer the mission, provenance, authority, protected state, failure constraints, and exact continuation path - not the entire chat.**
 
-Core rule:
-
-> **Transfer the work and transfer the governance state.**
+It does not itself close an open milestone, activate a Candidate, publish private evidence, or create canonical Build Ledger authority.
 
 ## Required behavior
 
-1. Run the normal Signalproof handoff discipline: preserve objective, phase, protected state, rollback/recovery, material failures, evidence classes, repository state, Build Ledger boundaries, prohibited actions, exact next action, and receiving-chat boot instructions.
-2. Run the `log-skill` synchronization path for material milestone/learning state created or updated in the chat.
-3. Preserve pending `close-when-complete` obligations in the handoff.
-4. Deduplicate before creating new public/private records.
-5. Keep public-safe records separate from private/internal continuity evidence.
-6. Do not reserve a canonical C-number.
-7. Do not treat a projected/preview sequence as live chronology.
-8. Do not auto-activate candidate outputs.
-9. If the underlying milestone is actually complete and the operator explicitly requests closure, use the appropriate `log-skill close` form; otherwise handoff does not imply closeout.
-10. The receiving chat must refetch volatile repository/ledger state before consequential writes.
+1. Run `log-skill` synchronization for material milestone/learning state.
+2. Produce or refresh a durable `WORK-CHAT-HANDOFF.md` unless another durable format is explicitly requested.
+3. Make the artifact reflect the latest material state at handoff time, including the final user/tool exchange.
+4. Preserve work-stream identity, objective, current phase/status, protected state, rollback/non-mutation boundary, material failures, known-failure constraints, authority, Git state, evidence references, open gates, and exact next action.
+5. Preserve failed attempts and uncertainty rather than rewriting history around the successful path.
+6. Keep public-safe and private/internal evidence boundaries distinct.
+7. Do not reserve a `C###` sequence or treat projected chronology as canonical.
+8. Keep an open milestone OPEN unless completion and closeout are separately established.
 
-## Relationship to `handoff`, `log-skill`, and `closeout`
+## Receiving chat bootstrap
 
-- `handoff` preserves conversation continuity.
-- `log-skill` preserves/synchronizes milestone and reusable-learning state.
-- `handoff-log` performs both together.
-- `closeout` is still separate unless completion is actually established and closure is requested/required.
+The handoff should begin with a visible instruction equivalent to:
 
-Typical patterns:
+```text
+RECEIVING CHAT - START HERE
+Run: log-build-git
+Treat this handoff as a provenance-bound transfer packet, not complete current truth.
+Refetch current Signalproof-Skills Git definitions before consequential work.
+Use private Build Ledger continuity selectively when accessible; otherwise mark it UNAVAILABLE rather than guessing.
+Revalidate the transferred Next Gate before mutation.
+```
 
-`open work -> handoff-log -> fresh chat -> continue`
+Git is the doctrine source; the handoff is the mission/provenance index.
 
-`completed milestone -> log-skill close -> handoff-log -> fresh chat`
+## Handoff artifact contract
 
-`open milestone with latch -> log-skill close-when-complete -> handoff-log -> fresh chat`
+Include proportionately:
 
-## Idempotency
+- transfer/handoff identity and creation time;
+- project/work-stream and phase;
+- objective and definition of done for the current phase;
+- current evidence-backed truth and evidence class;
+- protected state, rollback/non-mutation boundary, and forbidden changes;
+- material failures, failed attempts, and do-not-repeat constraints;
+- operator/runtime vocabulary or aliases that affect routing, such as `pshell = PowerShell` when established;
+- already authorized, not authorized, and owner-decision-required boundaries;
+- public Git files/repositories to refetch;
+- task-relevant private continuity to retrieve if accessible;
+- Build Ledger boundary, including whether state is canonical, staged/noncanonical, or unknown;
+- exact next gate, acceptance evidence, result branches, and STOP conditions;
+- artifact hashes/identities needed for safe continuation.
 
-Repeated `handoff-log` should refresh or verify existing handoff/log records rather than duplicate stable identities. Preserve supersession history when materially new evidence changes state.
+For active development/recovery, the next-chat instructions must state the actual first action, what evidence to inspect first, what to preserve, the smallest next authorized step, what not to guess/change, evidence to capture, acceptance criteria, result-specific branches, and any authority needed for the next consequential boundary.
 
-## Public/private boundary
+## Freshness rule
 
-Public Git may contain public-safe handoff/governance documentation or candidate learning. Private evidence may contain exact local paths, hashes, internal recovery state, and staged ledger continuity needed for reconstruction. Never publish credentials, customer/private data, private ledger internals, or local recovery details without explicit authority.
+Before delivery, compare the handoff against the latest user message and latest material tool/evidence result. Refresh stale Git state, hashes, status, authority, failure classification, and next-action instructions. Do not hand off an earlier snapshot after newer evidence exists.
 
-## Update rule
+## Private/public retrieval rule
 
-Active does not mean frozen. Changes to `handoff-log` must be versioned, reviewed, tested proportionately, owner-approved, and preserve prior history through supersession rather than silent rewrite.
+Prefer, in order:
+
+1. current task-relevant private Build Ledger/project evidence when accessible;
+2. current public Signalproof/project Git evidence;
+3. evidence embedded/referenced in the handoff;
+4. explicit `UNKNOWN` or `UNAVAILABLE`.
+
+Do not preload unrelated private history and do not guess missing private truth.
+
+## PowerShell continuity rule
+
+When the next gate may generate or run PowerShell, preserve immediately relevant prevention constraints in the handoff. The receiving workflow should run Known Failure Preflight, parser-preflight the exact final staged `.ps1`, hash-bind the exact staged artifact when identity matters, preserve failed runners, and distinguish harness/parser/path/staging failures from product evidence.
+
+## Idempotency and supersession
+
+Repeated `handoff-log` should refresh or supersede the same work-stream handoff rather than mint duplicates. Preserve the supersession trail and failed-attempt history. Do not repeat completed or disproven actions as the next instruction.
 
 ## STOP conditions
 
-STOP when the handoff cannot state the exact next authorized action, protected state is ambiguous, public/private boundaries would be violated, chronology is being fabricated, duplicate records would be created, or the command would silently turn a handoff into unauthorized canonical closeout.
+STOP when the handoff cannot identify the work stream or exact next gate; protected state or authority is materially ambiguous; the artifact is stale; private/public boundaries cannot be preserved; safe mutation requires unavailable private truth; critical state would have to be reconstructed from memory instead of available Git/artifacts; chronology would be fabricated; a Candidate would be silently treated as Active; or the proposed next step repeats a disproven failure condition.
