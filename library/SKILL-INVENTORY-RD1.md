@@ -1,107 +1,109 @@
 # Signalproof Skill Inventory — RD1
 
-**Source:** repository `main` tree at `f2f89ca4dcc4c3b42e0786178257d53ea00e31ae`  
-**Measurement:** exact Git blob byte size for each `SKILL.md`  
-**Ceiling:** 15,000 UTF-8 bytes
+**Baseline before refactor:** `main` at `f2f89ca4dcc4c3b42e0786178257d53ea00e31ae`  
+**RD1 measurement source:** `library-rd1` tree after atomic decomposition  
+**Measurement:** exact Git blob / UTF-8 byte size of each `SKILL.md`  
+**Hard ceiling:** 15,000 bytes
 
-## Active Skills
+## Result
 
-| Skill | Bytes | Budget state | RD1 disposition |
-|---|---:|---|---|
-| signalproof | 8,912 | HEALTHY | preserve root as compact universal contract |
-| signalproof-build | 10,864 | WATCH | remove repeated doctrine before growth; identify build-loop extraction |
-| signalproof-closeout | 10,097 | WATCH | preserve; consider ledger/extraction helpers if growth continues |
-| signalproof-debug | 9,534 | HEALTHY | preserve; extract reusable retry/debug loop rather than enlarge |
-| signalproof-design | 15,476 | OVER LIMIT | refactor required; split design core from UI polish/interface mechanics |
-| signalproof-document | 10,566 | WATCH | preserve; route format-specific work separately if it grows |
-| signalproof-evaluate | 9,858 | HEALTHY | preserve |
-| signalproof-handoff | 10,456 | WATCH | preserve; move templates/reference prose out if needed |
-| signalproof-investigate | 8,153 | HEALTHY | preserve |
-| signalproof-known-errors | 13,413 | REVIEW | separate registry/query contract from domain-specific error knowledge |
-| signalproof-learn | 9,557 | HEALTHY | preserve; integrate atomicity/decomposition decision logic |
-| signalproof-plan | 8,997 | HEALTHY | preserve |
-| signalproof-readiness | 13,658 | REVIEW | split environment/system readiness from specialized readiness domains when independently routeable |
-| signalproof-recovery | 16,332 | OVER LIMIT | refactor required; separate recovery coordination from backup/restore/state-cleanup specialties |
-| signalproof-release | 14,178 | REVIEW | split packaging/signing/distribution when responsibilities become independently routeable |
-| signalproof-research | 8,524 | HEALTHY | preserve; use loops/connectors rather than enlarge |
-| signalproof-review | 12,600 | REVIEW | separate code/change review from specialized review domains if necessary |
-| signalproof-router | 16,033 | OVER LIMIT | refactor required; convert to compact registry-driven routing kernel |
-| signalproof-security | 18,609 | OVER LIMIT | refactor required; decompose into narrow security specialists |
-| signalproof-verify | 9,650 | HEALTHY | preserve; extract reusable verification patterns rather than enlarge |
+**PASS — every Active and Candidate `SKILL.md` in RD1 is below 15,000 bytes.**
 
-## Candidate Skills
+The six previously over-limit files were reduced by decomposition rather than by deleting required governance:
 
-| Candidate | Bytes | Budget state | RD1 disposition |
-|---|---:|---|---|
-| signalproof-failure-intelligence | 16,646 | OVER LIMIT | must be decomposed before promotion; separate matching/query contract from failure-domain records |
-| signalproof-knowledge | 16,586 | OVER LIMIT | must be decomposed before promotion; separate acquisition, normalization/transformation, provenance, retrieval/serving as warranted by acceptance evidence |
+| Skill / Candidate | Before | RD1 | Result |
+|---|---:|---:|---|
+| signalproof-security | 18,609 | 5,319 | coordinator + 5 narrow security specialists |
+| signalproof-recovery | 16,332 | 4,031 | coordinator + rollback/restore/cleanup/continuity specialists |
+| signalproof-router | 16,033 | 9,120 | registry-driven routing kernel |
+| signalproof-design | 15,476 | 6,016 | design core + UI polish + accessibility |
+| signalproof-failure-intelligence (Candidate) | 16,646 | 5,862 | compact recurrence coordinator + retry loop / registry model |
+| signalproof-knowledge (Candidate) | 16,586 | 6,366 | coordinator + 4 Candidate knowledge specialists |
 
-## First decomposition wave
+## Active Skill Budget Inventory
 
-### `signalproof-security`
+| Skill | Bytes | State |
+|---|---:|---|
+| signalproof | 8,912 | HEALTHY |
+| signalproof-router | 9,120 | HEALTHY |
+| signalproof-known-errors | 13,413 | REVIEW |
+| signalproof-research | 8,524 | HEALTHY |
+| signalproof-evaluate | 9,858 | HEALTHY |
+| signalproof-investigate | 8,153 | HEALTHY |
+| signalproof-plan | 8,997 | HEALTHY |
+| signalproof-design | 6,016 | HEALTHY |
+| signalproof-ui-polish | 3,102 | HEALTHY |
+| signalproof-accessibility | 3,071 | HEALTHY |
+| signalproof-readiness | 13,658 | REVIEW |
+| signalproof-build | 10,864 | WATCH |
+| signalproof-debug | 9,534 | HEALTHY |
+| signalproof-verify | 9,650 | HEALTHY |
+| signalproof-review | 12,600 | REVIEW |
+| signalproof-recovery | 4,031 | HEALTHY |
+| signalproof-rollback | 2,708 | HEALTHY |
+| signalproof-restore | 2,739 | HEALTHY |
+| signalproof-cleanup | 2,375 | HEALTHY |
+| signalproof-recovery-continuity | 2,650 | HEALTHY |
+| signalproof-security | 5,319 | HEALTHY |
+| signalproof-secrets | 3,267 | HEALTHY |
+| signalproof-permissions | 2,596 | HEALTHY |
+| signalproof-supply-chain | 2,562 | HEALTHY |
+| signalproof-network | 2,363 | HEALTHY |
+| signalproof-execution-security | 2,791 | HEALTHY |
+| signalproof-release | 14,178 | REVIEW |
+| signalproof-document | 10,566 | WATCH |
+| signalproof-learn | 9,557 | HEALTHY |
+| signalproof-handoff | 10,456 | WATCH |
+| signalproof-closeout | 6,309 | HEALTHY |
 
-Target architecture:
+## Candidate Skill Budget Inventory
 
-- `signalproof-security` — compact coordinator/common security decision contract
-- `signalproof-secrets` — credentials, tokens, secret storage/redaction/exposure
-- `signalproof-permissions` — identity, authorization, privilege, least privilege
-- `signalproof-supply-chain` — dependency/source/version/integrity/license/provenance review
-- `signalproof-network` — endpoints, ports, transport, telemetry, external data flow
-- `signalproof-execution-security` — untrusted input, scripts, plugins, dynamic execution, sandbox boundaries
+| Candidate | Bytes | State |
+|---|---:|---|
+| signalproof-failure-intelligence | 5,862 | HEALTHY / Candidate |
+| signalproof-knowledge | 6,366 | HEALTHY / Candidate |
+| signalproof-knowledge-ingest | 2,276 | HEALTHY / Candidate |
+| signalproof-knowledge-provenance | 2,389 | HEALTHY / Candidate |
+| signalproof-knowledge-transform | 2,119 | HEALTHY / Candidate |
+| signalproof-knowledge-package | 2,679 | HEALTHY / Candidate |
 
-No child is Active merely because this map exists.
+## RD1 Specialist Families
 
-### `signalproof-router`
+### Security
 
-Target architecture:
+`signalproof-security` coordinates only cross-cutting decisions. Independently routeable work is assigned to Secrets, Permissions, Supply Chain, Network, and Execution Security.
 
-- retain `signalproof-router` as compact routing kernel;
-- move per-skill routing metadata into a machine-readable capability registry;
-- remove repeated full descriptions of specialist doctrine;
-- route lazily to one principal Skill plus only necessary specialists/loops.
+### Recovery
 
-### `signalproof-recovery`
+`signalproof-recovery` coordinates multi-part recovery. Rollback selection, restore execution, owned-resource cleanup, and recovery continuity are separately routeable.
 
-Target architecture candidates:
+### Design
 
-- `signalproof-recovery` — coordinator / recovery decision contract
-- `signalproof-rollback` — known-good baseline rollback and acceptance
-- `signalproof-restore` — backup/data/config restore
-- `signalproof-cleanup` — partial actuation/process/service/task cleanup
-- `signalproof-continuity` — continuity/reconstructability planning where distinct
+`signalproof-design` owns product information/state architecture. UI Polish owns wrapping/readability/responsive finish. Accessibility owns accessible interaction/presentation.
 
-Final split requires review of the current Recovery contract and acceptance evidence.
+### Knowledge — Candidate family
 
-### `signalproof-design`
+Knowledge remains Candidate. Ingest, Provenance, Transform, and Package are separate Candidate responsibilities. Their existence does not activate Knowledge or authorize source transformation/output.
 
-Target architecture candidates:
+### Failure Intelligence — Candidate
 
-- `signalproof-design` — product/interaction/information/state architecture
-- `signalproof-ui-polish` — text wrap, spacing, radii, optical alignment, hit targets, motion restraint, high-contrast details
-- optional future `signalproof-accessibility` if accessibility becomes broad enough to warrant independent routing and testing
+Failure Intelligence now owns recurrence matching/decision logic. Detailed failure instances belong in a registry/evidence layer and retry mechanics live in `SP-LOOP-RETRY` rather than growing the Skill.
 
-### `signalproof-failure-intelligence`
+## Remaining REVIEW Skills
 
-Target architecture candidates:
+The following are below the hard limit but must receive decomposition/conciseness review before material expansion:
 
-- `signalproof-failure-intelligence` — search/match/decision coordinator
-- deterministic failure registry/schema outside SKILL prose
-- domain records in data/provenance rather than embedded examples
-- reusable retry behavior in `SP-LOOP-RETRY`
+- signalproof-release — 14,178
+- signalproof-readiness — 13,658
+- signalproof-known-errors — 13,413
+- signalproof-review — 12,600
 
-### `signalproof-knowledge`
+RD1 does not force an unnecessary split merely because a file is in REVIEW. The next material expansion must decide whether the capability remains cohesive or should be decomposed first.
 
-Do not promote while over budget. Candidate decomposition should distinguish executable responsibility from explanatory/reference material and preserve its existing RD0.6 acceptance lineage.
+## CI Enforcement
 
-## Second-wave review
-
-Review before material growth:
-
-- `signalproof-release`
-- `signalproof-readiness`
-- `signalproof-known-errors`
-- `signalproof-review`
+`.github/workflows/suite-consistency.yml` runs `tools/check_skill_budget.py`. A pull request or push fails if any `skills/**/SKILL.md` is invalid UTF-8 or reaches/exceeds 15,000 bytes.
 
 ## Non-goal
 
-RD1 does **not** shrink files by deleting required authority, evidence, STOP, recovery, or safety semantics. The objective is to preserve behavior while assigning each responsibility to the smallest correct owner.
+The budget must not be met by deleting authority, evidence, STOP, recovery, security, or lifecycle semantics. The objective is smaller context through better ownership boundaries.
