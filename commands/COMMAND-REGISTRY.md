@@ -6,7 +6,7 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.0 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands and handlers |
+| `/dsp` | 0.3.1 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands and handlers, including Full Debug |
 | `authorize` | 0.1.0 | Generic bounded authorization handler for a pending owner gate or resolved target command |
 | `known-errors` | 0.1.0 | Enable continuous known-error recurrence checking for the current bounded workstream |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
@@ -16,6 +16,7 @@
 | `build-git this` | 0.1.0 | Apply build-git to the current clearly bounded subject/work unit |
 | `build-git spawn` | 0.1.0 | Coordinate Builder, Design, and Governor lanes under the main Signalproof Orchestrator |
 | `build-git-debug` | 0.1.0 | Apply build-git plus explicit defect localization, persisted-state inspection, retry discipline, and exact-final repair validation |
+| `full-debug` | 0.1.0 | Run bounded owner-authorized Full Debug orchestration with failure memory, log-build-git-debug continuity, spawn role separation, and verification |
 | `log-build-git` | 0.2.1 | Run log-skill -> design-git -> build-git, including governed handoff receipt/bootstrap and failure-guard reload |
 | `log-build-git-debug` | 0.1.0 | Run log-skill -> design-git -> build-git-debug for debug-state continuity |
 | `/authorized-log-build-git` | 0.1.0 | Specialized compatibility route for authorizing the current bounded owner gate before log/design/build continuation |
@@ -35,6 +36,7 @@
 - `build-git this` -> `commands/build-git-this.md`
 - `build-git spawn` -> `commands/build-git-spawn.md`
 - `build-git-debug` -> `commands/build-git-debug.md`
+- `full-debug` -> `commands/full-debug.md`
 - `log-build-git` -> `commands/log-build-git.md`
 - `log-build-git-debug` -> `commands/log-build-git-debug.md`
 - `/authorized-log-build-git` -> `commands/authorized-log-build-git.md`
@@ -51,6 +53,7 @@ The DSP resolver accepts space/hyphen variants and resolves every accepted form 
 - `/dsp build git`, `/dsp build-git`, `dsp-build-git` -> `build-git`
 - `/dsp this plan`, `/dsp-this-plan`, `dsp this-plan` -> `signalproof-this-plan`
 - `/dsp this build`, `/dsp-this-build`, `dsp this-build` -> `signalproof-this-build`
+- `/dsp full-debug`, `/dsp full debug`, `/dsp-full-debug`, `dsp-full-debug` -> `full-debug`
 - `/dsp log-build-git` -> `log-build-git`
 - `/dsp known-errors`, `/dsp-known-errors`, `dsp known errors` -> `known-errors`
 - `/dsp authorize`, `/dsp authorized` -> `authorize`
@@ -68,6 +71,7 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 - `authorized` -> `authorize`
 - `authorized build-git` -> `authorize build-git`
 - `authorized log-build-git` -> `/authorized-log-build-git` compatibility route
+- `full debug` -> `full-debug`
 - `grill this plan` -> `signalproof-this-plan`
 - `Signalproof this plan` -> `signalproof-this-plan`
 - `grill-with-docs this architecture` -> `signalproof-this-build`
@@ -82,17 +86,18 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
 5. PowerShell-relevant build and continuation work must load the current Git-backed PowerShell failure registry, preserve same-failure attempt counts across chat boundaries, run applicable executable known-error preflight, parser-preflight the exact final staged `.ps1`, and block unchanged known-bad retries.
-6. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
+6. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, Full Debug orchestration, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority beyond the exact bounded command contract.
 7. A projected Build Ledger sequence is never a reservation.
 8. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
 9. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
 10. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
-11. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
-12. Public Git command promotion does not claim a canonical private Build Ledger append.
-13. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
-14. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
-15. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
-16. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
+11. `full-debug` composes one bounded debug operation; it must not double-run `build-git-debug`, and its meaning of `authorize all` is limited to owner-authorizable actions inside the current Full Debug Envelope.
+12. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
+13. Public Git command promotion does not claim a canonical private Build Ledger append.
+14. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
+15. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
+16. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
+17. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
 
 ## Lifecycle
 
