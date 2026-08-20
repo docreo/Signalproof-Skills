@@ -20,6 +20,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-readiness` | 0.1.0 | Active public baseline | Target-environment prerequisites and capability readiness | Active |
 | `signalproof-build` | 0.1.1 | Active public baseline | Bounded implementation and protected execution | Active |
 | `signalproof-debug` | 0.1.1 | Active public baseline | Evidence-led defect correction and regression protection | Active |
+| `signalproof-full-debug` | 0.1.0 | Active public baseline | High-governance debug coordinator combining bounded authorization, persistent failure memory, debug continuity, spawn role separation, verification, and STOP controls | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification and evidence grading | Active |
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity and change-integrity review | Active |
 | `signalproof-recovery` | 0.2.0 | Active public baseline | Cross-cutting recovery coordinator | Active |
