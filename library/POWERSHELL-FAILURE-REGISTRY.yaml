@@ -1,0 +1,120 @@
+version: 0.1
+status: ACTIVE_PREVENTION_DATA
+purpose: >-
+  Compact Git-backed PowerShell failure memory used by Signalproof build and
+  fresh-chat preflights. This registry is prevention data, not execution or
+  authorization authority.
+
+rules:
+  - id: PS-PARSER-FINAL-001
+    match: generated_or_modified_ps1
+    risk: exact final script contains syntax, brace, here-string, or parser-sensitive errors
+    prevent:
+      - parse the exact final staged .ps1 before execution
+      - do not validate an earlier draft and then mutate it
+      - compute identity/hash only after final serialization
+    source: KE-PS-PARSER-GENERATED-SCRIPT-001
+
+  - id: PS-INTERACTIVE-BLOCK-001
+    match: interactive_control_flow_submission
+    risk: incomplete if/else/try/catch/function block is submitted in pieces
+    prevent:
+      - submit one complete statement, preferably one & { ... } block
+      - keep expected console transcript text outside executable blocks
+    source: build-git PowerShell prevention set
+
+  - id: PS-COUNT-SHAPE-001
+    match: direct_count_dereference_on_optional_or_pipeline_value
+    risk: property Count cannot be found, null/scalar shape drift, or StrictMode failure
+    prevent:
+      - do not assume .Count exists on an optional or heterogeneous object
+      - normalize collection intent explicitly, for example @($value).Count when semantically correct
+      - check null and property/schema shape before dereference
+      - preserve strings/dictionaries/special objects when collection coercion would change meaning
+    source: KE-HETEROGENEOUS-PROPERTY-001
+
+  - id: PS-OPTIONAL-PROPERTY-001
+    match: heterogeneous_object_property_dereference
+    risk: optional property access terminates the harness
+    prevent:
+      - test property/schema presence before dereference
+      - preserve UNKNOWN when required evidence is absent
+    source: KE-HETEROGENEOUS-PROPERTY-001
+
+  - id: PS-JSON-51-001
+    match: windows_powershell_5_1_convertfrom_json_external_shape
+    risk: arbitrary or empty JSON property names are assumed to deserialize safely
+    prevent:
+      - do not assume ConvertFrom-Json in Windows PowerShell 5.1 represents every external JSON shape
+      - use a compatible parser/normalization path when property names are problematic
+    source: build-git PowerShell prevention set
+
+  - id: PS-DICTIONARY-CONTAINS-001
+    match: dictionary_membership_test
+    risk: generic ContainsKey and non-generic IDictionary Contains semantics are conflated
+    prevent:
+      - identify dictionary type before choosing ContainsKey or Contains
+    source: build-git PowerShell prevention set
+
+  - id: PS-RESERVED-VARIABLE-001
+    match: assignment_to_automatic_or_readonly_variable
+    risk: generated script collides with variables such as $Host
+    prevent:
+      - use domain-specific variable names
+      - reject known automatic/read-only variable assignments before execution
+    source: KE-PS-RESERVED-VARIABLE-001
+
+  - id: PS-NATIVE-STDERR-001
+    match: native_process_invocation
+    risk: stderr presence is treated as native process failure
+    prevent:
+      - capture stdout, stderr, and exit status separately
+      - use exit/result contract and required artifacts as success authority
+    source: KE-PS-NATIVE-STDERR-001
+
+  - id: PS-HERESTRING-NESTED-001
+    match: generated_nested_here_string
+    risk: same-delimiter nested here-string prematurely terminates outer payload
+    prevent:
+      - reject nested same-delimiter here-string serialization
+      - use alternate serialization or file construction
+    source: build-git PowerShell prevention set
+
+  - id: PS-PATH-CANONICAL-001
+    match: windows_path_comparison_or_relative_derivation
+    risk: slash, case, or raw-string assumptions produce false path mismatch
+    prevent:
+      - canonicalize paths before comparison or relative derivation
+      - preserve original path as evidence when needed
+    source: KE-WINDOWS-PATH-NORMALIZATION-001
+
+  - id: PS-HARNESS-EVIDENCE-001
+    match: parser_or_harness_stop_before_target_actuation
+    risk: harness failure is reported as product failure
+    prevent:
+      - classify parser/harness/path/staging failure separately
+      - claim product failure only with separate target-actuation evidence
+    source: build-git PowerShell prevention set
+
+fresh_chat_contract:
+  required_when_next_gate_uses_powershell: true
+  actions:
+    - refetch this registry from current main
+    - recover task-relevant prior PowerShell failure IDs from handoff/evidence
+    - compare proposed runner against applicable rules before generation or retry
+    - carry unresolved same-failure attempt count across chat boundaries
+    - do not reset a failure merely because the conversation is new
+
+build_contract:
+  required_before_powershell_execution: true
+  sequence:
+    - SEARCH_REGISTRY
+    - IDENTIFY_APPLICABLE_RULES
+    - GENERATE_OR_EDIT
+    - STATIC_KNOWN_FAILURE_CHECK
+    - PARSE_EXACT_FINAL_ARTIFACT
+    - BIND_FINAL_IDENTITY
+    - EXECUTE_ONCE
+    - CLASSIFY_RESULT
+    - UPDATE_FAILURE_MEMORY_OR_CONTINUE
+  unchanged_known_bad_retry: STOP
