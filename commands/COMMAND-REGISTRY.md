@@ -6,7 +6,8 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.2.0 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands |
+| `/dsp` | 0.3.0 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands and handlers |
+| `authorize` | 0.1.0 | Generic bounded authorization handler for a pending owner gate or resolved target command |
 | `known-errors` | 0.1.0 | Enable continuous known-error recurrence checking for the current bounded workstream |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
 | `handoff-log` | 0.2.0 | Create a current durable handoff plus log-skill synchronization and fresh-chat bootstrap |
@@ -17,7 +18,7 @@
 | `build-git-debug` | 0.1.0 | Apply build-git plus explicit defect localization, persisted-state inspection, retry discipline, and exact-final repair validation |
 | `log-build-git` | 0.2.0 | Run log-skill -> design-git -> build-git, including governed handoff receipt/bootstrap |
 | `log-build-git-debug` | 0.1.0 | Run log-skill -> design-git -> build-git-debug for debug-state continuity |
-| `/authorized-log-build-git` | 0.1.0 | Authorize the current bounded owner gate, preserve the Authorization Envelope, then continue through log/design/build |
+| `/authorized-log-build-git` | 0.1.0 | Specialized compatibility route for authorizing the current bounded owner gate before log/design/build continuation |
 | `signalproof-this-plan` | 0.1.0 | Grill, design, and bound the current work into a THIS PLAN CONTRACT without implementation |
 | `signalproof-this-build` | 0.1.0 | Revalidate an approved plan, grill material implementation decisions with docs, build the bounded surface, and verify it |
 | `signalproof-teach` | 0.1.0 | Teach using Signalproof principles, source discipline, durable learning, and HAMM boundaries |
@@ -25,6 +26,7 @@
 ## Canonical file mapping
 
 - `/dsp` -> `commands/dsp.md`
+- `authorize` -> `commands/authorize.md`
 - `known-errors` -> `commands/known-errors.md`
 - `log-skill` -> `commands/log-skill.md`
 - `handoff-log` -> `commands/handoff-log.md`
@@ -51,6 +53,8 @@ The DSP resolver accepts space/hyphen variants and resolves every accepted form 
 - `/dsp this build`, `/dsp-this-build`, `dsp this-build` -> `signalproof-this-build`
 - `/dsp log-build-git` -> `log-build-git`
 - `/dsp known-errors`, `/dsp-known-errors`, `dsp known errors` -> `known-errors`
+- `/dsp authorize`, `/dsp authorized` -> `authorize`
+- `/dsp authorize build-git`, `authorized build-git`, `/dsp-authorized-this-build` -> `authorize` with a resolved target command
 - `/dsp teach` -> `signalproof-teach`
 - `/dsp debug` -> `build-git-debug`
 - `/dsp handoff` -> `handoff-log`
@@ -60,13 +64,16 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 
 ## Conversational aliases
 
+- `authorize` -> `authorize`
+- `authorized` -> `authorize`
+- `authorized build-git` -> `authorize build-git`
+- `authorized log-build-git` -> `/authorized-log-build-git` compatibility route
 - `grill this plan` -> `signalproof-this-plan`
 - `Signalproof this plan` -> `signalproof-this-plan`
 - `grill-with-docs this architecture` -> `signalproof-this-build`
 - `Signalproof this build` -> `signalproof-this-build`
 - `Signalproof Teach` -> `signalproof-teach`
 - `teach me this using signalproof-teach` -> `signalproof-teach`
-- `authorized log-build-git` -> `/authorized-log-build-git`
 
 ## Command governance rules
 
@@ -74,15 +81,16 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 2. Commands route to Active Skills and evidence/governance mechanisms and do not replace those contracts.
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
-5. Planning, grilling, teaching, logging, DSP resolution, known-error guarding, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
+5. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
 6. A projected Build Ledger sequence is never a reservation.
 7. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
 8. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
 9. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
 10. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
 11. Public Git command promotion does not claim a canonical private Build Ledger append.
-12. DSP aliases must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
+12. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
 13. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
+14. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
 
 ## Lifecycle
 
