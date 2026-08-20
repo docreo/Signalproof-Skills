@@ -1,6 +1,6 @@
 # Executable Known-Error Enforcement Candidate
 
-**Status:** CANDIDATE / NOT ACTIVE  
+**Status:** TESTED CANDIDATE / NOT ACTIVE  
 **Date:** 2026-08-19  
 **Basis:** Build 8A repeated harness recurrence review
 
@@ -34,14 +34,26 @@ Build 8A demonstrated that a known-error system can correctly remember a failure
   - verify the validator behavior;
   - prevent command doctrine from drifting back to unconditional wrapper advice or evidence-regression loops.
 
-## Evidence
+## Verification evidence
 
-The executable preflight micro-suite was run outside GitHub against the exact candidate tool/test design before repository write: 6 tests passed.
+- focused executable-preflight micro-suite: **6/6 PASS**;
+- exact GitHub branch bytes were refetched after write for the candidate tool, command, and tests;
+- branch compare against `main`: ahead only, no divergence; candidate modifies only the intended command, validator, tests, and provenance surface;
+- existing command-registry consistency contract remains structurally compatible with the candidate command status/size rules.
 
-Exact GitHub branch bytes were refetched after write for the candidate tool, command, and tests.
+## Verification boundary
+
+The repository workflow runs the full consistency suite only on pull requests or pushes to `main`. This candidate branch therefore does **not** claim that the complete GitHub Actions suite has run.
+
+Required before promotion:
+
+1. run `python3 -m unittest discover -s tests/consistency -p 'test_*.py' -v` in a full candidate checkout or CI;
+2. run `python3 tools/check_suite_consistency.py`;
+3. run `python3 tools/check_skill_budget.py`;
+4. run `python3 tools/check_library_consistency.py`;
+5. review validator false-positive/false-negative behavior;
+6. obtain normal owner/governance acceptance before merge/promotion.
 
 ## Governance
 
 This candidate does not modify `main`, does not activate a new Known Error, does not claim canonical Build Ledger chronology, and does not grant production/release/privilege/security authority.
-
-Promotion requires review of false-positive/false-negative behavior, consistency-suite verification in a repository checkout or CI environment, and normal owner/governance acceptance.
