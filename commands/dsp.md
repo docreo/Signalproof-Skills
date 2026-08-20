@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3
+# `/dsp` - Dr. Signalproof Command Shell V0.3.1
 
 **Status:** ACTIVE  
-**Version:** 0.3.0  
+**Version:** 0.3.1  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -73,6 +73,16 @@ dsp-this-build
 /dsp-this-build
 ```
 
+Full Debug variants also normalize to one command:
+
+```text
+/dsp full-debug
+/dsp full debug
+/dsp-full-debug
+dsp full-debug
+dsp-full-debug
+```
+
 Normalization must not erase meaningful arguments after a command has been resolved.
 
 ## Canonical resolution
@@ -89,6 +99,7 @@ Initial alias map:
 | `build git this`, `build-git this` | `build-git this` |
 | `build git spawn`, `build-git spawn` | `build-git spawn` |
 | `debug`, `build git debug`, `build-git-debug` | `build-git-debug` |
+| `full debug`, `full-debug` | `full-debug` |
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
 | `authorize`, `authorized` | `authorize` |
@@ -101,6 +112,14 @@ Initial alias map:
 | `design git`, `design-git` | `design-git` |
 
 Exact canonical command names remain valid after the DSP prefix.
+
+## Full Debug handler
+
+`/dsp full-debug` resolves to canonical `full-debug`.
+
+Full Debug is a bounded orchestration command, not shorthand for unrestricted `authorize all`. Its current command and `signalproof-full-debug` contracts define the allowed debug envelope, authorization exclusions, failure-memory continuity, `log-build-git-debug` composition, `build-git spawn` role separation, verification, and STOP behavior.
+
+The resolver must not expand `full-debug` into multiple ad hoc commands itself. It resolves to the one canonical `full-debug` identity, and that command owns the composition so Debug is not accidentally executed twice.
 
 ## Authorization handler forms
 
