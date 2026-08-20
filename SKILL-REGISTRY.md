@@ -5,7 +5,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract and meaningful-milestone continuity | Active |
-| `signalproof-router` | 0.2.1 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
+| `signalproof-router` | 0.2.2 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
 | `signalproof-known-errors` | 0.1.0 | Active public baseline | Repeatable-error lookup and prevention preflight | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | External evidence and source-grounded research | Active |
 | `signalproof-evaluate` | 0.1.0 | Active public baseline | Evidence-to-disposition evaluation | Active |
