@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.3 Candidate Revision
+# `build-git` - Active Operator Command V0.2.3
 
-**Status:** ACTIVE ON MAIN / CANDIDATE REVISION ON THIS BRANCH  
-**Version:** 0.2.3-candidate  
+**Status:** ACTIVE  
+**Version:** 0.2.3  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -46,7 +46,7 @@ A high-confidence known failure must not be repeated under unchanged conditions.
 
 When a recurrence rule is machine-checkable and an applicable validator exists, run the validator before handing the consequential artifact or paste-ready command to the owner. Human-readable known-error doctrine remains the source of meaning; executable checks are recurrence-prevention gates, not new authority.
 
-Current candidate validator:
+Current validator:
 
 ```text
 python tools/known_error_preflight.py --mode <operator-powershell|powershell-script> <artifact>
