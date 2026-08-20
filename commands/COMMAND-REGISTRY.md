@@ -6,11 +6,12 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.1 | Enter Dr. Signalproof mode and resolve compact DSP syntax to canonical Signalproof commands and handlers, including Full Debug |
+| `/dsp` | 0.3.2 | Enter Dr. Signalproof mode, navigate the public Signalproof Library, and resolve compact DSP syntax to canonical Signalproof commands and handlers |
 | `authorize` | 0.1.0 | Generic bounded authorization handler for a pending owner gate or resolved target command |
 | `known-errors` | 0.1.0 | Enable continuous known-error recurrence checking for the current bounded workstream |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
 | `handoff-log` | 0.2.1 | Create a current durable handoff plus log-skill synchronization, fresh-chat bootstrap, and PowerShell failure continuity |
+| `cut-chase` | 0.1.0 | Distill material into a decision-ready Bottom line, What matters, and Action note while preserving evidence and authority |
 | `design-git` | 0.2.0 | Design and route the smallest governed next Git-backed action |
 | `build-git` | 0.2.4 | Execute the smallest governed Git-backed next action with current-Git, known-failure, executable recurrence prevention, persistent PowerShell failure memory, evidence-sufficiency termination, protected-state, verification, and recovery controls |
 | `build-git this` | 0.1.0 | Apply build-git to the current clearly bounded subject/work unit |
@@ -31,6 +32,7 @@
 - `known-errors` -> `commands/known-errors.md`
 - `log-skill` -> `commands/log-skill.md`
 - `handoff-log` -> `commands/handoff-log.md`
+- `cut-chase` -> `commands/cut-chase.md`
 - `design-git` -> `commands/design-git.md`
 - `build-git` -> `commands/build-git.md`
 - `build-git this` -> `commands/build-git-this.md`
@@ -48,12 +50,15 @@
 
 `/dsp` means **Dr. Signalproof mode**. The non-slash form `dsp` is the transport-safe fallback when a host reserves or intercepts slash commands.
 
+The `/dsp` Library is the public `docreo/Signalproof-Skills` Library after governed promotion to protected `main`. `/dsp skills`, `/dsp commands`, and `/dsp loops` navigate the current public registries and corresponding public library surfaces. Private Build Ledger evidence may support continuity but does not replace public Skill/Command/Loop authority.
+
 The DSP resolver accepts space/hyphen variants and resolves every accepted form to exactly one canonical command before routing. Examples:
 
 - `/dsp build git`, `/dsp build-git`, `dsp-build-git` -> `build-git`
 - `/dsp this plan`, `/dsp-this-plan`, `dsp this-plan` -> `signalproof-this-plan`
 - `/dsp this build`, `/dsp-this-build`, `dsp this-build` -> `signalproof-this-build`
 - `/dsp full-debug`, `/dsp full debug`, `/dsp-full-debug`, `dsp-full-debug` -> `full-debug`
+- `/dsp cut-chase`, `/dsp cut chase`, `dsp-cut-chase` -> `cut-chase`
 - `/dsp log-build-git` -> `log-build-git`
 - `/dsp known-errors`, `/dsp-known-errors`, `dsp known errors` -> `known-errors`
 - `/dsp authorize`, `/dsp authorized` -> `authorize`
@@ -63,7 +68,7 @@ The DSP resolver accepts space/hyphen variants and resolves every accepted form 
 - `/dsp handoff` -> `handoff-log`
 - `/dsp log` -> `log-skill`
 
-See `commands/dsp.md` for the complete normalization and authority contract.
+See `commands/dsp.md` for the complete normalization, public Library, and authority contract.
 
 ## Conversational aliases
 
@@ -72,6 +77,7 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 - `authorized build-git` -> `authorize build-git`
 - `authorized log-build-git` -> `/authorized-log-build-git` compatibility route
 - `full debug` -> `full-debug`
+- `cut to the chase` -> `cut-chase` when the user is clearly invoking the Signalproof command behavior
 - `grill this plan` -> `signalproof-this-plan`
 - `Signalproof this plan` -> `signalproof-this-plan`
 - `grill-with-docs this architecture` -> `signalproof-this-build`
@@ -86,18 +92,19 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
 5. PowerShell-relevant build and continuation work must load the current Git-backed PowerShell failure registry, preserve same-failure attempt counts across chat boundaries, run applicable executable known-error preflight, parser-preflight the exact final staged `.ps1`, and block unchanged known-bad retries.
-6. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, Full Debug orchestration, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority beyond the exact bounded command contract.
+6. Planning, grilling, teaching, logging, DSP resolution, Cut Chase compression, authorization handling, known-error guarding, Full Debug orchestration, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority beyond the exact bounded command contract.
 7. A projected Build Ledger sequence is never a reservation.
 8. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
 9. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
-10. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
-11. `full-debug` composes one bounded debug operation; it must not double-run `build-git-debug`, and its meaning of `authorize all` is limited to owner-authorizable actions inside the current Full Debug Envelope.
-12. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
-13. Public Git command promotion does not claim a canonical private Build Ledger append.
-14. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
-15. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
-16. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
-17. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
+10. `cut-chase` may simplify an established conclusion but must not strengthen evidence, hide failed gates, or convert recommendation into authorization.
+11. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
+12. `full-debug` composes one bounded debug operation; it must not double-run `build-git-debug`, and its meaning of `authorize all` is limited to owner-authorizable actions inside the current Full Debug Envelope.
+13. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
+14. Public Git command promotion does not claim a canonical private Build Ledger append.
+15. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
+16. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
+17. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
+18. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
 
 ## Lifecycle
 

@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ACTIVE = {
     "log-skill": "commands/log-skill.md",
     "handoff-log": "commands/handoff-log.md",
+    "cut-chase": "commands/cut-chase.md",
     "design-git": "commands/design-git.md",
     "build-git": "commands/build-git.md",
     "build-git this": "commands/build-git-this.md",
@@ -94,6 +95,18 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
         ]:
             self.assertIn(required, text)
 
+    def test_cut_chase_preserves_truth_and_action(self):
+        text = self.read("commands/cut-chase.md").lower()
+        for required in [
+            "bottom line",
+            "what matters",
+            "action note",
+            "preserve technical accuracy",
+            "recommendation into authorization",
+            "one-shot",
+        ]:
+            self.assertIn(required, text)
+
     def test_handoff_and_log_build_git_bootstrap_current_git(self):
         handoff = self.read("commands/handoff-log.md").lower()
         logbuild = self.read("commands/log-build-git.md").lower()
@@ -115,8 +128,6 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
         self.assertIn("exit debug when debug is complete", logdebug)
 
     def test_generated_new_command_material_avoids_u2014(self):
-        # log-skill predates the output-typography rule; this gate covers the
-        # newly promoted/generated command documents in this milestone.
         for command, rel in ACTIVE.items():
             if command == "log-skill":
                 continue

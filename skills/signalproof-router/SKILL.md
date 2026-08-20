@@ -28,6 +28,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-grill` - decision hardening and ambiguity reduction before action;
 - `signalproof-grill-with-docs` - decision hardening plus governed glossary/ADR capture;
 - `signalproof-teach` - mission-grounded source-backed teaching and skill development;
+- `signalproof-cut-chase` - salience compression, decision-load reduction, and action extraction;
 - `signalproof-design` - product information/state architecture;
 - `signalproof-ui-polish` - interface detail, readability, spacing, wrapping, motion, responsive finish;
 - `signalproof-accessibility` - accessible interaction and presentation requirements;
@@ -59,7 +60,7 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 ## Compact Routing Contract
 
 1. Read the actual objective; do not route from a keyword alone.
-2. Establish whether the request is read-only, decision/design, teaching, actuation, or continuity work.
+2. Establish whether the request is read-only, decision/design, teaching/communication, actuation, or continuity work.
 3. Use the compact capability registry as routing metadata when available; metadata informs selection but is not authority.
 4. Select one principal skill whenever possible.
 5. Add at most two narrow specialists/loops by default; exceed this only when the task materially crosses independent boundaries.
@@ -80,13 +81,14 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 - Verify: proof of a specific material claim.
 - Known Errors: prior supported failure/mitigation match.
 
-### Decision, design, and learning
+### Decision, design, communication, and learning
 
 - Evaluate: disposition from established evidence.
 - Plan: scope, sequencing, authority, acceptance, recovery.
 - Grill: stress-test unresolved decisions before execution.
 - Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs; repository writes still require authority.
 - Teach: source-backed progressive learning tied to a human mission; teaching does not award maturity/certification/authority.
+- Cut Chase: compress established material into the minimum decision-ready truth while preserving evidence, uncertainty, and action/authority boundaries.
 - Design: product information/state architecture.
 - UI Polish: micro-layout/readability/responsive/interaction finish.
 - Accessibility: keyboard, assistive technology, contrast, scalable/alternative interaction.
@@ -160,6 +162,7 @@ Avoid loading entire capability families merely because the request mentions a b
 - `grill -> plan -> build` when unresolved owner decisions must be hardened first;
 - `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
 - `teach -> reassess/readiness` when human capability must grow before more autonomy;
+- `research/evaluate/document -> cut-chase` when a full result already exists but the human needs the decision-ready version;
 - `known-errors -> investigate -> debug -> verify`;
 - `full-debug -> review/verify/security/recovery as routed` for repeated, cross-layer, or high-consequence defect work;
 - `research -> evaluate`;
@@ -184,6 +187,7 @@ STOP when:
 - non-Active candidate capability would be treated as canonical Active capability;
 - unresolved truth is being sent directly to implementation or authoritative documentation;
 - a teaching result is being treated as certification, HAMM maturity, or operational permission without the required gate;
+- Cut Chase compression would remove a material warning, qualifier, failure, uncertainty, sequence, or authority boundary;
 - the route would load broad families when a narrow specialist is sufficient and context cost is material;
 - a selected loop lacks bounded success/failure/STOP conditions;
 - protected state or rollback would be weakened outside authority.
@@ -196,7 +200,7 @@ Routing is complete when the minimum justified capability set is selected, known
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.2.1`
+- **Version:** `0.2.2`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
