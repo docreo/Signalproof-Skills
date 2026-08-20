@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.2
+# `/dsp` - Dr. Signalproof Command Shell V0.3
 
 **Status:** ACTIVE  
-**Version:** 0.2.0  
+**Version:** 0.3.0  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -91,7 +91,9 @@ Initial alias map:
 | `debug`, `build git debug`, `build-git-debug` | `build-git-debug` |
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
-| `authorized log build git`, `authorized-log-build-git` | `/authorized-log-build-git` |
+| `authorize`, `authorized` | `authorize` |
+| `authorize <command>`, `authorized <command>` | `authorize` with resolved target command |
+| `authorized log build git`, `authorized-log-build-git` | `/authorized-log-build-git` compatibility route |
 | `known errors`, `known-errors` | `known-errors` |
 | `teach` | `signalproof-teach` |
 | `log`, `log skill`, `log-skill` | `log-skill` |
@@ -99,6 +101,27 @@ Initial alias map:
 | `design git`, `design-git` | `design-git` |
 
 Exact canonical command names remain valid after the DSP prefix.
+
+## Authorization handler forms
+
+DSP supports a generic authorization handler so the Library does not need a separate authorization command for every target operation.
+
+Examples:
+
+```text
+/dsp authorize
+/dsp authorized
+/dsp authorize build-git
+/dsp authorized build-git
+/dsp-authorize-build-git
+dsp authorized this-build
+```
+
+The resolver must first identify `authorize`/`authorized` as the handler, preserve the remaining target text and arguments, resolve that target to exactly one canonical Signalproof command, then apply the current `authorize` contract.
+
+Bare conversational forms such as `authorized build-git` may also route to the same handler when the Signalproof command context is clear.
+
+The existing `/authorized-log-build-git` command remains a specialized compatibility route. It does not become blanket authority merely because the generic handler exists.
 
 ## Library navigation
 
@@ -119,17 +142,19 @@ These are Library navigation/resolution operations unless and until a separately
 2. Strip only the DSP prefix and its immediate separator.
 3. Preserve the remaining user arguments.
 4. Normalize command-name spaces/hyphens sufficiently to match the alias registry.
-5. Prefer exact canonical command matches over convenience aliases.
-6. Resolve to exactly one canonical command identity.
-7. If resolution is ambiguous, STOP and present the smallest disambiguation.
-8. Route through the canonical command's current `main` contract.
-9. Preserve all command-specific governance, authority, verification, recovery, and STOP conditions.
+5. Detect generic handlers such as `authorize` before normal target-command resolution.
+6. For a handler form, preserve and separately resolve the target command and arguments.
+7. Prefer exact canonical command matches over convenience aliases.
+8. Resolve to exactly one canonical command identity.
+9. If resolution is ambiguous, STOP and present the smallest disambiguation.
+10. Route through the canonical command's current `main` contract.
+11. Preserve all command-specific governance, authority, verification, recovery, and STOP conditions.
 
 ## Authority boundary
 
 DSP mode does not grant write, destructive, credential, privilege, security-change, publication, release, Candidate-activation, or canonical Build Ledger authority.
 
-The resolved canonical command remains authoritative for execution semantics.
+Authorization syntax does not manufacture authority. The `authorize` handler can only preserve and route explicit bounded owner authority or a uniquely established pending owner gate, and the resolved target command remains authoritative for execution semantics.
 
 ## Collision rule
 
@@ -137,4 +162,4 @@ The resolved canonical command remains authoritative for execution semantics.
 
 ## Governance rule
 
-Human-facing aliases may grow, but canonical command identities must remain stable and versioned. Do not fork behavior merely because multiple spellings are accepted.
+Human-facing aliases and handlers may grow, but canonical command identities must remain stable and versioned. Do not fork behavior merely because multiple spellings are accepted. Generic handlers must not bypass target-command governance or become blanket authority sources.
