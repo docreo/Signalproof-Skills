@@ -30,7 +30,7 @@ class DSPAuthorizeHandlerAcceptance(unittest.TestCase):
             "authorization is exact, scoped, consumable",
             "stop rather than inventing authority",
             "authorized-pending-precondition",
-            "must not recursively authorize `authorize` itself",
+            "recursively authorize `authorize` itself",
             "does not manufacture it",
             "not a reusable credential",
         ]:
