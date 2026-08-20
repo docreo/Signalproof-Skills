@@ -32,6 +32,9 @@ class DspCommandShellAcceptance(unittest.TestCase):
             "/dsp-this-plan",
             "/dsp this build",
             "/dsp-this-build",
+            "/dsp cut-chase",
+            "/dsp cut chase",
+            "dsp-cut-chase",
         ]:
             self.assertIn(required, dsp)
 
@@ -49,12 +52,29 @@ class DspCommandShellAcceptance(unittest.TestCase):
             "log-build-git-debug",
             "/authorized-log-build-git",
             "signalproof-teach",
+            "cut-chase",
             "log-skill",
             "handoff-log",
             "design-git",
         ]:
             self.assertIn(canonical, dsp)
             self.assertIn(f"`{canonical}`", registry)
+
+    def test_public_library_navigation_is_explicit(self):
+        dsp = self.read("commands/dsp.md").lower()
+        for required in [
+            "public signalproof library",
+            "docreo/signalproof-skills",
+            "/dsp skills",
+            "skill-registry.md",
+            "/dsp commands",
+            "commands/command-registry.md",
+            "/dsp loops",
+            "loops/loop-registry.yaml",
+            "private build ledger",
+            "does not replace the public signalproof library",
+        ]:
+            self.assertIn(required, dsp)
 
     def test_transport_safe_fallback_and_ambiguity_stop_exist(self):
         dsp = self.read("commands/dsp.md").lower()
