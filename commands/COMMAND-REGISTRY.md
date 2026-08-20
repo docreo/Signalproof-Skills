@@ -12,7 +12,7 @@
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
 | `handoff-log` | 0.2.0 | Create a current durable handoff plus log-skill synchronization and fresh-chat bootstrap |
 | `design-git` | 0.2.0 | Design and route the smallest governed next Git-backed action |
-| `build-git` | 0.2.2 | Execute the smallest governed Git-backed next action with current-Git, known-failure, protected-state, verification, and recovery controls |
+| `build-git` | 0.2.3 | Execute the smallest governed Git-backed next action with current-Git, known-failure, executable recurrence prevention, evidence-sufficiency termination, protected-state, verification, and recovery controls |
 | `build-git this` | 0.1.0 | Apply build-git to the current clearly bounded subject/work unit |
 | `build-git spawn` | 0.1.0 | Coordinate Builder, Design, and Governor lanes under the main Signalproof Orchestrator |
 | `build-git-debug` | 0.1.0 | Apply build-git plus explicit defect localization, persisted-state inspection, retry discipline, and exact-final repair validation |
@@ -91,6 +91,7 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 12. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
 13. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
 14. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
+15. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
 
 ## Lifecycle
 
