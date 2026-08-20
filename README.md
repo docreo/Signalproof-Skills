@@ -68,6 +68,7 @@ ROOT SIGNALPROOF CONTRACT
 | [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Target prerequisites/capability readiness |
 | [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Bounded implementation and protected execution |
 | [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Evidence-led defect correction and regression protection |
+| [`signalproof-full-debug`](skills/signalproof-full-debug/SKILL.md) | 0.1.0 | High-governance debug coordination with failure memory, bounded authorization, role separation, and verification |
 | [`signalproof-verify`](skills/signalproof-verify/SKILL.md) | 0.1.0 | Specific claim verification |
 | [`signalproof-review`](skills/signalproof-review/SKILL.md) | 0.1.0 | Scope and change-integrity review |
 | [`signalproof-recovery`](skills/signalproof-recovery/SKILL.md) | 0.2.0 | Multi-domain recovery coordinator |
@@ -107,6 +108,7 @@ actual restoration         -> signalproof-restore
 partial-operation cleanup  -> signalproof-cleanup
 UI clipping/wrapping       -> signalproof-ui-polish
 keyboard/screen-reader     -> signalproof-accessibility
+full debug                 -> signalproof-full-debug
 ```
 
 Coordinators remain useful when several specialist domains materially interact.
