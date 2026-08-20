@@ -10,13 +10,13 @@
 | `authorize` | 0.1.0 | Generic bounded authorization handler for a pending owner gate or resolved target command |
 | `known-errors` | 0.1.0 | Enable continuous known-error recurrence checking for the current bounded workstream |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
-| `handoff-log` | 0.2.0 | Create a current durable handoff plus log-skill synchronization and fresh-chat bootstrap |
+| `handoff-log` | 0.2.1 | Create a current durable handoff plus log-skill synchronization, fresh-chat bootstrap, and PowerShell failure continuity |
 | `design-git` | 0.2.0 | Design and route the smallest governed next Git-backed action |
-| `build-git` | 0.2.3 | Execute the smallest governed Git-backed next action with current-Git, known-failure, executable recurrence prevention, evidence-sufficiency termination, protected-state, verification, and recovery controls |
+| `build-git` | 0.2.4 | Execute the smallest governed Git-backed next action with current-Git, known-failure, executable recurrence prevention, persistent PowerShell failure memory, evidence-sufficiency termination, protected-state, verification, and recovery controls |
 | `build-git this` | 0.1.0 | Apply build-git to the current clearly bounded subject/work unit |
 | `build-git spawn` | 0.1.0 | Coordinate Builder, Design, and Governor lanes under the main Signalproof Orchestrator |
 | `build-git-debug` | 0.1.0 | Apply build-git plus explicit defect localization, persisted-state inspection, retry discipline, and exact-final repair validation |
-| `log-build-git` | 0.2.0 | Run log-skill -> design-git -> build-git, including governed handoff receipt/bootstrap |
+| `log-build-git` | 0.2.1 | Run log-skill -> design-git -> build-git, including governed handoff receipt/bootstrap and failure-guard reload |
 | `log-build-git-debug` | 0.1.0 | Run log-skill -> design-git -> build-git-debug for debug-state continuity |
 | `/authorized-log-build-git` | 0.1.0 | Specialized compatibility route for authorizing the current bounded owner gate before log/design/build continuation |
 | `signalproof-this-plan` | 0.1.0 | Grill, design, and bound the current work into a THIS PLAN CONTRACT without implementation |
@@ -81,17 +81,18 @@ See `commands/dsp.md` for the complete normalization and authority contract.
 2. Commands route to Active Skills and evidence/governance mechanisms and do not replace those contracts.
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
-5. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
-6. A projected Build Ledger sequence is never a reservation.
-7. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
-8. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
-9. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
-10. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
-11. Public Git command promotion does not claim a canonical private Build Ledger append.
-12. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
-13. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
-14. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
-15. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
+5. PowerShell-relevant build and continuation work must load the current Git-backed PowerShell failure registry, preserve same-failure attempt counts across chat boundaries, run applicable executable known-error preflight, parser-preflight the exact final staged `.ps1`, and block unchanged known-bad retries.
+6. Planning, grilling, teaching, logging, DSP resolution, authorization handling, known-error guarding, or command invocation cannot silently create write, destructive, credential, privilege, security-change, release, publication, Candidate-activation, or canonical Build Ledger authority.
+7. A projected Build Ledger sequence is never a reservation.
+8. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
+9. `signalproof-teach` may teach toward HAMM readiness but does not award maturity/certification/permission.
+10. `build-git-debug` and `log-build-git-debug` preserve failed attempts and require changed conditions or deeper Investigation rather than blind retries.
+11. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
+12. Public Git command promotion does not claim a canonical private Build Ledger append.
+13. DSP aliases and handlers must resolve to stable canonical command identities before execution; aliases must not fork command semantics.
+14. `known-errors` must block materially unchanged known-bad retry paths and must not auto-promote newly observed failures into the Active catalog.
+15. `authorize` must preserve exact bounded scope, prerequisites, protected state, and consumption. It must not become blanket or recursive authority.
+16. Active command versions in command files and this registry must remain synchronized; promotion is incomplete while those identities disagree.
 
 ## Lifecycle
 
