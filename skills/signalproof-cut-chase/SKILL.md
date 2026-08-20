@@ -13,14 +13,12 @@ description: Distill complex, repetitive, or overlong information into the most 
 
 The goal is not maximum terseness. The goal is minimum decision load while preserving the evidence, uncertainty, constraints, and authority that materially affect what the human should understand or do next.
 
-## Core distinction
+## Core behavior
 
-Cut Chase is not Caveman mode.
-
-- Caveman-style compression primarily reduces words and filler.
 - Cut Chase primarily reduces decision load and information noise.
 - Technical accuracy, evidence boundaries, protected state, unresolved blockers, and material qualifiers survive compression.
 - Readability and human tone matter. Telegraphic speech is not the default.
+- The result should make the next decision faster without making the underlying truth weaker.
 
 ## Default output
 
@@ -129,14 +127,14 @@ STOP or expand instead of compressing when the requested action cannot be identi
 
 ## Provenance
 
-This is a Signalproof-native capability. Its design was informed by review of Matt Pocock's former MIT-licensed `caveman` skill at upstream commit `694fa30311e02c2639942308513555e61ee84a6f`, where Caveman emphasized aggressive language compression while retaining technical accuracy and temporarily relaxing compression for clarity-sensitive material. Matt later removed Caveman and stated it was a duplicate experiment that was never meant to be public. Signalproof Cut Chase does not install or depend on the upstream skill. It adapts only the general lesson that useful compression must preserve technical truth, then adds salience ranking, decision-load reduction, action notes, Signalproof evidence/authority boundaries, one-shot behavior, and restrained Doc Reo voice.
+Signalproof Cut Chase is a Signalproof-native capability created for Dr. Signalproof reporting, decision clarity, and action extraction. It is not an imported upstream Skill and has no external runtime dependency.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-cut-chase`
-- **Version:** `0.1.0`
-- **Maturity:** Active public baseline after governed promotion
+- **Version:** `0.1.1`
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** salience compression, concise reporting, decision clarity, action extraction
 - **Created by:** Doc Reo / Signalproof
