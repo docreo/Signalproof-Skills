@@ -36,6 +36,13 @@ capabilities:
   - {id: signalproof-readiness, state: ACTIVE, kind: skill, purpose: verify exact target prerequisites and capability readiness, triggers: [readiness, prerequisites, target environment]}
   - {id: signalproof-build, state: ACTIVE, kind: skill, purpose: bounded implementation under protected-state controls, triggers: [build, implement, modify, create software], loops: [SP-LOOP-BUILD-VERIFY]}
   - {id: signalproof-debug, state: ACTIVE, kind: skill, purpose: reproduce/localize/correct/regression-test defects, triggers: [bug, defect, failing behavior, regression], loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]}
+  - id: signalproof-full-debug
+    state: ACTIVE
+    kind: coordinator_skill
+    purpose: coordinate high-governance bounded debugging with failure-memory continuity, bounded authorization, role separation, and verification
+    triggers: [full debug, full-debug, repeated debug failure, cross-layer defect, high-consequence defect]
+    specialists: [signalproof-debug, signalproof-known-errors, signalproof-verify]
+    loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY, SP-LOOP-POWERSHELL-GUARD]
   - {id: signalproof-verify, state: ACTIVE, kind: skill, purpose: prove a specific material claim, triggers: [verify, prove, acceptance evidence]}
   - {id: signalproof-review, state: ACTIVE, kind: skill, purpose: review scope fidelity and change integrity, triggers: [review, audit change, contract fidelity]}
 
