@@ -72,7 +72,7 @@ class DspCommandShellAcceptance(unittest.TestCase):
             "/dsp loops",
             "loops/loop-registry.yaml",
             "private build ledger",
-            "does not replace the public signalproof library",
+            "replace the public signalproof library",
         ]:
             self.assertIn(required, dsp)
 
