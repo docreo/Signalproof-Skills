@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.2
+# `build-git` - Active Operator Command V0.2.3 Candidate Revision
 
-**Status:** ACTIVE  
-**Version:** 0.2.2  
+**Status:** ACTIVE ON MAIN / CANDIDATE REVISION ON THIS BRANCH  
+**Version:** 0.2.3-candidate  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -42,29 +42,59 @@ Possible decisions:
 
 A high-confidence known failure must not be repeated under unchanged conditions.
 
+### Executable known-error enforcement
+
+When a recurrence rule is machine-checkable and an applicable validator exists, run the validator before handing the consequential artifact or paste-ready command to the owner. Human-readable known-error doctrine remains the source of meaning; executable checks are recurrence-prevention gates, not new authority.
+
+Current candidate validator:
+
+```text
+python tools/known_error_preflight.py --mode <operator-powershell|powershell-script> <artifact>
+```
+
+A validator `BLOCK` must stop handoff of the unchanged artifact. A validator warning must be resolved, explicitly justified as inapplicable, or preserved as uncertainty before consequential execution. Do not weaken a validator merely to obtain PASS.
+
 ### Current PowerShell prevention set
 
 For generated or modified Windows PowerShell harnesses when applicable:
 
-- use one complete interactive statement, preferably one `& { ... }` block; do not split `if` and `else` across submissions;
+- choose interactive submission style from the **observed operator environment**, not from a generic PowerShell recipe. If the current console/workflow has rejected a leading `& { ... }` wrapper, do not emit that wrapper again for that environment; prefer validated file execution or sequential statements compatible with the observed console path;
+- do not split an `if` and its `else` across separate interactive submissions; where line-by-line console transport is in use, prefer control flow that does not require a separately submitted `else`;
 - parser-preflight the exact final staged `.ps1` before execution;
 - calculate SHA-256 after final serialization and verify the same artifact before execution;
 - preserve failed runners rather than broad-patching or overwriting them;
 - do not assume Windows PowerShell 5.1 `ConvertFrom-Json` can represent arbitrary or empty external JSON property names;
 - distinguish generic dictionary `.ContainsKey()` from non-generic `IDictionary.Contains()`;
 - check property presence before dereferencing heterogeneous report objects;
+- normalize values that may be null/scalar before cardinality checks under StrictMode, for example `@($value).Count` when collection semantics are intended;
 - compute parser-sensitive multiline values first instead of embedding ambiguous expressions;
 - classify parser/harness STOP as harness evidence, not product failure, unless separate evidence proves product actuation;
 - keep expected console output outside executable command blocks;
 - canonicalize filesystem paths before deriving relative paths;
 - capture native stdout, stderr, and exit status separately; stderr presence alone is not failure authority;
-- reject nested same-delimiter here-string serialization when it can prematurely terminate the outer payload.
+- reject nested same-delimiter here-string serialization when it can prematurely terminate the outer payload;
+- avoid self-referential static guards whose forbidden literal appears inside the guard itself; construct the needle or inspect parsed structure instead;
+- preserve array-shaped contracts such as `reason_codes` as arrays; use membership checks rather than collapsing them into fragile scalar equality when the schema permits multiple values;
+- inspect structured fields structurally. Do not use broad text regexes that reject safe metadata merely because a field name contains a sensitive term, such as a boolean explicitly recording that private-key persistence is false.
+
+## Evidence sufficiency termination
+
+Acceptance claims belong to evidence classes. Once the required product, runtime, security, or permission claim has been independently established by sufficient accepted evidence, a later harness, reporter, finalizer, display, or transport defect must be classified against its own evidence class.
+
+Do not automatically regress an already-proven product/security claim or replay an expensive acceptance matrix merely because a downstream harness reports a false negative. Reopen the proved claim only when the later evidence actually contradicts the accepted evidence, reveals a missing required gate, or establishes that the prior evidence was invalid.
+
+When evidence is sufficient but a harness fails afterward:
+
+1. preserve the harness failure;
+2. identify the exact unproven or contradictory claim, if any;
+3. consume already-valid evidence instead of rerunning unchanged tests;
+4. route the smallest read-only or corrective action needed to close the remaining evidence gap.
 
 ## Exact-final-artifact rule
 
-Before handing an operator a consequential generated runner, patch, manifest, config, or repair artifact, validate the exact final artifact as far as the environment permits. Use parser/compiler/schema checks, structured-literal validation, cross-reference checks, defect-specific micro-fixtures or negative tests, and protected-state checks when applicable.
+Before handing an operator a consequential generated runner, patch, manifest, config, repair artifact, or paste-ready command, validate the exact final artifact as far as the environment permits. Use parser/compiler/schema checks, structured-literal validation, cross-reference checks, defect-specific micro-fixtures or negative tests, protected-state checks, and applicable executable known-error preflight.
 
-Do not quote stale hashes or claim runtime validation that did not occur.
+Observed target-environment behavior outranks a generic language recipe for handoff formatting. Do not quote stale hashes or claim runtime validation that did not occur.
 
 ## Generated output typography rule
 
@@ -80,10 +110,12 @@ A work stream may pause while unrelated global Build Ledger chronology advances.
 
 When multi-role separation materially improves the work, `build-git` may route to Active `build-git spawn`. The main session remains the Signalproof Orchestrator. If actual independent spawning is unavailable, use clearly separated logical lanes and state that accurately.
 
+Spawn does not require replaying already-sufficient evidence. Builder, Design, and Governor lanes must each identify which evidence class remains unresolved before proposing another consequential test.
+
 ## STOP conditions
 
-STOP when current Git cannot be established; protected state would be weakened outside authority; a high-confidence failure would be repeated unchanged; relevant newer failure evidence is known but uninspected; the proposed mitigation violates security/licensing/legal/authority boundaries; a concurrent change invalidates the contract; a projected ledger sequence is treated as reserved; unresolved evidence requires investigation before implementation; an output would falsely claim independent agents ran; a Candidate is being silently promoted; or canonical ledger/release/production authority is being inferred from this command.
+STOP when current Git cannot be established; protected state would be weakened outside authority; a high-confidence failure would be repeated unchanged; an applicable executable known-error validator blocks the artifact; relevant newer failure evidence is known but uninspected; the proposed mitigation violates security/licensing/legal/authority boundaries; a concurrent change invalidates the contract; a projected ledger sequence is treated as reserved; unresolved evidence requires investigation before implementation; an output would falsely claim independent agents ran; a Candidate is being silently promoted; or canonical ledger/release/production authority is being inferred from this command.
 
 ## Maintenance acceptance
 
-Keep regression coverage proving non-build routing, bounded implementation routing, stale-Git detection, known-failure avoidance, open/draft failure-evidence retrieval, PowerShell harness prevention, changed-condition retest, protected-state preservation, build-stream continuity, spawn authority separation, and the U+2014 generated-output rule.
+Keep regression coverage proving non-build routing, bounded implementation routing, stale-Git detection, known-failure avoidance, open/draft failure-evidence retrieval, PowerShell harness prevention, observed-console compatibility, executable known-error enforcement, evidence-sufficiency termination, changed-condition retest, protected-state preservation, build-stream continuity, spawn authority separation, and the U+2014 generated-output rule.
