@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.2
 status: RD1_CANDIDATE
 purpose: reusable bounded iteration protocols; loops never grant authority
 
@@ -18,3 +18,4 @@ loops:
   - {id: SP-LOOP-LEARN, file: SP-LOOP-LEARN.md, principal: signalproof-learn, default_max_iterations: 2}
   - {id: SP-LOOP-OPTIMIZE, file: SP-LOOP-OPTIMIZE.md, principal: signalproof-evaluate, default_max_iterations: 5}
   - {id: SP-LOOP-RETRY, file: SP-LOOP-RETRY.md, principal: signalproof-known-errors, default_max_iterations: 3}
+  - {id: SP-LOOP-POWERSHELL-GUARD, file: SP-LOOP-POWERSHELL-GUARD.md, principal: signalproof-known-errors, default_max_iterations: 3}

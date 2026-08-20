@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.3
+# `build-git` - Active Operator Command V0.2.4
 
 **Status:** ACTIVE  
-**Version:** 0.2.3  
+**Version:** 0.2.4  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -19,13 +19,14 @@ The word `build` does not mean every invocation writes code. The command may rou
 1. **Git preflight** - refetch the relevant repository/ref/head before consequential action.
 2. **Router preflight** - select the minimum applicable Active Signalproof capability set.
 3. **Known Failure Preflight** - inspect applicable merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may not yet be on `main`. Candidate evidence may prevent recurrence but does not become Active authority.
-4. **Protected-state contract** - establish baseline, forbidden changes, rollback/non-mutation boundary, work-stream identity, and required evidence.
-5. **Consume the current Next Action Contract** when one exists. Do not silently redesign it.
-6. **Execute only the routed action** within current authority.
-7. **Verify incrementally** before stacking additional uncertainty.
-8. Apply Review, Security, provenance, recovery, or release gates when material.
-9. **Git recheck** before consequential write, merge, publication, or promotion.
-10. Preserve outcome, proof, failures, uncertainty, recovery state, learning, and closeout obligations.
+4. **PowerShell persistence preflight when applicable** - if the next step may generate, modify, stage, or execute PowerShell, load current `library/POWERSHELL-FAILURE-REGISTRY.yaml` and restore task-relevant failure identity/attempt state before producing another runner.
+5. **Protected-state contract** - establish baseline, forbidden changes, rollback/non-mutation boundary, work-stream identity, and required evidence.
+6. **Consume the current Next Action Contract** when one exists. Do not silently redesign it.
+7. **Execute only the routed action** within current authority.
+8. **Verify incrementally** before stacking additional uncertainty.
+9. Apply Review, Security, provenance, recovery, or release gates when material.
+10. **Git recheck** before consequential write, merge, publication, or promotion.
+11. Preserve outcome, proof, failures, uncertainty, recovery state, learning, and closeout obligations.
 
 ## Known Failure Preflight
 
@@ -53,6 +54,34 @@ python tools/known_error_preflight.py --mode <operator-powershell|powershell-scr
 ```
 
 A validator `BLOCK` must stop handoff of the unchanged artifact. A validator warning must be resolved, explicitly justified as inapplicable, or preserved as uncertainty before consequential execution. Do not weaken a validator merely to obtain PASS.
+
+### Git-backed PowerShell persistence guard
+
+PowerShell failure memory must survive builds and conversation boundaries.
+
+When PowerShell is relevant:
+
+1. refetch current `Signalproof-Skills/main`;
+2. load `library/POWERSHELL-FAILURE-REGISTRY.yaml` before generating or retrying another runner;
+3. recover applicable registry IDs, unresolved failure class, prior failed runner identity, same-failure attempt count, mitigation already tried, and explicit do-not-repeat path from current handoff/evidence when available;
+4. run applicable executable known-error preflight before handoff/execution;
+5. parser-preflight the exact final staged `.ps1`;
+6. if the artifact changes after parser validation, invalidate that validation and parse the new exact final artifact again;
+7. bind SHA-256 only after final serialization when byte identity matters;
+8. execute at most once for the exact artifact/condition set;
+9. before retry, state the material condition that changed;
+10. carry attempt count across new chat windows, renamed runners, wrapper changes, prompt rewrites, and cosmetic formatting changes;
+11. route newly proven reusable failures through Known Errors/Learn governance rather than leaving them only in chat memory.
+
+A fresh chat does not grant a fresh retry budget. The same unresolved failure class keeps its prior attempt count when continuity evidence preserves it.
+
+Use `SP-LOOP-POWERSHELL-GUARD` as the bounded recurrence protocol when iterative PowerShell correction is required.
+
+Required pre-execution states are:
+
+`REGISTRY SEARCHED -> APPLICABLE RULES APPLIED -> EXECUTABLE KNOWN-ERROR PREFLIGHT PASS (WHEN APPLICABLE) -> EXACT FINAL ARTIFACT IDENTIFIED -> PARSER PREFLIGHT PASS -> STATIC KNOWN-FAILURE CHECK PASS -> AUTHORITY/PROTECTED-STATE PASS`
+
+If a required state is `UNKNOWN` or failed, do not execute the consequential PowerShell runner.
 
 ### Current PowerShell prevention set
 
@@ -114,8 +143,8 @@ Spawn does not require replaying already-sufficient evidence. Builder, Design, a
 
 ## STOP conditions
 
-STOP when current Git cannot be established; protected state would be weakened outside authority; a high-confidence failure would be repeated unchanged; an applicable executable known-error validator blocks the artifact; relevant newer failure evidence is known but uninspected; the proposed mitigation violates security/licensing/legal/authority boundaries; a concurrent change invalidates the contract; a projected ledger sequence is treated as reserved; unresolved evidence requires investigation before implementation; an output would falsely claim independent agents ran; a Candidate is being silently promoted; or canonical ledger/release/production authority is being inferred from this command.
+STOP when current Git cannot be established; protected state would be weakened outside authority; a high-confidence failure would be repeated unchanged; an applicable executable known-error validator blocks the artifact; relevant newer failure evidence is known but uninspected; required PowerShell failure continuity is unavailable for a repeat-prone runner; PowerShell parser validation of the exact final staged artifact fails; a PowerShell retry lacks a material changed condition; the proposed mitigation violates security/licensing/legal/authority boundaries; a concurrent change invalidates the contract; a projected ledger sequence is treated as reserved; unresolved evidence requires investigation before implementation; an output would falsely claim independent agents ran; a Candidate is being silently promoted; or canonical ledger/release/production authority is being inferred from this command.
 
 ## Maintenance acceptance
 
-Keep regression coverage proving non-build routing, bounded implementation routing, stale-Git detection, known-failure avoidance, open/draft failure-evidence retrieval, PowerShell harness prevention, observed-console compatibility, executable known-error enforcement, evidence-sufficiency termination, changed-condition retest, protected-state preservation, build-stream continuity, spawn authority separation, and the U+2014 generated-output rule.
+Keep regression coverage proving non-build routing, bounded implementation routing, stale-Git detection, known-failure avoidance, open/draft failure-evidence retrieval, PowerShell harness prevention, observed-console compatibility, executable known-error enforcement, Git-backed PowerShell failure-registry loading, cross-chat same-failure attempt continuity, exact-final parser preflight, evidence-sufficiency termination, changed-condition retest, protected-state preservation, build-stream continuity, spawn authority separation, and the U+2014 generated-output rule.
