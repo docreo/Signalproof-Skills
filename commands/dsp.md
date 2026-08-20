@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.1
+# `/dsp` - Dr. Signalproof Command Shell V0.2
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
+**Version:** 0.2.0  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -92,6 +92,7 @@ Initial alias map:
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
 | `authorized log build git`, `authorized-log-build-git` | `/authorized-log-build-git` |
+| `known errors`, `known-errors` | `known-errors` |
 | `teach` | `signalproof-teach` |
 | `log`, `log skill`, `log-skill` | `log-skill` |
 | `handoff`, `handoff log`, `handoff-log` | `handoff-log` |
