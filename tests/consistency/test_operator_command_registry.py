@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -39,6 +40,15 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
             self.assertIn("**Status:** ACTIVE", text, rel)
             self.assertNotIn("**Status:** CANDIDATE / NOT ACTIVE", text, rel)
             self.assertLess(len(path.read_bytes()), 15000, rel)
+
+    def test_active_command_versions_match_registry(self):
+        registry = self.read("commands/COMMAND-REGISTRY.md")
+        for command, rel in ACTIVE.items():
+            text = self.read(rel)
+            match = re.search(r"^\*\*Version:\*\*\s+([^\s]+)", text, re.MULTILINE)
+            self.assertIsNotNone(match, rel)
+            version = match.group(1)
+            self.assertIn(f"| `{command}` | {version} |", registry, command)
 
     def test_build_git_includes_reconciled_safeguards(self):
         text = self.read("commands/build-git.md").lower()
