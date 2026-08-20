@@ -127,13 +127,13 @@ STOP or expand instead of compressing when the requested action cannot be identi
 
 ## Provenance
 
-Signalproof Cut Chase is a Signalproof-native capability created for Dr. Signalproof reporting, decision clarity, and action extraction. It is not an imported upstream Skill and has no external runtime dependency.
+Signalproof Cut Chase is a Signalproof-native capability created for Dr. Signalproof reporting, decision clarity, and action extraction.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-cut-chase`
-- **Version:** `0.1.1`
+- **Version:** `0.1.0`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** salience compression, concise reporting, decision clarity, action extraction
