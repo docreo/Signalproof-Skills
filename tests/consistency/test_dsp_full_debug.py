@@ -9,6 +9,9 @@ class DspFullDebugAcceptance(unittest.TestCase):
     def read(self, rel):
         return (ROOT / rel).read_text(encoding="utf-8")
 
+    def normalized(self, rel):
+        return self.read(rel).lower().replace("**", "")
+
     def test_full_debug_skill_and_command_are_registered_and_under_budget(self):
         skill = ROOT / "skills/signalproof-full-debug/SKILL.md"
         command = ROOT / "commands/full-debug.md"
@@ -51,8 +54,8 @@ class DspFullDebugAcceptance(unittest.TestCase):
             self.assertIn(required, command)
 
     def test_authorize_all_is_bounded_and_excludes_protected_authority_classes(self):
-        skill = self.read("skills/signalproof-full-debug/SKILL.md").lower()
-        command = self.read("commands/full-debug.md").lower()
+        skill = self.normalized("skills/signalproof-full-debug/SKILL.md")
+        command = self.normalized("commands/full-debug.md")
         for required in [
             "all owner-authorizable actions required by the current bounded full debug envelope",
             "canonical build ledger append",
