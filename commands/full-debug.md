@@ -87,7 +87,7 @@ The generic `authorize` contract remains authoritative for authorization scope, 
 
 Full Debug must search current known-error/failure evidence before correction.
 
-A new conversation, renamed runner, wrapper change, prompt rewrite, or cosmetic command change does not create a fresh retry budget.
+A new chat or conversation, renamed runner, wrapper change, prompt rewrite, or cosmetic command change does not create a fresh retry budget.
 
 When PowerShell is relevant, load the current `library/POWERSHELL-FAILURE-REGISTRY.yaml`, restore prior same-failure attempt state, run applicable executable known-error validation, parser-preflight the exact final staged `.ps1`, and block materially unchanged known-bad retries according to current `build-git` controls.
 
