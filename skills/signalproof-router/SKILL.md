@@ -34,6 +34,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-readiness` - target prerequisite/capability assessment;
 - `signalproof-build` - bounded implementation;
 - `signalproof-debug` - evidence-led defect correction;
+- `signalproof-full-debug` - high-governance debug coordination for repeated, cross-layer, or high-consequence defects;
 - `signalproof-verify` - prove a specific claim;
 - `signalproof-review` - assess scope/change integrity;
 - `signalproof-recovery` - coordinate recovery work;
@@ -95,6 +96,7 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 
 - Build: bounded implementation.
 - Debug: bounded defect correction.
+- Full Debug: strongest bounded debug coordination when repeated failure memory, authorization, multi-role challenge, and cross-layer verification materially reduce risk or duplicate work.
 - Recovery: recovery coordinator for multi-part restoration work.
 - Rollback: choose/verify known-good target.
 - Restore: perform bounded replacement/restoration.
@@ -127,6 +129,7 @@ The Signalproof Loop Library may supply reusable bounded iteration protocols. A 
 Common mappings:
 
 - Debug -> `SP-LOOP-DEBUG`;
+- Full Debug -> `SP-LOOP-DEBUG` + `SP-LOOP-RETRY`, with `SP-LOOP-POWERSHELL-GUARD` when PowerShell is relevant;
 - Build/Verify -> `SP-LOOP-BUILD-VERIFY`;
 - Research -> `SP-LOOP-RESEARCH`;
 - ingestion/normalization -> `SP-LOOP-INGEST`;
@@ -158,6 +161,7 @@ Avoid loading entire capability families merely because the request mentions a b
 - `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
 - `teach -> reassess/readiness` when human capability must grow before more autonomy;
 - `known-errors -> investigate -> debug -> verify`;
+- `full-debug -> review/verify/security/recovery as routed` for repeated, cross-layer, or high-consequence defect work;
 - `research -> evaluate`;
 - `plan -> design -> build -> verify/review`;
 - `design -> ui-polish/accessibility -> build`;
