@@ -154,7 +154,7 @@ These are Library navigation/resolution operations unless and until a separately
 
 DSP mode does not grant write, destructive, credential, privilege, security-change, publication, release, Candidate-activation, or canonical Build Ledger authority.
 
-Authorization syntax does not manufacture authority. The `authorize` handler can only preserve and route explicit bounded owner authority or a uniquely established pending owner gate, and the resolved target command remains authoritative for execution semantics.
+Authorization syntax does not manufacture authority. The `authorize` handler can only preserve and route explicit bounded owner authority or a uniquely established pending owner gate. The resolved canonical command remains authoritative. It remains authoritative for execution semantics and preserves its own prerequisites and STOP conditions.
 
 ## Collision rule
 
