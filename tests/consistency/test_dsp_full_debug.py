@@ -27,7 +27,7 @@ class DspFullDebugAcceptance(unittest.TestCase):
 
     def test_dsp_variants_resolve_to_one_canonical_full_debug_command(self):
         dsp = self.read("commands/dsp.md").lower()
-        registry = self.read("commands/command-registry.md").lower()
+        registry = self.read("commands/COMMAND-REGISTRY.md").lower()
         for form in [
             "/dsp full-debug",
             "/dsp full debug",
