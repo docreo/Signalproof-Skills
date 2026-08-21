@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.4
+# `/dsp` - Dr. Signalproof Command Shell V0.3.5
 
 **Status:** ACTIVE  
-**Version:** 0.3.4  
+**Version:** 0.3.5  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -67,6 +67,10 @@ dsp-full-debug
 /dsp cut chase
 dsp-cut-chase
 
+/dsp cut-cost
+/dsp cut cost
+dsp-cut-cost
+
 /dsp build-spawn-debug
 /dsp build spawn debug
 dsp-build-spawn-debug
@@ -93,6 +97,7 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 | `full debug`, `full-debug` | `full-debug` |
 | `build spawn debug`, `build-spawn-debug` | `build-spawn-debug` |
 | `cut chase`, `cut-chase` | `cut-chase` |
+| `cut cost`, `cut-cost` | `cut-cost` |
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
 | `authorize`, `authorized` | `authorize` |
@@ -113,6 +118,14 @@ Exact canonical command names remain valid after the DSP prefix.
 Bare help reads the current public `commands/COMMAND-REGISTRY.md` and returns a compact Active command list with purposes. `/dsp help <command>` resolves one command and reads its current public command contract for focused help.
 
 Help is read-only. It does not execute the described command or create authority.
+
+## Cut Cost handler
+
+`/dsp cut-cost` resolves to canonical `cut-cost`, which routes to the Active public `signalproof-cut-cost` Skill.
+
+Cut Cost is a read-only AI operating-efficiency audit. It measures available evidence for context/memory load, tools/MCP overhead, model/effort/routing, hooks/output volume, agents, scheduled work, cache/usage, and Signalproof-specific repeated work. It reports UNKNOWN instead of guessing and does not apply optimizations automatically.
+
+Focused forms such as `/dsp cut-cost cache`, `/dsp cut-cost tools`, or `/dsp cut-cost signalproof` narrow the audit surface without changing the read-only boundary.
 
 ## Build Spawn Debug handler
 
