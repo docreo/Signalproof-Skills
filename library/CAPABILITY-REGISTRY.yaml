@@ -1,4 +1,4 @@
-version: 0.4
+version: 0.5
 status: RD1_CANDIDATE
 purpose: >-
   Compact routing metadata for the Signalproof Library. This registry helps the
@@ -44,6 +44,13 @@ capabilities:
     triggers: [full debug, full-debug, repeated debug failure, cross-layer defect, high-consequence defect]
     specialists: [signalproof-debug, signalproof-known-errors, signalproof-verify]
     loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY, SP-LOOP-POWERSHELL-GUARD]
+  - id: signalproof-build-spawn-debug
+    state: ACTIVE
+    kind: coordinator_skill
+    purpose: coordinate bounded build, spawn challenge, debug convergence, governed learning, automated acceptance, and human UI handoff
+    triggers: [build spawn debug, build-spawn-debug, keep fixing until pass, ui test ready, automated pass]
+    specialists: [signalproof-build, signalproof-full-debug, signalproof-verify]
+    loops: [SP-LOOP-BUILD-VERIFY, SP-LOOP-RETRY]
   - {id: signalproof-verify, state: ACTIVE, kind: skill, purpose: prove a specific material claim, triggers: [verify, prove, acceptance evidence]}
   - {id: signalproof-review, state: ACTIVE, kind: skill, purpose: review scope fidelity and change integrity, triggers: [review, audit change, contract fidelity]}
 
