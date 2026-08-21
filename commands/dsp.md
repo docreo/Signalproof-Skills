@@ -59,6 +59,8 @@ dsp-build-git
 
 /dsp full-debug
 /dsp full debug
+/dsp-full-debug
+dsp full-debug
 dsp-full-debug
 
 /dsp cut-chase
