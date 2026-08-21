@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.5
+# `/dsp` - Dr. Signalproof Command Shell V0.3.6
 
 **Status:** ACTIVE  
-**Version:** 0.3.5  
+**Version:** 0.3.6  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -63,6 +63,9 @@ dsp-build-git
 dsp full-debug
 dsp-full-debug
 
+/dsp complete
+dsp-complete
+
 /dsp cut-chase
 /dsp cut chase
 dsp-cut-chase
@@ -88,6 +91,7 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 | DSP form | Canonical command |
 |---|---|
 | `help` | `help` |
+| `complete`, `finish this` | `complete` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
 | `build git`, `build-git` | `build-git` |
@@ -111,6 +115,18 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 
 Exact canonical command names remain valid after the DSP prefix.
 
+## Complete handler
+
+`/dsp complete` resolves to canonical `complete`.
+
+Complete is the bounded fast path for the owner's intent: authorize all owner-authorizable actions necessary inside the exact current workstream, then run the existing `build-spawn-debug` convergence contract without returning routine implementation/debug approval gates to the user.
+
+The Complete Authorization Envelope survives ordinary corrections and human UI FAIL feedback inside the same bounded workstream. It does not become blanket future authority.
+
+Complete returns to the human for `USER UI TEST READY`, a genuinely unresolved owner decision, excluded authority, or a true blocker. Human UI FAIL resumes the same workstream automatically when still in scope. Human UI PASS/works/usable records `COMPLETE / USER ACCEPTED` for the stated acceptance gate.
+
+Complete preserves all Build Spawn Debug safeguards, retry limits, evidence requirements, protected state, recovery, and exact human acceptance requirements. It cannot manufacture user PASS or bypass release, production, protected-main, canonical-ledger, privilege, credential, legal/licensing, or security-control boundaries.
+
 ## Help handler
 
 `/dsp help` resolves to canonical `help`.
@@ -133,7 +149,7 @@ Focused forms such as `/dsp cut-cost cache`, `/dsp cut-cost tools`, or `/dsp cut
 
 This is one bounded build-to-user-acceptance command. It may continue through Build, Spawn challenge, Debug/Full Debug, automated Verify/Review/Security/Recovery, and Learn as required by the current envelope. It does not expand into an ad hoc sequence at the DSP resolver layer.
 
-The coordinator continues while evidence supports a materially new correction. It stops at automated PASS for the human UI gate, a real owner/authority boundary, or a real blocker. Human UI FAIL resumes the same workstream with new evidence; human UI PASS moves to owner authorization readiness.
+The coordinator continues while evidence supports a materially new correction. It stops at automated PASS for the human UI gate, a real owner/authority boundary, or a real blocker. Human UI FAIL resumes the same workstream with new evidence; human UI PASS moves to owner authorization readiness unless Complete is the active enclosing command.
 
 ## Cut Chase handler
 

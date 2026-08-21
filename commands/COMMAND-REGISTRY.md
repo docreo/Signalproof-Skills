@@ -6,9 +6,10 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.5 | Enter Dr. Signalproof mode, navigate the public Signalproof Library, and resolve compact DSP syntax to canonical Signalproof commands and handlers |
+| `/dsp` | 0.3.6 | Enter Dr. Signalproof mode, navigate the public Signalproof Library, and resolve compact DSP syntax to canonical Signalproof commands and handlers |
 | `help` | 0.1.0 | Show the current public DSP command surface or focused help for one command |
 | `authorize` | 0.1.0 | Generic bounded authorization handler for a pending owner gate or resolved target command |
+| `complete` | 0.1.0 | Authorize all owner-authorizable actions inside the current bounded workstream and drive Build Spawn Debug through automated PASS, human UI feedback, and real user acceptance |
 | `known-errors` | 0.1.0 | Enable continuous known-error recurrence checking for the current bounded workstream |
 | `log-skill` | 0.2.0 | Preserve/synchronize milestone, learning, Skill architecture, and closeout state without fabricating chronology |
 | `handoff-log` | 0.2.1 | Create a current durable handoff plus log-skill synchronization, fresh-chat bootstrap, and PowerShell failure continuity |
@@ -33,6 +34,7 @@
 - `/dsp` -> `commands/dsp.md`
 - `help` -> `commands/help.md`
 - `authorize` -> `commands/authorize.md`
+- `complete` -> `commands/complete.md`
 - `known-errors` -> `commands/known-errors.md`
 - `log-skill` -> `commands/log-skill.md`
 - `handoff-log` -> `commands/handoff-log.md`
@@ -61,7 +63,8 @@ The `/dsp` Library is public `docreo/Signalproof-Skills` on protected `main`. Pr
 Examples:
 
 - `/dsp help` -> `help`
-- `/dsp help cut-cost` -> focused help for `cut-cost`
+- `/dsp complete` -> `complete`
+- `/dsp help complete` -> focused help for `complete`
 - `/dsp build-git` -> `build-git`
 - `/dsp full-debug` -> `full-debug`
 - `/dsp build-spawn-debug`, `/dsp build spawn debug`, `dsp-build-spawn-debug` -> `build-spawn-debug`
@@ -73,6 +76,7 @@ Examples:
 ## Conversational aliases
 
 - `help` -> `help`
+- `complete` / `finish this` -> `complete` when clearly invoking the bounded completion workflow
 - `authorize` / `authorized` -> `authorize`
 - `authorized log-build-git` -> `/authorized-log-build-git` compatibility route
 - `full debug` -> `full-debug`
@@ -90,22 +94,23 @@ Examples:
 3. Git current state must be refetched before consequential repository work.
 4. Known Failure Preflight is required where the command contract says it is materially applicable.
 5. PowerShell-relevant build work preserves current failure-registry and parser-preflight controls.
-6. Planning, teaching, logging, DSP resolution, Help, Cut Chase, Cut Cost, authorization handling, Full Debug, Build Spawn Debug, or any command cannot silently create authority outside its bounded contract.
+6. Planning, teaching, logging, DSP resolution, Help, Complete, Cut Chase, Cut Cost, authorization handling, Full Debug, Build Spawn Debug, or any command cannot silently create authority outside its bounded contract.
 7. A projected Build Ledger sequence is never a reservation.
 8. `signalproof-this-plan` does not implement; `signalproof-this-build` requires a sufficiently bounded/authorized plan.
 9. `signalproof-teach` does not award maturity/certification/permission.
-10. `cut-chase` must not strengthen evidence, hide failed gates, or convert recommendation into authorization.
-11. `cut-cost` is read-only in V0.1.0, must measure rather than estimate, and must not apply its recommended optimization automatically.
-12. Debug commands preserve failed attempts and require changed conditions before retry.
-13. `full-debug` must not double-run debug and its `authorize all` semantics remain bounded to the current envelope.
-14. `build-spawn-debug` may continue through materially new failure classes, but same-failure retry limits remain binding; it must stop at automated PASS for real human UI testing and cannot manufacture user PASS.
-15. `help` is read-only discovery and must source current command state from public protected `main` rather than private or Candidate state.
-16. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
-17. Public Git command promotion does not claim canonical private Build Ledger append.
-18. DSP aliases and handlers resolve to stable canonical command identities before execution.
-19. `known-errors` blocks materially unchanged known-bad retry paths and does not auto-promote new failures.
-20. `authorize` preserves exact bounded scope, prerequisites, protected state, and consumption.
-21. Active command versions in command files and this registry must remain synchronized.
+10. `complete` authorizes all owner-authorizable actions only inside the current bounded completion envelope, preserves Build Spawn Debug safeguards, resumes on human UI FAIL, and cannot manufacture human acceptance.
+11. `cut-chase` must not strengthen evidence, hide failed gates, or convert recommendation into authorization.
+12. `cut-cost` is read-only in V0.1.0, must measure rather than estimate, and must not apply its recommended optimization automatically.
+13. Debug commands preserve failed attempts and require changed conditions before retry.
+14. `full-debug` must not double-run debug and its `authorize all` semantics remain bounded to the current envelope.
+15. `build-spawn-debug` may continue through materially new failure classes, but same-failure retry limits remain binding; it must stop at automated PASS for real human UI testing and cannot manufacture user PASS.
+16. `help` is read-only discovery and must source current command state from public protected `main` rather than private or Candidate state.
+17. Signalproof-controlled generated build output must avoid U+2014 except when preserving immutable/protected source evidence.
+18. Public Git command promotion does not claim canonical private Build Ledger append.
+19. DSP aliases and handlers resolve to stable canonical command identities before execution.
+20. `known-errors` blocks materially unchanged known-bad retry paths and does not auto-promote new failures.
+21. `authorize` preserves exact bounded scope, prerequisites, protected state, and consumption.
+22. Active command versions in command files and this registry must remain synchronized.
 
 ## Lifecycle
 
