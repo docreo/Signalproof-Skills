@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.3
+# `/dsp` - Dr. Signalproof Command Shell V0.3.4
 
 **Status:** ACTIVE  
-**Version:** 0.3.3  
+**Version:** 0.3.4  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -70,6 +70,11 @@ dsp-cut-chase
 /dsp build-spawn-debug
 /dsp build spawn debug
 dsp-build-spawn-debug
+
+/dsp help
+/dsp-help
+dsp help
+dsp-help
 ```
 
 ## Canonical resolution
@@ -78,6 +83,7 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 
 | DSP form | Canonical command |
 |---|---|
+| `help` | `help` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
 | `build git`, `build-git` | `build-git` |
@@ -99,6 +105,14 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 | `design git`, `design-git` | `design-git` |
 
 Exact canonical command names remain valid after the DSP prefix.
+
+## Help handler
+
+`/dsp help` resolves to canonical `help`.
+
+Bare help reads the current public `commands/COMMAND-REGISTRY.md` and returns a compact Active command list with purposes. `/dsp help <command>` resolves one command and reads its current public command contract for focused help.
+
+Help is read-only. It does not execute the described command or create authority.
 
 ## Build Spawn Debug handler
 
@@ -125,14 +139,16 @@ The coordinator continues while evidence supports a materially new correction. I
 Read-only discovery forms include:
 
 ```text
+/dsp help
 /dsp commands
 /dsp skills
 /dsp loops
 /dsp status
 ```
 
-These navigate current protected `docreo/Signalproof-Skills/main`:
+These navigate the **public Signalproof Library** on current protected `docreo/Signalproof-Skills/main`:
 
+- `/dsp help` -> current public command help derived from `commands/COMMAND-REGISTRY.md`;
 - `/dsp skills` -> `SKILL-REGISTRY.md` / Active `skills/`;
 - `/dsp commands` -> `commands/COMMAND-REGISTRY.md` / `commands/`;
 - `/dsp loops` -> `loops/LOOP-REGISTRY.yaml` / `loops/`;
