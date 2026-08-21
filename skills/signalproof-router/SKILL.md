@@ -36,6 +36,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-build` - bounded implementation;
 - `signalproof-debug` - evidence-led defect correction;
 - `signalproof-full-debug` - high-governance debug coordination for repeated, cross-layer, or high-consequence defects;
+- `signalproof-build-spawn-debug` - bounded build-to-user-acceptance coordination with spawn challenge, debug convergence, governed learning, automated PASS, and human UI gate;
 - `signalproof-verify` - prove a specific claim;
 - `signalproof-review` - assess scope/change integrity;
 - `signalproof-recovery` - coordinate recovery work;
@@ -55,15 +56,15 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-handoff` - conversation-boundary continuity;
 - `signalproof-closeout` - meaningful milestone closeout.
 
-Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `main`. Branch/PR state is candidate state even when it proposes future Active entries.
+Only skills marked Active in canonical `SKILL-REGISTRY.md` are routable on `main`. Branch/PR state is Candidate state even when it proposes future Active entries.
 
 ## Compact Routing Contract
 
 1. Read the actual objective; do not route from a keyword alone.
 2. Establish whether the request is read-only, decision/design, teaching/communication, actuation, or continuity work.
-3. Use the compact capability registry as routing metadata when available; metadata informs selection but is not authority.
+3. Use compact capability metadata when available; metadata informs selection but is not authority.
 4. Select one principal skill whenever possible.
-5. Add at most two narrow specialists/loops by default; exceed this only when the task materially crosses independent boundaries.
+5. Add at most two narrow specialists/loops by default; exceed only when the task materially crosses independent boundaries.
 6. Before consequential or materially failure-prone work, route through `signalproof-known-errors`.
 7. If factual state is unresolved, prefer Investigate/Verify before Build, Document, Learn, Release, or authoritative claims.
 8. If a domain specialist exactly fits, prefer it over loading its broader coordinator.
@@ -86,9 +87,9 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 - Evaluate: disposition from established evidence.
 - Plan: scope, sequencing, authority, acceptance, recovery.
 - Grill: stress-test unresolved decisions before execution.
-- Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs; repository writes still require authority.
-- Teach: source-backed progressive learning tied to a human mission; teaching does not award maturity/certification/authority.
-- Cut Chase: compress established material into the minimum decision-ready truth while preserving evidence, uncertainty, and action/authority boundaries.
+- Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs.
+- Teach: source-backed progressive learning tied to a human mission.
+- Cut Chase: compress established material into minimum decision-ready truth while preserving evidence, uncertainty, action, and authority boundaries.
 - Design: product information/state architecture.
 - UI Polish: micro-layout/readability/responsive/interaction finish.
 - Accessibility: keyboard, assistive technology, contrast, scalable/alternative interaction.
@@ -98,7 +99,8 @@ Only skills marked Active in the canonical `SKILL-REGISTRY.md` are routable on `
 
 - Build: bounded implementation.
 - Debug: bounded defect correction.
-- Full Debug: strongest bounded debug coordination when repeated failure memory, authorization, multi-role challenge, and cross-layer verification materially reduce risk or duplicate work.
+- Full Debug: strongest bounded debug coordination for repeated, cross-layer, or high-consequence defects.
+- Build Spawn Debug: keep a bounded build/UI problem moving through Build, Spawn challenge, Debug/Full Debug, machine-verifiable gates, learning, and final human UI acceptance without requiring the human to supervise every intermediate iteration.
 - Recovery: recovery coordinator for multi-part restoration work.
 - Rollback: choose/verify known-good target.
 - Restore: perform bounded replacement/restoration.
@@ -126,12 +128,13 @@ Use the narrowest matching specialist:
 
 ## Loop Selection
 
-The Signalproof Loop Library may supply reusable bounded iteration protocols. A Loop never grants authority.
+A Signalproof Loop never grants authority.
 
 Common mappings:
 
 - Debug -> `SP-LOOP-DEBUG`;
-- Full Debug -> `SP-LOOP-DEBUG` + `SP-LOOP-RETRY`, with `SP-LOOP-POWERSHELL-GUARD` when PowerShell is relevant;
+- Full Debug -> `SP-LOOP-DEBUG` + `SP-LOOP-RETRY`, with `SP-LOOP-POWERSHELL-GUARD` when relevant;
+- Build Spawn Debug -> `SP-LOOP-BUILD-VERIFY` + `SP-LOOP-RETRY`, adding Debug/PowerShell/Agent Action loops only when applicable;
 - Build/Verify -> `SP-LOOP-BUILD-VERIFY`;
 - Research -> `SP-LOOP-RESEARCH`;
 - ingestion/normalization -> `SP-LOOP-INGEST`;
@@ -141,11 +144,9 @@ Common mappings:
 - optimization -> `SP-LOOP-OPTIMIZE`;
 - consequential retry -> `SP-LOOP-RETRY`.
 
-The Governor decides whether a selected loop may run under the proposed permissions, risk, cost, and protected-state boundary.
+The Governor decides whether a selected loop may run under proposed permissions, risk, cost, and protected-state boundaries.
 
 ## Default Context Budget
-
-Preferred runtime context:
 
 ```text
 ROOT CONTRACT
@@ -155,15 +156,16 @@ ROOT CONTRACT
 + TASK EVIDENCE
 ```
 
-Avoid loading entire capability families merely because the request mentions a broad category.
+Avoid loading entire capability families merely because a request mentions a broad category.
 
 ## Sequencing Examples
 
 - `grill -> plan -> build` when unresolved owner decisions must be hardened first;
 - `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
 - `teach -> reassess/readiness` when human capability must grow before more autonomy;
-- `research/evaluate/document -> cut-chase` when a full result already exists but the human needs the decision-ready version;
+- `research/evaluate/document -> cut-chase` when a full result exists but the human needs the decision-ready version;
 - `known-errors -> investigate -> debug -> verify`;
+- `build-spawn-debug -> user UI test -> owner authorization` for a bounded UI/product problem that should be machine-tested and debugged before human acceptance;
 - `full-debug -> review/verify/security/recovery as routed` for repeated, cross-layer, or high-consequence defect work;
 - `research -> evaluate`;
 - `plan -> design -> build -> verify/review`;
@@ -179,18 +181,7 @@ These are patterns, not mandatory conveyor belts.
 
 ## STOP Conditions
 
-STOP when:
-
-- current repository/system state cannot be established for consequential work;
-- a known high-confidence failure would be repeated under unchanged conditions;
-- a route would silently expand privilege, security, release, publication, documentation-write, or ledger authority;
-- non-Active candidate capability would be treated as canonical Active capability;
-- unresolved truth is being sent directly to implementation or authoritative documentation;
-- a teaching result is being treated as certification, HAMM maturity, or operational permission without the required gate;
-- Cut Chase compression would remove a material warning, qualifier, failure, uncertainty, sequence, or authority boundary;
-- the route would load broad families when a narrow specialist is sufficient and context cost is material;
-- a selected loop lacks bounded success/failure/STOP conditions;
-- protected state or rollback would be weakened outside authority.
+STOP when current repository/system state cannot be established for consequential work; a known high-confidence failure would be repeated unchanged; a route would silently expand authority; non-Active capability would be treated as Active; unresolved truth is sent directly to implementation or authoritative documentation; a teaching result is treated as certification/permission; Cut Chase would remove material truth; Build Spawn Debug would repeat a same-failure path without a changed condition or claim human UI PASS without human evidence; broad families would be loaded unnecessarily; a selected loop lacks bounded success/failure/STOP conditions; or protected state/recovery would be weakened outside authority.
 
 ## Completion Criteria
 
@@ -200,7 +191,7 @@ Routing is complete when the minimum justified capability set is selected, known
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.2.2`
+- **Version:** `0.2.3`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
