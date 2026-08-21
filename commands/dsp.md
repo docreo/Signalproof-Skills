@@ -52,6 +52,11 @@ Examples:
 /dsp build-git
 dsp-build-git
 
+/dsp this plan
+/dsp-this-plan
+/dsp this build
+/dsp-this-build
+
 /dsp full-debug
 /dsp full debug
 dsp-full-debug
