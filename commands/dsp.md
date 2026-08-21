@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.2
+# `/dsp` - Dr. Signalproof Command Shell V0.3.3
 
 **Status:** ACTIVE  
-**Version:** 0.3.2  
+**Version:** 0.3.3  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -24,22 +24,13 @@ Public Library surfaces include:
 - `library/CAPABILITY-REGISTRY.yaml` for compact routing metadata;
 - public tests, tools, provenance, research, and wiki material according to their own authority boundaries.
 
-Private Build Ledger evidence may support continuity, historical reconstruction, acceptance evidence, or private governance. It does **not** replace the public Signalproof Library as `/dsp` Skill/Command/Loop authority.
+Private Build Ledger evidence may support continuity, historical reconstruction, acceptance evidence, or private governance. It does not replace the public Signalproof Library as `/dsp` Skill/Command/Loop authority.
 
 ## Root behavior
 
-Typing any supported root form enters or reaffirms Dr. Signalproof mode for the current session:
-
-```text
-/dsp
-dsp
-```
-
-The root should expose compact public Library navigation and the current command surface without requiring the user to memorize full canonical command names.
+Typing `/dsp` or `dsp` enters or reaffirms Dr. Signalproof mode for the current session. The root exposes compact public Library navigation and the current command surface.
 
 ## Accepted prefix forms
-
-The resolver may accept:
 
 ```text
 /dsp <command>
@@ -48,72 +39,35 @@ dsp <command>
 dsp-<command>
 ```
 
-Host runtimes may intercept slash commands before Signalproof receives them. Therefore the non-slash `dsp` forms are mandatory transport-safe fallbacks.
+Host runtimes may intercept slash commands. The non-slash `dsp` forms are mandatory transport-safe fallbacks.
 
 ## Separator normalization
 
-After detecting the DSP prefix, normalize equivalent human separators before alias resolution:
+Spaces and hyphens may normalize when they identify the same command. Normalization must not erase meaningful arguments.
 
-- spaces;
-- hyphens;
-- repeated spaces around separators.
-
-Examples that resolve to the same canonical command:
+Examples:
 
 ```text
 /dsp build git
 /dsp build-git
-dsp build git
-dsp build-git
-/dsp-build-git
 dsp-build-git
-```
 
-Likewise:
-
-```text
-/dsp this plan
-/dsp-this-plan
-dsp this-plan
-dsp-this-plan
-```
-
-and:
-
-```text
-/dsp this build
-/dsp-this-build
-dsp this-build
-dsp-this-build
-```
-
-Full Debug variants also normalize to one command:
-
-```text
 /dsp full-debug
 /dsp full debug
-/dsp-full-debug
-dsp full-debug
 dsp-full-debug
-```
 
-Cut Chase variants normalize to one command:
-
-```text
 /dsp cut-chase
 /dsp cut chase
-/dsp-cut-chase
-dsp cut-chase
 dsp-cut-chase
-```
 
-Normalization must not erase meaningful arguments after a command has been resolved.
+/dsp build-spawn-debug
+/dsp build spawn debug
+dsp-build-spawn-debug
+```
 
 ## Canonical resolution
 
-Every accepted DSP form must resolve to exactly one canonical Signalproof operator command before action.
-
-Initial alias map:
+Every accepted DSP form resolves to exactly one canonical Signalproof operator command before action.
 
 | DSP form | Canonical command |
 |---|---|
@@ -124,6 +78,7 @@ Initial alias map:
 | `build git spawn`, `build-git spawn` | `build-git spawn` |
 | `debug`, `build git debug`, `build-git-debug` | `build-git-debug` |
 | `full debug`, `full-debug` | `full-debug` |
+| `build spawn debug`, `build-spawn-debug` | `build-spawn-debug` |
 | `cut chase`, `cut-chase` | `cut-chase` |
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
@@ -138,46 +93,29 @@ Initial alias map:
 
 Exact canonical command names remain valid after the DSP prefix.
 
+## Build Spawn Debug handler
+
+`/dsp build-spawn-debug` resolves to canonical `build-spawn-debug`, which routes to the Active public `signalproof-build-spawn-debug` coordinator.
+
+This is one bounded build-to-user-acceptance command. It may continue through Build, Spawn challenge, Debug/Full Debug, automated Verify/Review/Security/Recovery, and Learn as required by the current envelope. It does not expand into an ad hoc sequence at the DSP resolver layer.
+
+The coordinator continues while evidence supports a materially new correction. It stops at automated PASS for the human UI gate, a real owner/authority boundary, or a real blocker. Human UI FAIL resumes the same workstream with new evidence; human UI PASS moves to owner authorization readiness.
+
 ## Cut Chase handler
 
-`/dsp cut-chase` resolves to canonical `cut-chase`, which routes to the Active public `signalproof-cut-chase` Skill.
-
-Cut Chase reduces decision load, not merely word count. It must preserve evidence, uncertainty, failures, protected state, and authority that materially affect the user's next decision. Default output is Bottom line -> What matters -> Action note, with Watch / blocker only when materially needed.
-
-A normal invocation is one-shot for the current material. It must not silently convert the entire conversation into a permanent terse persona.
+`/dsp cut-chase` resolves to canonical `cut-chase`, which routes to the Active public `signalproof-cut-chase` Skill. Cut Chase reduces decision load while preserving material evidence, uncertainty, failures, protected state, and authority. A normal invocation is one-shot.
 
 ## Full Debug handler
 
-`/dsp full-debug` resolves to canonical `full-debug`.
-
-Full Debug is a bounded orchestration command, not shorthand for unrestricted `authorize all`. Its current command and `signalproof-full-debug` contracts define the allowed debug envelope, authorization exclusions, failure-memory continuity, `log-build-git-debug` composition, `build-git spawn` role separation, verification, and STOP behavior.
-
-The resolver must not expand `full-debug` into multiple ad hoc commands itself. It resolves to the one canonical `full-debug` identity, and that command owns the composition so Debug is not accidentally executed twice.
+`/dsp full-debug` resolves to canonical `full-debug`. Full Debug is bounded orchestration, not unrestricted `authorize all`, and preserves its current debug envelope, exclusions, failure-memory, spawn, verification, and STOP behavior.
 
 ## Authorization handler forms
 
-DSP supports a generic authorization handler so the Library does not need a separate authorization command for every target operation.
-
-Examples:
-
-```text
-/dsp authorize
-/dsp authorized
-/dsp authorize build-git
-/dsp authorized build-git
-/dsp-authorize-build-git
-dsp authorized this-build
-```
-
-The resolver must first identify `authorize`/`authorized` as the handler, preserve the remaining target text and arguments, resolve that target to exactly one canonical Signalproof command, then apply the current `authorize` contract.
-
-Bare conversational forms such as `authorized build-git` may also route to the same handler when the Signalproof command context is clear.
-
-The existing `/authorized-log-build-git` command remains a specialized compatibility route. It does not become blanket authority merely because the generic handler exists.
+`authorize` and `authorized` resolve through the generic authorization handler before target-command execution. Authorization syntax does not manufacture authority. The existing `/authorized-log-build-git` route remains a specialized compatibility path.
 
 ## Library navigation
 
-The root shell supports read-only discovery forms such as:
+Read-only discovery forms include:
 
 ```text
 /dsp commands
@@ -186,41 +124,38 @@ The root shell supports read-only discovery forms such as:
 /dsp status
 ```
 
-These navigate the **public Signalproof Library** on current protected `docreo/Signalproof-Skills/main`:
+These navigate current protected `docreo/Signalproof-Skills/main`:
 
-- `/dsp skills` -> current public `SKILL-REGISTRY.md` / Active `skills/`;
-- `/dsp commands` -> current public `commands/COMMAND-REGISTRY.md` / `commands/`;
-- `/dsp loops` -> current public `loops/LOOP-REGISTRY.yaml` / `loops/`;
-- `/dsp status` -> compact current public Library status, with private continuity state only when separately relevant and clearly labeled.
+- `/dsp skills` -> `SKILL-REGISTRY.md` / Active `skills/`;
+- `/dsp commands` -> `commands/COMMAND-REGISTRY.md` / `commands/`;
+- `/dsp loops` -> `loops/LOOP-REGISTRY.yaml` / `loops/`;
+- `/dsp status` -> compact public Library status, with private continuity state only when separately relevant and labeled.
 
-Navigation is read-only unless a separately defined canonical command grants an applicable actuation path. A branch/PR may be shown as Candidate evidence but cannot be reported as public Active state before governed merge.
+A branch/PR is Candidate evidence, not public Active state before governed merge.
 
 ## Resolution algorithm
 
 1. Detect a supported DSP prefix.
-2. Strip only the DSP prefix and its immediate separator.
-3. Preserve the remaining user arguments.
-4. Normalize command-name spaces/hyphens sufficiently to match the alias registry.
-5. Detect generic handlers such as `authorize` before normal target-command resolution.
-6. For a handler form, preserve and separately resolve the target command and arguments.
-7. Prefer exact canonical command matches over convenience aliases.
-8. Resolve to exactly one canonical command identity.
-9. If resolution is ambiguous, STOP and present the smallest disambiguation.
-10. Route through the canonical command's current protected `main` contract.
-11. Preserve all command-specific governance, authority, verification, recovery, and STOP conditions.
+2. Strip only the DSP prefix and immediate separator.
+3. Preserve user arguments.
+4. Normalize command-name spaces/hyphens enough to match aliases.
+5. Detect generic handlers such as `authorize` before target resolution.
+6. Prefer exact canonical command matches over convenience aliases.
+7. Resolve to exactly one canonical command identity.
+8. If resolution is ambiguous, STOP and present the smallest disambiguation.
+9. Route through the canonical command's current protected `main` contract.
+10. Preserve command-specific governance, authority, verification, recovery, and STOP conditions.
 
 ## Authority boundary
 
 DSP mode does not grant write, destructive, credential, privilege, security-change, publication, release, Candidate-activation, or canonical Build Ledger authority.
 
-Authorization syntax does not manufacture authority. The `authorize` handler can only preserve and route explicit bounded owner authority or a uniquely established pending owner gate. The resolved canonical command remains authoritative. It remains authoritative for execution semantics and preserves its own prerequisites and STOP conditions.
-
-Public Library visibility also does not create execution authority. Public Skills describe governed operating capability; Governor/command-specific authority still controls consequential actuation.
+The resolved canonical command remains authoritative. Public Library visibility also does not create execution authority.
 
 ## Collision rule
 
-`/dsp` is the preferred Signalproof shell syntax, but Signalproof must not assume it owns a host application's global slash-command namespace. When a host intercepts `/dsp`, use the equivalent non-slash `dsp` form.
+`/dsp` is preferred Signalproof shell syntax, but Signalproof must not assume it owns a host application's global slash-command namespace. Use equivalent non-slash `dsp` forms when intercepted.
 
 ## Governance rule
 
-Human-facing aliases and handlers may grow, but canonical command identities must remain stable and versioned. Do not fork behavior merely because multiple spellings are accepted. Generic handlers must not bypass target-command governance or become blanket authority sources.
+Human-facing aliases and handlers may grow, but canonical command identities remain stable and versioned. Aliases must not fork semantics or bypass target-command governance.
