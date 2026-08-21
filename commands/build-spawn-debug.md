@@ -51,12 +51,13 @@ After the human UI test:
 6. Run all machine-verifiable gates required by the bounded acceptance claim.
 7. On failure, localize the failure layer and require a materially changed condition before same-fingerprint retry.
 8. Carry same-failure attempt counts across chats and filenames. Cosmetic changes do not reset the budget.
-9. Continue through new materially distinct failure classes while evidence supports a next correction.
-10. Reuse still-valid evidence instead of rerunning expensive gates unnecessarily; rerun invalidated gates when relevant state changes.
-11. Route resolved novel lessons through `signalproof-learn`; never silently self-modify or auto-promote doctrine.
-12. Present the exact candidate and minimum UI test only after automated PASS.
-13. Never claim human UI PASS before the human reports it.
-14. Never convert human UI PASS into release/production/canonical-ledger authority.
+9. Same-failure retry limits remain binding even while the overall coordinator continues through materially distinct failure classes.
+10. Continue through new materially distinct failure classes while evidence supports a next correction.
+11. Reuse still-valid evidence instead of rerunning expensive gates unnecessarily; rerun invalidated gates when relevant state changes.
+12. Route resolved novel lessons through `signalproof-learn`; never silently self-modify or auto-promote doctrine.
+13. Present the exact candidate and minimum UI test only after automated PASS.
+14. Never claim human UI PASS before the human reports it.
+15. Never convert human UI PASS into release/production/canonical-ledger authority.
 
 ## Learning and efficiency rule
 
