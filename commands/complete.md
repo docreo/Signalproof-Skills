@@ -47,7 +47,7 @@ This is shorthand for bounded completion authority, not unlimited authority.
 11. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
 12. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
 13. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
-14. Do not claim user acceptance before the user actually reports that the result works and is properly usable.
+14. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
 
 ## Complete Authorization Envelope
 
