@@ -29,6 +29,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-grill-with-docs` - decision hardening plus governed glossary/ADR capture;
 - `signalproof-teach` - mission-grounded source-backed teaching and skill development;
 - `signalproof-cut-chase` - salience compression, decision-load reduction, and action extraction;
+- `signalproof-cut-cost` - read-only AI operating-cost and token/context/tool/cache waste audit;
 - `signalproof-design` - product information/state architecture;
 - `signalproof-ui-polish` - interface detail, readability, spacing, wrapping, motion, responsive finish;
 - `signalproof-accessibility` - accessible interaction and presentation requirements;
@@ -81,6 +82,7 @@ Only skills marked Active in canonical `SKILL-REGISTRY.md` are routable on `main
 - Investigate: unknown runtime/system state or competing causes.
 - Verify: proof of a specific material claim.
 - Known Errors: prior supported failure/mitigation match.
+- Cut Cost: measured AI operating-cost and token/context/tool/cache/agent waste audit with no mutation.
 
 ### Decision, design, communication, and learning
 
@@ -164,6 +166,7 @@ Avoid loading entire capability families merely because a request mentions a bro
 - `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
 - `teach -> reassess/readiness` when human capability must grow before more autonomy;
 - `research/evaluate/document -> cut-chase` when a full result exists but the human needs the decision-ready version;
+- `cut-cost -> owner decision -> separately authorized optimization` when the user wants measured AI operating savings without automatic changes;
 - `known-errors -> investigate -> debug -> verify`;
 - `build-spawn-debug -> user UI test -> owner authorization` for a bounded UI/product problem that should be machine-tested and debugged before human acceptance;
 - `full-debug -> review/verify/security/recovery as routed` for repeated, cross-layer, or high-consequence defect work;
@@ -181,7 +184,7 @@ These are patterns, not mandatory conveyor belts.
 
 ## STOP Conditions
 
-STOP when current repository/system state cannot be established for consequential work; a known high-confidence failure would be repeated unchanged; a route would silently expand authority; non-Active capability would be treated as Active; unresolved truth is sent directly to implementation or authoritative documentation; a teaching result is treated as certification/permission; Cut Chase would remove material truth; Build Spawn Debug would repeat a same-failure path without a changed condition or claim human UI PASS without human evidence; broad families would be loaded unnecessarily; a selected loop lacks bounded success/failure/STOP conditions; or protected state/recovery would be weakened outside authority.
+STOP when current repository/system state cannot be established for consequential work; a known high-confidence failure would be repeated unchanged; a route would silently expand authority; non-Active capability would be treated as Active; unresolved truth is sent directly to implementation or authoritative documentation; a teaching result is treated as certification/permission; Cut Chase would remove material truth; Cut Cost would estimate unmeasured cost or mutate the audited system; Build Spawn Debug would repeat a same-failure path without a changed condition or claim human UI PASS without human evidence; broad families would be loaded unnecessarily; a selected loop lacks bounded success/failure/STOP conditions; or protected state/recovery would be weakened outside authority.
 
 ## Completion Criteria
 
@@ -191,7 +194,7 @@ Routing is complete when the minimum justified capability set is selected, known
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.2.3`
+- **Version:** `0.2.4`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
