@@ -10,6 +10,7 @@ ACTIVE = {
     "log-skill": "commands/log-skill.md",
     "handoff-log": "commands/handoff-log.md",
     "cut-chase": "commands/cut-chase.md",
+    "cut-cost": "commands/cut-cost.md",
     "design-git": "commands/design-git.md",
     "build-git": "commands/build-git.md",
     "build-git this": "commands/build-git-this.md",
@@ -123,6 +124,32 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
             "one-shot",
         ]:
             self.assertIn(required, text)
+
+    def test_cut_cost_is_measured_read_only_and_provider_neutral(self):
+        command = self.read("commands/cut-cost.md").lower()
+        skill = self.read("skills/signalproof-cut-cost/SKILL.md").lower()
+        dsp = self.read("commands/dsp.md").lower()
+        registry = self.read("commands/COMMAND-REGISTRY.md").lower()
+        for required in [
+            "measure rather than estimate",
+            "unknown",
+            "read-only",
+            "do not apply that action automatically",
+            "provider-specific probes",
+            "cut cost without cutting proof",
+        ]:
+            self.assertIn(required, command)
+        for required in [
+            "measure, do not estimate",
+            "signalproof-specific waste",
+            "claude.md",
+            "does not modify",
+            "highest-leverage action",
+        ]:
+            self.assertIn(required, skill)
+        self.assertIn("| `cut cost`, `cut-cost` | `cut-cost` |", dsp)
+        self.assertIn("`cut-cost` -> `commands/cut-cost.md`", registry)
+        self.assertLess(len((ROOT / "skills/signalproof-cut-cost/SKILL.md").read_bytes()), 15000)
 
     def test_handoff_and_log_build_git_bootstrap_current_git(self):
         handoff = self.read("commands/handoff-log.md").lower()
