@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 ACTIVE = {
+    "help": "commands/help.md",
     "log-skill": "commands/log-skill.md",
     "handoff-log": "commands/handoff-log.md",
     "cut-chase": "commands/cut-chase.md",
@@ -50,6 +51,22 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
             self.assertIsNotNone(match, rel)
             version = match.group(1)
             self.assertIn(f"| `{command}` | {version} |", registry, command)
+
+    def test_help_is_public_read_only_and_registry_backed(self):
+        text = self.read("commands/help.md").lower()
+        dsp = self.read("commands/dsp.md").lower()
+        registry = self.read("commands/COMMAND-REGISTRY.md").lower()
+        for required in [
+            "/dsp help",
+            "/dsp help <command>",
+            "commands/command-registry.md",
+            "read-only",
+            "public",
+            "protected `main`",
+        ]:
+            self.assertIn(required, text)
+        self.assertIn("| `help` | `help` |", dsp)
+        self.assertIn("`help` -> `commands/help.md`", registry)
 
     def test_build_git_includes_reconciled_safeguards(self):
         text = self.read("commands/build-git.md").lower()
