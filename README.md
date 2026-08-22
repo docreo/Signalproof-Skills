@@ -51,6 +51,60 @@ ROOT SIGNALPROOF CONTRACT
 11. Close meaningful milestones before opening the next development phase.
 12. Preserve project state across conversation boundaries before context pressure becomes a continuity risk.
 
+## `/dsp` and Active Operator Commands
+
+`/dsp` is the **public front door to the Signalproof Library**. It is the compact Dr. Signalproof resolver and operator shell that routes a human request to the minimum necessary current command, Skill, Loop, evidence, and governance context.
+
+> **Commands are the operator-facing action surface. Skills are the reusable capability contracts underneath them.**
+
+Use [`commands/COMMAND-REGISTRY.md`](commands/COMMAND-REGISTRY.md) as the authoritative public command catalog and [`commands/dsp.md`](commands/dsp.md) as the canonical `/dsp` shell contract.
+
+### Core `/dsp` workflow
+
+```text
+/dsp research
+  -> /dsp this-plan
+  -> /dsp design
+  -> /dsp complete
+  -> /dsp qc
+  -> /dsp authorize deploy
+  -> /dsp deploy
+```
+
+This is a guided route, not a mandatory conveyor belt. `/dsp` resolves the minimum responsible path for the current work.
+
+### Active operator commands
+
+| Command | Purpose |
+|---|---|
+| [`/dsp`](commands/dsp.md) | Compact Dr. Signalproof resolver and public Library shell |
+| [`help`](commands/help.md) | Registry-backed command discovery |
+| [`research`](commands/research.md) | Minimum necessary source-grounded research |
+| [`authorize`](commands/authorize.md) | Exact bounded authorization handler |
+| [`complete`](commands/complete.md) | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| [`qc`](commands/qc.md) | Exact-candidate human QC after automated PASS |
+| [`deploy`](commands/deploy.md) | Authorized exact-artifact deployment and post-deploy verification |
+| [`known-errors`](commands/known-errors.md) | Recurrence-prevention preflight for the current workstream |
+| [`log-skill`](commands/log-skill.md) | Milestone, learning, and Skill continuity |
+| [`handoff-log`](commands/handoff-log.md) | Durable fresh-chat handoff plus log synchronization |
+| [`cut-chase`](commands/cut-chase.md) | Decision-ready salience compression |
+| [`cut-cost`](commands/cut-cost.md) | Read-only measured AI operating-efficiency audit |
+| [`design-git`](commands/design-git.md) | Smallest governed Git-backed design/next-action route |
+| [`build-git`](commands/build-git.md) | Governed repository-backed next-action execution |
+| [`build-git this`](commands/build-git-this.md) | Apply Build Git to the current bounded work unit |
+| [`build-git spawn`](commands/build-git-spawn.md) | Builder, Design, Governor role separation |
+| [`build-git-debug`](commands/build-git-debug.md) | Git-backed defect localization/correction |
+| [`full-debug`](commands/full-debug.md) | High-governance repeated/cross-layer debugging |
+| [`build-spawn-debug`](commands/build-spawn-debug.md) | Build/debug convergence to automated PASS and human UI gate |
+| [`log-build-git`](commands/log-build-git.md) | `log-skill -> design-git -> build-git` continuity route |
+| [`log-build-git-debug`](commands/log-build-git-debug.md) | `log-skill -> design-git -> build-git-debug` continuity route |
+| [`/authorized-log-build-git`](commands/authorized-log-build-git.md) | Compatibility authorization route for log/design/build continuation |
+| [`signalproof-this-plan`](commands/signalproof-this-plan.md) | Grill, design, and bound the current plan without implementation |
+| [`signalproof-this-build`](commands/signalproof-this-build.md) | Consume an approved plan, build, and verify |
+| [`signalproof-teach`](commands/signalproof-teach.md) | Source-disciplined teaching and HAMM learning |
+
+Command versions and Active status remain governed by [`commands/COMMAND-REGISTRY.md`](commands/COMMAND-REGISTRY.md). The front-page table is a discoverability surface, not a second authority registry.
+
 ## Active skills
 
 | Skill | Version | Purpose |
