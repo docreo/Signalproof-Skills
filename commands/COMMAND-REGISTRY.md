@@ -19,7 +19,7 @@
 | `cut-chase` | 0.1.0 | Decision-ready salience compression |
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
 | `design-git` | 0.2.0 | Smallest governed Git-backed design/next-action route |
-| `build-git` | 0.2.4 | Governed repository-backed next-action execution |
+| `build-git` | 0.2.5 | Compact governed repository-backed next-action execution with proof reuse and deterministic failure guards |
 | `build-git this` | 0.1.0 | Apply Build Git to the current bounded work unit |
 | `build-git spawn` | 0.1.0 | Builder, Design, Governor role separation |
 | `build-git-debug` | 0.1.0 | Git-backed defect localization/correction |
