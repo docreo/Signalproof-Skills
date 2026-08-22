@@ -42,7 +42,7 @@ Technical readiness without deployment authority is `READY / AWAITING AUTHORITY`
 
 ## Cost rule
 
-Do not replay the whole build matrix at deployment. Consume still-valid evidence bound to the exact candidate and run only deployment-specific or invalidated checks. Use deterministic identity/health checks before expensive investigation.
+Do not replay the whole build matrix at deployment. Reuse still-valid evidence bound to the exact candidate and run only deployment-specific or invalidated checks. Use deterministic identity/health checks before expensive investigation.
 
 ## Result
 
