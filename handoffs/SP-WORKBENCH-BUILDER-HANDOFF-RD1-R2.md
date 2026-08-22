@@ -174,7 +174,7 @@ Identify, read-only:
 
 ### Current known production launcher from accepted continuity
 
-`F:\Signalproof\Apps\Signalproof Governor\client\Start-Workbench.ps1`
+The exact production launcher path is local/private operational state and is intentionally omitted from this public handoff. The known launcher identity is `Start-Workbench.ps1`.
 
 Known installed Workbench binary name:
 
