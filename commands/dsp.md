@@ -1,36 +1,22 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.6
+# `/dsp` - Dr. Signalproof Command Shell V0.3.7
 
 **Status:** ACTIVE  
-**Version:** 0.3.6  
+**Version:** 0.3.7  
 **Owner:** Doc Reo
 
 ## Purpose
 
 `/dsp` is the human-facing **Dr. Signalproof command shell** for the public Signalproof Library in `docreo/Signalproof-Skills`.
 
-Its job is to provide one compact namespace that resolves forgiving human command forms into one canonical Signalproof operator command before routing or execution, and to expose compact navigation across the public Skill, Command, and Loop libraries.
+It is a compact resolver: normalize operator syntax, resolve exactly one canonical command, then load that command's contract. `/dsp` is **not a new authority source** and should not duplicate specialist doctrine.
 
-`/dsp` is a command resolver and mode entry point, not a new authority source.
+The public `commands/COMMAND-REGISTRY.md` is command authority. `library/EXECUTION-PIPELINE.yaml` defines compact stage order. `library/STATE-CAPSULE.md` defines minimum sufficient continuity context.
 
-## Public Library authority
+## Dr. Signalproof mode
 
-The canonical `/dsp` Library is the public `docreo/Signalproof-Skills` repository after governed promotion to protected `main`.
+Typing `/dsp` or `dsp` enters or reaffirms **Dr. Signalproof mode** for the current session.
 
-Public Library surfaces include:
-
-- `SKILL-REGISTRY.md` and `skills/` for Active public Skills;
-- `commands/COMMAND-REGISTRY.md` and `commands/` for Active operator commands;
-- `loops/LOOP-REGISTRY.yaml` and `loops/` for bounded Loop Library protocols;
-- `library/CAPABILITY-REGISTRY.yaml` for compact routing metadata;
-- public tests, tools, provenance, research, and wiki material according to their own authority boundaries.
-
-Private Build Ledger evidence may support continuity, historical reconstruction, acceptance evidence, or private governance. It does not replace the public Signalproof Library as `/dsp` Skill/Command/Loop authority.
-
-## Root behavior
-
-Typing `/dsp` or `dsp` enters or reaffirms Dr. Signalproof mode for the current session. The root exposes compact public Library navigation and the current command surface.
-
-## Accepted prefix forms
+Accepted prefixes:
 
 ```text
 /dsp <command>
@@ -39,45 +25,36 @@ dsp <command>
 dsp-<command>
 ```
 
-Host runtimes may intercept slash commands. The non-slash `dsp` forms are mandatory transport-safe fallbacks.
+Host runtimes may intercept slash commands. Non-slash `dsp` forms are the mandatory **transport-safe fallback**.
 
-## Separator normalization
+Spaces and hyphens may normalize only when they identify the same command and do not erase arguments.
 
-Spaces and hyphens may normalize when they identify the same command. Normalization must not erase meaningful arguments.
-
-Examples:
+Required compatibility forms include:
 
 ```text
 /dsp build git
 /dsp build-git
 dsp-build-git
-
 /dsp this plan
 /dsp-this-plan
 /dsp this build
 /dsp-this-build
-
 /dsp full-debug
 /dsp full debug
 /dsp-full-debug
 dsp full-debug
 dsp-full-debug
-
-/dsp complete
-dsp-complete
-
-/dsp cut-chase
-/dsp cut chase
-dsp-cut-chase
-
-/dsp cut-cost
-/dsp cut cost
-dsp-cut-cost
-
 /dsp build-spawn-debug
 /dsp build spawn debug
 dsp-build-spawn-debug
-
+/dsp complete
+dsp-complete
+/dsp cut-chase
+/dsp cut chase
+dsp-cut-chase
+/dsp cut-cost
+/dsp cut cost
+dsp-cut-cost
 /dsp help
 /dsp-help
 dsp help
@@ -86,13 +63,13 @@ dsp-help
 
 ## Canonical resolution
 
-Every accepted DSP form resolves to exactly one canonical Signalproof operator command before action.
-
 | DSP form | Canonical command |
 |---|---|
 | `help` | `help` |
+| `research` | `research` |
 | `complete`, `finish this` | `complete` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
+| `design`, `design git`, `design-git` | `design-git` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
 | `build git`, `build-git` | `build-git` |
 | `build git this`, `build-git this` | `build-git this` |
@@ -100,6 +77,8 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 | `debug`, `build git debug`, `build-git-debug` | `build-git-debug` |
 | `full debug`, `full-debug` | `full-debug` |
 | `build spawn debug`, `build-spawn-debug` | `build-spawn-debug` |
+| `qc`, `human qc` | `qc` |
+| `deploy` | `deploy` |
 | `cut chase`, `cut-chase` | `cut-chase` |
 | `cut cost`, `cut-cost` | `cut-cost` |
 | `log build git`, `log-build-git` | `log-build-git` |
@@ -111,103 +90,71 @@ Every accepted DSP form resolves to exactly one canonical Signalproof operator c
 | `teach` | `signalproof-teach` |
 | `log`, `log skill`, `log-skill` | `log-skill` |
 | `handoff`, `handoff log`, `handoff-log` | `handoff-log` |
-| `design git`, `design-git` | `design-git` |
 
-Exact canonical command names remain valid after the DSP prefix.
+Exact canonical names remain valid after the DSP prefix.
+
+## Efficient execution path
+
+Preferred guided software flow:
+
+```text
+/dsp research
+-> /dsp this-plan
+-> /dsp design
+-> /dsp complete
+-> /dsp qc
+-> /dsp authorize deploy
+-> /dsp deploy
+```
+
+Stages may be skipped only when current evidence proves them N/A or still satisfied. `complete` may internally route Build, Debug, Verify, Review, Security, Recovery, and Learn without making the human babysit routine gates. Human QC remains real human evidence. Deployment remains a separate explicit authority boundary.
 
 ## Complete handler
 
-`/dsp complete` resolves to canonical `complete`.
+`/dsp complete` resolves to `complete`. It authorizes all owner-authorizable actions only inside the current bounded completion envelope, then uses `build-spawn-debug`. It preserves retry limits, protected state, evidence, recovery, and excluded authority. It returns for real Human QC or a genuine blocker; it cannot manufacture user PASS.
 
-Complete is the bounded fast path for the owner's intent: authorize all owner-authorizable actions necessary inside the exact current workstream, then run the existing `build-spawn-debug` convergence contract without returning routine implementation/debug approval gates to the user.
+## Minimal handlers
 
-The Complete Authorization Envelope survives ordinary corrections and human UI FAIL feedback inside the same bounded workstream. It does not become blanket future authority.
+- `/dsp research` -> `research`, evidence gathering only where unresolved facts materially matter.
+- `/dsp design` -> `design-git`, existing design/governance route; no duplicate Design command.
+- `/dsp qc` -> `qc`, exact-candidate Human-Observed Fact gate after automated PASS.
+- `/dsp authorize deploy` -> generic `authorize` handler targeting `deploy`.
+- `/dsp deploy` -> `deploy`, exact accepted artifact through Release, post-deploy Verify, then Closeout.
+- `/dsp build-spawn-debug` -> `build-spawn-debug`, bounded build/debug convergence to the human gate.
+- `/dsp full-debug` -> `full-debug`, high-governance repeated/cross-layer debugging.
+- `/dsp cut-chase` -> `cut-chase`.
+- `/dsp cut-cost` -> `cut-cost`, read-only measured efficiency audit.
+- `/dsp help` -> `help`, current registry-backed help.
 
-Complete returns to the human for `USER UI TEST READY`, a genuinely unresolved owner decision, excluded authority, or a true blocker. Human UI FAIL resumes the same workstream automatically when still in scope. Human UI PASS/works/usable records `COMPLETE / USER ACCEPTED` for the stated acceptance gate.
+## Public Library navigation
 
-Complete preserves all Build Spawn Debug safeguards, retry limits, evidence requirements, protected state, recovery, and exact human acceptance requirements. It cannot manufacture user PASS or bypass release, production, protected-main, canonical-ledger, privilege, credential, legal/licensing, or security-control boundaries.
-
-## Help handler
-
-`/dsp help` resolves to canonical `help`.
-
-Bare help reads the current public `commands/COMMAND-REGISTRY.md` and returns a compact Active command list with purposes. `/dsp help <command>` resolves one command and reads its current public command contract for focused help.
-
-Help is read-only. It does not execute the described command or create authority.
-
-## Cut Cost handler
-
-`/dsp cut-cost` resolves to canonical `cut-cost`, which routes to the Active public `signalproof-cut-cost` Skill.
-
-Cut Cost is a read-only AI operating-efficiency audit. It measures available evidence for context/memory load, tools/MCP overhead, model/effort/routing, hooks/output volume, agents, scheduled work, cache/usage, and Signalproof-specific repeated work. It reports UNKNOWN instead of guessing and does not apply optimizations automatically.
-
-Focused forms such as `/dsp cut-cost cache`, `/dsp cut-cost tools`, or `/dsp cut-cost signalproof` narrow the audit surface without changing the read-only boundary.
-
-## Build Spawn Debug handler
-
-`/dsp build-spawn-debug` resolves to canonical `build-spawn-debug`, which routes to the Active public `signalproof-build-spawn-debug` coordinator.
-
-This is one bounded build-to-user-acceptance command. It may continue through Build, Spawn challenge, Debug/Full Debug, automated Verify/Review/Security/Recovery, and Learn as required by the current envelope. It does not expand into an ad hoc sequence at the DSP resolver layer.
-
-The coordinator continues while evidence supports a materially new correction. It stops at automated PASS for the human UI gate, a real owner/authority boundary, or a real blocker. Human UI FAIL resumes the same workstream with new evidence; human UI PASS moves to owner authorization readiness unless Complete is the active enclosing command.
-
-## Cut Chase handler
-
-`/dsp cut-chase` resolves to canonical `cut-chase`, which routes to the Active public `signalproof-cut-chase` Skill. Cut Chase reduces decision load while preserving material evidence, uncertainty, failures, protected state, and authority. A normal invocation is one-shot.
-
-## Full Debug handler
-
-`/dsp full-debug` resolves to canonical `full-debug`. Full Debug is bounded orchestration, not unrestricted `authorize all`, and preserves its current debug envelope, exclusions, failure-memory, spawn, verification, and STOP behavior.
-
-## Authorization handler forms
-
-`authorize` and `authorized` resolve through the generic authorization handler before target-command execution. Authorization syntax does not manufacture authority. The existing `/authorized-log-build-git` route remains a specialized compatibility path.
-
-## Library navigation
-
-Read-only discovery forms include:
+The **public Signalproof Library** is current protected `docreo/Signalproof-Skills/main`:
 
 ```text
-/dsp help
-/dsp commands
-/dsp skills
-/dsp loops
-/dsp status
+/dsp skills   -> SKILL-REGISTRY.md
+/dsp commands -> commands/COMMAND-REGISTRY.md
+/dsp loops    -> loops/LOOP-REGISTRY.yaml
+/dsp status   -> compact public Library state
 ```
 
-These navigate the **public Signalproof Library** on current protected `docreo/Signalproof-Skills/main`:
-
-- `/dsp help` -> current public command help derived from `commands/COMMAND-REGISTRY.md`;
-- `/dsp skills` -> `SKILL-REGISTRY.md` / Active `skills/`;
-- `/dsp commands` -> `commands/COMMAND-REGISTRY.md` / `commands/`;
-- `/dsp loops` -> `loops/LOOP-REGISTRY.yaml` / `loops/`;
-- `/dsp status` -> compact public Library status, with private continuity state only when separately relevant and labeled.
-
-A branch/PR is Candidate evidence, not public Active state before governed merge.
+The private Build Ledger may support continuity/history but does not replace the public Signalproof Library as Skill/Command/Loop authority.
 
 ## Resolution algorithm
 
 1. Detect a supported DSP prefix.
-2. Strip only the DSP prefix and immediate separator.
-3. Preserve user arguments.
-4. Normalize command-name spaces/hyphens enough to match aliases.
-5. Detect generic handlers such as `authorize` before target resolution.
-6. Prefer exact canonical command matches over convenience aliases.
-7. Resolve to exactly one canonical command identity.
-8. If resolution is ambiguous, STOP and present the smallest disambiguation.
-9. Route through the canonical command's current protected `main` contract.
-10. Preserve command-specific governance, authority, verification, recovery, and STOP conditions.
+2. Preserve arguments and normalize only command-name separators.
+3. Prefer exact canonical matches.
+4. Resolve generic handlers such as `authorize` without broadening their target.
+5. **If resolution is ambiguous, STOP** and present the smallest disambiguation.
+6. Load the resolved command plus only the minimum required Skill/specialists/Loops.
+7. Preserve the target command's authority, evidence, recovery, compliance, and STOP rules.
 
 ## Authority boundary
 
-DSP mode does not grant write, destructive, credential, privilege, security-change, publication, release, Candidate-activation, or canonical Build Ledger authority.
+DSP mode **does not grant write**, destructive, credential, privilege, security-change, publication, release, Candidate-activation, or **canonical Build Ledger authority**.
 
-The resolved canonical command remains authoritative. Public Library visibility also does not create execution authority.
-
-## Collision rule
-
-`/dsp` is preferred Signalproof shell syntax, but Signalproof must not assume it owns a host application's global slash-command namespace. Use equivalent non-slash `dsp` forms when intercepted.
+The **resolved canonical command remains authoritative**. Capability and visibility are not permission.
 
 ## Governance rule
 
-Human-facing aliases and handlers may grow, but canonical command identities remain stable and versioned. Aliases must not fork semantics or bypass target-command governance.
+Keep this shell small. New operator capabilities should normally add a thin command or alias and route into existing Active Skills rather than adding detailed doctrine here. Human-facing aliases may grow; canonical command identities remain stable and versioned.
