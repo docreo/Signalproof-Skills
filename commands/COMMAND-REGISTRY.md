@@ -10,7 +10,7 @@
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
-| `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| `complete` | 0.1.1 | Bounded authorize-all completion with host quarantine discovery, Build Spawn Debug, and real user acceptance |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -70,7 +70,7 @@ Preferred guided route:
 
 `/dsp design` is an alias for `design-git`; no duplicate Design command is required.
 
-`/dsp complete` may internally perform Build/Debug/Verify/Review/Security/Recovery/Learn work inside its bounded envelope, but Human QC and deployment authority remain distinct evidence/authority boundaries.
+`/dsp complete` may internally perform Build/Debug/Verify/Review/Security/Recovery/Learn work inside its bounded envelope. When host-local artifacts are involved, it must first establish the active governed staging/quarantine location rather than assume a Downloads path. Human QC and deployment authority remain distinct evidence/authority boundaries.
 
 Examples retained for compatibility:
 
@@ -112,7 +112,7 @@ Examples retained for compatibility:
 6. Debug preserves failure fingerprints/attempt counts and blocks materially unchanged retries.
 7. Human QC is Human-Observed Fact, not deployment authority.
 8. Deployment requires exact-candidate evidence, applicable compliance/security/recovery gates, and explicit bounded authority.
-9. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
+9. Law, licenses, Terms of Service, platform policy, privacy, security, quarantine/staging, and access controls remain binding; command convenience cannot waive them.
 10. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
 11. Public Git promotion does not claim canonical private Build Ledger append.
 12. Active command versions in command files and this registry must remain synchronized.
