@@ -41,6 +41,15 @@ class PowerShellFailureGuardAcceptance(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
+    def test_build_git_is_compact_orchestration_not_registry_duplication(self):
+        path = ROOT / "commands/build-git.md"
+        text = path.read_text(encoding="utf-8").lower()
+        self.assertLess(len(path.read_bytes()), 9000)
+        self.assertIn("do not restate the whole registry", text)
+        self.assertIn("load only applicable entries", text)
+        self.assertIn("reuse still-valid evidence", text)
+        self.assertIn("deterministic checks before agent spawn", text)
+
     def test_existing_executable_preflight_is_preserved(self):
         text = self.read("commands/build-git.md")
         self.assertIn("tools/known_error_preflight.py", text)
@@ -60,7 +69,7 @@ class PowerShellFailureGuardAcceptance(unittest.TestCase):
 
     def test_registry_versions_match(self):
         text = self.read("commands/COMMAND-REGISTRY.md")
-        self.assertIn("| `build-git` | 0.2.4 |", text)
+        self.assertIn("| `build-git` | 0.2.5 |", text)
         self.assertIn("| `log-build-git` | 0.2.1 |", text)
         self.assertIn("| `handoff-log` | 0.2.1 |", text)
 
