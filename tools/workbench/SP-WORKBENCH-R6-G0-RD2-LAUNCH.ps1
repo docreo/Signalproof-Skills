@@ -4,7 +4,9 @@ Set-StrictMode -Version 2.0
 $Url = "https://raw.githubusercontent.com/docreo/Signalproof-Skills/candidate/workbench-rd2-gui-build/tools/workbench/SP-WORKBENCH-R6-G0-RD2.ps1"
 $Expected = "5A3941F2E1C57570E4E2589645F646F18027DCF29656E7F314BCFDC52487A821"
 $Temp = Join-Path $env:TEMP "SP-WORKBENCH-R6-G0-RD2.ps1"
-$Stage = "F:\Downloads\Quarantine\Evidence\SP-WORKBENCH-R6-G0-RD2.ps1"
+$EvidenceRoot = $env:SIGNALPROOF_EVIDENCE_ROOT
+if ([string]::IsNullOrWhiteSpace($EvidenceRoot)) { throw "STOP: set SIGNALPROOF_EVIDENCE_ROOT to the authorized local evidence root before running this launcher." }
+$Stage = Join-Path $EvidenceRoot "SP-WORKBENCH-R6-G0-RD2.ps1"
 
 function Get-Sha256Upper {
     param([string]$Path)
