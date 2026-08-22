@@ -20,9 +20,7 @@ RD2 R4 completed its builder pipeline with:
 - production postflight exact PASS;
 - accepted RD3 source postflight exact PASS.
 
-The exact R4 candidate reported by the machine was:
-
-`F:\Downloads\Quarantine\Evidence\SP-WORKBENCH-GUI-RD2-R4\build\Signalproof-Workbench-GUI-RD2-R4.exe`
+The exact R4 candidate was staged in the operator's local Quarantine Evidence tree. The workstation-specific absolute path is intentionally redacted from this public provenance record.
 
 EXE SHA-256:
 
@@ -86,9 +84,9 @@ Package:
 PASS:
 
 - no accidental `R4.1.1` revision drift;
-- protected historical B8A R4 brand lookup paths retained;
+- protected historical B8A R4 brand lookup paths retained in local evidence only;
 - isolated R4.1 candidate lane present;
-- R4.1 EXE identity/path used;
+- R4.1 EXE identity used;
 - `IsHandleCreated` startup guard present;
 - `Shown`-time transcript scroll present;
 - governed registered-client transport string retained.
