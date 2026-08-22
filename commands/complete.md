@@ -1,7 +1,7 @@
-# `complete` - Active Operator Command V0.1.0
+# `complete` - Active Operator Command V0.1.1
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
+**Version:** 0.1.1  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -36,18 +36,36 @@ This is shorthand for bounded completion authority, not unlimited authority.
 
 1. Refetch current Git and current public command contracts before consequential action.
 2. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
-3. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
-4. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
-5. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
-6. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
-7. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
-8. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
-9. Continue across materially distinct failure classes while evidence supports another bounded correction.
-10. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
-11. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
-12. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
-13. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
-14. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
+3. When host-computer files, downloads, runners, source, evidence, or build artifacts are required, establish the active governed staging/quarantine root before telling the user where to look or execute. Prefer current handoff/session evidence, Signalproof configuration/state, or a bounded read-only host discovery scan. Do not assume `%USERPROFILE%\Downloads`, `C:`, `F:`, or any other machine-specific path.
+4. If an applicable quarantine/staging root is established, generated or transferred artifacts used for execution must be referenced from that governed location, not from an ordinary unreviewed Downloads path. A public Skill may define the discovery rule but must not publish a user's private machine path.
+5. If no governed staging/quarantine location can be established safely, STOP with the smallest location question or provide a read-only discovery command. Do not invent a path.
+6. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
+7. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
+8. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
+9. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, quarantine/staging boundaries, and recovery requirements.
+10. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
+11. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
+12. Continue across materially distinct failure classes while evidence supports another bounded correction.
+13. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
+14. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
+15. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
+16. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
+17. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
+
+## Host staging and quarantine discovery
+
+The host path is environment state, not public doctrine.
+
+Before a host-local build or execution step that depends on downloaded/transferred material:
+
+1. Search current handoff/session evidence for an already-established Signalproof quarantine/staging/evidence root.
+2. If unresolved, inspect bounded Signalproof configuration/state or send one read-only discovery scan covering likely configured roots and the target artifact identity.
+3. Bind the discovered root and exact artifact path/hash into the current Complete Authorization Envelope.
+4. Prefer quarantined/staged artifacts for inspection, hashing, parsing, building, and execution.
+5. Never silently switch to a convenience path because a file may also exist in a browser's normal Downloads folder.
+6. Do not expose private machine-specific roots in the public Skill; preserve them only in private/session/handoff continuity where appropriate.
+
+Examples of acceptable generic locations include a configured Signalproof quarantine, an evidence lane, or a user-selected governed staging directory. Exact drive letters and private paths are environment-specific.
 
 ## Complete Authorization Envelope
 
@@ -58,6 +76,8 @@ COMPLETE AUTHORIZATION ENVELOPE
 Workstream: <exact current bounded workstream>
 Objective: <user-visible outcome>
 Git basis: <repo/ref/head>
+Host staging/quarantine: <resolved governed root or N/A>
+Artifact/source identity: <exact path/hash where applicable>
 Protected state: <must remain true>
 Acceptance target: <machine gates + human UI gate>
 Allowed authority: all owner-authorizable actions required by current build-spawn-debug envelope
@@ -126,14 +146,14 @@ All Build Spawn Debug safeguards remain binding, including:
 - Candidate Skill activation outside governance;
 - use or acquisition of credentials/secrets not already authorized;
 - privilege escalation or administrative security-control changes;
-- weakening/disabling security, verification, provenance, rollback, tests, or evidence requirements;
+- weakening/disabling security, verification, provenance, quarantine, rollback, tests, or evidence requirements;
 - unrelated repositories, products, objectives, or future workstreams;
 - actions blocked by legal/licensing requirements;
 - fabrication of machine PASS, human UI PASS, release state, or authority.
 
 ## STOP conditions
 
-STOP only when continuing would require an excluded authority class; the current workstream/objective/protected state cannot be established; same-failure retry limits are exhausted without a materially changed condition; a material redesign decision genuinely requires the owner; recovery is no longer credible; required machine verification cannot be performed honestly; legal/licensing/security prerequisites block continuation; the workstream changes materially enough to invalidate the envelope; or continuing would manufacture evidence, acceptance, authority, or completion.
+STOP only when continuing would require an excluded authority class; the current workstream/objective/protected state cannot be established; a required host staging/quarantine root or exact artifact identity cannot be established safely; same-failure retry limits are exhausted without a materially changed condition; a material redesign decision genuinely requires the owner; recovery is no longer credible; required machine verification cannot be performed honestly; legal/licensing/security prerequisites block continuation; the workstream changes materially enough to invalidate the envelope; or continuing would manufacture evidence, acceptance, authority, or completion.
 
 A routine failed build, test, or UI observation is not by itself a STOP condition when a bounded evidence-supported correction remains available.
 
@@ -152,4 +172,4 @@ Use the strongest supported state:
 
 ## Signalproof principle
 
-> **Finish the bounded job. Do not make the human babysit the build. Do not fake the last mile.**
+> **Finish the bounded job. Discover the governed host path before execution. Do not make the human babysit the build. Do not fake the last mile.**
