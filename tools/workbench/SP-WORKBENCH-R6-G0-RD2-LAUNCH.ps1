@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 
 $Url = "https://raw.githubusercontent.com/docreo/Signalproof-Skills/candidate/workbench-rd2-gui-build/tools/workbench/SP-WORKBENCH-R6-G0-RD2.ps1"
-$Expected = "__EXPECTED_SHA256__"
+$Expected = "5A3941F2E1C57570E4E2589645F646F18027DCF29656E7F314BCFDC52487A821"
 $Temp = Join-Path $env:TEMP "SP-WORKBENCH-R6-G0-RD2.ps1"
 $Stage = "F:\Downloads\Quarantine\Evidence\SP-WORKBENCH-R6-G0-RD2.ps1"
 
