@@ -15,7 +15,7 @@ class CompleteCommandAcceptance(unittest.TestCase):
         registry = self.read("commands/COMMAND-REGISTRY.md")
         self.assertIn("**Status:** ACTIVE", command)
         self.assertLess(len(command_path.read_bytes()), 15000)
-        self.assertIn("| `complete` | 0.1.0 |", registry)
+        self.assertIn("| `complete` | 0.1.1 |", registry)
         self.assertIn("`complete` -> `commands/complete.md`", registry)
 
     def test_complete_is_bounded_authorize_all_plus_build_spawn_debug(self):
@@ -31,6 +31,18 @@ class CompleteCommandAcceptance(unittest.TestCase):
             "resume the same build spawn debug workstream automatically",
             "complete / user accepted",
             "cannot manufacture user pass",
+        ]:
+            self.assertIn(required, text)
+
+    def test_complete_requires_host_quarantine_discovery(self):
+        text = self.read("commands/complete.md").lower()
+        for required in [
+            "host staging and quarantine discovery",
+            "bounded read-only host discovery scan",
+            "do not assume `%userprofile%\\downloads`",
+            "generated or transferred artifacts used for execution must be referenced from that governed location",
+            "public skill may define the discovery rule but must not publish a user's private machine path",
+            "never silently switch to a convenience path",
         ]:
             self.assertIn(required, text)
 
