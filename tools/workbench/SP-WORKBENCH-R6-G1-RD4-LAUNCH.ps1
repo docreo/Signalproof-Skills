@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 
-$BaseUrl = "https://raw.githubusercontent.com/docreo/Signalproof-Skills/candidate/workbench-rd2-gui-build/tools/workbench/SP-WORKBENCH-R6-G1-RD1.ps1"
+$BaseUrl = "https://raw.githubusercontent.com/docreo/Signalproof-Skills/candidate/workbench-rd2-r6-build-only/tools/workbench/SP-WORKBENCH-R6-G1-RD1.ps1"
 $ExpectedBaseSha = "BF605F672910E17BC4116FE4F13A8A68E319508DFB38AFBF073EE4072CA8E30A"
 $TempBase = Join-Path $env:TEMP "SP-WORKBENCH-R6-G1-RD1-BASE-FOR-RD4.ps1"
 $Stage = "F:\Downloads\Quarantine\Evidence\SP-WORKBENCH-R6-G1-RD4.ps1"
@@ -33,6 +33,7 @@ Write-Host ""
 Write-Host "======================================================================" -ForegroundColor Cyan
 Write-Host " SIGNALPROOF WORKBENCH RD2 R6 - G1 RD4" -ForegroundColor Cyan
 Write-Host " SELF-TEST CONTRACT + NON-OVERLAY VERSION IDENTITY CORRECTION" -ForegroundColor Cyan
+Write-Host " BUILD-ONLY EXECUTION LANE" -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
 
 Invoke-WebRequest -Uri $BaseUrl -OutFile $TempBase -UseBasicParsing
@@ -53,32 +54,27 @@ $Text = $Text.Replace("Workbench RD2 R6 G1 RD1","Workbench RD2 R6 G1 RD4")
 
 $Lines = New-Object System.Collections.Generic.List[string]
 foreach ($Line in ($Text -split "`r?`n")) {
-    # Exact subtitle literal was never established as source authority.
     if ($Line.IndexOf("viewer subtitle localized",[System.StringComparison]::OrdinalIgnoreCase) -ge 0) {
         [void]$Lines.Add('P ($s.Contains(''"Signalproof Workbench"'')) "viewer identity string localized"')
         continue
     }
 
-    # Preserve safe generated-source newline serialization for SendCurrentPrompt.
     if ($Line.IndexOf('$sd=M $s "SendCurrentPrompt"',[System.StringComparison]::Ordinal) -ge 0) {
         [void]$Lines.Add('$sd=M $s "SendCurrentPrompt";P ($null-ne$sd) "send method localized";$x=$sd.x;$o=$x.IndexOf("{");$sendInsert=([Environment]::NewLine + ''            spAllowAutoFollow=true; this.Text="Signalproof Workbench - RD2 R6-G1 Candidate";'');$x=$x.Insert($o+1,$sendInsert);$s=$s.Substring(0,$sd.i)+$x+$s.Substring($sd.i+$sd.l)')
         continue
     }
 
-    # Non-overlapping visible identity: normal window title only. No floating badge.
     if ($Line.IndexOf('$bs=M $s "BuildShell"',[System.StringComparison]::Ordinal) -ge 0) {
         [void]$Lines.Add('$bs=M $s "BuildShell";P ($null-ne$bs) "BuildShell localized for non-overlay candidate identity";$x=$bs.x;$z=$x.LastIndexOf("}");$titleInsert=([Environment]::NewLine + ''            this.Text="Signalproof Workbench - RD2 R6-G1 Candidate";'' + [Environment]::NewLine);$x=$x.Insert($z,$titleInsert);$s=$s.Substring(0,$bs.i)+$x+$s.Substring($bs.i+$bs.l)')
         continue
     }
 
-    # Generated-source serialization guard immediately after source write/hash.
     if ($Line.IndexOf('W $Src $s;$ss=H $Src;', [System.StringComparison]::Ordinal) -ge 0) {
         [void]$Lines.Add($Line)
         [void]$Lines.Add('$generated=[IO.File]::ReadAllText($Src,[Text.Encoding]::UTF8);P ($generated.IndexOf(([char]96).ToString()+"r"+([char]96).ToString()+"n",[System.StringComparison]::Ordinal)-lt0) "generated C# contains no literal PowerShell CRLF escape tokens";P ($generated.IndexOf("RD2 R6-G1 CANDIDATE",[System.StringComparison]::Ordinal)-lt0) "generated C# contains no floating candidate badge"')
         continue
     }
 
-    # Historical accepted Workbench contract is TWO separate self-test arguments.
     if ($Line.IndexOf('$r=Native $Exe @("--self-test=$ST")', [System.StringComparison]::Ordinal) -ge 0) {
         $Corrected = $Line.Replace('@("--self-test=$ST")','@("--self-test",$ST)')
         [void]$Lines.Add($Corrected)
@@ -108,8 +104,6 @@ Write-Host "PASS: historical two-argument Workbench self-test contract installed
 Write-Host "PASS: floating candidate badge removed; version identity remains in window title." -ForegroundColor Green
 Write-Host "PASS: generated-source newline construction remains Environment.NewLine based." -ForegroundColor Green
 
-# Correct known Windows PowerShell H -> Get-History alias collision only in this
-# disposable NoProfile execution process.
 $AliasH = Get-Alias -Name H -ErrorAction SilentlyContinue
 if ($null -ne $AliasH) {
     Write-Host ("FOUND CONFLICTING ALIAS H -> " + $AliasH.Definition) -ForegroundColor Yellow
