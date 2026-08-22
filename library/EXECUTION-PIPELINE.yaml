@@ -1,0 +1,161 @@
+version: 0.1
+status: ACTIVE_AFTER_GOVERNED_PROMOTION
+purpose: >-
+  Compact state machine for efficient Signalproof software work. It defines stage
+  order and handoff gates without replacing the authority of the routed command,
+  Skill, Loop, evidence, or human owner.
+
+principles:
+  - good_and_evidence_backed_over_fast
+  - minimize_context_not_proof
+  - deterministic_checks_before_expensive_reasoning
+  - reuse_still_valid_evidence
+  - human_qc_before_authorized_deployment
+  - deployment_is_separate_authority
+  - law_license_tos_and_platform_rules_remain_binding
+  - unknown_is_not_pass
+
+runtime_context:
+  root_contract: once_per_session_or_when_version_changes
+  routing_metadata: compact_only
+  principal_skill_max: 1
+  optional_specialists_or_loops_max: 2
+  state_capsule: library/STATE-CAPSULE.md
+  full_logs: only_when_needed_to_resolve_a_claim
+
+progress_updates:
+  emit_on: [stage_transition, blocker, human_qc_ready, deployment_authority_needed, completion]
+  fields: [stage, result, proof, next_gate, user_action]
+  suppress_routine_chatter: true
+
+stages:
+  - id: RESEARCH
+    ordinal: 1
+    human_command: research
+    principal: signalproof-research
+    required_when: fresh_external_facts_or_unknown_technical_choices_materially_affect_the_work
+    exit: EVIDENCE_READY
+    next: PLAN
+
+  - id: PLAN
+    ordinal: 2
+    human_command: signalproof-this-plan
+    principal: signalproof-plan
+    specialists: [signalproof-evaluate, signalproof-grill]
+    requires: [objective, scope, acceptance, protected_state, recovery, authority_boundary]
+    compliance_gate: applicable_law_license_tos_and_platform_constraints_checked_or_marked_unknown
+    exit: PLAN_ACCEPTED
+    next: DESIGN
+
+  - id: DESIGN
+    ordinal: 3
+    human_command: design-git
+    principal: signalproof-design
+    specialists: [signalproof-ui-polish, signalproof-accessibility]
+    exit: DESIGN_READY
+    next: READINESS
+
+  - id: READINESS
+    ordinal: 4
+    human_command: internal
+    principal: signalproof-readiness
+    exit: READY_TO_BUILD
+    next: BUILD
+
+  - id: BUILD
+    ordinal: 5
+    human_command: complete
+    principal: signalproof-build-spawn-debug
+    loops: [SP-LOOP-BUILD-VERIFY, SP-LOOP-RETRY]
+    exit: AUTOMATED_PASS
+    on_failure: DEBUG_VERIFY
+    next: HUMAN_QC
+
+  - id: DEBUG_VERIFY
+    ordinal: 5
+    human_command: build-spawn-debug
+    principal: signalproof-full-debug
+    specialists: [signalproof-known-errors, signalproof-verify]
+    loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]
+    exit: AUTOMATED_PASS
+    retry_requires_material_change: true
+    next: HUMAN_QC
+
+  - id: HUMAN_QC
+    ordinal: 6
+    human_command: qc
+    principal: signalproof-verify
+    requires: [exact_candidate, automated_pass]
+    evidence_class: Human-Observed Fact
+    on_fail: DEBUG_VERIFY
+    exit: HUMAN_QC_PASS
+    next: DEPLOY_READY
+
+  - id: DEPLOY_READY
+    ordinal: 7
+    human_command: authorize deploy
+    principal: signalproof-release
+    requires: [human_qc_pass, exact_candidate, rollback_or_recovery, distribution_boundary]
+    exit: DEPLOY_AUTHORIZED
+    next: DEPLOY
+
+  - id: DEPLOY
+    ordinal: 8
+    human_command: deploy
+    principal: signalproof-release
+    requires: [deploy_authorized, exact_candidate]
+    exact_artifact_only: true
+    exit: DEPLOYED
+    next: POST_DEPLOY_VERIFY
+
+  - id: POST_DEPLOY_VERIFY
+    ordinal: 9
+    human_command: internal
+    principal: signalproof-verify
+    requires: [deployed_identity]
+    exit: DEPLOYMENT_VERIFIED
+    next: CLOSEOUT
+
+  - id: CLOSEOUT
+    ordinal: 10
+    human_command: internal
+    principal: signalproof-closeout
+    specialists: [signalproof-document, signalproof-learn]
+    exit: COMPLETE_PROOF_PRESERVED
+
+human_lanes:
+  guided:
+    - /dsp research
+    - /dsp this-plan
+    - /dsp design
+    - /dsp complete
+    - /dsp qc
+    - /dsp authorize deploy
+    - /dsp deploy
+  bounded_completion:
+    - /dsp complete
+    - /dsp qc
+    - /dsp authorize deploy
+    - /dsp deploy
+
+skip_rule: >-
+  A stage may be N/A or already satisfied only when current evidence proves its
+  purpose is not material or its gate remains valid. Skipping is not silent.
+
+cost_rules:
+  - do_not_reload_unchanged_root_or_registry_material_in_the_same_session
+  - load_only_the_current_stage_and_required_specialists
+  - use_compact_proof_refs_instead_of_replaying_full_logs
+  - run_cheap_deterministic_preflight_before_agent_spawn_or_large_model_reasoning
+  - spawn_roles_only_when_risk_complexity_or_independent_challenge_materially_justifies_them
+  - do_not_rerun_still_valid_gates_after_irrelevant_changes
+  - refetch_current_git_before_consequential_repo_writes_or_when_state_may_have_changed
+  - research_the_web_only_when_fresh_external_evidence_is_material
+  - preserve_failure_fingerprints_and_attempt_counts_across_chats
+  - stop_unchanged_failed_paths_instead_of_spending_more_tokens_on_them
+
+completion_rule: >-
+  Completion means the stated distribution boundary is deployed, post-deploy
+  verification passes, required human QC and owner authority are proven, and
+  closeout preserves the evidence. A build that only works locally is not a
+  deployed completion unless local use was the defined distribution boundary.
