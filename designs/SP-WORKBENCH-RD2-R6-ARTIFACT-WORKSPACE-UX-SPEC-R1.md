@@ -1,0 +1,959 @@
+# Signalproof Workbench RD2 R6 - Artifact Workspace UX Specification R1
+
+**Status:** DESIGN COMPLETE / BUILDER CONSUMPTION READY / NO PRODUCTION MUTATION  
+**Date:** 2026-08-21  
+**Owner:** Doc Reo  
+**Work stream:** Signalproof Workbench GUI RD2 R6  
+**Primary modes:** `SESSIONS | BOTS | DASH`  
+**Artifact model:** contextual workspace inside Sessions/Bots  
+**Base architecture:** Workbench -> Governor -> Core -> Agent Runtime -> governed adapter/tool/worker
+
+---
+
+## 1. Design Objective
+
+Make generated code and other structured outputs **usable work products**, not transcript-only text.
+
+The operator should be able to move from:
+
+```text
+"make me a basic website"
+```
+
+to:
+
+```text
+Bot response
+-> recognized HTML artifact
+-> copy it immediately
+-> open it in Workbench
+-> edit it comfortably
+-> preview it safely
+-> save/export it explicitly
+-> ask the Bot to modify the current artifact
+-> later run/build it only through governed execution
+```
+
+without leaving the accepted `SESSIONS | BOTS | DASH` shell.
+
+The Artifact Workspace is deliberately **not** a fourth top-level application mode and is deliberately **not** a full IDE in its first implementation.
+
+---
+
+## 2. Design Principles
+
+1. **Conversation first.** Artifacts originate from and remain linked to Sessions/Bots.
+2. **One-click usability.** Copy and Open must be obvious; no drag-selecting large transcript blocks.
+3. **Artifact identity.** Generated code becomes a Signalproof artifact, not merely provider text.
+4. **Edit without losing context.** Opening an artifact must not destroy or detach the conversation.
+5. **Preview is not execution.** HTML/Markdown rendering is separate from local program execution.
+6. **Execution is governed.** Run/Build/Shell routes through Governor/Core/Agent Runtime.
+7. **Progressive depth.** Simple actions inline; richer editing opens only when requested.
+8. **No provider-specific UI.** Granite/Hermes/OpenAI/Claude/etc. all produce the same artifact UX.
+9. **Truthful capability state.** Disabled/unavailable actions explain why.
+10. **Preserve provenance.** Original generated content remains recoverable after edits.
+
+---
+
+## 3. Shell Placement
+
+The global Workbench shell remains:
+
+```text
++--------------------------------------------------------------------------------+
+| Signalproof Workbench                     Control / Evidence   Context  Governed |
++---------------------+------------------------------------------+-------------------+
+| SESSIONS BOTS DASH  |                                          | contextual rail   |
+|                     |              center workspace             |                   |
+| left navigation     |                                          |                   |
+|                     |                                          |                   |
++---------------------+------------------------------------------+-------------------+
+```
+
+Artifact Workspace replaces or splits the **center workspace only**.
+
+It does not become a new top-level navigation destination.
+
+---
+
+## 4. Conversation Content Geometry
+
+The latest running UI shows that conversation text still needs more breathing room and more deliberate line length.
+
+R6 conversation geometry:
+
+```text
+center workspace outer gutter: 24 px target, minimum 20 px
+readable prose max width: 1040 px target
+minimum prose width before responsive collapse: approximately 560 px
+message group gap: 20 px target
+role-to-body gap: 6 px target
+transcript top padding: 24 px
+transcript bottom padding: 28 px + composer-safe area
+composer gap from transcript: 14 px
+composer inner padding: 14 px vertical / 16 px horizontal
+```
+
+Exact pixel values may be tuned by the Builder for current WinForms scaling, but the visual relationships are design authority.
+
+Normal prose must not run edge-to-edge across a wide monitor.
+
+Code/table artifacts may use controlled horizontal scrolling instead of forcing the prose column wider.
+
+---
+
+## 5. Inline Code Artifact Card
+
+When a fenced code block is detected, the chat renderer preserves the assistant message but renders the code block as a purpose-built artifact surface.
+
+### 5.1 Visual anatomy
+
+```text
+┌──────────────────────────────────────────────────────────────────────────┐
+│ index.html     HTML     Artifact v1                  Copy  Open  Save     │
+├──────────────────────────────────────────────────────────────────────────┤
+│ <!DOCTYPE html>                                                        │
+│ <html lang="en">                                                     │
+│   <head> ...                                                          │
+│   ...                                                                  │
+│                                                                        │
+├──────────────────────────────────────────────────────────────────────────┤
+│ 47 lines   Generated by General   Unsaved                               │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+For HTML after preview capability is available:
+
+```text
+Copy   Open   Preview   Save
+```
+
+If local execution later exists for an executable artifact:
+
+```text
+Copy   Open   Save   Run
+```
+
+`Run` is not shown as active merely because code exists.
+
+### 5.2 Card behavior
+
+- show a useful filename when one can be inferred safely;
+- otherwise use a stable generic name such as `artifact-1.html`;
+- show language/type;
+- show version when an artifact identity exists;
+- show concise provenance (`Generated by General`, `Tool output`, `Imported file`);
+- show only the first practical portion of long code inline;
+- provide an obvious Open action rather than forcing transcript expansion;
+- code fence markers are never displayed as content;
+- Copy copies only exact artifact content;
+- inline code remains selectable.
+
+### 5.3 Small snippets
+
+Do not artifactize trivial inline fragments automatically.
+
+Examples that remain ordinary inline code:
+
+```text
+npm install
+Ctrl+S
+artifact_id
+```
+
+The user may still promote a small snippet with an explicit `Open as Artifact` action later.
+
+---
+
+## 6. Artifact Workspace - Desktop Layout
+
+Opening an artifact changes the center workspace into a two-context editing layout.
+
+Recommended full-width desktop state:
+
+```text
++----------------------+------------------------------------------------------------+
+| conversation strip   | ARTIFACT: index.html                          v2 Draft       |
+|                      |------------------------------------------------------------|
+| General              | [Code] [Preview] [Diff]           Copy Save Export  More   |
+| "make website"      |------------------------------------------------------------|
+|                      |                                                            |
+| General created      |                                                            |
+| index.html            |                 EDITOR / PREVIEW                            |
+|                      |                                                            |
+| [Back to Chat]       |                                                            |
+|                      |                                                            |
+|                      |------------------------------------------------------------|
+|                      | Ask Bot about selection...                      Send         |
++----------------------+------------------------------------------------------------+
+```
+
+### 6.1 Conversation strip
+
+Target width:
+
+```text
+280-340 px on wide desktop
+```
+
+Contents:
+
+- artifact-originating Session/Bot name;
+- originating message summary;
+- latest 2-5 relevant turns or compact conversation list;
+- Back to Chat;
+- current Bot identity;
+- active Run/approval indicator when applicable.
+
+The strip is context, not a second full transcript.
+
+### 6.2 Artifact dominant pane
+
+The Artifact pane is the primary workspace while open.
+
+It contains:
+
+- title/filename;
+- type/language;
+- version/draft state;
+- unsaved indicator;
+- Code/Preview/Diff tabs as supported;
+- editor/preview canvas;
+- top action row;
+- artifact-focused composer/action field at bottom.
+
+### 6.3 Existing right context rail
+
+When Artifact Workspace is open, the global right rail may switch from generic Bot context to **Artifact Context**.
+
+Recommended cards:
+
+```text
+ARTIFACT
+Type: HTML
+Version: 2 Draft
+Origin: General / Session abc
+
+WORKSPACE
+Saved: No
+Target: none
+
+EXECUTION
+Run: unavailable / available under policy
+
+PROVENANCE
+Generated -> edited by owner
+
+EVIDENCE
+Open details
+```
+
+Do not duplicate the entire editor toolbar in the right rail.
+
+---
+
+## 7. Responsive States
+
+### Wide desktop
+
+Use conversation strip + artifact pane + contextual right rail.
+
+### Medium desktop
+
+Collapse the right rail first.
+
+Artifact Workspace becomes:
+
+```text
+conversation strip | artifact pane
+```
+
+### Narrow desktop
+
+Collapse conversation strip into a button/drawer:
+
+```text
+[Back to Chat]  ARTIFACT: index.html
+[Code] [Preview]
+editor/preview
+```
+
+The editor must remain usable before secondary context surfaces remain visible.
+
+---
+
+## 8. Artifact Workspace Header
+
+Top row:
+
+```text
+index.html    HTML    v2 Draft    ● Unsaved
+```
+
+Actions, ordered by frequency:
+
+```text
+Copy   Save   Export   More
+```
+
+When supported:
+
+```text
+Preview
+Run
+```
+
+Recommended More menu:
+
+```text
+Rename
+Revert to Generated
+Open Version History
+Copy Path (if saved)
+Duplicate Artifact
+Delete Artifact
+View Provenance
+```
+
+Destructive actions require confirmation as appropriate.
+
+---
+
+## 9. Editor Design
+
+### 9.1 Preferred editor
+
+**WebView2 + Monaco Editor** is the target editor surface if dependency/provenance verification passes.
+
+Default visual behavior:
+
+- Signalproof dark theme;
+- line numbers on;
+- minimap off by default;
+- word wrap off for code by default;
+- horizontal scroll available;
+- indentation guides subtle;
+- current line highlight subtle;
+- syntax colors readable but not rainbow-heavy;
+- search/replace available;
+- bracket matching;
+- Ctrl+F search;
+- Ctrl+H replace where practical;
+- Ctrl+S Save;
+- standard text selection/copy/paste;
+- undo/redo;
+- tab indentation;
+- language mode based on artifact metadata.
+
+### 9.2 Native fallback
+
+If WebView2/Monaco is blocked at dependency/provenance gate, R6-G1B may ship a bounded native monospaced editor with:
+
+- edit/select;
+- copy/paste;
+- undo where supported;
+- Save As;
+- line/column indicator if practical;
+- vertical/horizontal scrolling;
+- dark readable contrast.
+
+This fallback is a bridge, not the final artifact UX target.
+
+### 9.3 Editor host security
+
+The embedded editor receives only a narrow Signalproof host bridge.
+
+Allowed conceptual messages:
+
+```text
+artifact.loaded
+artifact.changed
+artifact.copy.request
+artifact.save.request
+artifact.preview.request
+artifact.selection.changed
+artifact.ask-bot.request
+```
+
+The embedded page does **not** get unrestricted access to:
+
+- filesystem;
+- shell;
+- process creation;
+- environment variables;
+- secrets;
+- network credentials;
+- arbitrary Workbench internals.
+
+---
+
+## 10. HTML Preview Design
+
+HTML is the first required rich preview type for the completed R6 Artifact Workspace.
+
+### 10.1 Tab model
+
+```text
+[Code] [Preview]
+```
+
+Later:
+
+```text
+[Code] [Preview] [Diff]
+```
+
+### 10.2 Preview behavior
+
+- Preview renders the current editor buffer, not only the last saved file;
+- a 250-500 ms debounce may refresh simple HTML/CSS preview after edits;
+- a manual Refresh control remains available;
+- preview is sandboxed/restricted from privileged host functions;
+- generated JavaScript does not inherit the Workbench host bridge;
+- external network requests are blocked by default unless policy explicitly allows them;
+- blocked external assets display a small non-blocking notice;
+- Preview must not call `Process.Start` or launch an external browser by default;
+- `Open in Browser` is a separate governed action if later enabled.
+
+### 10.3 Preview chrome
+
+Recommended preview header:
+
+```text
+Preview    Desktop  ▾    Refresh     Network: Blocked
+```
+
+Possible viewport presets later:
+
+```text
+Desktop
+Tablet
+Mobile
+```
+
+These are simple viewport frames, not device emulators.
+
+---
+
+## 11. Reconciliation of R6-G1 Preview Scope
+
+Two current design records describe different implementation timing:
+
+- broad Artifact Workspace addendum: Preview is part of the intended artifact experience;
+- Builder-side G1 addendum: first bounded G1 editor can defer Preview to avoid unsafe/browser-launch shortcuts.
+
+This R1 specification resolves the conflict:
+
+### R6-G1B - Basic Artifact Workflow
+
+Must deliver:
+
+- fenced code recognition;
+- proper code rendering;
+- Copy;
+- Open;
+- editable dedicated artifact surface;
+- Save As;
+- Back to Chat;
+- version/build identity legibility;
+- no execution.
+
+Preview is not required to block G1B acceptance if the safe embedded preview dependency is not yet ready.
+
+### R6-G1C - Completed Artifact Workspace
+
+Must add:
+
+- verified editor host target, preferably WebView2 + Monaco;
+- Code/Preview tabs for HTML;
+- safe embedded HTML preview;
+- artifact version/draft persistence;
+- conversation-linked Ask Bot workflow;
+- Save/Export;
+- responsive Artifact Workspace layout.
+
+**R6 Artifact redesign is not considered fully complete at the product level until G1C is implemented and owner-accepted.**
+
+This staging keeps the build moving without deleting the preview requirement.
+
+---
+
+## 12. Ask Bot From Artifact
+
+Artifact Workspace contains a small artifact-focused prompt field:
+
+```text
+Ask General about this artifact...
+```
+
+Examples:
+
+```text
+make the header red
+explain lines 20-35
+fix the mobile layout
+add a contact form
+review this for security problems
+```
+
+When text is selected:
+
+```text
+Ask about selection
+```
+
+The request should contain:
+
+- artifact identity;
+- exact artifact version;
+- optional selected range;
+- user request;
+- necessary surrounding context according to policy.
+
+Do not blindly duplicate an entire multi-file workspace into every prompt when a stable artifact reference is available.
+
+---
+
+## 13. Bot-Proposed Artifact Changes
+
+Bot edits should be reviewable.
+
+Preferred flow:
+
+```text
+Current: v2 Draft
+Bot proposes: v3 Proposal
+```
+
+Controls:
+
+```text
+Review Diff   Apply   Reject
+```
+
+For simple early R6 implementation, full structured patching is not required, but the system must preserve the prior version before replacing content.
+
+Never destroy the only original generated version.
+
+---
+
+## 14. Version Model
+
+Minimum visible states:
+
+```text
+v1 Generated
+v2 Draft
+v3 Bot Proposal
+v4 Saved
+```
+
+The exact storage implementation may evolve, but the user experience must distinguish:
+
+- original generated content;
+- unsaved owner edits;
+- Bot-proposed change;
+- saved artifact version.
+
+Minimum recovery action:
+
+```text
+Revert to Generated
+```
+
+Later:
+
+```text
+Version History
+Diff
+Restore Version
+```
+
+---
+
+## 15. Save / Export Interaction
+
+### Save
+
+If no approved destination exists:
+
+```text
+Save -> Save As dialog
+```
+
+If the artifact is already bound to an approved workspace file:
+
+```text
+Save -> explicit write to that file
+```
+
+### Export
+
+Export creates a new user-selected output and does not imply deployment.
+
+### Save to Bot Workspace
+
+Available only when a bounded Bot workspace exists.
+
+### Apply to Existing File
+
+Must display exact target path and use the governed file capability.
+
+---
+
+## 16. Run / Build Interaction - Later Runtime Gate
+
+Artifact Workspace reserves the location for execution controls but does not fake them.
+
+Effective states:
+
+```text
+Run unavailable
+Run requires approval
+Run available
+Running...
+Stop
+Completed 0
+Failed 1
+```
+
+Run never routes directly from the UI to a shell.
+
+Required chain:
+
+```text
+Artifact Workspace
+-> runtime.artifact.run / execution intent
+-> Governor
+-> Core
+-> Agent Runtime
+-> Local Worker / approved tool
+```
+
+PowerShell retains its specific prevention/validation contract.
+
+---
+
+## 17. Output Panel - Future-Compatible Layout
+
+When execution capability arrives, Artifact Workspace may add a collapsible lower panel:
+
+```text
+OUTPUT | PROBLEMS | EVIDENCE
+```
+
+Collapsed by default when nothing is running.
+
+Output shows:
+
+- process/tool identity;
+- stdout;
+- stderr separately;
+- exit status;
+- duration;
+- produced artifacts;
+- Stop when active.
+
+The panel should not reduce the editor below a practical minimum height.
+
+---
+
+## 18. Keyboard Contract
+
+Minimum:
+
+```text
+Ctrl+C        normal copy
+Ctrl+S        Save
+Ctrl+F        Find in artifact
+Ctrl+Z        Undo
+Ctrl+Y        Redo where supported
+Esc           close transient menus / return focus
+Alt+Left      Back to Chat where host convention allows
+Tab           normal editor/navigation behavior
+Shift+Tab     reverse indentation/navigation as appropriate
+```
+
+Do not steal standard editor shortcuts for unrelated Workbench commands.
+
+---
+
+## 19. Version / Candidate Identity
+
+The Builder-side R6 design correctly added a requirement that the Workbench candidate/version identity remain legible.
+
+Design location:
+
+- small but readable line under `Signalproof Workbench`, or
+- compact bottom-left status line in the navigation rail.
+
+Example:
+
+```text
+RD2 R6 G1C Candidate
+```
+
+Rules:
+
+- visible without hover;
+- readable at ordinary Windows scaling;
+- lower visual priority than product name;
+- must not claim Production unless actually promoted;
+- should not consume conversation workspace width.
+
+---
+
+## 20. Artifact Context Rail
+
+When an artifact is open, recommended right-rail cards:
+
+### Artifact
+
+```text
+TYPE
+HTML
+
+VERSION
+v2 Draft
+
+ORIGIN
+General / Session <title>
+```
+
+### Save State
+
+```text
+Unsaved changes
+No workspace path
+```
+
+### Capability
+
+```text
+Preview: Available
+Run: Unavailable
+Network: Blocked
+```
+
+### Provenance
+
+```text
+Generated by Granite
+Edited by owner
+```
+
+### Evidence
+
+```text
+Control / Evidence available
+```
+
+Do not show raw hashes in the default rail unless requested.
+
+---
+
+## 21. Artifact States
+
+```text
+DETECTED
+OPEN
+EDITING
+DIRTY
+SAVING
+SAVED
+PREVIEWING
+PROPOSAL_AVAILABLE
+RUN_REQUESTED
+RUNNING
+RUN_COMPLETE
+RUN_FAILED
+ERROR
+```
+
+UI must not conflate:
+
+- editing with saving;
+- saving with running;
+- previewing with executing;
+- configured capability with available capability.
+
+---
+
+## 22. Empty / Error States
+
+### Artifact extraction failed
+
+```text
+Code detected, but Workbench could not open it as an artifact.
+Copy code
+View raw message
+```
+
+### Preview unavailable
+
+```text
+Preview unavailable in this candidate.
+Code editing and Save remain available.
+```
+
+### Save failure
+
+```text
+Save failed.
+Original artifact remains unchanged.
+View details
+```
+
+### Editor host unavailable
+
+Fallback to native bounded editor when safe; do not make the artifact inaccessible.
+
+---
+
+## 23. Performance Targets
+
+Design targets, not benchmark claims:
+
+- opening a normal single-file artifact should feel immediate;
+- editor host may lazy-load after Workbench start;
+- preview should not block chat UI thread;
+- large artifacts should not be duplicated repeatedly in in-memory transcript controls;
+- artifact content should be referenced by stable identity where practical;
+- chat scrolling must remain independent from editor/preview scrolling.
+
+---
+
+## 24. First Owner Test Scenario
+
+Use the exact type of HTML already generated in the running Workbench.
+
+### Test
+
+1. Ask `General` to create a basic HTML website.
+2. Response renders prose normally and HTML in a code artifact card.
+3. Confirm literal triple-backtick fence markers are not shown.
+4. Click **Copy**; paste elsewhere and verify exact HTML only.
+5. Click **Open**.
+6. Artifact Workspace opens `index.html` linked to the same Bot/Session.
+7. Edit `<h1>` text.
+8. Save As to an owner-selected test location.
+9. If testing G1C, click **Preview** and see the updated page inside Workbench.
+10. Ask `General`: `make the header red`.
+11. Confirm the request is linked to the current artifact/version.
+12. Confirm prior generated content remains recoverable.
+13. Back to Chat returns to the same conversation.
+
+---
+
+## 25. Builder Acceptance - G1B
+
+Machine/automated acceptance before owner UI:
+
+- code fence extraction deterministic fixture PASS;
+- language recognition PASS;
+- code fence markers excluded from artifact content PASS;
+- Copy action path present;
+- Open/Edit artifact workspace present;
+- Save As present;
+- no auto-execution path;
+- no direct provider/Ollama/shell bypass;
+- Session/Bot CRUD preserved;
+- governed Granite path preserved;
+- candidate/version identity visible in source/layout;
+- transcript/composer non-overlap preserved;
+- production unchanged.
+
+Human acceptance:
+
+- generated code is visually distinct;
+- Copy works in one action;
+- dedicated editor is comfortable;
+- Save As works;
+- Back to Chat preserves context;
+- candidate identity is readable.
+
+---
+
+## 26. Builder Acceptance - G1C
+
+Additional machine/automated acceptance:
+
+- editor dependency/provenance verified;
+- WebView host navigation restricted;
+- privileged host bridge narrow and explicit;
+- HTML preview uses internal restricted surface;
+- arbitrary preview content cannot invoke host shell/filesystem methods;
+- preview renders current editor buffer;
+- artifact draft/version persistence works;
+- unsaved indicator works;
+- responsive layout preserves editor usability;
+- failure fallback leaves artifact copy/edit available.
+
+Human acceptance:
+
+- Code/Preview switching feels immediate and understandable;
+- editing HTML updates Preview correctly;
+- artifact workspace feels part of Workbench, not a separate utility;
+- returning to chat is obvious;
+- the Bot can discuss/modify the current artifact;
+- no accidental external browser/process launch occurs.
+
+---
+
+## 27. Builder Non-Goals for G1B/G1C
+
+Do not block artifact usability on:
+
+- full file tree;
+- terminal;
+- Git client;
+- dependency installer;
+- live deployment;
+- remote dev environment;
+- multi-root workspace;
+- debugger;
+- full language server integration;
+- live Dashboard data.
+
+These may grow from the Artifact/Workspace model later.
+
+---
+
+## 28. Supersession / Conflict Resolution
+
+This R1 UX specification refines and reconciles:
+
+- `SP-WORKBENCH-RD2-R6-ARTIFACT-WORKSPACE-ADDENDUM.md`;
+- `SP-WORKBENCH-RD2-R6-G1-CODE-ARTIFACT-WORKSPACE-ADDENDUM.md`;
+- R6 Agent Console pre-planning;
+- Builder handoff artifact addendum.
+
+Where timing conflicts exist:
+
+- G1B basic editor scope follows the bounded Builder-side requirement;
+- G1C Preview/Monaco target follows the broader Artifact Workspace design;
+- this staged sequence is the controlling R6 artifact UX interpretation.
+
+No prior failure/provenance record is deleted or rewritten.
+
+---
+
+## 29. Final Design State
+
+```text
+ARTIFACT UX DESIGN: COMPLETE R1
+TOP-LEVEL NAVIGATION: SESSIONS | BOTS | DASH
+INLINE CODE CARD: REQUIRED
+COPY: REQUIRED
+OPEN/EDIT: REQUIRED
+SAVE AS: REQUIRED
+HTML PREVIEW: REQUIRED BY G1C
+EDITOR TARGET: WEBVIEW2 + MONACO IF VERIFIED
+NATIVE EDITOR: SAFE FALLBACK / G1B BRIDGE
+VERSION/DRAFT STATE: REQUIRED
+ASK BOT ABOUT ARTIFACT: REQUIRED BY G1C
+RUN: RESERVED FOR GOVERNED LOCAL-WORKER GATE
+FULL IDE: NOT REQUIRED
+PRODUCTION MUTATION: NONE
+CANONICAL LEDGER APPEND: NONE
+```
