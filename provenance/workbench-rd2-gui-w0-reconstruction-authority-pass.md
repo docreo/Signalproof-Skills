@@ -35,11 +35,9 @@ csc.exe
   SignalproofLlmWorkbench.cs
 ```
 
-Later RD2 build evidence pins the compiler path as:
+Later RD2 build evidence pins the compiler to the existing local 64-bit .NET Framework compiler under the Windows directory. The workstation-specific absolute path is intentionally omitted from this public record.
 
-`C:\WINDOWS\Microsoft.NET\Framework64\v4.0.30319\csc.exe`
-
-and shows the established pattern of a fresh isolated candidate root containing `src`, `Assets/Brand`, `build`, `evidence`, derivation evidence, report, and manifest.
+The established pattern remains a fresh isolated candidate root containing `src`, `Assets/Brand`, `build`, `evidence`, derivation evidence, report, and manifest.
 
 Therefore absence of a surviving conventional Visual Studio project tree is not itself a source-authority blocker for this product lineage.
 
@@ -47,9 +45,7 @@ Therefore absence of a surviving conventional Visual Studio project tree is not 
 
 ### Immutable accepted baseline input
 
-Accepted RD3 Workbench source evidence:
-
-`F:\Downloads\Quarantine\Evidence\B8A-GOV-D4-WORKBENCH-V1-RD3-AUTH-R2\src\SignalproofLlmWorkbench.cs`
+Accepted RD3 Workbench source evidence is a hash-bound local evidence artifact. Its workstation-specific absolute path is intentionally omitted from this public record.
 
 Expected SHA-256:
 
@@ -59,9 +55,7 @@ This file remains immutable evidence. It is not silently relabeled as an editabl
 
 ### Accepted deployed baseline
 
-Installed Workbench:
-
-`F:\Signalproof\Apps\Signalproof Governor\client\Signalproof-LLM-Workbench-V1-RD3.exe`
+The installed Workbench is a protected local runtime artifact. Its workstation-specific absolute path is intentionally omitted from this public record.
 
 Expected SHA-256:
 

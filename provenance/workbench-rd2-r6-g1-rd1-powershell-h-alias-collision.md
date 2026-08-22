@@ -17,13 +17,7 @@ The staged builder parser check passed, then execution stopped immediately at:
 $self=H $PSCommandPath
 ```
 
-Windows PowerShell resolved `H` as its built-in alias for `Get-History`, producing:
-
-```text
-Get-History : Cannot bind parameter 'Id'. Cannot convert value
-"F:\Downloads\Quarantine\Evidence\SP-WORKBENCH-R6-G1-RD1.ps1"
-to type "System.Int64".
-```
+Windows PowerShell resolved `H` as its built-in alias for `Get-History`, producing an Id-conversion error against the locally staged R6-G1 RD1 script path. The exact workstation path is intentionally redacted from this public provenance record.
 
 The failure occurred before the builder's first candidate/preflight action and before source mutation, C# compile, candidate launch, production mutation, Governor/Core mutation, or UI actuation.
 
