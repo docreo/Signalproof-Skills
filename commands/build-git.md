@@ -1,150 +1,141 @@
-# `build-git` - Active Operator Command V0.2.4
+# `build-git` - Active Operator Command V0.2.5
 
 **Status:** ACTIVE  
-**Version:** 0.2.4  
+**Version:** 0.2.5  
 **Owner:** Doc Reo
 
 ## Purpose
 
-`build-git` is the governed Signalproof next-action execution workmode for repository-backed work.
+`build-git` is the governed Signalproof next-action execution command for repository-backed work.
 
-> **Verify current Git, learn from prior failures, route the smallest governed next action, execute only that action, preserve recovery, and leave proof.**
+> **Verify current Git, reuse valid proof, avoid known failures, execute the smallest authorized action, verify it, and leave proof.**
 
-The word `build` does not mean every invocation writes code. The command may route to Research, Investigate, Query/Inspect, Evaluate, Plan, Design, Readiness, Build, Debug, Verify, Review, Security, Recovery, Release, Document, Learn, Handoff, or Closeout according to current evidence and authority.
+`build` does not imply code mutation. Route by current state through the Active Router to the minimum applicable Research, Investigate, Evaluate, Plan, Design, Readiness, Build, Debug, Verify, Review, Security, Recovery, Release, Document, Learn, Handoff, or Closeout capability.
 
-`build-git` is an operator command, not a new authority source.
+Detailed specialist doctrine belongs in the relevant Skill, Loop, deterministic registry, or test. This command coordinates it; it does not duplicate it.
+
+## Runtime context
+
+Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applicable.
+
+Default load target:
+
+```text
+ROOT CONTRACT once
++ COMPACT ROUTING METADATA
++ CURRENT STATE CAPSULE
++ 1 PRINCIPAL SKILL
++ 0-2 REQUIRED SPECIALISTS / LOOPS
++ TASK EVIDENCE
+```
+
+Do not replay full logs, handoffs, registries, or already-satisfied stage doctrine unless needed to resolve the current claim.
 
 ## Mandatory sequence
 
-1. **Git preflight** - refetch the relevant repository/ref/head before consequential action.
-2. **Router preflight** - select the minimum applicable Active Signalproof capability set.
-3. **Known Failure Preflight** - inspect applicable merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may not yet be on `main`. Candidate evidence may prevent recurrence but does not become Active authority.
-4. **PowerShell persistence preflight when applicable** - if the next step may generate, modify, stage, or execute PowerShell, load current `library/POWERSHELL-FAILURE-REGISTRY.yaml` and restore task-relevant failure identity/attempt state before producing another runner.
-5. **Protected-state contract** - establish baseline, forbidden changes, rollback/non-mutation boundary, work-stream identity, and required evidence.
-6. **Consume the current Next Action Contract** when one exists. Do not silently redesign it.
-7. **Execute only the routed action** within current authority.
-8. **Verify incrementally** before stacking additional uncertainty.
-9. Apply Review, Security, provenance, recovery, or release gates when material.
-10. **Git recheck** before consequential write, merge, publication, or promotion.
-11. Preserve outcome, proof, failures, uncertainty, recovery state, learning, and closeout obligations.
+1. **Git preflight** - refetch the relevant repo/ref/head before consequential action or when state may have changed.
+2. **Router preflight** - select the minimum applicable Active capability set.
+3. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence may prevent a bad path but does not become Active authority.
+4. **Protected state** - establish baseline, forbidden change, recovery/non-mutation path, workstream identity, acceptance, and authority boundary.
+5. **Consume current state/Next Action Contract** when valid; do not silently redesign it.
+6. **Cheap checks first** - run applicable deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
+7. **Execute one routed action** inside current authority.
+8. **Verify the affected claim** and rerun only gates invalidated by the change.
+9. Apply Review, Security, provenance, recovery, Human QC, or Release only when material to the current stage/claim.
+10. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
+11. Update compact state/proof, preserve failures/uncertainty, and route the next gate.
+
+## Cost and completion rules
+
+- Reuse still-valid evidence rather than rerunning unchanged tests.
+- Do not automatically regress an already-proven product/security claim because a later harness/reporter/display fails. Reopen it only when later evidence contradicts it, exposes a missing gate, or invalidates the earlier proof.
+- Prefer deterministic checks before agent spawn or larger-model reasoning when they can settle the claim.
+- Spawn Builder/Design/Governor lanes only when independent challenge materially improves risk, design, or acceptance quality.
+- Preserve failure fingerprints and attempts across chats; a fresh chat does not grant a fresh retry budget.
+- A failed path requires a materially changed condition before retry.
+- Stop when evidence is sufficient; do not spend more tokens proving an already-proven claim.
+- Completion follows the current execution-pipeline boundary. Build PASS is not Human QC PASS, and neither is deployment authority.
 
 ## Known Failure Preflight
 
-Search by supported conditions, not keywords alone: runtime, shell, tool, version, platform, action, wrapper/harness, symptom, schema/parser behavior, path/encoding, dependency, permission/security surface, packaging/provenance/license boundary, and protected-state/chronology pattern.
+Match supported conditions, not words alone: runtime, shell, version, platform, action, harness, symptom, schema/parser, path/encoding, dependency, permissions/security, packaging/provenance/license, and protected-state/chronology pattern.
 
-Possible decisions:
+Possible states:
 
-- `NO KNOWN MATCH`
-- `POSSIBLE MATCH`
-- `KNOWN FAILURE / MITIGATION AVAILABLE`
-- `KNOWN FAILURE / CONDITIONS CHANGED`
-- `KNOWN FAILURE / NO APPROVED MITIGATION`
-- `PROHIBITED / STOP`
+`NO KNOWN MATCH | POSSIBLE MATCH | KNOWN FAILURE / MITIGATION AVAILABLE | KNOWN FAILURE / CONDITIONS CHANGED | KNOWN FAILURE / NO APPROVED MITIGATION | PROHIBITED / STOP`
 
-A high-confidence known failure must not be repeated under unchanged conditions.
+A high-confidence unchanged known-bad path must not run.
 
 ### Executable known-error enforcement
 
-When a recurrence rule is machine-checkable and an applicable validator exists, run the validator before handing the consequential artifact or paste-ready command to the owner. Human-readable known-error doctrine remains the source of meaning; executable checks are recurrence-prevention gates, not new authority.
-
-Current validator:
+When an applicable recurrence rule is machine-checkable, use its validator before handoff/execution. Current PowerShell validator:
 
 ```text
 python tools/known_error_preflight.py --mode <operator-powershell|powershell-script> <artifact>
 ```
 
-A validator `BLOCK` must stop handoff of the unchanged artifact. A validator warning must be resolved, explicitly justified as inapplicable, or preserved as uncertainty before consequential execution. Do not weaken a validator merely to obtain PASS.
+A validator `BLOCK` must stop handoff of the unchanged artifact. Warnings must be resolved, shown inapplicable by evidence, or preserved as uncertainty. Never weaken a validator merely to obtain PASS.
 
 ### Git-backed PowerShell persistence guard
 
-PowerShell failure memory must survive builds and conversation boundaries.
+When PowerShell is relevant, `library/POWERSHELL-FAILURE-REGISTRY.yaml` and `SP-LOOP-POWERSHELL-GUARD` are the detailed prevention authority/data path. Do not restate the whole registry in the active command context.
 
-When PowerShell is relevant:
+Required behavior remains:
 
-1. refetch current `Signalproof-Skills/main`;
-2. load `library/POWERSHELL-FAILURE-REGISTRY.yaml` before generating or retrying another runner;
-3. recover applicable registry IDs, unresolved failure class, prior failed runner identity, same-failure attempt count, mitigation already tried, and explicit do-not-repeat path from current handoff/evidence when available;
-4. run applicable executable known-error preflight before handoff/execution;
-5. parser-preflight the exact final staged `.ps1`;
-6. if the artifact changes after parser validation, invalidate that validation and parse the new exact final artifact again;
-7. bind SHA-256 only after final serialization when byte identity matters;
-8. execute at most once for the exact artifact/condition set;
-9. before retry, state the material condition that changed;
-10. carry attempt count across new chat windows, renamed runners, wrapper changes, prompt rewrites, and cosmetic formatting changes;
-11. route newly proven reusable failures through Known Errors/Learn governance rather than leaving them only in chat memory.
-
-A fresh chat does not grant a fresh retry budget. The same unresolved failure class keeps its prior attempt count when continuity evidence preserves it.
-
-Use `SP-LOOP-POWERSHELL-GUARD` as the bounded recurrence protocol when iterative PowerShell correction is required.
-
-Required pre-execution states are:
-
-`REGISTRY SEARCHED -> APPLICABLE RULES APPLIED -> EXECUTABLE KNOWN-ERROR PREFLIGHT PASS (WHEN APPLICABLE) -> EXACT FINAL ARTIFACT IDENTIFIED -> PARSER PREFLIGHT PASS -> STATIC KNOWN-FAILURE CHECK PASS -> AUTHORITY/PROTECTED-STATE PASS`
-
-If a required state is `UNKNOWN` or failed, do not execute the consequential PowerShell runner.
-
-### Current PowerShell prevention set
-
-For generated or modified Windows PowerShell harnesses when applicable:
-
-- choose interactive submission style from the **observed operator environment**, not from a generic PowerShell recipe. If the current console/workflow has rejected a leading `& { ... }` wrapper, do not emit that wrapper again for that environment; prefer validated file execution or sequential statements compatible with the observed console path;
-- do not split an `if` and its `else` across separate interactive submissions; where line-by-line console transport is in use, prefer control flow that does not require a separately submitted `else`;
-- parser-preflight the exact final staged `.ps1` before execution;
-- calculate SHA-256 after final serialization and verify the same artifact before execution;
-- preserve failed runners rather than broad-patching or overwriting them;
-- do not assume Windows PowerShell 5.1 `ConvertFrom-Json` can represent arbitrary or empty external JSON property names;
-- distinguish generic dictionary `.ContainsKey()` from non-generic `IDictionary.Contains()`;
-- check property presence before dereferencing heterogeneous report objects;
-- normalize values that may be null/scalar before cardinality checks under StrictMode, for example `@($value).Count` when collection semantics are intended;
-- compute parser-sensitive multiline values first instead of embedding ambiguous expressions;
-- classify parser/harness STOP as harness evidence, not product failure, unless separate evidence proves product actuation;
+- restore applicable failure IDs, prior attempt count, mitigation history, and do-not-repeat path;
+- choose interactive submission style from the **observed operator environment**; if it has rejected a leading `& { ... }` wrapper, do not repeat that unchanged transport path;
+- run applicable executable known-error preflight;
+- parser-preflight the exact final staged `.ps1`; if bytes change afterward, validation is invalid and must be repeated on the new exact final artifact;
+- bind SHA-256 only after final serialization when byte identity matters;
+- execute at most once for the exact artifact/condition set;
+- state the material changed condition before same-failure retry;
+- carry attempt count across chats, filenames, wrappers, prompt rewrites, and cosmetic changes;
 - keep expected console output outside executable command blocks;
-- canonicalize filesystem paths before deriving relative paths;
-- capture native stdout, stderr, and exit status separately; stderr presence alone is not failure authority;
-- reject nested same-delimiter here-string serialization when it can prematurely terminate the outer payload;
-- avoid self-referential static guards whose forbidden literal appears inside the guard itself; construct the needle or inspect parsed structure instead;
-- preserve array-shaped contracts such as `reason_codes` as arrays; use membership checks rather than collapsing them into fragile scalar equality when the schema permits multiple values;
-- inspect structured fields structurally. Do not use broad text regexes that reject safe metadata merely because a field name contains a sensitive term, such as a boolean explicitly recording that private-key persistence is false.
+- preserve structural contracts: normalize optional collection intent such as `@($value).Count` only when semantically correct; preserve `reason_codes` as array-shaped when the schema allows multiples; avoid self-referential static guards; inspect structured fields structurally rather than using broad text rejection.
+
+PowerShell detailed prevention cases such as JSON 5.1 shape, dictionary membership, reserved variables, native stderr/exit semantics, here-strings, path normalization, harness-vs-product evidence, and optional-property handling remain in the current failure registry and executable tests. Load only applicable entries.
+
+Required pre-execution state:
+
+`REGISTRY SEARCHED -> APPLICABLE RULES APPLIED -> EXECUTABLE PREFLIGHT PASS WHEN APPLICABLE -> EXACT FINAL ARTIFACT -> PARSER PASS -> STATIC FAILURE CHECK PASS -> AUTHORITY/PROTECTED STATE PASS`
+
+UNKNOWN/FAIL on a required state blocks consequential execution.
 
 ## Evidence sufficiency termination
 
-Acceptance claims belong to evidence classes. Once the required product, runtime, security, or permission claim has been independently established by sufficient accepted evidence, a later harness, reporter, finalizer, display, or transport defect must be classified against its own evidence class.
+Acceptance evidence is claim-specific. If product/runtime/security/permission evidence is already sufficient and a downstream harness later fails:
 
-Do not automatically regress an already-proven product/security claim or replay an expensive acceptance matrix merely because a downstream harness reports a false negative. Reopen the proved claim only when the later evidence actually contradicts the accepted evidence, reveals a missing required gate, or establishes that the prior evidence was invalid.
-
-When evidence is sufficient but a harness fails afterward:
-
-1. preserve the harness failure;
-2. identify the exact unproven or contradictory claim, if any;
+1. preserve the new failure;
+2. identify the exact unresolved or contradictory claim;
 3. consume already-valid evidence instead of rerunning unchanged tests;
-4. route the smallest read-only or corrective action needed to close the remaining evidence gap.
+4. route only the smallest action needed to close that gap.
+
+This prevents a cheap reporting defect from triggering an expensive full acceptance replay.
 
 ## Exact-final-artifact rule
 
-Before handing an operator a consequential generated runner, patch, manifest, config, repair artifact, or paste-ready command, validate the exact final artifact as far as the environment permits. Use parser/compiler/schema checks, structured-literal validation, cross-reference checks, defect-specific micro-fixtures or negative tests, protected-state checks, and applicable executable known-error preflight.
-
-Observed target-environment behavior outranks a generic language recipe for handoff formatting. Do not quote stale hashes or claim runtime validation that did not occur.
+Before handing over or executing a consequential runner, patch, manifest, config, repair artifact, or paste-ready command, validate the **exact final artifact** as far as the environment permits. Use applicable parser/compiler/schema checks, structured validation, defect-specific micro-tests, protected-state checks, and known-error preflight. Never quote stale hashes or claim runtime validation that did not occur.
 
 ## Generated output typography rule
 
-Signalproof-controlled generated build output MUST NOT emit Unicode em dash U+2014 when punctuation is under Signalproof control. Use commas, colons, semicolons, parentheses, or ASCII hyphen-minus instead.
-
-This rule does not authorize rewriting immutable source evidence, quoted external evidence, checksum-covered artifacts, or protected byte-for-byte inputs.
+Signalproof-controlled generated build output must not emit Unicode em dash U+2014 when punctuation is under Signalproof control. This does not permit modifying immutable evidence or protected byte-for-byte inputs.
 
 ## Build-stream continuity
 
-A work stream may pause while unrelated global Build Ledger chronology advances. Preserve stable work-stream identity and its prior accepted anchor. Never reserve or reuse a projected `C###` number. If canonical ledger action becomes relevant, reverify the live ledger head and use separately authorized chain-safe tooling.
+Preserve stable workstream identity and accepted anchor even when unrelated chronology moves. Never reserve or reuse a projected `C###`. Canonical Build Ledger action requires separate live-head verification and authority.
 
 ## `build-git spawn`
 
-When multi-role separation materially improves the work, `build-git` may route to Active `build-git spawn`. The main session remains the Signalproof Orchestrator. If actual independent spawning is unavailable, use clearly separated logical lanes and state that accurately.
+Use Active `build-git spawn` only when role separation materially helps. The main session remains Orchestrator. If independent spawning is unavailable, use truthful logical lanes. Spawn does not justify replaying sufficient evidence; each lane should identify the unresolved evidence class it is addressing.
 
-Spawn does not require replaying already-sufficient evidence. Builder, Design, and Governor lanes must each identify which evidence class remains unresolved before proposing another consequential test.
+## Compliance and authority
+
+Technical capability is not authority. Law, license, Terms of Service, platform policy, access controls, privacy/security, protected-main rules, release/deployment authority, and canonical Build Ledger rules remain binding. A command cannot waive them to finish faster or cheaper.
 
 ## STOP conditions
 
-STOP when current Git cannot be established; protected state would be weakened outside authority; a high-confidence failure would be repeated unchanged; an applicable executable known-error validator blocks the artifact; relevant newer failure evidence is known but uninspected; required PowerShell failure continuity is unavailable for a repeat-prone runner; PowerShell parser validation of the exact final staged artifact fails; a PowerShell retry lacks a material changed condition; the proposed mitigation violates security/licensing/legal/authority boundaries; a concurrent change invalidates the contract; a projected ledger sequence is treated as reserved; unresolved evidence requires investigation before implementation; an output would falsely claim independent agents ran; a Candidate is being silently promoted; or canonical ledger/release/production authority is being inferred from this command.
+STOP when current Git/protected state cannot be established; an unchanged known-bad path would repeat; an applicable validator blocks; required failure continuity is missing; exact-final parser/validation fails; a retry lacks a material changed condition; law/license/TOS/security/authority blocks the action; concurrent state invalidates the contract; evidence is unresolved enough to require Investigation before implementation; an output would falsely claim independent agents ran; a Candidate would be silently activated; or release/production/canonical-ledger authority would be inferred rather than proven.
 
 ## Maintenance acceptance
 
-Keep regression coverage proving non-build routing, bounded implementation routing, stale-Git detection, known-failure avoidance, open/draft failure-evidence retrieval, PowerShell harness prevention, observed-console compatibility, executable known-error enforcement, Git-backed PowerShell failure-registry loading, cross-chat same-failure attempt continuity, exact-final parser preflight, evidence-sufficiency termination, changed-condition retest, protected-state preservation, build-stream continuity, spawn authority separation, and the U+2014 generated-output rule.
+Keep regression coverage for non-build routing, stale-Git detection, known-failure/candidate-evidence retrieval, executable known-error enforcement, PowerShell registry and cross-chat attempt memory, observed-console compatibility, exact-final validation, evidence-sufficiency termination, changed-condition retry, protected state, spawn truth, compliance/authority, and the U+2014 rule.
