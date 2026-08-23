@@ -6,11 +6,12 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.7 | Compact Dr. Signalproof resolver and public Library shell |
+| `/dsp` | 0.3.8 | Compact Dr. Signalproof resolver and public Library shell |
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -39,6 +40,7 @@
 - `research` -> `commands/research.md`
 - `authorize` -> `commands/authorize.md`
 - `complete` -> `commands/complete.md`
+- `download` -> `commands/download.md`
 - `qc` -> `commands/qc.md`
 - `deploy` -> `commands/deploy.md`
 - `known-errors` -> `commands/known-errors.md`
@@ -76,6 +78,7 @@ Examples retained for compatibility:
 
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
+- `/dsp download` -> `download`
 - `/dsp full-debug` -> `full-debug`
 - `/dsp build-spawn-debug` -> `build-spawn-debug`
 - `/dsp cut-chase` -> `cut-chase`
@@ -88,6 +91,7 @@ Examples retained for compatibility:
 - `help` -> `help`
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
+- `download` / `download this` / `download that` -> `download`
 - `design` -> `design-git`
 - `human qc` -> `qc`
 - `authorize deploy` -> `authorize` with target `deploy`
@@ -112,10 +116,11 @@ Examples retained for compatibility:
 6. Debug preserves failure fingerprints/attempt counts and blocks materially unchanged retries.
 7. Human QC is Human-Observed Fact, not deployment authority.
 8. Deployment requires exact-candidate evidence, applicable compliance/security/recovery gates, and explicit bounded authority.
-9. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
-10. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
-11. Public Git promotion does not claim canonical private Build Ledger append.
-12. Active command versions in command files and this registry must remain synchronized.
+9. Artifact recovery must preserve exact/reconstructed identity, public/private boundaries, and connected-storage authority; `download` cannot manufacture a missing original.
+10. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
+11. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
+12. Public Git promotion does not claim canonical private Build Ledger append.
+13. Active command versions in command files and this registry must remain synchronized.
 
 ## Lifecycle
 

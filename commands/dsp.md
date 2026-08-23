@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.7
+# `/dsp` - Dr. Signalproof Command Shell V0.3.8
 
 **Status:** ACTIVE  
-**Version:** 0.3.7  
+**Version:** 0.3.8  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -55,6 +55,10 @@ dsp-cut-chase
 /dsp cut-cost
 /dsp cut cost
 dsp-cut-cost
+/dsp download
+/dsp-download
+dsp download
+dsp-download
 /dsp help
 /dsp-help
 dsp help
@@ -68,6 +72,7 @@ dsp-help
 | `help` | `help` |
 | `research` | `research` |
 | `complete`, `finish this` | `complete` |
+| `download` | `download` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
 | `design`, `design git`, `design-git` | `design-git` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
@@ -120,6 +125,7 @@ Stages may be skipped only when current evidence proves them N/A or still satisf
 - `/dsp qc` -> `qc`, exact-candidate Human-Observed Fact gate after automated PASS.
 - `/dsp authorize deploy` -> generic `authorize` handler targeting `deploy`.
 - `/dsp deploy` -> `deploy`, exact accepted artifact through Release, post-deploy Verify, then Closeout.
+- `/dsp download` -> `download`, cross-chat artifact recovery/re-delivery with exact/reconstructed identity discipline and optional explicit durable connected-storage copy.
 - `/dsp build-spawn-debug` -> `build-spawn-debug`, bounded build/debug convergence to the human gate.
 - `/dsp full-debug` -> `full-debug`, high-governance repeated/cross-layer debugging.
 - `/dsp cut-chase` -> `cut-chase`.
