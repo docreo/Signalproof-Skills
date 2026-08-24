@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.8
+# `/dsp` - Dr. Signalproof Command Shell V0.3.9
 
 **Status:** ACTIVE  
-**Version:** 0.3.8  
+**Version:** 0.3.9  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -49,6 +49,12 @@ dsp-full-debug
 dsp-build-spawn-debug
 /dsp complete
 dsp-complete
+/dsp build-capsule
+/dsp build capsule
+/dsp-build-capsule
+dsp build-capsule
+dsp-build-capsule
+/dsp capsule
 /dsp cut-chase
 /dsp cut chase
 dsp-cut-chase
@@ -73,6 +79,7 @@ dsp-help
 | `research` | `research` |
 | `complete`, `finish this` | `complete` |
 | `download` | `download` |
+| `build capsule`, `build-capsule`, `capsule` | `build-capsule` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
 | `design`, `design git`, `design-git` | `design-git` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
@@ -112,6 +119,8 @@ Preferred guided software flow:
 -> /dsp deploy
 ```
 
+`/dsp build-capsule` is an optional transfer/continuity route for packaging a substantial build, live-update state, authoritative payloads, and optional Design Capsule for another AI system. It does not replace Build, Complete, Handoff, or deployment authority.
+
 Stages may be skipped only when current evidence proves them N/A or still satisfied. `complete` may internally route Build, Debug, Verify, Review, Security, Recovery, and Learn without making the human babysit routine gates. Human QC remains real human evidence. Deployment remains a separate explicit authority boundary.
 
 ## Complete handler
@@ -126,6 +135,7 @@ Stages may be skipped only when current evidence proves them N/A or still satisf
 - `/dsp authorize deploy` -> generic `authorize` handler targeting `deploy`.
 - `/dsp deploy` -> `deploy`, exact accepted artifact through Release, post-deploy Verify, then Closeout.
 - `/dsp download` -> `download`, cross-chat artifact recovery/re-delivery with exact/reconstructed identity discipline and optional explicit durable connected-storage copy.
+- `/dsp build-capsule` -> `build-capsule`, multimodal build-transfer packaging with payload authority, optional Design Capsule, and live-update mode.
 - `/dsp build-spawn-debug` -> `build-spawn-debug`, bounded build/debug convergence to the human gate.
 - `/dsp full-debug` -> `full-debug`, high-governance repeated/cross-layer debugging.
 - `/dsp cut-chase` -> `cut-chase`.
