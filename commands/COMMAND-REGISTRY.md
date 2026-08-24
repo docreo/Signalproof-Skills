@@ -6,7 +6,7 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.8 | Compact Dr. Signalproof resolver and public Library shell |
+| `/dsp` | 0.3.9 | Compact Dr. Signalproof resolver and public Library shell |
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
@@ -17,6 +17,7 @@
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
 | `log-skill` | 0.2.0 | Milestone/learning/Skill continuity without fabricated chronology |
 | `handoff-log` | 0.2.1 | Durable fresh-chat handoff plus log synchronization |
+| `build-capsule` | 0.1.0 | Create/refine a human-readable and AI-readable build-transfer package, including optional Design Capsule and live-update command mode |
 | `cut-chase` | 0.1.0 | Decision-ready salience compression |
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
 | `design-git` | 0.2.0 | Smallest governed Git-backed design/next-action route |
@@ -46,6 +47,7 @@
 - `known-errors` -> `commands/known-errors.md`
 - `log-skill` -> `commands/log-skill.md`
 - `handoff-log` -> `commands/handoff-log.md`
+- `build-capsule` -> `commands/build-capsule.md`
 - `cut-chase` -> `commands/cut-chase.md`
 - `cut-cost` -> `commands/cut-cost.md`
 - `design-git` -> `commands/design-git.md`
@@ -79,6 +81,8 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
+- `/dsp build-capsule` -> `build-capsule`
+- `/dsp capsule` -> `build-capsule`
 - `/dsp full-debug` -> `full-debug`
 - `/dsp build-spawn-debug` -> `build-spawn-debug`
 - `/dsp cut-chase` -> `cut-chase`
@@ -92,6 +96,7 @@ Examples retained for compatibility:
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
+- `build capsule` / `capsule this build` -> `build-capsule`
 - `design` -> `design-git`
 - `human qc` -> `qc`
 - `authorize deploy` -> `authorize` with target `deploy`
