@@ -2,6 +2,34 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-build-capsule 0.1.0] - Active
+
+### Added
+
+- `signalproof-build-capsule` `0.1.0` adds a governed multimodal build-transfer pattern for moving substantial applications and live-update state between AI systems without repeatedly re-encoding large source packages into prompts.
+- The core transfer pattern is **Build Capsule image + authoritative payload files + execution/update command**.
+- A companion **Design Capsule** mode carries approved visual authority separately from functional/data authority; for established live interfaces its default rule is `Preserve. Extend. Do not redesign.`
+- New-build and live-update commands are explicitly separated so an existing working application is not accidentally treated as a from-scratch build.
+- Multi-message targets are supported through independently actionable cumulative commands that may announce additional commands are coming without assuming future instructions were already received.
+- `/dsp build-capsule`, `/dsp build capsule`, and `/dsp capsule` route to the new operator command; `design` and `live-update` are supported modes.
+- `signalproof-router` `0.2.5` and compact capability metadata route substantial AI build-transfer work to the new skill without absorbing implementation, product IA, UI-polish, or session-handoff responsibilities.
+
+### Verified
+
+- Acceptance passed **20/20 required behaviors** with 0 failures across three scenarios: structured new build, existing live design, and partial source/attachment failure.
+- The structured-build scenario covers a 10-module / 200-record source package, scoring/result rules, finite prompt limits, and attached payload files.
+- The live-design scenario covers a React/Tailwind accepted baseline, separate design authority, additive one-message-at-a-time update commands, and explicit protection against unintended rebuild/redesign.
+- The source-gap scenario requires continued use of readable authorities while prohibiting hallucinated missing records.
+- Exact candidate `SKILL.md` size is **10,793 UTF-8 bytes**, below the 12,000-byte decomposition-review threshold and 15,000-byte Active ceiling.
+- Critical transfer information may not depend on QR codes, steganography, hidden pixels, or other opaque visual encoding.
+
+### Governance
+
+- Candidate origin: `signalproof-build-capsule-v0.1`.
+- Design Capsule remains a companion mode inside the same atomic transfer capability at V0.1 rather than becoming a premature second Skill.
+- Canonical source payloads remain authoritative; the capsule summarizes architecture and invariants rather than replacing source truth.
+- Public Git promotion does not claim or reserve a canonical private Build Ledger event number.
+
 ## [signalproof-design 0.1.0] - Active
 
 ### Added
@@ -117,24 +145,3 @@ All notable public changes to the Signalproof Skill Suite should be recorded her
 - `signalproof` root governing skill promoted from `0.1.0-rc1` to the active public baseline after the agreed behavioral acceptance gate passed and the foundation PR was merged into protected `main`.
 - Apache License 2.0 confirmed for the public suite.
 - Canonical registry status updated to Active.
-
-### Verified
-
-- Scenario 1 bounded-bug-fix acceptance passed.
-- Protected audio-engine SHA-256 remained unchanged before and after the bounded correction.
-- Candidate promotion occurred through the protected branch and pull-request workflow.
-
-## [0.1.0-rc1] - Candidate
-
-### Added
-
-- Initial `signalproof` root governing skill.
-- Suite inheritance rule for future `signalproof-*` specialist skills.
-- Evidence-class discipline.
-- Protected-state, authority, bounded-change, verification, recovery, and closure requirements.
-- Governed skill-update lifecycle: Discovered -> Candidate -> Tested -> Approved -> Active -> Deprecated/Retired.
-- Public/private boundary for publishable skills.
-- Initial governance document.
-- Initial skill registry.
-- Initial acceptance-test specification.
-- Apache License 2.0 licensing package, trademark guidance, contribution policy, and first recorded behavioral acceptance result.
