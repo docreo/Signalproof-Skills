@@ -1,4 +1,4 @@
-version: 0.6
+version: 0.7
 status: RD1_CANDIDATE
 purpose: >-
   Compact routing metadata for the Signalproof Library. This registry helps the
@@ -25,6 +25,7 @@ capabilities:
   - {id: signalproof-teach, state: ACTIVE, kind: skill, purpose: mission-grounded source-backed durable teaching and skill development, triggers: [teach, learn topic, training, hamm advancement]}
   - {id: signalproof-cut-chase, state: ACTIVE, kind: skill, purpose: compress established material into decision-ready salient truth and action, triggers: [cut chase, cut to the chase, bottom line, what matters, action note, simplify report, no bs summary]}
   - {id: signalproof-cut-cost, state: ACTIVE, kind: skill, purpose: measure and rank AI operating waste without changing the system, triggers: [cut cost, token waste, context waste, mcp overhead, cache efficiency, model cost, ai operating cost, cost audit]}
+  - {id: signalproof-build-capsule, state: ACTIVE, kind: skill, purpose: package substantial builds for multimodal AI transfer with authoritative payloads, design continuity, invariants and additive update commands, triggers: [build capsule, ai build capsule, design capsule, transfer build to ai, live update capsule, prompt limit handoff]}
 
   - id: signalproof-design
     state: ACTIVE
