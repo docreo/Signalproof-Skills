@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.2
 status: ACTIVE_PREVENTION_DATA
 purpose: >-
   Compact Git-backed PowerShell failure memory used by Signalproof build and
@@ -72,6 +72,16 @@ rules:
       - capture stdout, stderr, and exit status separately
       - use exit/result contract and required artifacts as success authority
     source: KE-PS-NATIVE-STDERR-001
+
+  - id: PS-PROCESSSTARTINFO-ARGLIST-51-001
+    match: windows_powershell_5_1_processstartinfo_argumentlist
+    risk: ProcessStartInfo.ArgumentList is unavailable or null under Windows PowerShell 5.1 / .NET Framework, causing null-valued method calls before native process execution
+    prevent:
+      - do not use ProcessStartInfo.ArgumentList.Clear or ArgumentList.Add when Windows PowerShell 5.1 compatibility is required
+      - construct a correctly quoted ProcessStartInfo.Arguments string or use another Windows PowerShell 5.1-safe native invocation path
+      - test the exact native-process wrapper under the operator runtime before treating target-process evidence as authoritative
+      - classify this failure as HARNESS and not PRODUCT when the target executable was never invoked successfully
+    source: KE-PS-PROCESSSTARTINFO-ARGLIST-51-001 / Hermes recovery 2026-08-25
 
   - id: PS-HERESTRING-NESTED-001
     match: generated_nested_here_string
