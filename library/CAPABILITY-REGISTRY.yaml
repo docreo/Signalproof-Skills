@@ -103,3 +103,8 @@ candidates:
       - signalproof-knowledge-provenance
       - signalproof-knowledge-transform
       - signalproof-knowledge-package
+  - id: signalproof-workflow-mine
+    state: CANDIDATE
+    kind: skill
+    purpose: mine historical human+AI work for repeated implicit workflows and evidence-backed capability gaps without taxonomy inflation
+    path: skills/candidates/signalproof-workflow-mine/SKILL.md
