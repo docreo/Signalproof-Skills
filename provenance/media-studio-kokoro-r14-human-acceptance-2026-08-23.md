@@ -1,88 +1,80 @@
-# Signalproof Media Studio — Kokoro R14 Human Acceptance Learning Record
+# Signalproof Media Studio — Kokoro R14 Short-Form Acceptance / Long-Form Revocation
 
-**Status:** LOGGED / NONCANONICAL / PUBLIC-SAFE  
-**Date:** 2026-08-23  
-**Command:** `/dsp log-skill`  
+**Status:** LOGGED / NONCANONICAL / PUBLIC-SAFE / SUPERSEDED FOR PRODUCTION LONG-FORM  
+**Original observation date:** 2026-08-23  
+**Revocation evidence date:** 2026-08-24  
+**Command family:** `/dsp log-skill`  
 **Work unit:** Signalproof Media Studio V5 RD2 C2D-C2R1 — governed Signalproof-Kokoro integration
 
-## Evidence state
+## Evidence correction
 
-Human UI testing established that the governed Signalproof-Kokoro narration path works in Media Studio after the R14 dual-mode correction.
+The original R14 human UI observation proved only a short-form narration sample. Later owner testing established that production long-form Kokoro remained broken/insufficient and that the visible narration workflow still presented a 50,000-word planning ceiling.
 
-Observed accepted behavior:
+Therefore the prior broad `HUMAN-ACCEPTED` conclusion is revoked for production long-form use.
 
-- Media Studio reports `Signalproof-Kokoro NORMAL` for general narration.
-- `US Female - Bella` / `af_bella` is accepted by the governed provider path.
-- General narration generates successfully.
-- Generated audio is surfaced in the Media Studio audio workspace and is ready for playback.
-- The earlier `Voice is not governed by this provider configuration: af_bella` failure is no longer present.
-- The earlier `CONTROLLED mode requires explicit phonemes or a governed registry entry` failure is no longer applied to ordinary narration.
+R14 may still be cited for the narrower facts it actually proved:
 
-This record does **not** claim closure of unrelated Media Studio AI-writing functionality.
+- Media Studio could route ordinary short narration through `Signalproof-Kokoro NORMAL`.
+- `US Female - Bella` / `af_bella` was governed and usable on that short path.
+- the earlier Bella-not-governed failure was corrected;
+- arbitrary prose was no longer incorrectly forced through `CONTROLLED` mode;
+- the exact governed `Signalproof` pronunciation remained a separate CONTROLLED-mode concern.
 
-## Separate unresolved lane
+R14 did **not** establish audiobook/book-length completion, resume, final-source coverage, or removal of an arbitrary application word ceiling.
 
-The local AI Writing / Granite path remains unresolved in the observed UI state:
+## Root acceptance gap
 
-- Media Studio's AI Writing connection cannot currently reach a compatible local AI service.
-- This is a separate connectivity/runtime lane from the Kokoro/TTS acceptance.
-- Do not regress, reopen, or invalidate the accepted Kokoro work merely because the Granite/AI Writing lane remains open.
+The governed consumer milestone was built around the `generate_first` compatibility contract while the streaming/long-form `generate_all` path was explicitly outside that candidate's scope. Short UI testing therefore exercised a path that was not representative of production manuscript narration.
+
+The later audit also identified additional production-long-form constraints that short acceptance did not exercise:
+
+- a visible 50,000-word planning target in the narration UI;
+- one synchronous `/api/generate` request for the full narration;
+- a governed consumer subprocess timeout that was suitable for short calls but not a book-length job;
+- lack of a durable chunk manifest/resume/final-stitch acceptance gate.
 
 ## Reusable learning
 
-### 1. Controlled pronunciation and general narration are different operating modes
+### 1. Short-form TTS PASS must not be promoted to long-form acceptance
 
-Do not force a full narration UI into `CONTROLLED` mode.
+For narration products, acceptance must exercise the actual production topology. A paragraph-sized sample proves routing and basic acoustics; it does not prove manuscript completeness.
 
-Use:
+### 2. Long-form acceptance requires source-completeness evidence
 
-- `CONTROLLED` for exact, owner-approved pronunciation tests or requests that provide explicit governed phoneme evidence.
-- `NORMAL` for arbitrary sentences, paragraphs, and production narration.
+A production gate should prove at least:
 
-A valid integration may prove a protected pronunciation in `CONTROLLED`, then transition the production narration runtime to `NORMAL` before launching the human UI.
+`source identity -> deterministic chunk plan -> every chunk completed or verified-resumed -> final stitched output -> end-of-source human playback check`
 
-### 2. Provider voice governance must align with the product-visible voice contract
+A non-acoustic planning gate may use a source larger than the former UI threshold, while a smaller forced multi-chunk acoustic gate can prove real synthesis/stitch/resume behavior without wasting hours of compute.
 
-If the UI exposes a voice such as `af_bella`, the governed provider configuration used by that runtime must authorize the same voice identity and verified local asset. A UI/provider mismatch must fail closed and be corrected at the governance boundary rather than bypassed.
+### 3. CONTROLLED and NORMAL remain separate
 
-### 3. Do not weaken CONTROLLED mode to make prose work
+- `CONTROLLED`: exact governed pronunciation / explicit approved phoneme evidence.
+- `NORMAL`: arbitrary production narration.
 
-The correct recovery for arbitrary prose rejected by `CONTROLLED` is not to weaken the provider's pronunciation rules. Preserve the fail-closed pronunciation contract and route general prose through `NORMAL`.
+Do not weaken CONTROLLED rules to make prose work, and do not force all narration into CONTROLLED.
 
-### 4. Human acceptance must be separated by capability lane
+### 4. Product-visible voice governance must match provider governance
 
-A successful TTS lane does not imply that AI Writing, Granite, Ollama, CS1, transcription, or other Media Studio capabilities are working. Record PASS/FAIL at the narrow capability boundary so an unrelated failure cannot contaminate accepted work.
+If the UI offers `af_bella`, the runtime provider configuration must govern the same verified local voice asset. Fail closed on mismatch.
 
-### 5. Harness failures are not product failures
+### 5. Harness failures remain separate from product failures
 
-The R1-R13 recovery sequence surfaced multiple PowerShell/parser/staging defects before the final product behavior could be evaluated. Preserve these as harness failure classes and do not increment product/runtime failure conclusions when target actuation did not occur.
+PowerShell/parser/staging defects must not be counted as product runtime failures when target actuation never occurred.
 
-### 6. Prefer an easy-button runner that proves both machine modes before UI handoff
+## Current lifecycle state
 
-For this class of governed TTS integration, the strongest completion envelope is:
-
-`verify exact candidate -> verify provider/assets -> CONTROLLED protected-pronunciation machine gate -> stop controlled backend -> NORMAL arbitrary-prose machine gate -> launch UI on the already-proven NORMAL backend -> human playback acceptance`
-
-This materially reduces repeated human diagnostic cycles.
-
-## Lifecycle governance
-
-No `SKILL.md` is created or materially changed by this log.
-
-Reusable learning status:
+Reusable learning remains:
 
 `DISCOVERED -> CANDIDATE`
 
-Candidate theme:
-
-**Governed local TTS integration / dual-mode pronunciation and narration acceptance**
-
-Do not auto-promote this learning to Active. If it is later extracted into a routeable Skill or known-error rule, run normal Skill Architecture, tests, and lifecycle governance first.
+No `SKILL.md` is created or activated by this record. No canonical Build Ledger event number is reserved or claimed.
 
 ## Closure boundary
 
-Kokoro/TTS lane: **HUMAN-ACCEPTED**.  
-Granite/AI Writing lane: **OPEN / UNRESOLVED**.  
+Kokoro short-form R14 lane: **NARROW PASS / HISTORICAL EVIDENCE**.  
+Kokoro production long-form lane: **REOPENED / R14 ACCEPTANCE REVOKED**.  
+Granite/AI Writing lane: **OPEN / SEPARATE**.  
 Overall Media Studio program: **NOT CLOSED BY THIS RECORD**.
 
-No canonical Build Ledger sequence is reserved or claimed by this log.
+A later long-form recovery candidate must earn a new machine and human acceptance state; it must not inherit R14 production acceptance by implication.
