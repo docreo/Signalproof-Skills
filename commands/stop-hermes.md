@@ -1,6 +1,6 @@
 # `stop-hermes` - Active Operator Command V0.1.0
 
-**Status:** CANDIDATE  
+**Status:** ACTIVE AFTER GOVERNED MERGE  
 **Version:** 0.1.0  
 **Owner:** Doc Reo
 
@@ -109,4 +109,4 @@ Because `stop-hermes` disables discovered Hermes-specific services and scheduled
 
 ## Maturity
 
-This command remains **Candidate** until its skill, implementation, registry updates, suite checks, and governed merge are complete.
+This command becomes **Active public baseline** only after governed merge to `main`; branch/PR state remains candidate until that merge completes.
