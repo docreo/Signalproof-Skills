@@ -191,7 +191,7 @@ This skill intentionally disables Hermes-specific services/tasks it discovers. R
 - **Skill:** `signalproof-stop-hermes`
 - **Command:** `stop-hermes`
 - **Version:** `0.1.0`
-- **Maturity:** Candidate until governed merge
+- **Maturity:** Active public baseline after governed merge
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Hermes runtime shutdown and autostart containment
 - **Created by:** Doc Reo / Signalproof
