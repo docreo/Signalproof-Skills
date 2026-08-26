@@ -12,6 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
+| `stop-hermes` | 0.1.0 | Fully quiesce Hermes runtime/autostart surfaces while preserving Ollama, models, histories, profiles, configs, source, and evidence |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -42,6 +43,7 @@
 - `authorize` -> `commands/authorize.md`
 - `complete` -> `commands/complete.md`
 - `download` -> `commands/download.md`
+- `stop-hermes` -> `commands/stop-hermes.md`
 - `qc` -> `commands/qc.md`
 - `deploy` -> `commands/deploy.md`
 - `known-errors` -> `commands/known-errors.md`
@@ -81,6 +83,7 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
+- `/dsp stop-hermes` -> `stop-hermes`
 - `/dsp build-capsule` -> `build-capsule`
 - `/dsp capsule` -> `build-capsule`
 - `/dsp full-debug` -> `full-debug`
@@ -96,6 +99,7 @@ Examples retained for compatibility:
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
+- `stop Hermes` / `shut Hermes down completely` / `stop Hermes and keep it stopped` -> `stop-hermes`
 - `build capsule` / `capsule this build` -> `build-capsule`
 - `design` -> `design-git`
 - `human qc` -> `qc`
