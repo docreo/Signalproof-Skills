@@ -6,89 +6,150 @@
 
 ## Why This Exists
 
-A machine-wide AI shutdown on 2026-08-25/26 left Hermes unable to see local models because the serving runtime was stopped/disabled even though historical evidence indicates model assets were preserved. The incident exposed a process gap: shutdown and recovery procedures distinguished services, but did not yet require a complete model-fleet inventory + independent backup + tested restore contract.
+A machine-wide AI shutdown on 2026-08-25/26 left Hermes unable to see local models because the serving runtime was stopped/disabled even though the model assets remained present. The incident exposed a process gap: shutdown and recovery procedures distinguished services, but did not yet require a complete model-fleet inventory + independent backup + tested restore contract.
 
-## Verified Historical Stock
+## Authoritative Live Stock — 2026-08-26
 
-The following items have direct Signalproof evidence and should be treated as **historically verified, requiring live re-inventory now**:
+The current read-only stock-take establishes:
 
-- `qwen3.6:27b` — pulled and runtime-tested through Ollama; native context reported 262144; accepted Hermes runtime context 65536; 8/8 growing-history tool-call soak passed; assigned to six named Hermes profiles during the accepted recovery.
-- `qwen3:14b` — explicitly preserved during Qwen 3.6 migration/reconciliation; previously used by named Hermes bots.
-- `qwen3.5:9b` — explicitly preserved during Qwen 3.6 migration/reconciliation.
-- Granite family / Signalproof custom Granite assets — historical evidence includes `signalproof-granite:1.0`, custom Granite metadata, and backup/alias work. Exact current aliases/tags must be re-enumerated from the live store.
+- Ollama version `0.30.8`.
+- Active host: `127.0.0.1:11434`.
+- Active user/process `OLLAMA_MODELS`: `F:\Signalproof\Runtime\Models\Ollama`.
+- Ollama listener healthy on port 11434.
+- Active store contains 26 manifests, 40 blobs, and approximately 44.67 GB of blob storage.
 
-## Discussed / Expected but Not Yet Re-Proven in This Stock-Take
+### General reasoning / agent LLMs
 
-These must not be marked PRESENT merely from conversation history:
+- `qwen3.5:latest` — 6.6 GB. **PRIMARY PRACTICAL LOCAL HERMES MODEL / WORKING WELL.**
+- `qwen3.6:latest` — 22 GB. **PRESENT, BUT TOO HEAVY FOR PRACTICAL USE ON CURRENT WORKSTATION.** Retain as installed/archive-capable unless later hardware/runtime conditions improve.
+- `gemma4:latest` — 9.6 GB. **WORKING / APPROVED SECONDARY LOCAL GENERAL MODEL.**
+- `llama3.1:8b` — 4.9 GB. **AVAILABLE ROTATION / SECONDARY.**
+- `llama3.2:3b` — 2.0 GB. **AVAILABLE ROTATION / LIGHTWEIGHT SECONDARY.**
 
-- Gemma variants.
-- Kimi/K3-related local or remote-runtime assets.
-- other Qwen variants beyond the verified tags above.
-- DeepSeek, Mistral, GPT-OSS, Llama, embeddings, rerankers, vision, speech, and other model families unless live inventory proves them.
-- Kokoro and other speech/voice model assets should be inventoried as a separate model class because they are not Ollama LLM tags.
+### Qwen 3:14B historical note
 
-## Historical Model Store Topology Evidence
+`qwen3:14b` was historically preserved and used by Hermes, but it is not present in the current live `ollama list`. Operationally it also encountered a Hermes context-floor problem around the required 65536 context target. Treat it as **HISTORICAL / NOT CURRENT PRIMARY / REQUIRES EXPLICIT RE-INTRODUCTION IF EVER RETESTED** rather than a current fleet dependency.
 
-Prior Signalproof evidence recorded an Ollama environment with:
+### Granite family
 
-- user/process `OLLAMA_MODELS` pointing to a governed F-drive model store;
-- `C:\Users\...\.ollama\models` implemented as a junction into the F-drive topology;
-- another F-drive Ollama path implemented as a junction to the governed store;
-- at least one rollback directory on the same volume.
+- `signalproof-granite:latest` — 2.1 GB. **WORKING GREAT / CORE SIGNALPROOF LOCAL MODEL.**
+- `signalproof-granite:1.0` — same underlying payload identity as `signalproof-granite:latest`.
+- `granite4.1:3b` — 2.1 GB. **AVAILABLE.**
+- `granite-embedding:30m` — 62 MB. **EMBEDDING WORKLOAD CLASS; NOT A GENERAL LLM ROTATION MODEL.**
+- multiple `signalproof-granite-backup:*` tags resolve to the same payload digest as the Signalproof Granite model. These are aliases/tags, not independent 2.1 GB physical copies.
 
-Because historical work also used multiple model-store path conventions across recovery phases, the current team must resolve live authority before any backup or mutation. **Do not hard-code the current canonical store from this record.**
+### Kimi / K3
+
+No Kimi model is visible in the local Ollama inventory. Current owner policy is **do not deploy Kimi locally on this workstation**; if used later, treat it as remote/VPS infrastructure and separately govern provider, network, security, and cost controls.
+
+### Kokoro
+
+Kokoro is **not part of the general reasoning/agent model rotation**. It is a specialty TTS/voice model used by Signalproof voice/media workflows and must maintain its own runtime, voice assets, backup, restore, and synthesis acceptance path.
+
+## Model Store Topology
+
+Current live authority differs from older historical path conventions.
+
+### Current active authority
+
+`F:\Signalproof\Runtime\Models\Ollama`
+
+The current active store has 26 manifests / 40 blobs / approximately 44.67 GB.
+
+### Legacy / alternate topology still present
+
+- `F:\Signalproof\Models\Ollama` — separate directory containing 23 manifests / 32 blobs / approximately 44.63 GB.
+- `F:\Ollama\Models` — junction to `F:\Signalproof\Models\Ollama`.
+- `C:\Users\...\.ollama\models` — junction to `F:\Ollama\Models`.
+
+**Critical finding:** the currently active `OLLAMA_MODELS` path and the legacy/junction target are not the same directory and have different manifest/blob counts. Do not delete, merge, redirect, or deduplicate either store until file-level identity and dependency reconciliation is complete.
+
+## Operational Fleet Policy
+
+### Tier A — Current local production/practical set
+
+- Qwen 3.5 (`qwen3.5:latest`) — primary practical Hermes/general local model.
+- Signalproof Granite (`signalproof-granite:latest` / `:1.0`) — core Signalproof local reasoning model.
+- Gemma 4 (`gemma4:latest`) — working secondary/fallback general model.
+
+### Tier B — Local rotation / cost and workload balancing
+
+- Llama 3.1 8B.
+- Llama 3.2 3B.
+- Granite 4.1 3B.
+- other locally available general models proven later.
+
+Use these selectively by workload, latency, context, quality, and operating cost. Do not require every model to remain active or loaded simultaneously.
+
+### Tier C — Present but not practical/current
+
+- Qwen 3.6 — installed and preserved, but too heavy on current workstation for routine use.
+- Qwen 3:14B — historical Hermes model; not currently installed/visible and previously conflicted with the Hermes context-floor requirement.
+
+### Tier D — Remote / provider rotation
+
+Cloud/API models and future VPS-hosted models may be rotated for capability or cost. Provider rotation is a separate policy from local model preservation. Do not treat provider availability as a substitute for backing up locally customized model assets.
+
+### Specialty workload classes
+
+- `granite-embedding:30m` — embeddings/retrieval.
+- Kokoro — TTS/voice synthesis.
+- future STT, vision, reranking, and media models belong to their own workload classes.
+
+Specialty models are not interchangeable with Hermes/general reasoning models and require function-specific acceptance tests.
 
 ## Team Mission
 
-Produce a recoverable, auditable local AI model fleet in which every important model has four separately proven states:
+Produce a recoverable, auditable model fleet in which every important model has separately proven:
 
 1. **Storage** — required bytes and manifests exist.
-2. **Runtime** — the correct local model server can expose the model.
-3. **Binding** — Hermes/Signalproof components point to the intended endpoint/tag/context.
-4. **Recovery** — an independent backup can reconstruct the model after loss or corruption.
+2. **Runtime** — the correct serving engine exposes the model.
+3. **Binding** — the intended application points to the correct endpoint/tag/context.
+4. **Workload fit** — the model is classified for the function it actually serves.
+5. **Recovery** — an independent backup can reconstruct the model/runtime binding.
 
 ## Team Roles
 
 ### 1. Inventory Lead
 
-Owns read-only discovery.
+Own read-only discovery.
 
 Deliverables:
 - runtime versions and endpoints;
 - active environment variables;
 - canonical store/junction resolution;
-- `ollama list` / API inventory;
-- manifest inventory;
-- blob/file inventory and byte counts;
-- non-Ollama model caches separated by class;
+- runtime and API model inventory;
+- manifest and blob inventory;
+- disk usage;
+- non-Ollama model caches separated by workload class;
 - machine-readable inventory file.
-
-No deletion, pulls, aliases, or service reconfiguration during this phase.
 
 ### 2. Provenance & Model Registry Lead
 
-For each model, reconcile:
+For each model reconcile:
 - exact tag/name;
+- payload digest;
+- aliases;
 - provider/source;
-- family/architecture;
-- size/parameters;
-- quantization;
+- architecture/family;
+- workload class;
+- parameters/quantization;
 - native and accepted context;
 - license/provenance;
-- aliases;
 - custom Modelfile/config dependencies;
-- intended Signalproof/Hermes role.
+- intended Signalproof/Hermes role;
+- practical status on current hardware.
 
-Classify every record as `VERIFIED_PRESENT`, `HISTORICALLY_VERIFIED`, `EXPECTED_UNVERIFIED`, `ORPHAN_UNKNOWN`, or `RETIRED`.
+Classify each record as `PRIMARY`, `ROTATION`, `SPECIALTY`, `PRESENT_TOO_HEAVY`, `HISTORICAL`, `REMOTE_ONLY`, `ORPHAN_UNKNOWN`, or `RETIRED` as applicable.
 
 ### 3. Backup Lead
 
-Design two backup layers:
+Design two backup layers.
 
 **Layer A — Fast local recovery**
 - store snapshot / manifests / configuration / aliases;
-- may live on local independent volume if useful;
-- optimized for fast repair, not disaster recovery.
+- may live on an independent local volume;
+- optimized for fast repair.
 
 **Layer B — Independent disaster recovery**
 - separate physical device or otherwise failure-isolated storage;
@@ -96,138 +157,145 @@ Design two backup layers:
 - SHA-256 manifest;
 - inventory index;
 - runtime/version/config snapshot;
-- Hermes/profile binding snapshot with secrets excluded or separately protected.
+- application/profile binding snapshot with secrets excluded or separately protected.
 
 A same-physical-disk rollback folder does not satisfy Layer B.
 
-### 4. Restore-Test Lead
+### 4. Store-Reconciliation Lead
 
-Test recovery without risking the production store.
+New required role because two materially different Ollama store trees exist.
 
-Required gates:
-- restore manifests/model payload into bounded alternate location/runtime;
-- model appears under expected tag;
-- direct inference succeeds;
-- agent/tool-call test succeeds for agent models where applicable;
-- Hermes can see the model through the intended endpoint;
-- original production store remains unchanged.
+Before any cleanup:
+- compare manifests between `Runtime\Models\Ollama` and legacy `Models\Ollama`;
+- compare blob SHA identities;
+- identify which four additional manifests and eight additional blobs exist only in the active store;
+- prove whether any legacy-only assets exist;
+- identify aliases that share blobs;
+- classify each file/tree as ACTIVE, DUPLICATE-BY-CONTENT, LEGACY-REQUIRED, ORPHAN-UNKNOWN, or SAFE-TO-ARCHIVE.
 
-Backup status remains `UNVERIFIED` until this passes.
+No destructive deduplication until this reconciliation is complete.
 
-### 5. Hermes / Application Binding Lead
+### 5. Restore-Test Lead
 
-Create a binding matrix for:
-- default Hermes profile;
-- admin;
-- builder;
-- designer;
-- governance;
-- multitasker;
-- orchestrator;
-- any future profiles.
+Use workload-specific restore acceptance:
+- general/agent LLM: direct inference plus context/tool behavior where required;
+- embedding model: embedding/retrieval acceptance;
+- TTS model such as Kokoro: synthesize a known phrase through its intended runtime/app and verify voice assets;
+- other specialty model: function-specific test.
 
-For each: provider, endpoint, model tag, context, output policy, fallback/return behavior, and intended role.
+Backup remains `UNVERIFIED` until restore acceptance passes.
 
-A model-storage backup is incomplete if application bindings needed to use it are not recoverable.
+### 6. Hermes / Application Binding Lead
 
-### 6. Security / Governor Lead
+For Hermes roles record provider, endpoint, model tag, context, output policy, fallback/return behavior, and role.
+
+Current practical Hermes target should favor Qwen 3.5 where its live tests remain successful. Granite and Gemma 4 are local complementary/fallback models rather than forcing one universal model across every role.
+
+For non-Hermes specialty consumers such as Kokoro voice workflows, reconcile their own runtime/model/voice configuration separately.
+
+### 7. Cost / Rotation Lead
+
+Manage model/provider rotation by:
+- local compute cost;
+- cloud/API cost;
+- latency;
+- context requirement;
+- quality;
+- workload fit;
+- privacy/data sensitivity;
+- current hardware pressure.
+
+Do not keep heavy models active merely because they are installed. Preserve availability while routing work to the cheapest adequate model that satisfies the required capability and governance boundary.
+
+### 8. Security / Governor Lead
 
 Keep recovery separate from indiscriminate activation.
 
 Rules:
 - do not re-enable every AI runtime just to prove one model exists;
 - preserve owner-controlled startup policy;
-- differentiate direct Ollama `11434` from governed/compatibility paths when those are in use;
+- distinguish direct Ollama `11434` from governed/compatibility paths when in use;
 - preserve Governor authority where required by production architecture;
-- secrets and credentials are never placed in public model inventories.
+- never place secrets/credentials in public inventories;
+- remote/VPS models such as a future Kimi deployment require separate network and provider governance.
 
-### 7. Verification / Closeout Lead
+### 9. Verification / Closeout Lead
 
 Before closeout:
 - compare runtime inventory to disk inventory;
-- compare both to backup inventory;
-- compare model tags to Hermes bindings;
-- hash/verify backup manifests;
-- record missing/unknown assets explicitly;
-- run native restore acceptance;
+- compare both stores to backup inventory;
+- compare model tags to application bindings;
+- hash/verify backups;
+- record UNKNOWNs explicitly;
+- run restore acceptance;
 - route reusable lessons through `log-skill`;
-- do not claim a canonical Build Ledger number unless verified chain-safe append is actually performed.
+- do not claim a canonical Build Ledger number unless verified chain-safe append is performed.
 
 ## Execution Phases
 
 ### Phase 0 — Preserve Current State
 
-Do not uninstall, pull, delete, copy-over, retag, or migrate models. Preserve the current stopped/partially restored state long enough to capture evidence.
+No model-store deletion, merge, retag, migration, or cleanup.
 
-### Phase 1 — Live Read-Only Stock-Take
+### Phase 1 — Live Stock Baseline
 
-Capture:
-- Windows environment variables for model runtimes;
-- listening model-service ports and owners;
-- Ollama executable/version;
-- `ollama list` and `/api/tags`;
-- canonical store and reparse topology;
-- manifests and blob usage;
-- likely Hugging Face / application-specific caches;
-- Hermes model/profile configuration.
+**PASS for current Ollama inventory.** Current baseline captured 2026-08-26.
 
-### Phase 2 — Reconciliation
+### Phase 2 — Store Reconciliation
 
-Build one fleet table with columns:
+Highest immediate technical priority: reconcile active `Runtime\Models\Ollama` against legacy/junction-backed `Models\Ollama` without mutation.
 
-`Model | Family | Runtime | Tag/Alias | Store | Size | Quant | Native Context | Runtime Context | Hermes Role | Present | Visible | Backed Up | Restore Tested | Provenance | Status`
+### Phase 3 — Binding Matrix
 
-### Phase 3 — Backup
+Prove Hermes configuration against the practical model policy:
+- primary: Qwen 3.5 where accepted;
+- complementary/fallback: Granite and Gemma 4;
+- do not bind routine Hermes work to Qwen 3.6 on current hardware;
+- do not assume Qwen 3:14B is available.
 
-Create Layer A + Layer B backups with checksums and immutable dated inventory manifests.
+### Phase 4 — Backup
 
-### Phase 4 — Restore Acceptance
+Create Layer A + Layer B backups with immutable inventory and checksums.
 
-Restore selected critical models first:
+Backup priority:
+1. Signalproof custom Granite payload/configuration.
+2. Qwen 3.5 practical Hermes model.
+3. Gemma 4 working secondary.
+4. specialty assets that cannot be trivially reproduced, including Kokoro voice/model assets.
+5. rotation models.
+6. Qwen 3.6 archive only if storage budget supports retaining a full independent copy; otherwise preserve exact reproducible pull/provenance metadata plus any non-reproducible local customization.
 
-Priority A:
-- current Hermes primary Qwen model;
-- Signalproof Granite model(s);
-- one known fallback model.
+### Phase 5 — Restore Acceptance
 
-Priority B:
-- Gemma and other useful secondary LLMs proven by live inventory.
+Restore and acceptance-test each workload class separately.
 
-Priority C:
-- specialty models: coding, vision, embeddings, speech, reranking, experimental families.
+### Phase 6 — Shutdown / Restart Integration
 
-### Phase 5 — Hermes Binding Acceptance
-
-For each active Hermes role, prove configured model availability and a simple end-to-end inference. For agent/tool models, include a bounded tool-call acceptance test.
-
-### Phase 6 — Shutdown/Restart Integration
-
-Update future AI shutdown procedures so every intentional machine-wide AI shutdown records:
-
-- pre-shutdown model fleet inventory hash;
-- which services/startup entries are being disabled;
-- which model stores are untouched;
-- restart order;
-- application-binding verification steps;
+Future AI-off procedures must record:
+- pre-shutdown model inventory hash;
+- current model-store authority;
+- services/startup entries disabled;
+- stores explicitly untouched;
+- intended restart order;
+- Hermes/application binding verification;
+- workload-specific specialty runtime requirements;
 - emergency rollback.
 
 Recommended recovery order:
 
-`storage -> runtime -> model visibility -> application binding -> end-to-end inference`
+`storage -> runtime -> model visibility -> application binding -> function-specific end-to-end acceptance`
 
 ## Skill Extraction
 
-**New candidate:** `signalproof-model-fleet`  
+**Candidate:** `signalproof-model-fleet`  
 **Status:** CANDIDATE / NOT ACTIVE  
-**Purpose:** local AI model inventory, backup, restore, and runtime/application reconciliation.
-
-This candidate should coordinate with, not replace:
-- Known Errors;
-- Failure Intelligence;
-- Debug/Recovery;
-- Closeout/Learn;
-- Security/Governor controls.
+**Purpose:** model inventory, workload classification, backup, restore, runtime/application reconciliation, and cost-aware rotation.
 
 ## Immediate Next Action
 
-Run one current-machine read-only inventory before making any more model/runtime changes. That output becomes the authoritative 2026-08-26 stock baseline and determines which historically known models are actually still present.
+Perform a **read-only two-store reconciliation** between:
+
+- `F:\Signalproof\Runtime\Models\Ollama`
+- `F:\Signalproof\Models\Ollama`
+
+The active store has 26 manifests / 40 blobs while the legacy tree has 23 manifests / 32 blobs. Determine the exact delta before any cleanup, consolidation, or backup implementation.
