@@ -1,6 +1,6 @@
 ---
 name: signalproof-model-fleet
-description: Inventory, preserve, back up, restore, and verify local AI model fleets and their runtime bindings without confusing model bytes, manifests, aliases, profiles, or active services.
+description: Inventory, preserve, back up, restore, and verify local AI model fleets and their runtime bindings without confusing model bytes, manifests, aliases, workload classes, profiles, or active services.
 ---
 
 # Signalproof Model Fleet
@@ -11,9 +11,9 @@ description: Inventory, preserve, back up, restore, and verify local AI model fl
 
 ## Purpose
 
-`signalproof-model-fleet` governs local-model inventory, backup, restore, reconciliation, and runtime visibility across Signalproof systems.
+`signalproof-model-fleet` governs local-model inventory, backup, restore, reconciliation, workload classification, and runtime visibility across Signalproof systems.
 
-> **A model that exists on disk, a model that is registered in a runtime, and a model that an agent can see are three different states. Prove each separately.**
+> **A model that exists on disk, a model that is registered in a runtime, and a model an application can use are different states. Prove each separately, and do not flatten different workload classes into one rotation pool.**
 
 This skill is intended for Ollama and compatible local runtimes first, while remaining extensible to GGUF stores, Hugging Face caches, speech models, embedding models, and other governed local AI assets.
 
@@ -25,10 +25,27 @@ Always distinguish:
 2. **Runtime manifests/metadata** — tags, manifests, Modelfiles, aliases, quantization, context metadata, provenance.
 3. **Runtime service state** — whether the serving engine is installed, enabled, listening, and healthy.
 4. **Agent/application binding** — the endpoint, model tag, context, profile, and policy an application such as Hermes is configured to use.
-5. **Backup state** — whether all assets required for recovery exist on independent storage and pass integrity verification.
-6. **Restore state** — whether a fresh or intentionally cleared runtime can reconstruct the model and make it visible to the intended application.
+5. **Workload class** — reasoning/agent, coding, vision, embedding/reranking, speech/TTS, STT, or other specialty function.
+6. **Backup state** — whether all assets required for recovery exist on independent storage and pass integrity verification.
+7. **Restore state** — whether a fresh or intentionally cleared runtime can reconstruct the model and make it visible to the intended application.
 
 Do not infer one state from another.
+
+## Workload-Class Doctrine
+
+A fleet is not one interchangeable model pool. Classify models by intended function before rotation, backup priority, performance comparison, or application binding.
+
+Examples:
+
+- **Reasoning / agent LLMs** — general language reasoning, tool use, orchestration, Hermes roles.
+- **Coding LLMs** — code generation, repair, repository work, build assistance.
+- **Vision models** — image understanding or multimodal work.
+- **Embedding / reranking models** — retrieval and search infrastructure.
+- **Speech / TTS models** — voice synthesis and media pipelines.
+- **Speech-to-text models** — transcription and audio understanding.
+- **Specialty models** — narrowly scoped functions not meaningfully comparable to general LLMs.
+
+Do not rotate a speech/TTS model such as Kokoro as though it were a substitute for a Hermes reasoning model. Preserve its own runtime, voices, dependencies, acceptance tests, and recovery path.
 
 ## Contract
 
@@ -37,17 +54,18 @@ Do not infer one state from another.
 3. Resolve junctions/symlinks/reparse points before identifying the canonical store.
 4. Enumerate runtime-reported models and independently enumerate manifests/model files where possible.
 5. Record exact model tag, family, architecture, parameter scale, quantization, context, size, source, license/provenance when available.
-6. Record aliases separately from underlying model payload identity.
-7. Record application/profile bindings separately from model inventory.
-8. Back up manifests/configuration and model bytes; neither alone is sufficient for dependable offline recovery.
-9. Use SHA-256 or stronger content verification for backup manifests and critical configuration snapshots.
-10. A same-volume copy or rollback directory is not a disaster backup.
-11. Preserve at least one recovery copy on independent storage before destructive cleanup, migration, or mass runtime disablement.
-12. Test restore into a bounded target before declaring a backup valid.
-13. Never activate services merely to prove bytes exist if an offline inventory can answer the question.
-14. Never delete an apparently duplicate model until alias/blob deduplication and dependency relationships are proven.
-15. Preserve credentials and secrets outside public inventory records.
-16. Public Signalproof-Skills may contain procedures and public-safe lessons; machine-specific paths, hashes, private topology, and recovery evidence belong in private evidence/Build Ledger unless explicitly approved.
+6. Record workload class and intended role separately from model family.
+7. Record aliases separately from underlying model payload identity.
+8. Record application/profile bindings separately from model inventory.
+9. Back up manifests/configuration and model bytes; neither alone is sufficient for dependable offline recovery.
+10. Use SHA-256 or stronger content verification for backup manifests and critical configuration snapshots.
+11. A same-volume copy or rollback directory is not a disaster backup.
+12. Preserve at least one recovery copy on independent storage before destructive cleanup, migration, or mass runtime disablement.
+13. Test restore into a bounded target before declaring a backup valid.
+14. Never activate services merely to prove bytes exist if an offline inventory can answer the question.
+15. Never delete an apparently duplicate model until alias/blob deduplication and dependency relationships are proven.
+16. Preserve credentials and secrets outside public inventory records.
+17. Public Signalproof-Skills may contain procedures and public-safe lessons; machine-specific paths, hashes, private topology, and recovery evidence belong in private evidence/Build Ledger unless explicitly approved.
 
 ## Inventory Record
 
@@ -57,6 +75,8 @@ For each model or model family, record as applicable:
 - aliases/tags;
 - provider/source registry;
 - family/architecture;
+- workload class;
+- intended operational role;
 - parameter scale;
 - quantization/precision;
 - declared native context;
@@ -86,6 +106,7 @@ Capture:
 - canonical model-store resolution;
 - manifests and model payload inventory;
 - disk usage;
+- workload class and intended role;
 - application bindings such as Hermes profile model and endpoint configuration.
 
 Do not restart services during the initial inventory unless explicitly required and authorized.
@@ -109,6 +130,7 @@ A governed backup should contain or reference:
 - exported/custom Modelfiles or model creation definitions;
 - runtime version and environment configuration;
 - application/profile model bindings;
+- specialty-model dependencies and assets where applicable, including TTS voices/configuration;
 - inventory JSON/CSV or equivalent machine-readable index;
 - SHA-256 manifest;
 - backup media identity and date;
@@ -122,18 +144,19 @@ Verify file counts, sizes, manifests, hashes, and required metadata. Where runti
 
 ### 5. Test Restore
 
-Restore into a bounded test target or alternate store when practical. Prove:
+Restore into a bounded test target or alternate store when practical. Use class-appropriate acceptance:
 
-- manifests resolve;
-- runtime lists the expected model tags;
-- at least one direct inference succeeds;
-- required tool-call/context behavior succeeds for agent models where relevant;
-- intended application can see the restored model through the correct endpoint;
-- original production store remains untouched during the test.
+- reasoning/agent model: direct inference plus required context/tool behavior;
+- coding model: bounded code task where relevant;
+- embedding/reranking model: retrieval/ranking acceptance;
+- TTS model: synthesize a known phrase through the intended application/runtime and verify required voice assets;
+- other specialty model: function-specific acceptance.
+
+Also prove the intended application can see/use the restored model through the correct endpoint and the original production store remains untouched during the test.
 
 ### 6. Reconcile Applications
 
-For Hermes and similar consumers, independently prove:
+For Hermes and similar reasoning/agent consumers, independently prove:
 
 - endpoint is correct;
 - runtime listener exists;
@@ -141,6 +164,8 @@ For Hermes and similar consumers, independently prove:
 - context/limits are intentional;
 - named profiles and default profiles point to intended providers;
 - returning from a local model to cloud/default providers still works where required.
+
+For non-Hermes specialty consumers such as voice/media applications, reconcile their own runtime, model path, voice/config assets, and function-specific acceptance separately.
 
 ### 7. Log Learning
 
@@ -157,11 +182,12 @@ The restart contract should distinguish:
 - service removed;
 - runtime running but no models visible;
 - models present but application endpoint unavailable;
-- application running with stale/missing model binding.
+- application running with stale/missing model binding;
+- specialty model runtime intentionally independent from the LLM runtime.
 
 The recovery order should generally be:
 
-`prove storage -> prove runtime -> prove model visibility -> prove application binding -> prove end-to-end inference`
+`prove storage -> prove runtime -> prove model visibility -> prove application binding -> prove function-specific end-to-end acceptance`
 
 Do not indiscriminately enable every AI runtime to repair one missing dependency.
 
@@ -169,7 +195,9 @@ Do not indiscriminately enable every AI runtime to repair one missing dependency
 
 Signalproof evidence from August 2026 demonstrates that stopping the AI runtime can make Hermes appear to have "lost" models even when model assets remain preserved. It also demonstrates that historical model-store topology can include multiple paths and junctions, making live authority reconciliation mandatory before backup or restore.
 
-This candidate therefore formalizes a missing control: **model-fleet preservation must be part of shutdown, migration, cleanup, and local-agent recovery workflows.**
+The same stock-take also reinforces that specialty models such as Kokoro have different operational roles and must not be flattened into the general Hermes/LLM rotation.
+
+This candidate therefore formalizes two missing controls: **model-fleet preservation must be part of shutdown, migration, cleanup, and local-agent recovery workflows; and model function must govern rotation, backup, and acceptance.**
 
 ## STOP Conditions
 
@@ -180,20 +208,21 @@ STOP when:
 - a backup is being called complete without integrity evidence;
 - a same-device rollback copy is being represented as disaster recovery;
 - an alias is being mistaken for independent model bytes;
+- models from different workload classes are being treated as interchangeable without evidence;
 - application binding is being changed before runtime/model availability is proven;
 - private paths/hashes/secrets would be published publicly;
 - a candidate skill would be promoted without lifecycle approval.
 
 ## Completion Criteria
 
-A model-fleet operation is complete only when current inventory is machine-readable, storage/runtime/application states are reconciled, backup status is explicit, integrity verification is recorded, restore readiness is tested or explicitly UNKNOWN, and any operational changes have bounded rollback.
+A model-fleet operation is complete only when current inventory is machine-readable, workload classes are explicit, storage/runtime/application states are reconciled, backup status is explicit, integrity verification is recorded, restore readiness is tested or explicitly UNKNOWN, and any operational changes have bounded rollback.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-model-fleet`
-- **Version:** `0.1.0-candidate`
+- **Version:** `0.2.0-candidate`
 - **Maturity:** Candidate
 - **Parent:** `signalproof` 0.1.1+
-- **Domain:** Local AI model inventory, backup, restore, and runtime reconciliation
+- **Domain:** Local AI model inventory, workload classification, backup, restore, and runtime reconciliation
 - **Created by:** Doc Reo / Signalproof
