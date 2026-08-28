@@ -81,7 +81,7 @@ The moderate Repetition score reflects evidence from a small player family rathe
 
 Initial Candidate size was **13,792 UTF-8 bytes**, which was below the hard 15,000-byte ceiling but inside the registry's 12,000–14,999 conciseness/decomposition-review band.
 
-A conciseness pass was therefore performed before log completion. The final byte size must be verified from the branch tree before promotion.
+A conciseness pass was performed before log completion. The final Candidate is **10,635 UTF-8 bytes**, verified from the branch tree, placing it below both the 12,000-byte review band and the 15,000-byte hard ceiling.
 
 Responsibilities remain cohesive around one routeable job:
 
