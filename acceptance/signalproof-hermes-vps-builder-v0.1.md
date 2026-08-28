@@ -84,6 +84,19 @@ The candidate must support creation of a sanitized reconstruction tree before th
 
 The reconstruction tree must contain version/commit authority, service units/drop-ins, sanitized configuration examples, backup/restore scripts, firewall/network expectations, known errors, and evidence indexes. It must exclude live credentials, SSH private keys, raw `.env` values, OAuth tokens, pairing secrets, and unnecessary session/customer data.
 
+## Skill Architecture Check
+
+- exact UTF-8 bytes of Candidate `SKILL.md`: **14,125**;
+- Signalproof Skill Budget state: **12,000–14,999 byte decomposition/conciseness review band**;
+- hard 15,000-byte ceiling: **PASS**;
+- responsibility cohesion: **PASS WITH HOLD ON FURTHER EXPANSION** — one domain specialist owns the end-to-end Hermes VPS build/recovery operator contract, while generic Build, Build Spawn Debug, Security, Recovery, Document, Teach, and Build Capsule doctrine remains inherited rather than duplicated;
+- decomposition decision: **retain one Candidate for V0.1**, because the gates form one install-to-recovery operating contract, but move future detailed vendor/version Known Errors, teaching prose, scripts, service units, and recovery procedures into routeable docs/registries/runtime-tree artifacts instead of materially expanding `SKILL.md`;
+- duplicate doctrine removed/avoided: generic build/debug/security/recovery internals remain owned by their Active Skills;
+- routing effect: Candidate entry only in `CAPABILITY-REGISTRY.yaml`; no Active Router/Skill registry promotion;
+- supersession/rollback: Candidate branch/PR can be closed without changing public `main` Active capability.
+
+No additional material expansion of this Candidate should occur without conciseness/decomposition review. Promotion review should specifically determine whether the long build-sequence section remains one cohesive specialist or should be split into a smaller principal Hermes VPS Skill plus a recovery/teaching reference set.
+
 ## Promotion Gates Still Open
 
 This candidate is **not ready for Active promotion** until:
@@ -93,7 +106,7 @@ This candidate is **not ready for Active promotion** until:
 3. backup reconstruction is exercised rather than merely documented;
 4. reboot persistence is verified end-to-end for gateway and dashboard;
 5. the private SSH-tunnel browser gate and Kanban persistence test complete;
-6. the candidate receives normal Signalproof review, skill-budget check, registry/router integration review, and owner approval.
+6. the candidate receives normal Signalproof review, registry/router integration review, decomposition/conciseness review, and owner approval.
 
 ## Current Disposition
 
