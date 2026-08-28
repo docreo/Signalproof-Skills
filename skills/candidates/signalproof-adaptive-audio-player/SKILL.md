@@ -1,6 +1,6 @@
 ---
 name: signalproof-adaptive-audio-player
-description: Build and adapt lightweight browser-native audio players for music, audiobooks, spoken-word series, and other multi-track collections using external media URLs, artwork-driven presentation, responsive custom controls, dynamic playlist wraparound, and cross-browser playback safeguards.
+description: Build and adapt lightweight browser-native multi-track audio players using external media URLs, artwork-driven presentation, responsive custom controls, dynamic playlist wraparound, and cross-browser playback safeguards.
 ---
 
 # Signalproof Adaptive Audio Player
@@ -8,25 +8,17 @@ description: Build and adapt lightweight browser-native audio players for music,
 **Status:** CANDIDATE / NOT ACTIVE  
 **Version:** 0.1.0  
 **Parent:** `signalproof` 0.1.1+  
-**Primary collaborators:** `signalproof-design`, `signalproof-ui-polish`, `signalproof-accessibility`, `signalproof-build`, `signalproof-verify`
+**Collaborators:** `signalproof-design`, `signalproof-ui-polish`, `signalproof-accessibility`, `signalproof-build`, `signalproof-verify`
 
 ## Purpose
 
-`signalproof-adaptive-audio-player` captures the reusable method learned while building browser-native audio experiences from one player family for different content classes.
+Build reusable HTML/CSS/JavaScript audio players for music, audiobooks, spoken-word series, podcasts, course audio, and similar collections without overfitting the shell to one media type.
 
-> **The primary content image dictates its own presentation. The player shell adapts to the image; the player must not force every image into one cover shape.**
+> **The primary content image dictates its presentation. The player shell adapts to the image; the player must not force every image into one cover shape.**
 
-A square album image should remain square. A portrait/book cover should remain portrait. Another source aspect ratio should remain intact unless the product contract explicitly requires a crop.
+Square artwork stays square. Portrait/book artwork stays portrait. Other source ratios remain intact unless the product contract explicitly requires a crop.
 
-Use this Skill for lightweight HTML/CSS/JavaScript players that stream audio from externally hosted URLs instead of embedding audio bytes in the page.
-
-## Supported Content Classes
-
-Applicable examples include music playlists/albums, audiobooks, spoken-word series, podcasts, course audio, guided lessons, and branded multi-track collections.
-
-Do not assume that all content classes use square artwork.
-
-## Core Build Pipeline
+## Core Pipeline
 
 ```text
 CONTENT CONTRACT
@@ -37,29 +29,25 @@ CONTENT CONTRACT
   -> TRANSPORT + SEEK
   -> PLAYLIST STATE
   -> DYNAMIC WRAPAROUND
-  -> RESPONSIVE/CROSS-BROWSER HARDENING
-  -> FUNCTIONAL VERIFICATION
-  -> NARROW-VIEWPORT VISUAL VERIFICATION
+  -> CROSS-BROWSER HARDENING
+  -> FUNCTIONAL + NARROW-VIEWPORT VERIFY
 ```
 
-## 1. Content Contract First
+## 1. Establish the Content Contract
 
-Before styling, identify:
+Identify before styling:
 
-- collection title and byline;
-- content class;
+- collection title/byline and content class;
 - primary content artwork;
 - optional separate brand/profile image;
 - ordered track/chapter list;
-- whether continuous autoplay-next is required;
-- whether saved position/progress is required;
-- supported browsers and minimum viewport targets.
+- autoplay-next requirement;
+- saved-position requirement;
+- target browsers and minimum viewport.
 
-Do not infer image shape from content type. Preserve the supplied image itself unless a crop is explicitly required.
+Do not infer image shape from content type.
 
 ## 2. Image-Driven Presentation
-
-### Primary content artwork
 
 Default main-artwork behavior:
 
@@ -70,56 +58,34 @@ max-width: 100%;
 object-fit: contain;
 ```
 
-Use container max-height/max-width constraints as needed, but preserve source aspect ratio.
+Constrain the container as needed, but preserve source ratio. Do not default main artwork to fixed `aspect-ratio: 1 / 1` or `object-fit: cover`; portrait/book images can be cropped or misrepresented.
 
-Do **not** set a fixed `aspect-ratio` such as `1 / 1` on main artwork unless a square crop is explicitly required.
+A brand/profile image is a separate semantic role. An avatar may intentionally use a circular/square frame with `object-fit: cover` while primary content artwork preserves native ratio.
 
-Do **not** default to `object-fit: cover` for book/portrait artwork because it can crop the source.
-
-### Separate brand/profile image
-
-A profile or brand portrait is a different semantic role from primary content artwork. It may intentionally use a circular/square frame and `object-fit: cover` when the design calls for an avatar.
-
-Keep the roles separate:
-
-```text
-brand/profile image -> intentional avatar crop may be valid
-content artwork      -> preserve native source ratio by default
-```
-
-### Acceptance invariant
-
-Changing a square content image to a portrait/book image should not require rewriting player layout logic. Supplying the new image should normally be enough unless the product contract changes.
+**Invariant:** changing square content art to portrait/book art should normally require only the new image, not player-layout logic changes.
 
 ## 3. Keep Audio External
 
-Prefer direct, publicly reachable media URLs and keep audio bytes outside the HTML/CSS/JavaScript artifact.
+Prefer direct, authorized, publicly reachable media URLs rather than embedding audio bytes in HTML. This reduces initial payload, supports CDN/browser caching, simplifies replacement/reordering, and lets one shell serve multiple collections.
 
-Benefits include smaller initial page payload, faster revision/deployment, CDN/browser caching, easy track replacement/reordering, and reuse of one player shell across collections.
-
-Use one browser-native `<audio>` element and normally start with:
+Use one browser-native audio element, normally:
 
 ```html
 <audio preload="metadata"></audio>
 ```
 
-`preload="metadata"` keeps initial loading bounded while still allowing duration metadata when the host/browser provides it.
+Test the host for actual playback and seeking on target browsers.
 
-Test the media host for actual playback and seeking on target browsers.
+## 4. Configuration-Driven Inventory
 
-## 4. Configuration-Driven Track Inventory
-
-Keep collection-specific values in a bounded config object and track array rather than scattering URLs/titles through event handlers.
-
-Conceptual contract:
+Keep collection-specific values together:
 
 ```text
 CONFIG
-  title
-  byline
+  title / byline
   brand/profile image
   content artwork
-  maximum track count
+  max tracks
   autoplay-next default
   remember-progress default
 
@@ -129,213 +95,165 @@ TRACKS[]
   optional duration label
 ```
 
-Adding tracks should normally require only appending items to `TRACKS[]`.
-
-Never hardcode logic to a named final track such as "Track 8".
+Adding a track should normally mean appending data, not rewriting event handlers. Never bind end behavior to a named final track such as "Track 8."
 
 ## 5. One Media Element, Explicit State
 
-Prefer one persistent `<audio>` element whose `src` changes with track selection.
+Prefer one persistent `<audio>` element whose `src` changes with selection. Track at minimum:
 
-Track state should include at minimum current index, current time, playback rate, volume, autoplay-next state, and pending resume position when restoring progress.
+- current index/time;
+- playback rate;
+- volume;
+- autoplay-next state;
+- pending resume time.
 
-Keep rendered UI and audio state synchronized on each track change.
+Keep rendered selection, controls, and audio state synchronized when tracks change.
 
-## 6. Dynamic Continuous Wraparound
+## 6. Dynamic Circular Traversal
 
-When continuous autoplay-next is enabled, the playlist is circular.
-
-Use playlist length, not a fixed final index:
+When continuous autoplay-next is enabled, compute from current playlist length:
 
 ```js
 const nextIndex = (currentIndex + 1) % tracks.length;
-```
-
-This guarantees:
-
-```text
-actual current last track -> first track
-```
-
-for 8, 9, 20, 50, or any later valid track count.
-
-Manual Next may use the same circular behavior when required.
-
-Previous can wrap dynamically with:
-
-```js
 const previousIndex = (currentIndex - 1 + tracks.length) % tracks.length;
 ```
 
-If Previous should restart the current song after several seconds, preserve that rule before wrapping.
+This makes **actual last track -> first track** correct regardless of later playlist growth. Manual Next/Previous may use the same circular behavior when required. If Previous should restart the current track after several seconds, apply that rule before wrapping.
 
-## 7. Browser Autoplay Reality
+When autoplay-next is disabled, track completion must not automatically advance.
 
-"Autoplay next" is not the same as "start audible audio automatically when the page opens."
+## 7. Browser Autoplay Policy
 
-Modern browsers may block programmatic audible playback until the user interacts with the page. Treat this as an environment constraint rather than a playlist defect.
+Autoplay-next is not the same as audible page-load autoplay. Browsers can block programmatic audible playback until user interaction.
 
-Always handle the Promise returned by `audio.play()`:
+Always handle `audio.play()` rejection:
 
 ```js
 const result = audio.play();
 if (result && typeof result.catch === "function") {
   result.catch(() => {
-    // Tell the user to press Play.
+    // Present a bounded "Press Play" fallback.
   });
 }
 ```
 
-Do not promise page-load audible autoplay across Safari, Chrome, Firefox, or mobile browsers.
-
-Once the user initiates playback, sequential next-track playback should still use the same safe playback path so a browser rejection remains recoverable.
+Do not promise universal audible page-load autoplay. Sequential playback should still use the safe play path so rejection remains recoverable.
 
 ## 8. Cross-Browser Transport Controls
 
-Do not depend on platform-specific emoji or text glyphs for essential transport controls.
-
-Prefer inline SVG for previous, play, pause, and next. Inline SVG keeps icon geometry under application control across Safari/WebKit, Chromium browsers, Firefox, Windows, macOS, iOS, and Android.
+Do not depend on platform-specific emoji/text glyphs for essential transport icons. Prefer inline SVG for Previous, Play, Pause, and Next so geometry is application-controlled across Safari/WebKit, Chromium, Firefox, Windows, macOS, iOS, and Android.
 
 For custom buttons, neutralize unwanted native styling where appropriate:
 
 ```css
 appearance: none;
 -webkit-appearance: none;
+touch-action: manipulation;
 ```
 
-Use touch-friendly interaction rules such as `touch-action: manipulation` where appropriate.
+Icon-only controls require accessible names (`aria-label` or equivalent).
 
-Every icon-only button must retain an accessible name through `aria-label` or equivalent text.
+## 9. Narrow-Screen Geometry
 
-## 9. Narrow-Screen Control Geometry
+A flex row can overflow on narrow phones when five transport controls combine minimum widths, padding, gaps, and browser-native metrics.
 
-A desktop flex row can fail on narrow phones when five transport controls have minimum widths, padding, gaps, and browser-native button metrics.
-
-For a fixed five-control transport set, prefer a five-column responsive grid:
+For a fixed five-control transport set, prefer explicit columns:
 
 ```css
 display: grid;
 grid-template-columns: repeat(5, minmax(0, 1fr));
 ```
 
-Let the central Play/Pause button receive visual emphasis without forcing siblings outside the viewport.
+At narrow breakpoints reduce gaps/padding, allow `min-width: 0`, retain usable tap targets, and verify every control remains inside the player card. Do not "fix" clipping by hiding controls.
 
-At narrow breakpoints reduce gaps/padding, permit controls to shrink with `min-width: 0`, keep tap targets usable, and verify all controls remain inside the card.
+## 10. Playback Controls
 
-## 10. Seek, Time, Volume, and Speed
+Use browser-native media state as authority:
 
-Use browser-native audio state as authority.
-
-Recommended behavior:
-
-- seek range maps proportionally to `audio.duration`;
-- current time comes from `audio.currentTime`;
-- duration comes from `audio.duration`;
-- ±15-second controls clamp to valid bounds;
+- seek maps proportionally to `audio.duration`;
+- time uses `audio.currentTime` / `audio.duration`;
+- ±15-second actions clamp to valid bounds;
 - speed updates `audio.playbackRate`;
-- volume updates `audio.volume`.
-
-Treat unknown duration as a loading state rather than an error.
+- volume updates `audio.volume`;
+- unknown duration is a loading state, not automatically an error.
 
 ## 11. Saved Progress
 
-When continuity is required, store bounded non-sensitive player state in `localStorage`, potentially including track index, current time, rate, volume, autoplay-next state, and timestamp.
+When needed, store bounded non-sensitive state in `localStorage`: track index, time, rate, volume, autoplay-next state, timestamp.
 
-Storage can fail or be unavailable in some browsing modes. Wrap read/write/remove operations in `try/catch`; playback must continue even if persistence fails.
+Use a collection-specific key. Wrap storage read/write/remove in `try/catch`; playback must continue when storage is unavailable.
 
-Use a collection-specific storage key so separate players do not overwrite one another.
-
-## 12. Failure Lessons Preserved
+## Failure Lessons
 
 ### Forced-square artwork
+**Failure:** `aspect-ratio: 1 / 1` + `object-fit: cover` on main art.  
+**Effect:** portrait/book art looked like album art or was cropped.  
+**Rule:** source artwork ratio is authoritative by default.
 
-**Failure:** main artwork used `aspect-ratio: 1 / 1` with `object-fit: cover`.  
-**Effect:** portrait/book artwork was presented like square album art and could be cropped.  
-**Rule:** preserve native content-image ratio by default.
+### Tight transport flex row
+**Failure:** five controls with minimum widths/gaps in a narrow flex row.  
+**Effect:** controls clipped/disappeared on narrow mobile.  
+**Rule:** reserve explicit responsive columns.
 
-### Tight flex-row transport
-
-**Failure:** five controls with minimum widths and gaps were packed into a narrow flex row.  
-**Effect:** controls could disappear or clip on narrow mobile layouts.  
-**Rule:** reserve explicit responsive columns for fixed transport controls.
-
-### Platform-dependent transport symbols
-
-**Failure:** essential icons relied on browser/OS symbol rendering.  
-**Effect:** visual consistency depended on platform font behavior.  
-**Rule:** use inline SVG for essential transport icons.
+### Platform-dependent symbols
+**Failure:** essential icons depended on OS/browser glyph rendering.  
+**Rule:** use deterministic inline SVG for essential transport icons.
 
 ### Hardcoded final track
+**Failure:** completion logic depended on one numbered last item.  
+**Effect:** playlist growth broke continuity.  
+**Rule:** compute traversal from current `tracks.length`.
 
-**Failure:** end behavior was coupled to a specific numbered track or stopped at the final item.  
-**Effect:** future track additions required logic changes and continuous playback could terminate.  
-**Rule:** compute traversal from current playlist length.
+### Autoplay policy mistaken for defect
+**Failure:** rejected programmatic playback was treated as broken playlist logic.  
+**Rule:** catch `play()` rejection and distinguish browser policy from application state.
 
-### Browser autoplay mistaken for player failure
-
-**Failure:** programmatic playback rejection can look like broken player logic.  
-**Rule:** distinguish user-gesture policy from playlist auto-advance and catch `play()` rejection.
-
-## 13. Verification Contract
+## Verification Contract
 
 Before claiming completion, verify separately:
 
-### Structure
-
+**Structure**
 - one intended media element;
-- valid config and track inventory;
-- no fixed final-track number in traversal logic;
-- content artwork and brand/profile image have separate roles.
+- valid configuration/inventory;
+- no fixed final-track number in traversal;
+- primary artwork and avatar roles separated.
 
-### Playback
+**Playback**
+- Play/Pause, seek, ±15, Previous/Next;
+- rate, volume, selection, duration update;
+- invalid/unreachable media error state.
 
-- Play/Pause;
-- seek;
-- back/forward;
-- Previous/Next;
-- rate;
-- volume;
-- track selection;
-- duration update;
-- error state.
+**Continuous mode**
+- normal next transition;
+- actual last item -> first item using playlist length;
+- autoplay-next disabled -> no automatic transition.
 
-### Continuous mode
+**Responsive/browser**
+- desktop, mobile, and narrow-phone width;
+- all transport controls visible with no horizontal clipping;
+- artwork source ratio preserved;
+- icon controls accessibly named;
+- representative Safari/WebKit, Chromium, and Firefox where available.
 
-With autoplay-next enabled, verify a normal transition and then verify that the **actual last item** loads the first item next using `tracks.length`.
+If a browser engine is unavailable, report it as untested rather than inferring PASS.
 
-With autoplay-next disabled, verify no automatic transition occurs.
+## Compatibility Anchors
 
-### Responsive/browser
-
-Verify desktop, mobile, and at least one narrow-phone width; all transport controls visible; no horizontal clipping; source artwork ratio preserved; icon controls accessibly named.
-
-Where available, test representative Safari/WebKit, Chromium, and Firefox engines. If an engine is unavailable, state that rather than claiming execution coverage.
-
-## 14. External Compatibility Anchors
-
-Recheck current browser guidance during consequential builds.
-
-Baseline references:
-
-- MDN Autoplay guide: audible programmatic playback may be blocked until user interaction.
-- MDN `appearance`: native form-control styling varies by browser/OS and can be suppressed with `appearance: none`.
-- MDN `touch-action`: touch behavior should be specified deliberately for custom controls.
-
-These are compatibility constraints, not proof of target-browser execution.
+Recheck current browser guidance during consequential builds. Baseline constraints include browser autoplay/user-gesture policy, native control `appearance`, and deliberate touch behavior. Documentation supports design choices but does not replace target-browser execution tests.
 
 ## Explicit Non-Scope
 
-This Candidate does not by itself own audio mastering/encoding, DRM, streaming-service licensing, authentication, analytics, server/CDN provisioning, waveform generation, video playback, or generic UI polish unrelated to media behavior.
+This Candidate does not own audio mastering/encoding, DRM/licensing, authentication, analytics, CDN provisioning, waveform generation, video playback, or generic UI polish unrelated to media behavior.
 
 ## Candidate Evidence and Disposition
 
-Observed reusable evidence includes:
+Reusable evidence includes:
 
-1. a chaptered/book-oriented audio player with portrait cover requirements;
-2. a music-series player derived from the same shell with a different content model;
-3. a requirement to support square and book-shaped artwork without player rewrites;
-4. a mobile control failure requiring cross-browser hardening;
-5. a playlist requirement changing from finite completion to dynamic continuous wraparound.
+1. chaptered/book player with portrait cover requirements;
+2. music-series player derived from the same shell;
+3. square + book-shaped artwork requirement without shell rewrites;
+4. narrow-mobile control failure requiring cross-browser hardening;
+5. finite playlist completion changed to dynamic continuous wraparound.
 
 Workflow Mine-style score:
 
@@ -346,28 +264,26 @@ Workflow Mine-style score:
 - Testability: 5/5
 - **Total: 21/25 — CANDIDATE / DESIGN REVIEW**
 
-This score does not authorize activation.
+The score does not authorize activation.
 
-## Acceptance Requirements Before Promotion
+## Acceptance Before Promotion
 
-Test against at least:
+Test at least:
 
-1. square music artwork;
+1. square artwork;
 2. portrait/book artwork;
-3. a third non-square ratio;
-4. a playlist whose size changes after initial implementation;
+3. third non-square ratio;
+4. playlist size changed after initial implementation;
 5. last-to-first continuous autoplay;
 6. autoplay-next disabled;
-7. narrow mobile transport visibility;
-8. representative Safari/WebKit, Chromium, and Firefox coverage where available;
-9. storage-unavailable behavior;
-10. invalid/unreachable audio URL behavior.
-
-Promotion remains governed by the normal Signalproof lifecycle.
+7. narrow-mobile transport visibility;
+8. Safari/WebKit, Chromium, Firefox where available;
+9. storage unavailable;
+10. invalid/unreachable audio URL.
 
 ## STOP Conditions
 
-STOP when main content artwork is force-cropped without explicit requirement; a browser engine is claimed tested without evidence; audible page-load autoplay is promised across browsers; traversal depends on a fixed numbered final track; external media URLs are unauthorized or not publicly playable for the intended audience; cross-browser defects are hidden by removing controls; accessibility labels are removed from icon-only controls; a one-off visual preference is confused with a reusable media-player rule; or Candidate state is represented as Active.
+STOP when artwork is force-cropped without explicit requirement; a browser is claimed tested without evidence; universal audible page-load autoplay is promised; traversal depends on a fixed last-track number; media URLs are unauthorized/unplayable for the intended audience; defects are hidden by removing controls; icon-only accessibility labels are removed; a one-off visual preference is confused with reusable doctrine; or Candidate state is represented as Active.
 
 ## Identity
 
