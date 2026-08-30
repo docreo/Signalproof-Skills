@@ -9,6 +9,8 @@ description: Run bounded Complete work inside a user-defined wall-clock timebox 
 
 `signalproof-timed-complete` is a thin timebox coordinator over the Active `/dsp complete` workflow.
 
+`st` means **Start**. The operator form `/dsp <time> st` means: **start `/dsp complete` and run it within the user-stated duration.**
+
 > **Use the time. Preserve the truth. Stop cleanly.**
 
 It exists for work the owner wants advanced as far as safely possible within a stated duration. It does not replace `complete`, `build-spawn-debug`, or their safeguards.
@@ -21,7 +23,7 @@ Canonical route:
 
 ```text
 /dsp <time> st
--> st
+-> Start
 -> timed complete envelope
 -> complete
 -> build-spawn-debug
@@ -82,7 +84,7 @@ Status: AUTHORIZED | AUTHORIZED-PENDING-PRECONDITION | STOP / AMBIGUOUS
 1. Refetch current Git and current public `st`, `complete`, Router, and known-error contracts before consequential action.
 2. Resolve the exact current workstream as `/dsp complete` would.
 3. Normalize the user-stated duration and establish start/deadline from the best available clock source.
-4. Run the current canonical `complete` workflow. Do not reimplement its internals.
+4. Start and run the current canonical `complete` workflow. Do not reimplement its internals.
 5. Prefer high-value work that advances the stated acceptance target. Do not intentionally start work unlikely to reach a safe checkpoint before expiry when a smaller bounded action is available.
 6. Re-check remaining time at natural boundaries: before a new material implementation attempt, before a new failure-class investigation, before an expensive test/build, and before a new side-effecting action.
 7. Same-failure retry limits and materially-changed-condition rules remain binding.
@@ -169,6 +171,7 @@ During execution, STOP on the first of:
 
 This skill is correctly applied when:
 
+- `st` is interpreted as Start;
 - the owner-stated duration is preserved exactly after normalization;
 - the current Complete workflow remains authoritative;
 - no safety/evidence gate is weakened because of time pressure;
@@ -183,5 +186,5 @@ This skill is correctly applied when:
 - **Version:** `0.1.0`
 - **Maturity:** Active public baseline after governed promotion
 - **Parent:** `signalproof` 0.1.1+
-- **Domain:** user-defined wall-clock bounded completion coordination
+- **Domain:** Start command with user-defined wall-clock bounded completion coordination
 - **Created by:** Doc Reo / Signalproof
