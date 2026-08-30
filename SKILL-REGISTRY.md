@@ -31,6 +31,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-rollback` | 0.1.0 | Active public baseline | Rollback target selection and identity verification | Active |
 | `signalproof-restore` | 0.1.0 | Active public baseline | Bounded restoration execution and verification | Active |
 | `signalproof-cleanup` | 0.1.0 | Active public baseline | Partial-operation ownership and cleanup | Active |
+| `signalproof-stop-hermes` | 0.1.0 | Active public baseline | Hermes runtime shutdown and autostart containment while preserving Ollama and recoverable Hermes state | Active |
 | `signalproof-recovery-continuity` | 0.1.0 | Active public baseline | Recovery journals, ownership state and remaining options | Active |
 | `signalproof-security` | 0.2.0 | Active public baseline | Cross-cutting defensive security coordinator | Active |
 | `signalproof-secrets` | 0.1.0 | Active public baseline | Credentials, tokens, keys and secret exposure | Active |
