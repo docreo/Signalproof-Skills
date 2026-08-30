@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.3.9
+# `/dsp` - Dr. Signalproof Command Shell V0.4.0
 
 **Status:** ACTIVE  
-**Version:** 0.3.9  
+**Version:** 0.4.0
 **Owner:** Doc Reo
 
 ## Purpose
@@ -32,6 +32,9 @@ Spaces and hyphens may normalize only when they identify the same command and do
 Required compatibility forms include:
 
 ```text
+/dsp git-check
+/dsp git check
+dsp-git-check
 /dsp build git
 /dsp build-git
 dsp-build-git
@@ -81,6 +84,7 @@ dsp-help
 | `download` | `download` |
 | `build capsule`, `build-capsule`, `capsule` | `build-capsule` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
+| `git check`, `git-check`, `check git` | `git-check` |
 | `design`, `design git`, `design-git` | `design-git` |
 | `build`, `this build`, `this-build` | `signalproof-this-build` |
 | `build git`, `build-git` | `build-git` |
@@ -129,6 +133,7 @@ Stages may be skipped only when current evidence proves them N/A or still satisf
 
 ## Minimal handlers
 
+- `/dsp git-check` -> `git-check`, deterministic read-only Git basis and divergence preflight.
 - `/dsp research` -> `research`, evidence gathering only where unresolved facts materially matter.
 - `/dsp design` -> `design-git`, existing design/governance route; no duplicate Design command.
 - `/dsp qc` -> `qc`, exact-candidate Human-Observed Fact gate after automated PASS.

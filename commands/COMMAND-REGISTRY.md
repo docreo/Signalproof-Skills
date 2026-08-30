@@ -6,7 +6,7 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.3.9 | Compact Dr. Signalproof resolver and public Library shell |
+| `/dsp` | 0.4.0 | Compact Dr. Signalproof resolver and public Library shell |
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
@@ -20,6 +20,7 @@
 | `build-capsule` | 0.1.0 | Create/refine a human-readable and AI-readable build-transfer package, including optional Design Capsule and live-update command mode |
 | `cut-chase` | 0.1.0 | Decision-ready salience compression |
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
+| `git-check` | 0.1.0 | Deterministic read-only repository/ref/HEAD/worktree/upstream preflight |
 | `design-git` | 0.2.0 | Smallest governed Git-backed design/next-action route |
 | `build-git` | 0.2.5 | Compact governed repository-backed next-action execution with proof reuse and deterministic failure guards |
 | `build-git this` | 0.1.0 | Apply Build Git to the current bounded work unit |
@@ -50,6 +51,7 @@
 - `build-capsule` -> `commands/build-capsule.md`
 - `cut-chase` -> `commands/cut-chase.md`
 - `cut-cost` -> `commands/cut-cost.md`
+- `git-check` -> `commands/git-check.md`
 - `design-git` -> `commands/design-git.md`
 - `build-git` -> `commands/build-git.md`
 - `build-git this` -> `commands/build-git-this.md`
@@ -97,6 +99,7 @@ Examples retained for compatibility:
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
 - `build capsule` / `capsule this build` -> `build-capsule`
+- `git check` / `check git` -> `git-check`
 - `design` -> `design-git`
 - `human qc` -> `qc`
 - `authorize deploy` -> `authorize` with target `deploy`
