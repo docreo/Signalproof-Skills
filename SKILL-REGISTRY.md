@@ -25,6 +25,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-debug` | 0.1.1 | Active public baseline | Evidence-led defect correction and regression protection | Active |
 | `signalproof-full-debug` | 0.1.0 | Active public baseline | High-governance debug coordinator combining bounded authorization, persistent failure memory, debug continuity, spawn role separation, verification, and STOP controls | Active |
 | `signalproof-build-spawn-debug` | 0.1.0 | Active public baseline | Build-to-user-acceptance coordinator with spawn challenge, debug convergence, governed learning, automated PASS, and human UI gate | Active |
+| `signalproof-timed-complete` | 0.1.0 | Active public baseline | Start the current Complete workflow for a user-defined wall-clock duration while preserving safeguards and resumable state | Active |
 | `signalproof-verify` | 0.1.0 | Active public baseline | Claim verification and evidence grading | Active |
 | `signalproof-review` | 0.1.0 | Active public baseline | Scope fidelity and change-integrity review | Active |
 | `signalproof-recovery` | 0.2.0 | Active public baseline | Cross-cutting recovery coordinator | Active |
