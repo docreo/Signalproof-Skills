@@ -49,6 +49,8 @@ STOP reason: <none or exact blocker>
 
 ## Deterministic safety rules
 
+- `git-check` is the Signalproof operator command name, not a native Git subcommand; never execute `git check` or invent a Git flag from the operator syntax.
+- Use fixed read-only Git operations such as `git rev-parse --show-toplevel`, `git status --porcelain=v2 --branch`, `git rev-parse HEAD`, `git remote -v`, and `git rev-list --left-right --count HEAD...@{upstream}` where applicable.
 - Never treat a clean worktree as proof that local HEAD equals the remote branch.
 - Never treat cached remote-tracking refs as a current network observation without labeling their age/limits.
 - Never hide staged, untracked, conflicted, detached, missing-upstream, submodule, or nested-repository state.
