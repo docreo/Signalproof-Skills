@@ -108,3 +108,15 @@ candidates:
     kind: skill
     purpose: mine historical human+AI work for repeated implicit workflows and evidence-backed capability gaps without taxonomy inflation
     path: skills/candidates/signalproof-workflow-mine/SKILL.md
+  - id: signalproof-hermes-vps-builder
+    state: CANDIDATE
+    kind: specialist_skill
+    purpose: build, harden, verify, back up, recover and teach a Hermes VPS through a human-operated terminal under Signalproof governance
+    path: skills/candidates/signalproof-hermes-vps-builder/SKILL.md
+    specialists: [signalproof-build, signalproof-known-errors, signalproof-security, signalproof-recovery, signalproof-document]
+  - id: signalproof-agent-infrastructure-selection
+    state: CANDIDATE
+    kind: specialist_skill
+    purpose: select and record provider, region, resources, access, recovery, cost, portability and fleet-management profile before persistent agent deployment
+    path: skills/candidates/signalproof-agent-infrastructure-selection/SKILL.md
+    specialists: [signalproof-readiness, signalproof-research, signalproof-evaluate, signalproof-security, signalproof-recovery, signalproof-document, signalproof-hermes-vps-builder]
