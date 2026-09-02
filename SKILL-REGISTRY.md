@@ -17,6 +17,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-cut-chase` | 0.1.0 | Active public baseline | Salience compression, decision-load reduction, and action extraction without cutting evidence or authority | Active |
 | `signalproof-cut-cost` | 0.1.0 | Active public baseline | Read-only AI operating-cost audit using measured token, context, tool, model, cache, agent, scheduler, and repeated-work evidence | Active |
 | `signalproof-build-capsule` | 0.1.0 | Active public baseline | Human-readable and AI-readable multimodal build-transfer packaging, payload authority, design continuity, and additive update commands | Active |
+| `signalproof-print` | 0.1.0 | Active public baseline | DOCX/PDF/Google Docs artifact output from one authoritative document state; Google Docs imported from finished DOCX | Active |
 | `signalproof-design` | 0.2.0 | Active public baseline | Product information architecture and state communication | Active |
 | `signalproof-ui-polish` | 0.1.0 | Active public baseline | UI readability, wrapping, responsive finish and micro-interactions | Active |
 | `signalproof-accessibility` | 0.1.0 | Active public baseline | Accessible interaction and presentation | Active |
