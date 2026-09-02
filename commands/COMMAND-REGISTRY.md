@@ -12,6 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
+| `print` | 0.1.0 | Create DOCX/PDF/Google Docs outputs from one authoritative document source; Google Docs are imported from the finished DOCX |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -43,6 +44,7 @@
 - `authorize` -> `commands/authorize.md`
 - `complete` -> `commands/complete.md`
 - `download` -> `commands/download.md`
+- `print` -> `commands/print.md`
 - `qc` -> `commands/qc.md`
 - `deploy` -> `commands/deploy.md`
 - `known-errors` -> `commands/known-errors.md`
@@ -83,6 +85,9 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
+- `/dsp print` -> `print`
+- `/dsp print docx` -> `print` with type `docx`
+- `/dsp print @<name>` -> `print` with exact named target and default DOCX/PDF/Google Doc set
 - `/dsp build-capsule` -> `build-capsule`
 - `/dsp capsule` -> `build-capsule`
 - `/dsp full-debug` -> `full-debug`
@@ -98,6 +103,7 @@ Examples retained for compatibility:
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
+- `print` / `print this` / `print <type>` -> `print`
 - `build capsule` / `capsule this build` -> `build-capsule`
 - `git check` / `check git` -> `git-check`
 - `design` -> `design-git`
@@ -125,10 +131,11 @@ Examples retained for compatibility:
 7. Human QC is Human-Observed Fact, not deployment authority.
 8. Deployment requires exact-candidate evidence, applicable compliance/security/recovery gates, and explicit bounded authority.
 9. Artifact recovery must preserve exact/reconstructed identity, public/private boundaries, and connected-storage authority; `download` cannot manufacture a missing original.
-10. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
-11. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
-12. Public Git promotion does not claim canonical private Build Ledger append.
-13. Active command versions in command files and this registry must remain synchronized.
+10. Document output must use one authoritative content state. When Google Docs output is requested and a formatted DOCX exists, `print` must import/convert that DOCX rather than rebuilding from extracted text.
+11. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
+12. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
+13. Public Git promotion does not claim canonical private Build Ledger append.
+14. Active command versions in command files and this registry must remain synchronized.
 
 ## Lifecycle
 
