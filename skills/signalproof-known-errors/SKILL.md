@@ -299,6 +299,20 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 ---
 
+## KE-GITHUB-WRITE-ACK-MISMATCH-001
+
+**Domain:** GitHub API / connector write verification
+
+**Error:** A GitHub write operation reports failure, conflict, missing SHA, timeout, or another negative acknowledgement even though the requested repository mutation may already have been committed successfully.
+
+**Prevention:** **Verify before retry.** After any ambiguous or contradictory GitHub write result, read the intended path/ref and inspect current repository state before issuing another mutation. If the intended content is already present, treat the write as successful evidence and do not retry. If it is absent, refetch the current blob/ref identity and only then perform a new bounded write.
+
+**Do not repeat:** Blindly retry a GitHub create/update/delete after an ambiguous connector/API failure without first verifying repository state. This can create duplicates, overwrite newer state, or misreport a successful write as failed.
+
+**Reporting rule:** Tell the operator when the acknowledgement and repository state disagree. Distinguish `WRITE ACK FAILED / STATE VERIFIED SUCCESS` from a true `WRITE FAILED / STATE ABSENT` condition.
+
+---
+
 ## KE-TRUST-CALCULATED-NOT-ENFORCED-001
 
 **Domain:** security / trust enforcement
