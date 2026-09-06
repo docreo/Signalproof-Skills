@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.5
+# `build-git` - Active Operator Command V0.2.6
 
 **Status:** ACTIVE  
-**Version:** 0.2.5  
+**Version:** 0.2.6  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -23,12 +23,13 @@ Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applic
 3. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence can block a bad path but is not Active authority.
 4. **Protected state** - establish baseline, forbidden change, recovery path, workstream identity, acceptance, and authority boundary.
 5. Consume valid current state/Next Action Contract; do not silently redesign it.
-6. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
-7. Execute one routed action inside current authority.
-8. Verify the affected claim and rerun only gates invalidated by the change.
-9. Add Review, Security, recovery, Human QC, or Release only when material.
-10. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
-11. Update compact state/proof, failures/uncertainty, and next gate.
+6. **Brand-pack enforcement** - when a canonical brand pack applies, consume the current `design-git` Brand Pack Guard state. If no still-valid brand-pack state exists for the current workstream/target, route through `design-git` Brand Pack Preflight before continuing. Immediately before any package, archive, installer, release bundle, deployable artifact, or other final distributable is created, recheck the exact packaging candidate for the approved brand pack even when an earlier result was `VERIFIED-PRESENT`.
+7. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
+8. Execute one routed action inside current authority.
+9. Verify the affected claim and rerun only gates invalidated by the change.
+10. Add Review, Security, recovery, Human QC, or Release only when material.
+11. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
+12. Update compact state/proof, failures/uncertainty, and next gate.
 
 ## Cost and completion rules
 
@@ -101,8 +102,8 @@ Law, license, Terms of Service, platform policy, access controls, privacy/securi
 
 ## STOP conditions
 
-STOP when Git/protected state is unknown; an unchanged known-bad path would repeat; a validator blocks; failure continuity is missing; exact-final validation fails; retry lacks material change; law/license/TOS/security/authority blocks action; concurrent state invalidates the contract; Investigation is required before implementation; agent execution would be falsely claimed; a Candidate would be silently activated; or release/production/canonical-ledger authority would be inferred rather than proven.
+STOP when Git/protected state is unknown; an unchanged known-bad path would repeat; a validator blocks; failure continuity is missing; exact-final validation fails; a required brand-pack state is missing or stale; packaging is about to proceed without the required exact-candidate brand recheck; retry lacks material change; law/license/TOS/security/authority blocks action; concurrent state invalidates the contract; Investigation is required before implementation; agent execution would be falsely claimed; a Candidate would be silently activated; or release/production/canonical-ledger authority would be inferred rather than proven.
 
 ## Maintenance acceptance
 
-Keep tests for routing, stale Git, known failures/candidate evidence, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.
+Keep tests for routing, stale Git, known failures/candidate evidence, brand-pack state consumption, design-git fallback when brand state is absent, mandatory exact-candidate pre-package brand recheck, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.
