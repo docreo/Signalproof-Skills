@@ -69,7 +69,7 @@ class PowerShellFailureGuardAcceptance(unittest.TestCase):
 
     def test_registry_versions_match(self):
         text = self.read("commands/COMMAND-REGISTRY.md")
-        self.assertIn("| `build-git` | 0.2.5 |", text)
+        self.assertIn("| `build-git` | 0.2.6 |", text)
         self.assertIn("| `log-build-git` | 0.2.1 |", text)
         self.assertIn("| `handoff-log` | 0.2.1 |", text)
 
