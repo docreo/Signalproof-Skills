@@ -12,7 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
-| `print` | 0.1.0 | Create DOCX/PDF/Google Docs outputs from one authoritative document source; Google Docs are imported from the finished DOCX |
+| `print` | 0.2.0 | Apply accepted Signalproof paper styling, create/verify authoritative DOCX, then import that DOCX to a native Google Doc; PDF only when requested |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -85,9 +85,11 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
-- `/dsp print` -> `print`
+- `/dsp print` -> `print` with default Signalproof-styled DOCX + native Google Doc workflow
 - `/dsp print docx` -> `print` with type `docx`
-- `/dsp print @<name>` -> `print` with exact named target and default DOCX/PDF/Google Doc set
+- `/dsp print pdf` -> `print` with type `pdf`
+- `/dsp print all` -> `print` with DOCX + PDF + native Google Doc
+- `/dsp print @<name>` -> `print` with exact named target and default DOCX + native Google Doc workflow
 - `/dsp build-capsule` -> `build-capsule`
 - `/dsp capsule` -> `build-capsule`
 - `/dsp full-debug` -> `full-debug`
@@ -131,7 +133,7 @@ Examples retained for compatibility:
 7. Human QC is Human-Observed Fact, not deployment authority.
 8. Deployment requires exact-candidate evidence, applicable compliance/security/recovery gates, and explicit bounded authority.
 9. Artifact recovery must preserve exact/reconstructed identity, public/private boundaries, and connected-storage authority; `download` cannot manufacture a missing original.
-10. Document output must use one authoritative content state. When Google Docs output is requested and a formatted DOCX exists, `print` must import/convert that DOCX rather than rebuilding from extracted text.
+10. Document output must apply or verify an accepted Signalproof paper style, establish one authoritative formatted DOCX, visually verify it when supported, and create native Google Docs output by importing that DOCX. PDF is only automatic when explicitly requested or `all` is selected.
 11. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
 12. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
 13. Public Git promotion does not claim canonical private Build Ledger append.
