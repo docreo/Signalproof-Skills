@@ -1,0 +1,88 @@
+version: 0.1
+status: ACTIVE_PREVENTION_DATA
+purpose: >-
+  Public-safe repeatable failure memory for governed local-model acceptance
+  harnesses and Windows self-hosted worker runners. This registry provides
+  prevention patterns only and grants no execution, release, or production authority.
+
+rules:
+  - id: WA-RUNNER-SERVICE-ENV-001
+    match: windows_self_hosted_runner_service_uses_interactive_user_dependencies
+    risk: >-
+      A Windows self-hosted runner service executes under a service identity and
+      does not inherit the operator's interactive PATH, Conda environment, user
+      profile, AppData access, or shell/runtime availability. A healthy local
+      service is then misclassified as missing or broken.
+    prevent:
+      - record the actual runner service identity and runtime before execution
+      - do not assume pwsh, Conda, user-local executables, or AppData are visible to the service
+      - prefer loopback service APIs for already-running local runtimes when available
+      - use workspace-scoped portable tooling when a test runtime is needed
+      - do not weaken filesystem ACLs or change service identity merely to make an acceptance harness pass
+    evidence_class: HARNESS_RUNTIME_BOUNDARY
+
+  - id: WA-MODEL-ID-PATH-001
+    match: runtime_identity_used_as_filesystem_path_component
+    risk: >-
+      Exact model or provider identities can contain Windows-illegal path
+      characters such as colon, slash, backslash, trailing dots/spaces, or
+      reserved device names, causing evidence creation to fail before or after
+      valid inference.
+    prevent:
+      - preserve the exact raw runtime identity inside machine-readable evidence
+      - derive a separate deterministic filesystem-safe component for paths only
+      - include collision resistance when normalization changes the identity
+      - regression-test Windows reserved names and illegal characters
+    evidence_class: PATH_SERIALIZATION
+
+  - id: WA-MALFORMED-OUTPUT-HARNESS-001
+    match: schema_invalid_model_output_crashes_scorer
+    risk: >-
+      A model returns parseable or partially parseable output with wrong field
+      types, Markdown wrapping, missing fields, or malformed JSON and the scorer
+      throws an exception instead of recording the candidate failure.
+    prevent:
+      - treat schema-invalid candidate output as test evidence rather than a harness exception
+      - preserve the raw response
+      - keep the contract result invalid and award no credit for unusable field types
+      - continue the remaining cases unless the endpoint itself is unavailable
+      - never relax the production contract retroactively merely to obtain a passing score
+    evidence_class: MODEL_CONTRACT
+
+  - id: WA-ARTIFACT-IDENTITY-FILENAME-001
+    match: consumer_reconstructs_artifact_identity_from_filename
+    risk: >-
+      A producer safely encodes artifact filenames but a downstream consumer
+      reconstructs model or candidate identity from the filename and can no
+      longer locate or verify the evidence.
+    prevent:
+      - treat machine-readable artifact content as identity authority
+      - select generated run evidence by exact embedded model or candidate identity
+      - snapshot before/after artifact sets when a command cannot directly return the output path
+      - require exactly one matching new artifact and fail descriptively on ambiguity
+    evidence_class: ARTIFACT_PROVENANCE
+
+  - id: WA-STRICT-CONTRACT-NOT-FORMATTING-001
+    match: local_model_semantically_answers_but_violates_machine_contract
+    risk: >-
+      A candidate appears semantically useful but wraps JSON in Markdown,
+      changes required field types, omits fields, invents tool-call shapes, or
+      otherwise violates the exact worker contract required by the consuming runtime.
+    prevent:
+      - score the exact machine contract independently from semantic usefulness
+      - do not strip wrappers or coerce field types unless that adapter is itself the governed candidate configuration under test
+      - if an adapter or prompt template is introduced, version it as a new candidate and rerun the full immutable corpus
+      - do not promote a model on prose quality when machine-contract qualification fails
+    evidence_class: ACCEPTANCE_CONTRACT
+
+fresh_chat_contract:
+  actions:
+    - reload this registry before modifying a local-model acceptance harness or Windows self-hosted benchmark lane
+    - recover prior failure IDs and materially changed conditions from handoff or ledger evidence
+    - do not retry an unchanged harness path already matched by a high-confidence rule
+
+use_boundary:
+  - prevention data only
+  - no production activation authority
+  - no security-control weakening authority
+  - no model-promotion authority
