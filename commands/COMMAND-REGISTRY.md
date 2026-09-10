@@ -6,7 +6,7 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.4.0 | Compact Dr. Signalproof resolver and public Library shell |
+| `/dsp` | 0.4.1 | Compact Dr. Signalproof resolver and public Library shell |
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
