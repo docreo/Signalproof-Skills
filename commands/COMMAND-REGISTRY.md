@@ -12,6 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
+| `print` | 0.3.0 | Canonical Signalproof-styled DOCX-first document output with native Google Doc import and optional PDF |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -43,6 +44,7 @@
 - `authorize` -> `commands/authorize.md`
 - `complete` -> `commands/complete.md`
 - `download` -> `commands/download.md`
+- `print` -> `commands/print.md`
 - `qc` -> `commands/qc.md`
 - `deploy` -> `commands/deploy.md`
 - `known-errors` -> `commands/known-errors.md`
@@ -83,6 +85,9 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
+- `/dsp print` -> `print`
+- `/dsp print docs` -> `print` with type `docs`
+- `/dsp print pdf` -> `print` with type `pdf`
 - `/dsp build-capsule` -> `build-capsule`
 - `/dsp capsule` -> `build-capsule`
 - `/dsp full-debug` -> `full-debug`
@@ -98,6 +103,7 @@ Examples retained for compatibility:
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
+- `print` / `print this` -> `print`
 - `build capsule` / `capsule this build` -> `build-capsule`
 - `git check` / `check git` -> `git-check`
 - `design` -> `design-git`
@@ -129,6 +135,7 @@ Examples retained for compatibility:
 11. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
 12. Public Git promotion does not claim canonical private Build Ledger append.
 13. Active command versions in command files and this registry must remain synchronized.
+14. Historical or private `/dsp print` records are provenance only; runtime print behavior resolves exclusively from the current `main` registry, `commands/print.md`, and `skills/signalproof-print/SKILL.md`.
 
 ## Lifecycle
 
