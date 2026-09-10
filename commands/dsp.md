@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.4.0
+# `/dsp` - Dr. Signalproof Command Shell V0.4.1
 
 **Status:** ACTIVE  
-**Version:** 0.4.0
+**Version:** 0.4.1
 **Owner:** Doc Reo
 
 ## Purpose
@@ -32,6 +32,14 @@ Spaces and hyphens may normalize only when they identify the same command and do
 Required compatibility forms include:
 
 ```text
+/dsp print
+dsp print
+/dsp-print
+dsp-print
+/dsp print docx
+/dsp print docs
+/dsp print pdf
+/dsp print all
 /dsp git-check
 /dsp git check
 dsp-git-check
@@ -82,6 +90,7 @@ dsp-help
 | `research` | `research` |
 | `complete`, `finish this` | `complete` |
 | `download` | `download` |
+| `print`, `print this`, `print <...>` | `print` with arguments preserved |
 | `build capsule`, `build-capsule`, `capsule` | `build-capsule` |
 | `plan`, `this plan`, `this-plan` | `signalproof-this-plan` |
 | `git check`, `git-check`, `check git` | `git-check` |
@@ -123,6 +132,8 @@ Preferred guided software flow:
 -> /dsp deploy
 ```
 
+`/dsp print` is a document-output route and is not part of the software deployment chain. It resolves directly to `commands/print.md` and then `skills/signalproof-print/SKILL.md`.
+
 `/dsp build-capsule` is an optional transfer/continuity route for packaging a substantial build, live-update state, authoritative payloads, and optional Design Capsule for another AI system. It does not replace Build, Complete, Handoff, or deployment authority.
 
 Stages may be skipped only when current evidence proves them N/A or still satisfied. `complete` may internally route Build, Debug, Verify, Review, Security, Recovery, and Learn without making the human babysit routine gates. Human QC remains real human evidence. Deployment remains a separate explicit authority boundary.
@@ -133,6 +144,7 @@ Stages may be skipped only when current evidence proves them N/A or still satisf
 
 ## Minimal handlers
 
+- `/dsp print` -> `print`, single canonical Signalproof paper/report output route: resolve author/voice separately from layout, build/verify authoritative styled DOCX, import DOCX to native Google Doc, PDF only when explicitly requested.
 - `/dsp git-check` -> `git-check`, deterministic read-only Git basis and divergence preflight.
 - `/dsp research` -> `research`, evidence gathering only where unresolved facts materially matter.
 - `/dsp design` -> `design-git`, existing design/governance route; no duplicate Design command.
@@ -166,9 +178,10 @@ The private Build Ledger may support continuity/history but does not replace the
 2. Preserve arguments and normalize only command-name separators.
 3. Prefer exact canonical matches.
 4. Resolve generic handlers such as `authorize` without broadening their target.
-5. **If resolution is ambiguous, STOP** and present the smallest disambiguation.
-6. Load the resolved command plus only the minimum required Skill/specialists/Loops.
-7. Preserve the target command's authority, evidence, recovery, compliance, and STOP rules.
+5. Resolve `print` only from current public registry/command/Skill state; historical Build Ledger print definitions are provenance, not runtime authority.
+6. **If resolution is ambiguous, STOP** and present the smallest disambiguation.
+7. Load the resolved command plus only the minimum required Skill/specialists/Loops.
+8. Preserve the target command's authority, evidence, recovery, compliance, and STOP rules.
 
 ## Authority boundary
 
