@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.6
+# `build-git` - Active Operator Command V0.2.7
 
 **Status:** ACTIVE  
-**Version:** 0.2.6  
+**Version:** 0.2.7  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -11,6 +11,25 @@
 > **Verify current Git, reuse valid proof, avoid known failures, execute the smallest authorized action, verify it, and leave proof.**
 
 `build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
+
+## Canonical build identity and rollover
+
+All Signalproof product builds that use the V/RD scheme MUST use exactly one canonical build identity in the form `V# / RD#`.
+
+The progression is fixed:
+
+`V1/RD1 -> V1/RD2 -> ... -> V1/RD9 -> V2/RD1 -> V2/RD2 -> ... -> V2/RD9 -> V3/RD1`
+
+Rules:
+
+- RD values are limited to `RD1` through `RD9`.
+- There is no `RD10`.
+- After `Vn/RD9`, increment the version and reset the revision-development counter to `RD1`: `V(n+1)/RD1`.
+- Every successive build advances the V/RD identity unless the work is explicitly a byte-identical repackage of the same build.
+- Build artifacts, package names, handoffs, ledgers, UI labels, and release evidence MUST use the canonical V/RD identity consistently.
+- Descriptive suffixes such as `-FIX`, `-FINAL`, `-LOGIN-FIX`, `-POLISHED-ROLLBACK`, or `-WINDOWS` MUST NOT replace or extend the canonical build name. Put descriptive purpose in metadata, commit messages, ledger notes, or release notes instead.
+- Preferred artifact naming is `<Product>-V#-RD#.<ext>`, for example `Signal-Server-V1-RD6.zip`.
+- Before creating the next build, verify the current accepted V/RD identity from Git/Build Ledger rather than inferring it from filenames or chat history.
 
 ## Runtime context
 
@@ -106,4 +125,4 @@ STOP when Git/protected state is unknown; an unchanged known-bad path would repe
 
 ## Maintenance acceptance
 
-Keep tests for routing, stale Git, known failures/candidate evidence, brand-pack state consumption, design-git fallback when brand state is absent, mandatory exact-candidate pre-package brand recheck, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.
+Keep tests for routing, stale Git, known failures/candidate evidence, canonical V/RD progression and artifact naming, brand-pack state consumption, design-git fallback when brand state is absent, mandatory exact-candidate pre-package brand recheck, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.
