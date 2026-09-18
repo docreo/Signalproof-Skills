@@ -187,6 +187,20 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 **Prevention:** Keep evidence classes separate and require the exact gate for the claim being made. Preserve `UNKNOWN` or `PENDING` when the corresponding test has not occurred.
 
+
+---
+
+## KE-LINUX-SONAME-CHAIN-001
+
+**Domain:** Linux native runtime / shared-library deployment
+
+**Error:** A compiled ELF binary exists and is executable, but process launch exits with status 127 because one or more required shared-library SONAME entries cannot be resolved. This commonly occurs when only the fully versioned `.so.X.Y.Z` file or only the unversioned linker name is copied while the runtime SONAME link such as `.so.0` is omitted, or when the runtime search path does not include the deployed library directory.
+
+**Prevention:** Preserve the complete shared-library symlink chain when staging native libraries. Before executing the binary, inspect dynamic dependencies and run a loader preflight such as `ldd`; fail before product execution if any dependency reports `not found`. Keep build/link success distinct from runtime-loader success.
+
+**Do not repeat:** Treat successful compilation/linking or the mere presence of a similarly named `.so` file as proof that the deployed ELF runtime can start.
+
+
 ---
 
 ## KE-PRIVILEGE-DIAGNOSTIC-UNKNOWN-001
