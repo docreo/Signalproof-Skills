@@ -44,6 +44,13 @@ RULES = (
         "message": "Standalone else is unsafe for line-by-line interactive submission; keep if/else in one submitted statement or avoid else.",
     },
     {
+        "id": "KE-PS-NULL-METHOD-DEREFERENCE-001",
+        "severity": "WARN",
+        "modes": {"operator-powershell", "powershell-script"},
+        "pattern": re.compile(r"\$[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)?\.(?:Trim|ToString)\(\)"),
+        "message": "Method call may dereference null under StrictMode or empty native/file output; normalize with an explicit cast or null check before calling methods.",
+    },
+    {
         "id": "KE-PS-NATIVE-STDERR-AUTHORITY-001",
         "severity": "WARN",
         "modes": {"operator-powershell", "powershell-script"},
