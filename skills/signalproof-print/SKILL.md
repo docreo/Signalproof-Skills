@@ -258,7 +258,7 @@ PDF completion is required only when PDF or `all` is explicitly requested.
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-print`
 - **Version:** `0.3.0`
-- **Maturity:** Candidate for governed promotion to Active public baseline
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `signalproof-document`, `signalproof-verify`, `signalproof-release`, `signalproof-closeout`
 - **Domain:** Signalproof-styled document output, author/voice resolution, DOCX-first Google Docs conversion, optional PDF, citation identity, cross-surface delivery
