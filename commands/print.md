@@ -1,6 +1,6 @@
 # `print` - Active Operator Command V0.3.0
 
-**Status:** ACTIVE candidate for governed merge  
+**Status:** ACTIVE  
 **Version:** 0.3.0  
 **Owner:** Doc Reo
 
