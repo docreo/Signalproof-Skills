@@ -107,7 +107,7 @@ dsp-help
 | `log build git`, `log-build-git` | `log-build-git` |
 | `log build git debug`, `log-build-git-debug` | `log-build-git-debug` |
 | `authorize`, `authorized` | `authorize` |
-| `authorize <command>`, `authorized <command>` | `authorize` with resolved target |
+| `authorize <command>`, `authorized <command>` | `authorize` with resolved target command |
 | `authorized log build git`, `authorized-log-build-git` | `/authorized-log-build-git` |
 | `known errors`, `known-errors` | `known-errors` |
 | `teach` | `signalproof-teach` |
