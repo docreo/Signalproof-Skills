@@ -84,6 +84,7 @@ This is a guided route, not a mandatory conveyor belt. `/dsp` resolves the minim
 | [`research`](commands/research.md) | Minimum necessary source-grounded research |
 | [`authorize`](commands/authorize.md) | Exact bounded authorization handler |
 | [`complete`](commands/complete.md) | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| [`print`](commands/print.md) | Canonical Signalproof-styled DOCX-first document output with native Google Doc import and optional PDF |
 | [`qc`](commands/qc.md) | Exact-candidate human QC after automated PASS |
 | [`deploy`](commands/deploy.md) | Authorized exact-artifact deployment and post-deploy verification |
 | [`known-errors`](commands/known-errors.md) | Recurrence-prevention preflight for the current workstream |
@@ -122,6 +123,7 @@ Command versions and Active status remain governed by [`commands/COMMAND-REGISTR
 | [`signalproof-grill`](skills/signalproof-grill/SKILL.md) | 0.1.0 | Evidence-aware decision hardening and ambiguity reduction |
 | [`signalproof-grill-with-docs`](skills/signalproof-grill-with-docs/SKILL.md) | 0.1.0 | Decision hardening with governed glossary and ADR capture |
 | [`signalproof-teach`](skills/signalproof-teach/SKILL.md) | 0.1.0 | Mission-grounded source-backed teaching and durable skill development |
+| [`signalproof-print`](skills/signalproof-print/SKILL.md) | 0.3.0 | Canonical Signalproof-styled DOCX-first document output, native Google Doc import, and optional PDF |
 | [`signalproof-cut-chase`](skills/signalproof-cut-chase/SKILL.md) | 0.1.0 | Salience compression, decision-load reduction, and clear action extraction |
 | [`signalproof-cut-cost`](skills/signalproof-cut-cost/SKILL.md) | 0.1.0 | Read-only measured audit of AI token, context, tool, model, cache, agent, schedule, output, and repeated-work waste |
 | [`signalproof-build-capsule`](skills/signalproof-build-capsule/SKILL.md) | 0.1.0 | Multimodal AI build-transfer packaging with authoritative payloads, Design Capsule continuity, and additive live-update commands |
@@ -162,6 +164,7 @@ The Router chooses by objective and evidence state, not by keyword alone.
 stress-test a plan         -> signalproof-grill
 stress-test + glossary/ADR -> signalproof-grill-with-docs
 teach/learn a capability   -> signalproof-teach
+print/export a document    -> signalproof-print
 cut to decision-ready core -> signalproof-cut-chase
 cut AI operating waste     -> signalproof-cut-cost
 package build for AI       -> signalproof-build-capsule

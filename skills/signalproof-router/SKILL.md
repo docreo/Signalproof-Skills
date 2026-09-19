@@ -28,6 +28,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-grill` - decision hardening and ambiguity reduction before action;
 - `signalproof-grill-with-docs` - decision hardening plus governed glossary/ADR capture;
 - `signalproof-teach` - mission-grounded source-backed teaching and skill development;
+- `signalproof-print` - canonical Signalproof-styled document artifact output and native Google Docs conversion;
 - `signalproof-cut-chase` - salience compression, decision-load reduction, and action extraction;
 - `signalproof-cut-cost` - read-only AI operating-cost and token/context/tool/cache waste audit;
 - `signalproof-build-capsule` - multimodal AI build-transfer packaging with authoritative payloads, design continuity, invariants, and additive update commands;
@@ -92,6 +93,7 @@ Only skills marked Active in canonical `SKILL-REGISTRY.md` are routable on `main
 - Grill: stress-test unresolved decisions before execution.
 - Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs.
 - Teach: source-backed progressive learning tied to a human mission.
+- Print: resolve and export the current document through the canonical Signalproof DOCX-first output pipeline.
 - Cut Chase: compress established material into minimum decision-ready truth while preserving evidence, uncertainty, action, and authority boundaries.
 - Build Capsule: package substantial builds/live updates into human-readable and AI-readable visual architecture + authoritative payload + execution/update command; use a Design Capsule companion when visual authority must travel.
 - Design: product information/state architecture.
@@ -167,6 +169,7 @@ Avoid loading entire capability families merely because a request mentions a bro
 - `grill -> plan -> build` when unresolved owner decisions must be hardened first;
 - `grill-with-docs -> plan/design -> build` when durable terminology/ADR capture is material;
 - `teach -> reassess/readiness` when human capability must grow before more autonomy;
+- `document -> print` when established content needs durable Signalproof-styled output;
 - `research/evaluate/document -> cut-chase` when a full result exists but the human needs the decision-ready version;
 - `build-capsule -> target AI build/update` when a substantial source-backed build must cross an AI/platform boundary without re-encoding the full payload;
 - `design -> build-capsule design -> target AI live-update` when an approved live visual system must be preserved across AI builders;
