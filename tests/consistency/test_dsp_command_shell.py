@@ -25,6 +25,13 @@ class DspCommandShellAcceptance(unittest.TestCase):
     def test_space_hyphen_and_slash_variants_are_supported(self):
         dsp = self.read("commands/dsp.md").lower()
         for required in [
+            "/dsp print",
+            "dsp print",
+            "/dsp-print",
+            "/dsp print docx",
+            "/dsp print docs",
+            "/dsp print pdf",
+            "/dsp print all",
             "/dsp build git",
             "/dsp build-git",
             "dsp-build-git",
@@ -42,6 +49,7 @@ class DspCommandShellAcceptance(unittest.TestCase):
         dsp = self.read("commands/dsp.md")
         registry = self.read("commands/COMMAND-REGISTRY.md")
         for canonical in [
+            "print",
             "signalproof-this-plan",
             "signalproof-this-build",
             "build-git",
