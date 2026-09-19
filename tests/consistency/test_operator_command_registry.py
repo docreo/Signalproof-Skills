@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 ACTIVE = {
     "help": "commands/help.md",
+    "print": "commands/print.md",
     "log-skill": "commands/log-skill.md",
     "handoff-log": "commands/handoff-log.md",
     "cut-chase": "commands/cut-chase.md",
