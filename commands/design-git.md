@@ -1,7 +1,7 @@
 # `design-git` - Active Operator Command V0.2.1
 
 **Status:** ACTIVE  
-**Version:** 0.2.1  
+**Version:** 0.2.2  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -17,13 +17,14 @@ It is broader than the `signalproof-design` specialist. Its output is a bounded 
 1. Verify current relevant Git/ref/head.
 2. **Brand Pack Preflight** - as the first project-specific check, determine whether the current workstream has an owner-designated canonical brand pack. For Signalproof-owned builds, the configured Signalproof brand pack is required. Check the target build once, bind the result to the workstream/repo/head/target/brand-pack identity, and reuse a still-valid `VERIFIED-PRESENT` result instead of checking repeatedly.
 3. Establish work-stream identity, phase/state, protected baseline, rollback/non-mutation boundary, dependencies, and unresolved gates.
-4. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
-5. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
-6. Route through the minimum applicable Active Signalproof capabilities.
-7. Define one singular or tightly bounded next action.
-8. Define acceptance evidence and recovery/non-mutation expectations.
-9. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, or contradictory evidence.
-10. Emit the Next Action Contract.
+4. **Version/revision planning** - when the owner-designated Signalproof V/RD scheme applies, identify the current consumed V/RD identity and the next legal candidate identity. RD values are RD1 through RD9 only. Never design RD10 or higher. After Vn/RD9, continue at V(n+1)/RD1. A V/RD identity already issued, handed off, tested, or failed is consumed and must not be reused for its correction.
+5. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
+6. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
+7. Route through the minimum applicable Active Signalproof capabilities.
+8. Define one singular or tightly bounded next action.
+9. Define acceptance evidence and recovery/non-mutation expectations.
+10. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, version/revision identity, or contradictory evidence.
+11. Emit the Next Action Contract.
 
 ## Brand Pack Guard
 
@@ -44,6 +45,19 @@ The pre-package recheck is mandatory because packaging can omit, replace, reloca
 
 A required brand pack that is missing, stale, unverified, or excluded from the exact packaging candidate blocks packaging until corrected or the owner explicitly changes the brand requirement.
 
+## Signalproof V/RD design rule
+
+When the owner-designated Signalproof V/RD artifact scheme applies, Design must bind the next candidate identity before Build begins:
+
+- revisions are RD1 through RD9 only;
+- never propose RD10 or higher;
+- Vn/RD9 rolls to V(n+1)/RD1, for example V1/RD9 -> V2/RD1;
+- an identity is consumed once an artifact/candidate using it is issued, handed off, tested, or fails;
+- a correction advances to the next legal identity instead of reusing the failed/consumed V/RD;
+- the selected identity must remain consistent across package name, evidence folder, installer, report, manifest, and handoff.
+
+If prior V/RD state cannot be established honestly, route to Investigate rather than guessing the next revision.
+
 ## Next Action Contract
 
 ```text
@@ -58,6 +72,7 @@ Protected state: <must not change>
 Allowed surface: <what may be touched/read/executed>
 Brand pack state: <NOT-APPLICABLE | REQUIRED-UNCHECKED | VERIFIED-PRESENT identity | MISSING>
 Packaging brand gate: <NOT-APPLICABLE | REQUIRED-BEFORE-PACKAGE | PASS exact-candidate identity>
+Version/revision target: <NOT-APPLICABLE | V#/RD# with prior consumed identity>
 Known-failure constraints: <applicable evidence/rules or none>
 Dependencies/authority: <required before action>
 Acceptance evidence: <proof required>
@@ -88,8 +103,8 @@ Use stable work-stream lineage, not projected Build Ledger sequence numbers. If 
 
 ## STOP conditions
 
-STOP or return a non-executable contract when governing Git/current evidence cannot be established; work-stream identity or protected state is materially ambiguous; a required canonical brand pack is missing or cannot be identified honestly; a package is about to be created without the required exact-candidate brand recheck; known failure evidence predicts an unchanged repeat; execution authority is missing; security/provenance/license/legal uncertainty is material; a projected ledger sequence is treated as reserved; contradictory evidence prevents an honest route; or the command would fabricate runtime or agent capability.
+STOP or return a non-executable contract when governing Git/current evidence cannot be established; work-stream identity or protected state is materially ambiguous; a required canonical brand pack is missing or cannot be identified honestly; a package is about to be created without the required exact-candidate brand recheck; known failure evidence predicts an unchanged repeat; execution authority is missing; security/provenance/license/legal uncertainty is material; a projected ledger sequence is treated as reserved; a Signalproof V/RD target would use RD10 or higher, reuse a consumed identity, or cannot be derived from current evidence; contradictory evidence prevents an honest route; or the command would fabricate runtime or agent capability.
 
 ## Maintenance acceptance
 
-Keep regression evidence showing routes to Investigation, bounded Build, Research/Verify/Security/Design, initial brand-pack verification, cached `VERIFIED-PRESENT` reuse, mandatory pre-package recheck, missing-brand blocking, known-failure constraints, protected-state preservation, paused/resumed stream continuity, stale/concurrent Git detection, and exact next-step authority.
+Keep regression evidence showing routes to Investigation, bounded Build, Research/Verify/Security/Design, initial brand-pack verification, cached `VERIFIED-PRESENT` reuse, mandatory pre-package recheck, missing-brand blocking, known-failure constraints, protected-state preservation, paused/resumed stream continuity, stale/concurrent Git detection, V/RD rollover and consumed-revision planning, and exact next-step authority.
