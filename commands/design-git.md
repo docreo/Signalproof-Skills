@@ -1,7 +1,7 @@
-# `design-git` - Active Operator Command V0.2.1
+# `design-git` - Active Operator Command V0.2.2
 
 **Status:** ACTIVE  
-**Version:** 0.2.1  
+**Version:** 0.2.2  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -12,18 +12,32 @@
 
 It is broader than the `signalproof-design` specialist. Its output is a bounded Next Action Contract, not automatic implementation authority.
 
+## Signalproof Framework Preflight Hook
+
+Before any Signalproof build or design action, unless Doc Reo explicitly overrides this hook for the exact current action, run this preflight before project-specific design work:
+
+1. **Read current Git authority first.** Reconcile the current accessible Signalproof Git state and read the Git-backed authority needed to know the current brand, rules, commands, Signalproof Framework/governance, law/TOS/license constraints, protected state, and active workstream evidence. Do not substitute memory, prior-chat summaries, or a stale cached understanding for current Git.
+2. **Confirm the four standing guardrails.** Do not violate the Signalproof Framework. Do not violate the law. Do not violate applicable Terms of Service. Do not violate applicable licenses.
+3. **Confirm brand authority.** Identify the current owner-designated Signalproof brand authority and canonical assets/brand pack before visual, interface, product, or packaging design.
+4. **Confirm command authority.** Read the current /dsp command contracts that govern the requested work, including inherited routes, before selecting or executing a design/build path.
+5. **Record the result.** Preserve `FRAMEWORK PREFLIGHT: PASS | BLOCKED | OWNER OVERRIDE` with the Git basis and any material conflict.
+6. **Do not infer a waiver.** `BLOCKED` stops design/build. `OWNER OVERRIDE` applies only to the exact hook scope explicitly waived by Doc Reo and never waives law, applicable Terms of Service, licenses, security/access controls, or other non-waivable constraints.
+
+Owner directive preserved by this hook: read all current Signalproof Git necessary to know the brand, rules, commands, and laws before building or designing, because compliance with the Signalproof Framework is the first standing guardrail.
+
 ## Mandatory sequence
 
-1. Verify current relevant Git/ref/head.
-2. **Brand Pack Preflight** - as the first project-specific check, determine whether the current workstream has an owner-designated canonical brand pack. For Signalproof-owned builds, the configured Signalproof brand pack is required. Check the target build once, bind the result to the workstream/repo/head/target/brand-pack identity, and reuse a still-valid `VERIFIED-PRESENT` result instead of checking repeatedly.
-3. Establish work-stream identity, phase/state, protected baseline, rollback/non-mutation boundary, dependencies, and unresolved gates.
-4. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
-5. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
-6. Route through the minimum applicable Active Signalproof capabilities.
-7. Define one singular or tightly bounded next action.
-8. Define acceptance evidence and recovery/non-mutation expectations.
-9. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, or contradictory evidence.
-10. Emit the Next Action Contract.
+1. **Signalproof Framework Preflight Hook** - run and record the mandatory hook above before any design/build path unless Doc Reo explicitly overrides the hook for the exact current action.
+2. Verify current relevant Git/ref/head.
+3. **Brand Pack Preflight** - as the first project-specific check, determine whether the current workstream has an owner-designated canonical brand pack. For Signalproof-owned builds, the configured Signalproof brand pack is required. Check the target build once, bind the result to the workstream/repo/head/target/brand-pack identity, and reuse a still-valid `VERIFIED-PRESENT` result instead of checking repeatedly.
+4. Establish work-stream identity, phase/state, protected baseline, rollback/non-mutation boundary, dependencies, and unresolved gates.
+5. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
+6. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
+7. Route through the minimum applicable Active Signalproof capabilities.
+8. Define one singular or tightly bounded next action.
+9. Define acceptance evidence and recovery/non-mutation expectations.
+10. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, or contradictory evidence.
+11. Emit the Next Action Contract.
 
 ## Brand Pack Guard
 
