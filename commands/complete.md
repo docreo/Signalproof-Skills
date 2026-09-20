@@ -1,7 +1,7 @@
-# `complete` - Active Operator Command V0.1.0
+# `complete` - Active Operator Command V0.1.1
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
+**Version:** 0.1.1  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -32,22 +32,31 @@ When the current workstream is already sufficiently bounded, `/dsp complete` mea
 
 This is shorthand for bounded completion authority, not unlimited authority.
 
+## Signalproof Framework Preflight Hook
+
+`/dsp complete` must not treat inheritance as permission to skip the pre-build/pre-design hook. Before Build Spawn Debug actuation, unless Doc Reo explicitly overrides the hook for the exact current action, read current accessible Signalproof Git sufficiently to establish the current brand, rules, commands, Signalproof Framework/governance, and law/TOS/license constraints, then record `FRAMEWORK PREFLIGHT: PASS | BLOCKED | OWNER OVERRIDE`.
+
+The four standing guardrails remain binding inside the Complete Authorization Envelope: do not violate the Signalproof Framework; do not violate the law; do not violate applicable Terms of Service; do not violate applicable licenses. The Complete Authorization Envelope cannot waive those constraints.
+
+A valid current `design-git` / `build-git` preflight result may be consumed only when its Git basis and workstream scope are still current. Otherwise rerun the hook before continuing.
+
 ## Required behavior
 
-1. Refetch current Git and current public command contracts before consequential action.
-2. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
-3. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
-4. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
-5. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
-6. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
-7. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
-8. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
-9. Continue across materially distinct failure classes while evidence supports another bounded correction.
-10. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
-11. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
-12. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
-13. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
-14. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
+1. **Signalproof Framework Preflight Hook** - run and record the mandatory hook above before any build/design actuation unless Doc Reo explicitly overrides it for the exact current action.
+2. Refetch current Git and current public command contracts before consequential action.
+3. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
+4. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
+5. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
+6. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
+7. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
+8. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
+9. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
+10. Continue across materially distinct failure classes while evidence supports another bounded correction.
+11. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
+12. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
+13. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
+14. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
+15. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
 
 ## Complete Authorization Envelope
 
