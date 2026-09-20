@@ -81,6 +81,30 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
         ]:
             self.assertIn(required.lower(), text)
 
+    def test_mandatory_framework_hook_is_explicit_across_design_build_complete_and_log(self):
+        design = self.read("commands/design-git.md").lower()
+        build = self.read("commands/build-git.md").lower()
+        complete = self.read("commands/complete.md").lower()
+        log_skill = self.read("commands/log-skill.md").lower()
+        registry = self.read("commands/COMMAND-REGISTRY.md").lower()
+
+        for text in [design, build, complete]:
+            for required in [
+                "mandatory signalproof framework pre-build/design hook",
+                "do not violate the signalproof framework",
+                "law",
+                "terms of service",
+                "licenses",
+                "brand",
+                "known",
+            ]:
+                self.assertIn(required, text)
+
+        self.assertIn("inherits this gate from `design-git`", build)
+        self.assertIn("complete authorization envelope must make the hook state explicit", complete)
+        self.assertIn("design-git -> build-git -> complete", log_skill)
+        self.assertIn("framework hook", registry)
+
     def test_signalproof_this_plan_is_plan_only(self):
         text = self.read("commands/signalproof-this-plan.md").lower()
         for required in [
