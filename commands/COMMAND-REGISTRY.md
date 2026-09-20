@@ -10,7 +10,7 @@
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
-| `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| `complete` | 0.1.1 | Bounded authorize-all completion through Build Spawn Debug, mandatory Framework preflight, and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
 | `print` | 0.3.0 | Canonical Signalproof-styled DOCX-first document output with native Google Doc import and optional PDF |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
@@ -22,8 +22,8 @@
 | `cut-chase` | 0.1.0 | Decision-ready salience compression |
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
 | `git-check` | 0.1.0 | Deterministic read-only repository/ref/HEAD/worktree/upstream preflight |
-| `design-git` | 0.2.1 | Smallest governed Git-backed design/next-action route with brand-pack preflight and packaging guard |
-| `build-git` | 0.2.6 | Compact governed repository-backed next-action execution with proof reuse, deterministic failure guards, and brand-pack packaging enforcement |
+| `design-git` | 0.2.2 | Governed Git-backed design/next-action route with mandatory Framework/brand/command/compliance preflight and packaging guard |
+| `build-git` | 0.2.7 | Governed repository-backed execution with mandatory Framework preflight, proof reuse, deterministic failure guards, and brand-pack enforcement |
 | `build-git this` | 0.1.0 | Apply Build Git to the current bounded work unit |
 | `build-git spawn` | 0.1.0 | Builder, Design, Governor role separation |
 | `build-git-debug` | 0.1.0 | Git-backed defect localization/correction |
@@ -131,11 +131,12 @@ Examples retained for compatibility:
 7. Human QC is Human-Observed Fact, not deployment authority.
 8. Deployment requires exact-candidate evidence, applicable compliance/security/recovery gates, and explicit bounded authority.
 9. Artifact recovery must preserve exact/reconstructed identity, public/private boundaries, and connected-storage authority; `download` cannot manufacture a missing original.
-10. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
-11. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
-12. Public Git promotion does not claim canonical private Build Ledger append.
-13. Active command versions in command files and this registry must remain synchronized.
-14. Historical or private `/dsp print` records are provenance only; runtime print behavior resolves exclusively from the current `main` registry, `commands/print.md`, and `skills/signalproof-print/SKILL.md`.
+10. Before Signalproof design/build actuation, run the current Git-backed Signalproof Framework Preflight Hook unless Doc Reo explicitly overrides the hook for the exact action; current brand, rules, commands, Framework/governance, and law/TOS/license constraints must be established from Git rather than assumed from memory.
+11. Law, licenses, Terms of Service, platform policy, privacy, security, and access controls remain binding; command convenience cannot waive them.
+12. `complete` cannot manufacture human acceptance; `deploy` cannot manufacture deployment authority or post-deploy PASS.
+13. Public Git promotion does not claim canonical private Build Ledger append.
+14. Active command versions in command files and this registry must remain synchronized.
+15. Historical or private `/dsp print` records are provenance only; runtime print behavior resolves exclusively from the current `main` registry, `commands/print.md`, and `skills/signalproof-print/SKILL.md`.
 
 ## Lifecycle
 
