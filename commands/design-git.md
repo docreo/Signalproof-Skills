@@ -1,7 +1,7 @@
-# `design-git` - Active Operator Command V0.2.1
+# `design-git` - Active Operator Command V0.2.2
 
 **Status:** ACTIVE  
-**Version:** 0.2.1  
+**Version:** 0.2.2  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -12,18 +12,40 @@
 
 It is broader than the `signalproof-design` specialist. Its output is a bounded Next Action Contract, not automatic implementation authority.
 
+## Mandatory Signalproof Framework pre-build/design hook
+
+Unless Doc Reo explicitly says otherwise, this gate runs **before any Signalproof building or designing begins**.
+
+Owner hook text, preserved verbatim:
+
+> "you have been consistently violating your first order which is do not violate the signalproof  Framework, and csince the law, TOSs, and Licenses are the other four it makes me believe that you will start breaking them as welll if you do not keep your first mandate.  I need you to read all of git and make sure you know our brand, our rules, our commands, and our laws before you build anything else for us. This is part of your first mandate to not violate the Signalproof Framework.  "
+
+Operational meaning:
+
+- First mandate: **do not violate the Signalproof Framework**.
+- Before build/design actuation, reconcile the current Signalproof Git source of truth for the workstream and the governing Signalproof repositories needed to establish brand, rules, commands, Known Errors, authority, security, legal/TOS/license constraints, and current command inheritance.
+- Verify the approved brand/brand-pack state, applicable Signalproof rules and command contracts, applicable law, Terms of Service/platform policy, licenses/third-party notices, security/access-control rules, protected-state rules, and current Known Failure intelligence.
+- Do not proceed from memory, stale chat context, guessed doctrine, or an assumed inherited rule when current Git can establish it.
+- Record a compact preflight result bound to repo/ref/head/workstream. A missing, stale, contradictory, or unverified mandatory source is a STOP/design condition, not permission to improvise.
+- The owner may explicitly override this hook for a specific task; the override must be scoped and may not waive law, TOS/platform policy, licenses, security/access controls, or other non-waivable constraints.
+
+Required state before build/design actuation:
+
+`FRAMEWORK HOOK -> GIT RECONCILED -> BRAND/RULES/COMMANDS VERIFIED -> LAW/TOS/LICENSES VERIFIED -> SECURITY/KNOWN-ERRORS VERIFIED -> AUTHORITY/PROTECTED STATE VERIFIED -> PASS`
+
 ## Mandatory sequence
 
-1. Verify current relevant Git/ref/head.
-2. **Brand Pack Preflight** - as the first project-specific check, determine whether the current workstream has an owner-designated canonical brand pack. For Signalproof-owned builds, the configured Signalproof brand pack is required. Check the target build once, bind the result to the workstream/repo/head/target/brand-pack identity, and reuse a still-valid `VERIFIED-PRESENT` result instead of checking repeatedly.
-3. Establish work-stream identity, phase/state, protected baseline, rollback/non-mutation boundary, dependencies, and unresolved gates.
-4. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
-5. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
-6. Route through the minimum applicable Active Signalproof capabilities.
-7. Define one singular or tightly bounded next action.
-8. Define acceptance evidence and recovery/non-mutation expectations.
-9. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, or contradictory evidence.
-10. Emit the Next Action Contract.
+1. Run the **Mandatory Signalproof Framework pre-build/design hook** and bind the PASS/STOP result to the current workstream/repo/ref/head.
+2. Verify current relevant Git/ref/head.
+3. **Brand Pack Preflight** - as the first project-specific check, determine whether the current workstream has an owner-designated canonical brand pack. For Signalproof-owned builds, the configured Signalproof brand pack is required. Check the target build once, bind the result to the workstream/repo/head/target/brand-pack identity, and reuse a still-valid `VERIFIED-PRESENT` result instead of checking repeatedly.
+4. Establish work-stream identity, phase/state, protected baseline, rollback/non-mutation boundary, dependencies, and unresolved gates.
+5. Read the strongest current evidence and separate fact, observation, authority, inference, and proposal.
+6. Run Known Failure Preflight when the next action is consequential, repeated, or failure-prone.
+7. Route through the minimum applicable Active Signalproof capabilities.
+8. Define one singular or tightly bounded next action.
+9. Define acceptance evidence and recovery/non-mutation expectations.
+10. Define STOP conditions for stale Git, authority, security, provenance, licensing/legal, protected state, brand-pack state, or contradictory evidence.
+11. Emit the Next Action Contract.
 
 ## Brand Pack Guard
 
@@ -50,6 +72,7 @@ A required brand pack that is missing, stale, unverified, or excluded from the e
 NEXT ACTION CONTRACT
 Work stream: <stable identity>
 Git basis: <repo/ref/head>
+Framework hook state: <PASS identity | STOP reason | OWNER-OVERRIDE scope>
 Current state: <open/closed/blocked/etc.>
 Objective: <bounded outcome>
 Route: <Active capability or sequence>
