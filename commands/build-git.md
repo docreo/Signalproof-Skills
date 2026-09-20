@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.6
+# `build-git` - Active Operator Command V0.2.7
 
 **Status:** ACTIVE  
-**Version:** 0.2.6  
+**Version:** 0.2.7  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -12,24 +12,33 @@
 
 `build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
 
+## Signalproof Framework Preflight Hook
+
+Before any repository-backed build action, unless Doc Reo explicitly overrides this hook for the exact current action, verify a current `FRAMEWORK PREFLIGHT: PASS` from `design-git` or run the same preflight directly before actuation. The preflight must be based on current accessible Signalproof Git and must establish the current brand, rules, commands, Signalproof Framework/governance, and law/TOS/license constraints. A prior-chat summary, memory, or stale cached result is not a substitute for current Git.
+
+The four standing guardrails are explicit and non-optional: do not violate the Signalproof Framework; do not violate the law; do not violate applicable Terms of Service; do not violate applicable licenses. An owner override may waive only the requirement to rerun/read the hook for the exact action stated; it does not waive law, TOS, licenses, security/access controls, or other binding constraints.
+
+This requirement is written directly into `build-git`; it must not be skipped merely because `design-git` normally precedes Build.
+
 ## Runtime context
 
 Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applicable. Load root once, compact routing metadata, current capsule, one principal Skill, zero to two required specialists/Loops, and task evidence. Do not replay full logs or already-satisfied doctrine unless the current claim requires it.
 
 ## Mandatory sequence
 
-1. **Git preflight** - refetch repo/ref/head before consequential action or when state may have changed.
-2. **Router preflight** - select the minimum applicable Active capability set.
-3. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence can block a bad path but is not Active authority.
-4. **Protected state** - establish baseline, forbidden change, recovery path, workstream identity, acceptance, and authority boundary.
-5. Consume valid current state/Next Action Contract; do not silently redesign it.
-6. **Brand-pack enforcement** - when a canonical brand pack applies, consume the current `design-git` Brand Pack Guard state. If no still-valid brand-pack state exists for the current workstream/target, route through `design-git` Brand Pack Preflight before continuing. Immediately before any package, archive, installer, release bundle, deployable artifact, or other final distributable is created, recheck the exact packaging candidate for the approved brand pack even when an earlier result was `VERIFIED-PRESENT`.
-7. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
-8. Execute one routed action inside current authority.
-9. Verify the affected claim and rerun only gates invalidated by the change.
-10. Add Review, Security, recovery, Human QC, or Release only when material.
-11. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
-12. Update compact state/proof, failures/uncertainty, and next gate.
+1. **Signalproof Framework Preflight Hook** - require and record a current `FRAMEWORK PREFLIGHT: PASS`, or an exact owner override, before build actuation.
+2. **Git preflight** - refetch repo/ref/head before consequential action or when state may have changed.
+3. **Router preflight** - select the minimum applicable Active capability set.
+4. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence can block a bad path but is not Active authority.
+5. **Protected state** - establish baseline, forbidden change, recovery path, workstream identity, acceptance, and authority boundary.
+6. Consume valid current state/Next Action Contract; do not silently redesign it.
+7. **Brand-pack enforcement** - when a canonical brand pack applies, consume the current `design-git` Brand Pack Guard state. If no still-valid brand-pack state exists for the current workstream/target, route through `design-git` Brand Pack Preflight before continuing. Immediately before any package, archive, installer, release bundle, deployable artifact, or other final distributable is created, recheck the exact packaging candidate for the approved brand pack even when an earlier result was `VERIFIED-PRESENT`.
+8. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
+9. Execute one routed action inside current authority.
+10. Verify the affected claim and rerun only gates invalidated by the change.
+11. Add Review, Security, recovery, Human QC, or Release only when material.
+12. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
+13. Update compact state/proof, failures/uncertainty, and next gate.
 
 ## Cost and completion rules
 
