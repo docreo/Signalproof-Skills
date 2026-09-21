@@ -46,8 +46,7 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 **Do not repeat:** Execute a newly generated consequential PowerShell harness without validating the exact file that will run.
 
 ---
----
- 
+
 ## KE-PS-VARIABLE-COLON-INTERPOLATION-001
 
 **Domain:** PowerShell expandable strings / native-command argument construction
