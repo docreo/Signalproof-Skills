@@ -51,11 +51,11 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 **Domain:** PowerShell expandable strings / native-command argument construction
 
-**Error:** A variable immediately followed by a colon inside an expandable string is parsed as a scoped-variable reference instead of the intended variable plus literal colon, corrupting generated refspecs, paths, labels, or native-command arguments.
+**Error:** In an expandable string, `$Name:` can be parsed as scoped-variable syntax and corrupt the intended argument.
 
-**Prevention:** Do not compose parser-sensitive native arguments with ambiguous expandable strings. Prefer separate native arguments. When a literal colon must immediately follow a variable in an expandable string, delimit the variable explicitly with braces such as `${Name}:suffix`.
+**Prevention:** Prefer separate native arguments. If a literal colon must follow a variable, use `${Name}:suffix`.
 
-**Do not repeat:** Generate Git refspecs or other native arguments using forms equivalent to `"$Name:suffix"` without explicit variable delimiting or a parser-safe alternative.
+**Do not repeat:** Use ambiguous `"$Name:suffix"` forms.
 
 ---
 
@@ -63,11 +63,11 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 **Domain:** Git fetch / single-branch clone / candidate branch switching
 
-**Error:** A script fetches one named remote branch and then assumes `origin/<branch>` was created or updated locally. In narrow/single-branch clones, the fetch may populate `FETCH_HEAD` without establishing the remote-tracking ref required by a later `git switch origin/<branch>`.
+**Error:** A named fetch succeeds, but a narrow clone may populate `FETCH_HEAD` without creating `origin/<branch>`.
 
-**Prevention:** For one-shot candidate updates, fetch the exact branch and bind the subsequent switch/verification to `FETCH_HEAD`, or explicitly configure and verify the desired remote-tracking ref before using it. Verify both the final branch name and commit identity after switching.
+**Prevention:** Switch from verified `FETCH_HEAD`, or explicitly configure and verify the remote-tracking ref. Verify final branch and commit identity.
 
-**Do not repeat:** Treat successful `git fetch origin <branch>` output as proof that `origin/<branch>` exists locally.
+**Do not repeat:** Assume `git fetch origin <branch>` proves `origin/<branch>` exists locally.
 
 ---
 
