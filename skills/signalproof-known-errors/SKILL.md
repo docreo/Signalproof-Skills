@@ -46,6 +46,42 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 **Do not repeat:** Execute a newly generated consequential PowerShell harness without validating the exact file that will run.
 
 ---
+---
+ 
+## KE-PS-VARIABLE-COLON-INTERPOLATION-001
+
+**Domain:** PowerShell expandable strings / native-command argument construction
+
+**Error:** A variable immediately followed by a colon inside an expandable string is parsed as a scoped-variable reference instead of the intended variable plus literal colon, corrupting generated refspecs, paths, labels, or native-command arguments.
+
+**Prevention:** Do not compose parser-sensitive native arguments with ambiguous expandable strings. Prefer separate native arguments. When a literal colon must immediately follow a variable in an expandable string, delimit the variable explicitly with braces such as `${Name}:suffix`.
+
+**Do not repeat:** Generate Git refspecs or other native arguments using forms equivalent to `"$Name:suffix"` without explicit variable delimiting or a parser-safe alternative.
+
+---
+
+## KE-GIT-FETCH-REMOTE-REF-ASSUMPTION-001
+
+**Domain:** Git fetch / single-branch clone / candidate branch switching
+
+**Error:** A script fetches one named remote branch and then assumes `origin/<branch>` was created or updated locally. In narrow/single-branch clones, the fetch may populate `FETCH_HEAD` without establishing the remote-tracking ref required by a later `git switch origin/<branch>`.
+
+**Prevention:** For one-shot candidate updates, fetch the exact branch and bind the subsequent switch/verification to `FETCH_HEAD`, or explicitly configure and verify the desired remote-tracking ref before using it. Verify both the final branch name and commit identity after switching.
+
+**Do not repeat:** Treat successful `git fetch origin <branch>` output as proof that `origin/<branch>` exists locally.
+
+---
+
+## KE-PS-INTERACTIVE-CONTROL-BLOCK-001
+
+**Domain:** interactive Windows PowerShell control flow
+
+**Error:** `if { ... }` and its `else { ... }` clause are submitted as separate interactive commands, so `else` is parsed as a command name instead of part of the original statement.
+
+**Prevention:** Put control flow in a complete saved `.ps1` artifact or submit the entire `if/else` statement as one interactive block. Prefer a single validated script for multi-step operator workflows.
+
+**Do not repeat:** Send the operator a multi-step interactive sequence whose correctness depends on an `else` being submitted after the terminating prompt of a prior `if` block.
+
 
 ## KE-PS-NATIVE-STDERR-001
 
