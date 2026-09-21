@@ -24,6 +24,24 @@ rules:
       - do not split if/else across separate interactive submissions
     source: build-git PowerShell prevention set
 
+  - id: PS-VARIABLE-COLON-001
+    match: expandable_string_variable_immediately_followed_by_colon
+    risk: PowerShell parses the token as a scoped-variable reference and corrupts the intended native argument
+    prevent:
+      - prefer separate native-command arguments instead of constructing refspecs in one expandable string
+      - when a literal colon must follow a variable, delimit the variable with braces such as ${Name}:suffix
+      - static-check generated PowerShell for ambiguous $Name: patterns before execution
+    source: KE-PS-VARIABLE-COLON-INTERPOLATION-001
+
+  - id: PS-GIT-FETCH-REF-001
+    match: fetch_named_branch_then_assume_remote_tracking_ref
+    risk: a named fetch succeeds but a narrow or single-branch clone does not expose origin/<branch> for the following switch
+    prevent:
+      - bind one-shot branch updates to FETCH_HEAD after the exact fetch
+      - or explicitly configure and verify the remote-tracking ref before using it
+      - verify final branch name and HEAD commit after switch
+    source: KE-GIT-FETCH-REMOTE-REF-ASSUMPTION-001
+
   - id: PS-COUNT-SHAPE-001
     match: direct_count_dereference_on_optional_or_pipeline_value
     risk: property Count cannot be found, null/scalar shape drift, or StrictMode failure
