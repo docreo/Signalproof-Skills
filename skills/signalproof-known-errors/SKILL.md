@@ -71,17 +71,6 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 ---
 
-## KE-PS-INTERACTIVE-CONTROL-BLOCK-001
-
-**Domain:** interactive Windows PowerShell control flow
-
-**Error:** `if { ... }` and its `else { ... }` clause are submitted as separate interactive commands, so `else` is parsed as a command name instead of part of the original statement.
-
-**Prevention:** Put control flow in a complete saved `.ps1` artifact or submit the entire `if/else` statement as one interactive block. Prefer a single validated script for multi-step operator workflows.
-
-**Do not repeat:** Send the operator a multi-step interactive sequence whose correctness depends on an `else` being submitted after the terminating prompt of a prior `if` block.
-
-
 ## KE-PS-NATIVE-STDERR-001
 
 **Domain:** Windows PowerShell 5.1 / native processes
