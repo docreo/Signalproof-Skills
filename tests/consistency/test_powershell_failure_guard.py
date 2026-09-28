@@ -20,6 +20,14 @@ class PowerShellFailureGuardAcceptance(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
+    def test_native_argument_quoting_incident_is_in_candidate_doctrine(self):
+        skill = self.read("skills/signalproof-known-errors/SKILL.md")
+        registry = self.read("library/POWERSHELL-FAILURE-REGISTRY.yaml")
+        self.assertIn("KE-PS-NATIVE-ARGUMENT-QUOTING-001", skill)
+        self.assertIn("PS-NATIVE-ARGUMENT-QUOTING-001", registry)
+        self.assertIn("python --version", skill)
+        self.assertIn("stop the same submission immediately if inspection fails", registry)
+
     def test_loop_is_registered_and_cross_chat(self):
         registry = self.read("loops/LOOP-REGISTRY.yaml")
         loop = self.read("loops/SP-LOOP-POWERSHELL-GUARD.md").lower()
