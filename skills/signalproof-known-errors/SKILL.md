@@ -309,6 +309,20 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 ---
 
+## KE-PS-NATIVE-ARGUMENT-QUOTING-001
+
+**Domain:** Windows PowerShell 5.1 / native Python and process launching
+
+**Observed failure:** A native Python `-c` expression with nested double quotes was forwarded without its inner quotes, changing valid Python into a syntax error. Repeating the same command under unchanged conditions reproduces the harness failure, not proof of a damaged interpreter or target application.
+
+**Prevention:** Prefer native flags such as `python --version` instead of inline quoted snippets when possible. For nontrivial native arguments, use a version-compatible invocation path, preserve argument boundaries (including paths with spaces), and run a tiny exact-wrapper fixture before consequential execution. Capture stdout, stderr, and exit status separately; nonzero exit status, not mere stderr presence, is the failure signal.
+
+**Companion guard:** If an inspection/preflight fails, the same operator submission must terminate before reaching a staging or mutation step. Do not use a stale native `$LASTEXITCODE` to infer that a PowerShell script succeeded.
+
+**Evidence limitation:** The nested-quote failure was observed under Windows PowerShell; separate process-wrapper validation on the target runtime is still necessary. This entry prevents the established quoting failure without claiming every Windows native invocation has been verified.
+
+---
+
 ## Use boundary
 
 This catalog provides known-error recognition and prevention only.
