@@ -73,6 +73,18 @@ rules:
       - use exit/result contract and required artifacts as success authority
     source: KE-PS-NATIVE-STDERR-001
 
+  - id: PS-NATIVE-ARGUMENT-QUOTING-001
+    match: windows_powershell_51_nested_native_arguments_or_stage_after_failed_inspection
+    risk: >
+      Native Python inline snippets lose nested quote boundaries, or a stage
+      command is submitted despite a prior failed PowerShell preflight.
+    prevent:
+      - prefer native --version flags instead of inline quoted Python -c expressions
+      - test exact native wrapper with spaced argv and independent stdout stderr exit checks
+      - stop the same submission immediately if inspection fails
+      - carry the observed failure across chats and do not repeat unchanged conditions
+    source: KE-PS-NATIVE-ARGUMENT-QUOTING-001
+
   - id: PS-PROCESSSTARTINFO-ARGLIST-51-001
     match: windows_powershell_5_1_processstartinfo_argumentlist
     risk: ProcessStartInfo.ArgumentList is unavailable or null under Windows PowerShell 5.1 / .NET Framework, causing null-valued method calls before native process execution
