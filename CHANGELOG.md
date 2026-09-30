@@ -2,6 +2,20 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-motion-edit 0.1.0] - Candidate
+
+### Added
+
+- `signalproof-motion-edit` `0.1.0` Candidate: transcript-locked, beat-synced motion-graphics editing of an existing talking-head recording (HyperFrames), with speaker reframing/cutout, logo cards with information, UI simulation with synced clicks, audio mix targets, and frame-level render verification.
+- Acceptance contract `tests/acceptance/signalproof-motion-edit-v0.1.md` and `/dsp log-skill` provenance `provenance/signalproof-motion-edit-v0.1-candidate.md`.
+
+### Governance
+
+- Candidate / NOT ACTIVE. Not in the Router routing set or Active registry.
+- Exact `SKILL.md` size 8,365 UTF-8 bytes (HEALTHY).
+- One evidence run; promotion requires owner acceptance and further materially separate runs.
+- No canonical Build Ledger event number claimed or reserved.
+
 ## [signalproof-build-capsule 0.1.0] - Active
 
 ### Added

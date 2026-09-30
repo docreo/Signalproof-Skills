@@ -109,3 +109,8 @@ candidates:
     kind: skill
     purpose: mine historical human+AI work for repeated implicit workflows and evidence-backed capability gaps without taxonomy inflation
     path: skills/candidates/signalproof-workflow-mine/SKILL.md
+  - id: signalproof-motion-edit
+    state: CANDIDATE
+    kind: skill
+    purpose: transcript-locked, beat-synced motion-graphics edit of an existing talking-head recording with render and frame verification
+    path: skills/candidates/signalproof-motion-edit/SKILL.md
