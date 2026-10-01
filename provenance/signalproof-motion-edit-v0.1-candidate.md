@@ -79,6 +79,17 @@ New negative learning:
 
 Skill Architecture Check (update): portrait guidance added as a mode inside the same Skill rather than a separate Skill, since cue, beat, mix, and QC doctrine are shared. Bytes after update are recorded in the CHANGELOG entry. Repetition remains below promotion threshold: same source clip.
 
+## Update - owner portrait review (2026-10-01): USER UI FAIL, resumed
+
+Human-Observed (owner): in the portrait cut (a) the legibility shading sat at the top and darkened the face instead of sitting behind the lettering, at the opening title and at "NOT the easy way"; (b) the cutout showed glimpses of the original background at its edges and looked pasted.
+
+Owner direction recorded as Design Authority and added to the Skill as standing rules (section 6c):
+
+11. Shading goes behind the lettering, never over the face.
+12. Cutouts must blend: refine the matte (erode, feather, remove fringe), tint edges toward the stage color, add an outline glow.
+
+Correction applied in the portrait build and verified by snapshot at the affected cue times before re-render.
+
 ## Promotion gate
 
 1. owner creative acceptance of the evidence run;

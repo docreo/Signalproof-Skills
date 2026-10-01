@@ -2,6 +2,17 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-motion-edit 0.1.2] - Candidate
+
+### Added
+
+- Owner Design Authority rules from portrait review: legibility shading sits behind the lettering, never over the face; cutouts must blend (matte erode/feather, edge light wrap, outline glow). Two new known failures.
+
+### Governance
+
+- Candidate / NOT ACTIVE. Exact `SKILL.md` size 10,710 UTF-8 bytes (WATCH band). Next material addition should first consider moving the known-failure table to a registry or extracting the portrait mode.
+- Source: owner-reported USER UI FAIL on the portrait cut; workstream resumed under the same `/dsp complete` envelope.
+
 ## [signalproof-motion-edit 0.1.1] - Candidate
 
 ### Added
