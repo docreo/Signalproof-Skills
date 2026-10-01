@@ -56,9 +56,23 @@ Given the owner's local file paths and private material in the working context:
 
 Expected: none appear on screen, in the cue sheet, or in public Git records.
 
+## Scenario G - Portrait (9:16) version of the same edit
+
+Input: the Scenario A source, cue sheet, and audio mix; target 1080x1920.
+
+Required:
+
+1. identical cue times and audio to the landscape cut;
+2. graphics in the upper zone, speaker below; nothing essential in the top ~150 px, bottom ~350 px, or right ~150 px rail;
+3. full-frame crops centered on the measured face, with no title or kinetic text over the face;
+4. word-by-word captions with the active word highlighted on its timestamp, hidden where on-screen text repeats the words;
+5. contact sheet from the delivered portrait file checked at every cue time.
+
+Note: same clip as Scenario A, so it counts as partial (not independent) repetition evidence.
+
 ## PASS
 
-PASS when Scenario A criteria are met from the delivered file and Scenarios B-F have explicit expected behavior. A PASS does not claim owner creative acceptance and does not activate the Skill.
+PASS when Scenario A criteria are met from the delivered file and Scenarios B-G have explicit expected behavior. A PASS does not claim owner creative acceptance and does not activate the Skill.
 
 ## STOP
 

@@ -6,7 +6,7 @@ description: Turn an existing talking-head recording into a clean, beat-synced m
 # Signalproof Motion Edit
 
 **Status:** CANDIDATE / NOT ACTIVE  
-**Version:** 0.1.0  
+**Version:** 0.1.1  
 **Parent:** `signalproof` 0.1.1+  
 **Collaborators:** `signalproof-design` (visual authority), `signalproof-verify` (render proof), `signalproof-known-errors` (preflight), `signalproof-learn` (post-run lessons)
 
@@ -78,6 +78,17 @@ One paused, seek-safe timeline. Reusable visual vocabulary:
 - **Kinetic text:** words rise in, strike-through, and a slam replacement word for contrasts ("NOT the easy way").
 - **Outro:** brand lockup, subscribe/CTA with click, then fade.
 
+### 6b. Portrait (9:16) mode
+
+Same cue sheet, beat grid, and audio mix; only the layout changes.
+
+- **Stacked, not side-by-side:** graphics in the upper zone (about y 170-1000 of 1920), speaker below as a framed box or a cutout standing on the bottom edge.
+- **Safe zones:** keep text and key visuals out of the top ~150 px, the bottom ~350 px, and the right ~150 px rail where platform UI sits. Mid-screen CTAs, not bottom.
+- **Full-frame from landscape source:** a 9:16 crop needs about 1.78x upscale; center on the measured face position (from the cutout alpha), and place title or kinetic text below the face, never over it.
+- **Frame modes:** full crop (hook, contrast moments), lower box under graphics, wider lower box when a tall graphic (repo, list) needs the upper zone, cutout for the drop.
+- **Word-by-word captions:** default on in portrait (muted viewing). Two to four words per chunk, active word highlighted on its timestamp, placed above the bottom safe zone, hidden where on-screen text already says the same words.
+- **Density:** fewer words per card, about 30 percent larger type, pills wrap to two rows; desktop UIs stay readable at about 860 px wide.
+
 Rules: third-party logos come from official or officially distributed marks, never redrawn by hand; no imitation of a real product UI presented as genuine; brand colors and logo from the owner's brand pack.
 
 ### 7. Snapshot QC
@@ -114,6 +125,8 @@ Render video only. Use segmented, resumable capture for long or heavy compositio
 | Mix clips on impacts | SFX stacked on voice | limiter before loudness normalization |
 | Delivered file rejected | channel upload limit | size-targeted delivery re-encode |
 | Brand/provider unknown | asset not supplied | generic placeholder, reported as such |
+| Portrait crop cuts the face or text covers it | crop centered on frame, not on the subject | measure head position from cutout alpha; put text below the face |
+| Shell env paths silently empty | `export A=x B=$A` expands B before A is set | export the path first, then reference it |
 
 ## Output Contract
 
@@ -150,7 +163,7 @@ STOP when:
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-motion-edit`
-- **Version:** `0.1.0`
+- **Version:** `0.1.1`
 - **Maturity:** Candidate / Not Active
-- **Domain:** talking-head motion-graphics editing, transcript-locked cueing, beat sync, speaker reframing, audio mix, render verification
+- **Domain:** talking-head motion-graphics editing (16:9 and 9:16), transcript-locked cueing, beat sync, speaker reframing, audio mix, render verification
 - **Created by:** Doc Reo / Signalproof

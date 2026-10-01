@@ -55,7 +55,7 @@ Disposition: owner-directed **NEW SKILL CANDIDATE**, held at CANDIDATE. Repetiti
 ## Skill Architecture Check
 
 - `skill_id`: `signalproof-motion-edit`
-- `version`: 0.1.0
+- `version`: 0.1.0 (updated to 0.1.1 by the portrait run)
 - `skill_bytes_before`: none (new)
 - `skill_bytes_after`: 8365
 - `size_limit_bytes`: 15000
@@ -66,6 +66,18 @@ Disposition: owner-directed **NEW SKILL CANDIDATE**, held at CANDIDATE. Repetiti
 - `routing_changes`: none; Candidate is registered under `candidates:` in `library/CAPABILITY-REGISTRY.yaml` and is not in the Router routing set.
 - `acceptance_tests`: `tests/acceptance/signalproof-motion-edit-v0.1.md`
 - `rollback_or_supersession`: remove the Candidate folder, its acceptance file, this record, and its capability-registry entry.
+
+## Update - portrait run (2026-09-30, `/dsp complete`)
+
+A 9:16 version of the same edit was produced under a `/dsp complete` envelope to establish the portrait mode (Scenario G).
+
+New negative learning:
+
+8. Centering a full-height crop on the frame cut the face; the head position measured from the cutout alpha fixed framing.
+9. A title placed in the upper zone covered the face in full-frame crops; text moved below the face.
+10. `export A=x B=$A` left the browser path empty for the second variable; export sequentially.
+
+Skill Architecture Check (update): portrait guidance added as a mode inside the same Skill rather than a separate Skill, since cue, beat, mix, and QC doctrine are shared. Bytes after update are recorded in the CHANGELOG entry. Repetition remains below promotion threshold: same source clip.
 
 ## Promotion gate
 

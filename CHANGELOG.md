@@ -2,6 +2,17 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [signalproof-motion-edit 0.1.1] - Candidate
+
+### Added
+
+- Portrait (9:16) mode: stacked layout, platform safe zones, face-centered full-height crops, word-by-word captions, density rules; Acceptance Scenario G; two new known failures.
+
+### Governance
+
+- Candidate / NOT ACTIVE. Exact `SKILL.md` size 9,841 UTF-8 bytes.
+- Portrait run reuses the Scenario A clip, so it is partial repetition evidence only.
+
 ## [signalproof-motion-edit 0.1.0] - Candidate
 
 ### Added
