@@ -12,9 +12,9 @@
 
 `build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
 
-## Framework and build-identity gates
+## Canonical build identity and rollover
 
-- Consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS bound to this workstream/repo/ref/head/target. `build-git` inherits this gate from `design-git` but may not assume it passed; invalid proof routes back to `design-git`.
+- First mandate: **do not violate the Signalproof Framework**. Consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS bound to this workstream/repo/ref/head/target. `build-git` inherits this gate from `design-git` but may not assume it passed; invalid proof routes back to `design-git`.
 - Apply `library/BUILD-IDENTITY.md` for V/RD builds: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Verify the current accepted identity from Git/Build Ledger before advancing.
 ## Runtime context
 
@@ -40,7 +40,7 @@ Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load only 
 
 - Reuse still-valid evidence; do not rerun unchanged gates.
 - Prefer deterministic checks before agent spawn when they can settle the claim.
-- Preserve failure fingerprints/attempt counts across chats; same-failure retry requires material change.
+- Preserve failure fingerprints/attempt counts across chats; a fresh chat does not grant a fresh retry budget; same-failure retry requires material change.
 - Build PASS is not Human QC PASS or deployment authority.
 ## Known Failure Preflight
 
@@ -83,7 +83,7 @@ UNKNOWN/FAIL on a required state blocks execution.
 
 ## Evidence sufficiency termination
 
-If product/runtime/security/permission evidence is already sufficient and a downstream harness later fails: preserve the failure, identify the unresolved/contradictory claim, consume already-valid evidence instead of rerunning unchanged tests, and route only the smallest action needed. This prevents a reporting defect from triggering a full acceptance replay.
+Do not automatically regress an already-proven product/security claim. If product/runtime/security/permission evidence is already sufficient and a downstream harness later fails: preserve the failure, identify the unresolved/contradictory claim, consume already-valid evidence instead of rerunning unchanged tests, and route only the smallest action needed. This prevents a reporting defect from triggering a full acceptance replay.
 
 ## Exact-final-artifact rule
 
