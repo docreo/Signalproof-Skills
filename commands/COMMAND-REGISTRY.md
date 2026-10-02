@@ -6,13 +6,13 @@
 
 | Command | Version | Purpose |
 |---|---:|---|
-| `/dsp` | 0.4.1 | Compact Dr. Signalproof resolver and public Library shell |
+| `/dsp` | 0.4.2 | Compact Dr. Signalproof resolver and public Library shell |
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
-| `print` | 0.3.0 | Canonical Signalproof-styled DOCX-first document output with native Google Doc import and optional PDF |
+| `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX output with automatic exact-DOCX Google Drive delivery; native conversion/PDF opt-in |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -86,7 +86,7 @@ Examples retained for compatibility:
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
 - `/dsp print` -> `print`
-- `/dsp print docs` -> `print` with type `docs`
+- `/dsp print native google doc` -> `print` with explicit native Google Docs conversion
 - `/dsp print pdf` -> `print` with type `pdf`
 - `/dsp build-capsule` -> `build-capsule`
 - `/dsp capsule` -> `build-capsule`
