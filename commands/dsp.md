@@ -1,7 +1,7 @@
-# `/dsp` - Dr. Signalproof Command Shell V0.4.1
+# `/dsp` - Dr. Signalproof Command Shell V0.4.2
 
 **Status:** ACTIVE  
-**Version:** 0.4.1  
+**Version:** 0.4.2  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -35,7 +35,7 @@ dsp print
 /dsp-print
 dsp-print
 /dsp print docx
-/dsp print docs
+/dsp print native google doc
 /dsp print pdf
 /dsp print all
 /dsp git-check
@@ -130,7 +130,7 @@ Preferred guided software flow:
 -> /dsp deploy
 ```
 
-`/dsp print` is a document-output route, not part of the software deployment chain. It resolves to `commands/print.md` and `skills/signalproof-print/SKILL.md`.
+`/dsp print` is a complete-first document-output route, not part of the software deployment chain. It resolves to `commands/print.md` and `skills/signalproof-print/SKILL.md`, then composes the current `complete` and completion-child contracts for bounded research, correction, verification, visual QA, and delivery.
 
 `/dsp build-capsule` is an optional transfer route for substantial builds/live updates. It does not replace Build, Complete, Handoff, or deployment authority.
 
@@ -142,7 +142,7 @@ Stages may be skipped only when current evidence proves them N/A or still satisf
 
 ## Minimal handlers
 
-- `/dsp print` -> `print`: resolve author/voice separately from layout; build and verify one authoritative styled DOCX; import it to native Google Docs; PDF only when explicitly requested.
+- `/dsp print` -> `print`: load current Complete semantics; finish an academically sound APA 7 document in the accepted Signalproof light print style; build/verify one authoritative DOCX; automatically upload that exact DOCX to Google Drive; verify identity; return both links. Native Google Docs conversion and PDF are explicit opt-ins.
 - `/dsp git-check` -> `git-check`, deterministic read-only Git basis/divergence preflight.
 - `/dsp research` -> `research`, unresolved-material-fact evidence gathering.
 - `/dsp design` -> `design-git`; no duplicate Design command.
