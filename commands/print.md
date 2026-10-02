@@ -1,6 +1,6 @@
-# `print` - Candidate Operator Command V0.4.0
+# `print` - Active Operator Command V0.4.0
 
-**Status:** CANDIDATE  
+**Status:** ACTIVE  
 **Version:** 0.4.0  
 **Owner:** Doc Reo
 
