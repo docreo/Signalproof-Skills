@@ -12,6 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.2 | Bounded authorize-all completion with Framework inheritance, governed host staging/quarantine discovery, Build Spawn Debug, and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
+| `stop-hermes` | 0.1.0 | Bounded Hermes runtime shutdown/autostart containment with explicit root resolution and preserved Ollama/state |
 | `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX workflow with mandatory Google Drive delivery and verified link |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
@@ -44,6 +45,7 @@
 - `authorize` -> `commands/authorize.md`
 - `complete` -> `commands/complete.md`
 - `download` -> `commands/download.md`
+- `stop-hermes` -> `commands/stop-hermes.md`
 - `print` -> `commands/print.md`
 - `qc` -> `commands/qc.md`
 - `deploy` -> `commands/deploy.md`
@@ -85,6 +87,7 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
+- `/dsp stop-hermes` -> `stop-hermes`
 - `/dsp print` -> `print`
 - `/dsp print docs` -> `print` with type `docs`
 - `/dsp print pdf` -> `print` with type `pdf`
@@ -103,6 +106,7 @@ Examples retained for compatibility:
 - `research` -> `research`
 - `complete` / `finish this` -> `complete` when invoking bounded completion
 - `download` / `download this` / `download that` -> `download`
+- `stop Hermes` / `shut Hermes down completely` / `stop Hermes and keep it stopped` -> `stop-hermes`
 - `print` / `print this` -> `print`
 - `build capsule` / `capsule this build` -> `build-capsule`
 - `git check` / `check git` -> `git-check`
