@@ -233,6 +233,13 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 ---
 
+## Native build / structured-decoding entries
+
+- `KE-NATIVE-LINKER-LIBRARY-RESOLUTION-001` - exact-path linking mitigation after local library identity/closure is proven.
+- `KE-GBNF-JSON-LITERAL-ESCAPING-001` - separate host-string escaping from grammar escaping and validate emitted structured output before blaming model quality.
+- Detailed prevention/do-not-repeat contracts: `library/KNOWN-ERRORS-NATIVE.md`.
+
+---
 ## KE-WINDOW-ACTIVATION-IDENTITY-001
 
 **Domain:** Windows UI/process activation
