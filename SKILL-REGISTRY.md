@@ -14,7 +14,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-grill` | 0.1.0 | Active public baseline | Decision hardening and ambiguity reduction through evidence-aware frontier interviewing | Active |
 | `signalproof-grill-with-docs` | 0.1.0 | Active public baseline | Decision hardening with governed glossary and ADR capture | Active |
 | `signalproof-teach` | 0.1.0 | Active public baseline | Mission-grounded source-backed teaching and HAMM learning | Active |
-| `signalproof-print` | 0.4.0 | Candidate pending governed merge | Complete-first APA 7 Signalproof DOCX creation, visual QA, Google Drive delivery, and verified link return | Candidate |
+| `signalproof-print` | 0.4.0 | Active public baseline | Complete-first APA 7 Signalproof DOCX creation, visual QA, Google Drive delivery, and verified link return | Active |
 | `signalproof-cut-chase` | 0.1.0 | Active public baseline | Salience compression, decision-load reduction, and action extraction without cutting evidence or authority | Active |
 | `signalproof-cut-cost` | 0.1.0 | Active public baseline | Read-only AI operating-cost audit using measured token, context, tool, model, cache, agent, scheduler, and repeated-work evidence | Active |
 | `signalproof-build-capsule` | 0.1.0 | Active public baseline | Human-readable and AI-readable multimodal build-transfer packaging, payload authority, design continuity, and additive update commands | Active |
@@ -62,4 +62,4 @@ No untested specialist names are declared as planned Active capability here. Fut
 9. External skill collections are inspiration/evidence only until selectively adapted and promoted through Signalproof governance; upstream runtime invocation is not implied by provenance.
 10. The public `Signalproof-Skills` registry is the `/dsp` Skill Library authority after governed promotion; private Build Ledger mirrors are continuity evidence, not public capability authority.
 11. `signalproof-print` resolves exclusively from current `main` command/Skill state; historical `/dsp print` definitions remain provenance and must not override current runtime behavior.
-12. Candidate 0.4.0 makes current `/dsp complete` and applicable child completion contracts a required preflight and makes verified Google Drive delivery part of default print completion.
+12. `signalproof-print` 0.4.0 makes current `/dsp complete` and applicable child completion contracts a required preflight and makes verified Google Drive delivery part of default print completion.
