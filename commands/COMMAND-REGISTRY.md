@@ -10,7 +10,7 @@
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
-| `complete` | 0.1.1 | Bounded authorize-all completion through Build Spawn Debug, mandatory Signalproof Framework pre-build/design hook inheritance, and real user acceptance |
+| `complete` | 0.1.2 | Bounded authorize-all completion with Framework inheritance, governed host staging/quarantine discovery, Build Spawn Debug, and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
 | `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX workflow with mandatory Google Drive delivery and verified link |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
@@ -78,7 +78,7 @@ Preferred guided route:
 
 `/dsp design` is an alias for `design-git`; no duplicate Design command is required.
 
-`/dsp complete` may internally perform Build/Debug/Verify/Review/Security/Recovery/Learn work inside its bounded envelope, but Human QC and deployment authority remain distinct evidence/authority boundaries.
+`/dsp complete` may internally perform Build/Debug/Verify/Review/Security/Recovery/Learn work inside its bounded envelope. Host-local artifact work first resolves governed staging/quarantine rather than assuming a Downloads path. Human QC and deployment authority remain distinct evidence/authority boundaries.
 
 Examples retained for compatibility:
 
