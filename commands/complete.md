@@ -1,7 +1,7 @@
-# `complete` - Active Operator Command V0.1.1
+# `complete` - Active Operator Command V0.1.2
 
 **Status:** ACTIVE  
-**Version:** 0.1.1  
+**Version:** 0.1.2  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -61,11 +61,11 @@ Required state before build/design actuation:
 
 1. Run or consume the current **Mandatory Signalproof Framework pre-build/design hook** for any design/build work inside this completion envelope. UNKNOWN/FAIL blocks build/design actuation.
 2. Refetch current Git and current public command contracts before consequential action.
-3. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
+3. Resolve the current workstream, exact objective, protected state, acceptance target, recovery path, and host staging/quarantine state when host-local artifacts are involved.
 4. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
 5. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
 6. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
-7. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
+7. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, governed staging/quarantine boundaries, and recovery requirements.
 8. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
 9. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
 10. Continue across materially distinct failure classes while evidence supports another bounded correction.
@@ -74,6 +74,12 @@ Required state before build/design actuation:
 13. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
 14. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
 15. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
+
+## Host staging and quarantine discovery
+
+For host-local files, downloads, runners, source, evidence, or build artifacts, establish the active governed staging/quarantine root before execution. Prefer current handoff/session evidence or Signalproof configuration/state; if unresolved, use a bounded read-only host discovery scan. Do not assume `%USERPROFILE%\\Downloads`, `C:`, `F:`, or another machine-specific path.
+
+Generated or transferred artifacts used for execution must come from the established governed location. Public Skills may define discovery behavior but must not publish private machine paths. If no governed location can be established safely, STOP with the smallest location question or read-only discovery command; never silently switch to a convenience Downloads path.
 
 ## Complete Authorization Envelope
 
@@ -88,6 +94,7 @@ Framework hook state: <PASS identity | STOP reason | OWNER-OVERRIDE scope>
 Protected state: <must remain true>
 Acceptance target: <machine gates + human UI gate>
 Allowed authority: all owner-authorizable actions required by current build-spawn-debug envelope
+Host staging/quarantine: <verified root/artifact identity | NOT-APPLICABLE | UNRESOLVED>
 Known failures / retry memory: <ids/fingerprints/attempt counts>
 Recovery: <rollback/non-mutation path>
 Excluded authority: <explicit classes below>
