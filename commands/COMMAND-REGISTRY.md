@@ -12,7 +12,7 @@
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
 | `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
-| `print` | 0.3.0 | Canonical Signalproof-styled DOCX-first document output with native Google Doc import and optional PDF |
+| `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX workflow with mandatory Google Drive delivery and verified link |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
@@ -85,7 +85,7 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
-- `/dsp print` -> `print`
+- `/dsp print` -> `print` (Complete-first DOCX + Google Drive + verified link)
 - `/dsp print docs` -> `print` with type `docs`
 - `/dsp print pdf` -> `print` with type `pdf`
 - `/dsp build-capsule` -> `build-capsule`
@@ -136,6 +136,7 @@ Examples retained for compatibility:
 12. Public Git promotion does not claim canonical private Build Ledger append.
 13. Active command versions in command files and this registry must remain synchronized.
 14. Historical or private `/dsp print` records are provenance only; runtime print behavior resolves exclusively from the current `main` registry, `commands/print.md`, and `skills/signalproof-print/SKILL.md`.
+15. `/dsp print` must load current `/dsp complete` and its applicable child completion contracts before document actuation, and default completion includes verified Google Drive delivery plus a working Drive link.
 
 ## Lifecycle
 
