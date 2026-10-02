@@ -14,7 +14,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-grill` | 0.1.0 | Active public baseline | Decision hardening and ambiguity reduction through evidence-aware frontier interviewing | Active |
 | `signalproof-grill-with-docs` | 0.1.0 | Active public baseline | Decision hardening with governed glossary and ADR capture | Active |
 | `signalproof-teach` | 0.1.0 | Active public baseline | Mission-grounded source-backed teaching and HAMM learning | Active |
-| `signalproof-print` | 0.3.0 | Active public baseline | Canonical Signalproof-styled DOCX-first paper/report output, author/voice resolution, native Google Doc import, optional PDF | Active |
+| `signalproof-print` | 0.4.0 | Active public baseline | Complete-first APA 7 document completion, Signalproof light DOCX output, automatic exact-DOCX Google Drive delivery, optional native conversion/PDF | Active |
 | `signalproof-cut-chase` | 0.1.0 | Active public baseline | Salience compression, decision-load reduction, and action extraction without cutting evidence or authority | Active |
 | `signalproof-cut-cost` | 0.1.0 | Active public baseline | Read-only AI operating-cost audit using measured token, context, tool, model, cache, agent, scheduler, and repeated-work evidence | Active |
 | `signalproof-build-capsule` | 0.1.0 | Active public baseline | Human-readable and AI-readable multimodal build-transfer packaging, payload authority, design continuity, and additive update commands | Active |
