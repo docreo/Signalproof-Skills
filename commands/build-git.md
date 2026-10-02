@@ -12,53 +12,13 @@
 
 `build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
 
-## Mandatory Signalproof Framework pre-build/design hook
+## Framework and build-identity gates
 
-Unless Doc Reo explicitly says otherwise, this gate runs **before any Signalproof building or designing begins**.
-
-Owner hook text, preserved verbatim:
-
-> "you have been consistently violating your first order which is do not violate the signalproof  Framework, and csince the law, TOSs, and Licenses are the other four it makes me believe that you will start breaking them as welll if you do not keep your first mandate.  I need you to read all of git and make sure you know our brand, our rules, our commands, and our laws before you build anything else for us. This is part of your first mandate to not violate the Signalproof Framework.  "
-
-Operational meaning:
-
-- First mandate: **do not violate the Signalproof Framework**.
-- Before build/design actuation, reconcile the current Signalproof Git source of truth for the workstream and the governing Signalproof repositories needed to establish brand, rules, commands, Known Errors, authority, security, legal/TOS/license constraints, and current command inheritance.
-- Verify the approved brand/brand-pack state, applicable Signalproof rules and command contracts, applicable law, Terms of Service/platform policy, licenses/third-party notices, security/access-control rules, protected-state rules, and current Known Failure intelligence.
-- Do not proceed from memory, stale chat context, guessed doctrine, or an assumed inherited rule when current Git can establish it.
-- Record a compact preflight result bound to repo/ref/head/workstream. A missing, stale, contradictory, or unverified mandatory source is a STOP/design condition, not permission to improvise.
-- The owner may explicitly override this hook for a specific task; the override must be scoped and may not waive law, TOS/platform policy, licenses, security/access controls, or other non-waivable constraints.
-
-Required state before build/design actuation:
-
-`FRAMEWORK HOOK -> GIT RECONCILED -> BRAND/RULES/COMMANDS VERIFIED -> LAW/TOS/LICENSES VERIFIED -> SECURITY/KNOWN-ERRORS VERIFIED -> AUTHORITY/PROTECTED STATE VERIFIED -> PASS`
-
-### Inheritance rule
-
-`build-git` **inherits this gate from `design-git` but may not assume it passed**. Before build actuation, consume a still-valid `design-git` Framework Hook PASS bound to the current workstream/repo/ref/head/target. If that proof is absent, stale, contradictory, or scoped to another target, route through `design-git` and obtain a current result before continuing.
-
-## Canonical build identity and rollover
-
-All Signalproof product builds that use the V/RD scheme MUST use exactly one canonical build identity in the form `V# / RD#`.
-
-The progression is fixed:
-
-`V1/RD1 -> V1/RD2 -> ... -> V1/RD9 -> V2/RD1 -> V2/RD2 -> ... -> V2/RD9 -> V3/RD1`
-
-Rules:
-
-- RD values are limited to `RD1` through `RD9`.
-- There is no `RD10`.
-- After `Vn/RD9`, increment the version and reset the revision-development counter to `RD1`: `V(n+1)/RD1`.
-- Every successive build advances the V/RD identity unless the work is explicitly a byte-identical repackage of the same build.
-- Build artifacts, package names, handoffs, ledgers, UI labels, and release evidence MUST use the canonical V/RD identity consistently.
-- Descriptive suffixes such as `-FIX`, `-FINAL`, `-LOGIN-FIX`, `-POLISHED-ROLLBACK`, or `-WINDOWS` MUST NOT replace or extend the canonical build name. Put descriptive purpose in metadata, commit messages, ledger notes, or release notes instead.
-- Preferred artifact naming is `<Product>-V#-RD#.<ext>`, for example `Signal-Server-V1-RD6.zip`.
-- Before creating the next build, verify the current accepted V/RD identity from Git/Build Ledger rather than inferring it from filenames or chat history.
-
+- Consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS bound to this workstream/repo/ref/head/target. `build-git` inherits this gate from `design-git` but may not assume it passed; invalid proof routes back to `design-git`.
+- Apply `library/BUILD-IDENTITY.md` for V/RD builds: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Verify the current accepted identity from Git/Build Ledger before advancing.
 ## Runtime context
 
-Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applicable. Load root once, compact routing metadata, current capsule, one principal Skill, zero to two required specialists/Loops, and task evidence. Do not replay full logs or already-satisfied doctrine unless the current claim requires it.
+Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load only the minimum current routing context and task evidence.
 
 ## Mandatory sequence
 
@@ -78,14 +38,10 @@ Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applic
 
 ## Cost and completion rules
 
-- Reuse still-valid evidence rather than rerunning unchanged tests.
-- Do not automatically regress an already-proven product/security claim because a later harness/reporter/display fails. Reopen only when later evidence contradicts, exposes a missing gate, or invalidates prior proof.
-- Prefer deterministic checks before agent spawn or larger-model reasoning when they can settle the claim.
-- Spawn Builder/Design/Governor only when independent challenge materially improves quality or risk control.
-- Preserve failure fingerprints/attempts across chats; a fresh chat does not grant a fresh retry budget.
-- Same-failure retry requires a materially changed condition.
-- Stop when evidence is sufficient. Build PASS is not Human QC PASS or deployment authority.
-
+- Reuse still-valid evidence; do not rerun unchanged gates.
+- Prefer deterministic checks before agent spawn when they can settle the claim.
+- Preserve failure fingerprints/attempt counts across chats; same-failure retry requires material change.
+- Build PASS is not Human QC PASS or deployment authority.
 ## Known Failure Preflight
 
 Match conditions, not words alone: runtime, shell, version, platform, action, harness, symptom, schema/parser, path/encoding, dependency, permissions/security, packaging/provenance/license, and protected-state/chronology pattern. A high-confidence unchanged known-bad path must not run.
