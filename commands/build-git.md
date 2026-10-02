@@ -10,15 +10,15 @@
 
 > **Verify current Git, reuse valid proof, avoid known failures, execute the smallest authorized action, verify it, and leave proof.**
 
-`build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
+`build` does not imply code mutation. Route through the Active Router to the minimum applicable capability; detailed doctrine stays in its Skill, Loop, registry, or test.
 
 ## Canonical build identity and rollover
 
-- First mandate: **do not violate the Signalproof Framework**. Consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS bound to this workstream/repo/ref/head/target. `build-git` inherits this gate from `design-git` but may not assume it passed; invalid proof routes back to `design-git`.
-- Apply `library/BUILD-IDENTITY.md` for V/RD builds: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Verify the current accepted identity from Git/Build Ledger before advancing.
+- First mandate: **do not violate the Signalproof Framework**. Reconcile law, Terms of Service, licenses, security, brand, commands, and known-error state; consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS. `build-git` inherits this gate from `design-git` but may not assume it passed.
+- Apply `library/BUILD-IDENTITY.md`: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Preferred artifact: `<Product>-V#-RD#.<ext>`.
 ## Runtime context
 
-Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load only the minimum current routing context and task evidence.
+Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load minimum current context and evidence.
 
 ## Mandatory sequence
 
