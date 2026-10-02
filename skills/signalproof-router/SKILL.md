@@ -28,7 +28,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-grill` - decision hardening and ambiguity reduction before action;
 - `signalproof-grill-with-docs` - decision hardening plus governed glossary/ADR capture;
 - `signalproof-teach` - mission-grounded source-backed teaching and skill development;
-- `signalproof-print` - canonical Signalproof-styled document artifact output and native Google Docs conversion;
+- `signalproof-print` - complete-first APA 7 Signalproof DOCX output with automatic exact-DOCX Google Drive delivery; native conversion/PDF only when requested;
 - `signalproof-cut-chase` - salience compression, decision-load reduction, and action extraction;
 - `signalproof-cut-cost` - read-only AI operating-cost and token/context/tool/cache waste audit;
 - `signalproof-build-capsule` - multimodal AI build-transfer packaging with authoritative payloads, design continuity, invariants, and additive update commands;
@@ -93,7 +93,7 @@ Only skills marked Active in canonical `SKILL-REGISTRY.md` are routable on `main
 - Grill: stress-test unresolved decisions before execution.
 - Grill With Docs: stress-test while selectively capturing resolved terminology and durable tradeoffs.
 - Teach: source-backed progressive learning tied to a human mission.
-- Print: resolve and export the current document through the canonical Signalproof DOCX-first output pipeline.
+- Print: load current Complete semantics, finish the bounded academically sound APA 7 document, build/visually verify the Signalproof light DOCX, upload that exact DOCX to Google Drive, and verify delivery.
 - Cut Chase: compress established material into minimum decision-ready truth while preserving evidence, uncertainty, action, and authority boundaries.
 - Build Capsule: package substantial builds/live updates into human-readable and AI-readable visual architecture + authoritative payload + execution/update command; use a Design Capsule companion when visual authority must travel.
 - Design: product information/state architecture.
