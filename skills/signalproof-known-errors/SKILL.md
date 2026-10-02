@@ -47,6 +47,30 @@ This preflight is for efficiency and recurrence prevention. It does not grant au
 
 ---
 
+## KE-PS-VARIABLE-COLON-INTERPOLATION-001
+
+**Domain:** PowerShell expandable strings / native-command argument construction
+
+**Error:** In an expandable string, `$Name:` can be parsed as scoped-variable syntax and corrupt the intended argument.
+
+**Prevention:** Prefer separate native arguments. If a literal colon must follow a variable, use `${Name}:suffix`.
+
+**Do not repeat:** Use ambiguous `"$Name:suffix"` forms.
+
+---
+
+## KE-GIT-FETCH-REMOTE-REF-ASSUMPTION-001
+
+**Domain:** Git fetch / single-branch clone / candidate branch switching
+
+**Error:** A named fetch succeeds, but a narrow clone may populate `FETCH_HEAD` without creating `origin/<branch>`.
+
+**Prevention:** Switch from verified `FETCH_HEAD`, or explicitly configure and verify the remote-tracking ref. Verify final branch and commit identity.
+
+**Do not repeat:** Assume `git fetch origin <branch>` proves `origin/<branch>` exists locally.
+
+---
+
 ## KE-PS-NATIVE-STDERR-001
 
 **Domain:** Windows PowerShell 5.1 / native processes
