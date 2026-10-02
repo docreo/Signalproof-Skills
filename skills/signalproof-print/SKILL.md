@@ -217,7 +217,7 @@ Reject or repair a run that:
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-print`
 - **Version:** 0.4.0
-- **Maturity:** Candidate until governed merge
+- **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Works with:** `complete`, `signalproof-build-spawn-debug`, `signalproof-known-errors`, `signalproof-document`, `signalproof-verify`, `signalproof-review`, `signalproof-recovery`
 - **Domain:** APA 7 document completion, Signalproof styling, DOCX validation, visual QA, Google Drive delivery, verified link return
