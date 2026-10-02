@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.6
+# `build-git` - Active Operator Command V0.2.7
 
 **Status:** ACTIVE  
-**Version:** 0.2.6  
+**Version:** 0.2.7  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -10,37 +10,38 @@
 
 > **Verify current Git, reuse valid proof, avoid known failures, execute the smallest authorized action, verify it, and leave proof.**
 
-`build` does not imply code mutation. Route through the Active Router to the minimum applicable capability. Detailed specialist doctrine belongs in its Skill, Loop, deterministic registry, or test; this command coordinates rather than duplicates it.
+`build` does not imply code mutation. Route through the Active Router to the minimum applicable capability; detailed doctrine stays in its Skill, Loop, registry, or test.
 
+## Canonical build identity and rollover
+
+- First mandate: **do not violate the Signalproof Framework**. Reconcile law, Terms of Service, licenses, security, brand, commands, and known-error state; consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS. `build-git` inherits this gate from `design-git` but may not assume it passed.
+- Apply `library/BUILD-IDENTITY.md`: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Preferred artifact: `<Product>-V#-RD#.<ext>`.
 ## Runtime context
 
-Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md` when applicable. Load root once, compact routing metadata, current capsule, one principal Skill, zero to two required specialists/Loops, and task evidence. Do not replay full logs or already-satisfied doctrine unless the current claim requires it.
+Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load minimum current context and evidence.
 
 ## Mandatory sequence
 
-1. **Git preflight** - refetch repo/ref/head before consequential action or when state may have changed.
-2. **Router preflight** - select the minimum applicable Active capability set.
-3. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence can block a bad path but is not Active authority.
-4. **Protected state** - establish baseline, forbidden change, recovery path, workstream identity, acceptance, and authority boundary.
-5. Consume valid current state/Next Action Contract; do not silently redesign it.
-6. **Brand-pack enforcement** - when a canonical brand pack applies, consume the current `design-git` Brand Pack Guard state. If no still-valid brand-pack state exists for the current workstream/target, route through `design-git` Brand Pack Preflight before continuing. Immediately before any package, archive, installer, release bundle, deployable artifact, or other final distributable is created, recheck the exact packaging candidate for the approved brand pack even when an earlier result was `VERIFIED-PRESENT`.
-7. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
-8. Execute one routed action inside current authority.
-9. Verify the affected claim and rerun only gates invalidated by the change.
-10. Add Review, Security, recovery, Human QC, or Release only when material.
-11. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
-12. Update compact state/proof, failures/uncertainty, and next gate.
+1. **Framework hook preflight** - consume or run the current `design-git` Mandatory Signalproof Framework pre-build/design hook. UNKNOWN/FAIL blocks actuation.
+2. **Git preflight** - refetch repo/ref/head before consequential action or when state may have changed.
+3. **Router preflight** - select the minimum applicable Active capability set.
+4. **Known Failure Preflight** - inspect merged failure intelligence and relevant current open/draft Signalproof candidate evidence when newer failure knowledge may prevent recurrence. Candidate evidence can block a bad path but is not Active authority.
+5. **Protected state** - establish baseline, forbidden change, recovery path, workstream identity, acceptance, and authority boundary.
+6. Consume valid current state/Next Action Contract; do not silently redesign it.
+7. **Brand-pack enforcement** - when a canonical brand pack applies, consume the current `design-git` Brand Pack Guard state. If no still-valid brand-pack state exists for the current workstream/target, route through `design-git` Brand Pack Preflight before continuing. Immediately before any package, archive, installer, release bundle, deployable artifact, or other final distributable is created, recheck the exact packaging candidate for the approved brand pack even when an earlier result was `VERIFIED-PRESENT`.
+8. **Cheap checks first** - deterministic parser/schema/known-error/identity checks before expensive reasoning, spawning, or broad test matrices.
+9. Execute one routed action inside current authority.
+10. Verify the affected claim and rerun only gates invalidated by the change.
+11. Add Review, Security, recovery, Human QC, or Release only when material.
+12. **Git recheck** before consequential write, merge, publication, promotion, or deployment.
+13. Update compact state/proof, failures/uncertainty, and next gate.
 
 ## Cost and completion rules
 
-- Reuse still-valid evidence rather than rerunning unchanged tests.
-- Do not automatically regress an already-proven product/security claim because a later harness/reporter/display fails. Reopen only when later evidence contradicts, exposes a missing gate, or invalidates prior proof.
-- Prefer deterministic checks before agent spawn or larger-model reasoning when they can settle the claim.
-- Spawn Builder/Design/Governor only when independent challenge materially improves quality or risk control.
-- Preserve failure fingerprints/attempts across chats; a fresh chat does not grant a fresh retry budget.
-- Same-failure retry requires a materially changed condition.
-- Stop when evidence is sufficient. Build PASS is not Human QC PASS or deployment authority.
-
+- Reuse still-valid evidence; do not rerun unchanged gates.
+- Prefer deterministic checks before agent spawn when they can settle the claim.
+- Preserve failure fingerprints/attempt counts across chats; a fresh chat does not grant a fresh retry budget; same-failure retry requires material change.
+- Build PASS is not Human QC PASS or deployment authority.
 ## Known Failure Preflight
 
 Match conditions, not words alone: runtime, shell, version, platform, action, harness, symptom, schema/parser, path/encoding, dependency, permissions/security, packaging/provenance/license, and protected-state/chronology pattern. A high-confidence unchanged known-bad path must not run.
@@ -82,7 +83,7 @@ UNKNOWN/FAIL on a required state blocks execution.
 
 ## Evidence sufficiency termination
 
-If product/runtime/security/permission evidence is already sufficient and a downstream harness later fails: preserve the failure, identify the unresolved/contradictory claim, consume already-valid evidence instead of rerunning unchanged tests, and route only the smallest action needed. This prevents a reporting defect from triggering a full acceptance replay.
+Do not automatically regress an already-proven product/security claim. If product/runtime/security/permission evidence is already sufficient and a downstream harness later fails: preserve the failure, identify the unresolved/contradictory claim, consume already-valid evidence instead of rerunning unchanged tests, and route only the smallest action needed. This prevents a reporting defect from triggering a full acceptance replay.
 
 ## Exact-final-artifact rule
 
@@ -106,4 +107,4 @@ STOP when Git/protected state is unknown; an unchanged known-bad path would repe
 
 ## Maintenance acceptance
 
-Keep tests for routing, stale Git, known failures/candidate evidence, brand-pack state consumption, design-git fallback when brand state is absent, mandatory exact-candidate pre-package brand recheck, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.
+Keep tests for routing, stale Git, known failures/candidate evidence, canonical V/RD progression and artifact naming, brand-pack state consumption, design-git fallback when brand state is absent, mandatory exact-candidate pre-package brand recheck, PowerShell recurrence/cross-chat memory, observed-console compatibility, exact-final validation, evidence sufficiency, changed-condition retry, protected state, spawn truth, compliance/authority, and U+2014.

@@ -1,7 +1,7 @@
-# `log-skill` — Active Operator Command V0.2
+# `log-skill` — Active Operator Command V0.2.1
 
 **Status:** ACTIVE  
-**Version:** 0.2.0  
+**Version:** 0.2.1  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -21,6 +21,7 @@ Required behavior:
 - identify work unit and evidence state;
 - deduplicate existing records where available;
 - extract reusable learning under lifecycle governance;
+- when the learning affects building/design governance, record whether the Mandatory Signalproof Framework pre-build/design hook was added/changed, its inheritance path, enforcement test, and any explicit owner override semantics;
 - run the Skill Architecture Check when a Skill is created or materially changed;
 - publish only public-safe records and preserve private evidence separately;
 - stage when canonical append is unavailable/unnecessary/unauthorized;
@@ -43,6 +44,12 @@ Latch the current milestone as closure-required before phase transition while le
 ### `log-skill close C###`
 
 Strict conditional close. The requested number is an assertion, never a reservation. Proceed only when verified canonical chronology makes it the next valid sequence and all normal gates pass; otherwise STOP.
+
+## Signalproof Framework hook logging rule
+
+When a milestone or learning changes build/design behavior, `log-skill` must preserve the rule that the first mandate is **do not violate the Signalproof Framework** and record the inheritance path `design-git -> build-git -> complete` when applicable. Logging must distinguish a current verified Git-backed rule from conversation-only memory. A staged/candidate record must not be described as Active until governance permits activation.
+
+For this hook, record at minimum: source Git/ref/head, affected commands, exact regression test or deterministic check, brand/rules/commands/law/TOS/license/security/known-error coverage, override scope if any, and rollback/supersession path.
 
 ## Skill Architecture Check
 

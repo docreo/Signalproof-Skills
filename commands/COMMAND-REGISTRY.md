@@ -10,20 +10,20 @@
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
-| `complete` | 0.1.0 | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| `complete` | 0.1.1 | Bounded authorize-all completion through Build Spawn Debug, mandatory Signalproof Framework pre-build/design hook inheritance, and real user acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
 | `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX workflow with mandatory Google Drive delivery and verified link |
 | `qc` | 0.1.0 | Exact-candidate Human QC gate after automated PASS |
 | `deploy` | 0.1.0 | Authorized exact-artifact deployment, post-deploy verification, and closeout |
 | `known-errors` | 0.1.0 | Continuous recurrence prevention for current workstream |
-| `log-skill` | 0.2.0 | Milestone/learning/Skill continuity without fabricated chronology |
+| `log-skill` | 0.2.1 | Milestone/learning/Skill continuity, including Signalproof Framework hook inheritance logging, without fabricated chronology |
 | `handoff-log` | 0.2.1 | Durable fresh-chat handoff plus log synchronization |
 | `build-capsule` | 0.1.0 | Create/refine a human-readable and AI-readable build-transfer package, including optional Design Capsule and live-update command mode |
 | `cut-chase` | 0.1.0 | Decision-ready salience compression |
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
 | `git-check` | 0.1.0 | Deterministic read-only repository/ref/HEAD/worktree/upstream preflight |
-| `design-git` | 0.2.1 | Smallest governed Git-backed design/next-action route with brand-pack preflight and packaging guard |
-| `build-git` | 0.2.6 | Compact governed repository-backed next-action execution with proof reuse, deterministic failure guards, and brand-pack packaging enforcement |
+| `design-git` | 0.2.2 | Smallest governed Git-backed design/next-action route with mandatory Signalproof Framework pre-build/design hook, brand-pack preflight, and packaging guard |
+| `build-git` | 0.2.7 | Compact governed repository-backed execution with explicit Signalproof Framework hook inheritance, proof reuse, deterministic failure guards, and brand-pack packaging enforcement |
 | `build-git this` | 0.1.0 | Apply Build Git to the current bounded work unit |
 | `build-git spawn` | 0.1.0 | Builder, Design, Governor role separation |
 | `build-git-debug` | 0.1.0 | Git-backed defect localization/correction |
@@ -85,7 +85,7 @@ Examples retained for compatibility:
 - `/dsp help` -> `help`
 - `/dsp complete` -> `complete`
 - `/dsp download` -> `download`
-- `/dsp print` -> `print` (Complete-first DOCX + Google Drive + verified link)
+- `/dsp print` -> `print`
 - `/dsp print docs` -> `print` with type `docs`
 - `/dsp print pdf` -> `print` with type `pdf`
 - `/dsp build-capsule` -> `build-capsule`
@@ -136,7 +136,6 @@ Examples retained for compatibility:
 12. Public Git promotion does not claim canonical private Build Ledger append.
 13. Active command versions in command files and this registry must remain synchronized.
 14. Historical or private `/dsp print` records are provenance only; runtime print behavior resolves exclusively from the current `main` registry, `commands/print.md`, and `skills/signalproof-print/SKILL.md`.
-15. `/dsp print` must load current `/dsp complete` and its applicable child completion contracts before document actuation, and default completion includes verified Google Drive delivery plus a working Drive link.
 
 ## Lifecycle
 
