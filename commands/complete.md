@@ -1,7 +1,7 @@
-# `complete` - Active Operator Command V0.1.0
+# `complete` - Active Operator Command V0.1.1
 
 **Status:** ACTIVE  
-**Version:** 0.1.0  
+**Version:** 0.1.1  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -32,22 +32,48 @@ When the current workstream is already sufficiently bounded, `/dsp complete` mea
 
 This is shorthand for bounded completion authority, not unlimited authority.
 
+## Mandatory Signalproof Framework pre-build/design hook
+
+Unless Doc Reo explicitly says otherwise, this gate runs **before any Signalproof building or designing begins**.
+
+Owner hook text, preserved verbatim:
+
+> "you have been consistently violating your first order which is do not violate the signalproof  Framework, and csince the law, TOSs, and Licenses are the other four it makes me believe that you will start breaking them as welll if you do not keep your first mandate.  I need you to read all of git and make sure you know our brand, our rules, our commands, and our laws before you build anything else for us. This is part of your first mandate to not violate the Signalproof Framework.  "
+
+Operational meaning:
+
+- First mandate: **do not violate the Signalproof Framework**.
+- Before build/design actuation, reconcile the current Signalproof Git source of truth for the workstream and the governing Signalproof repositories needed to establish brand, rules, commands, Known Errors, authority, security, legal/TOS/license constraints, and current command inheritance.
+- Verify the approved brand/brand-pack state, applicable Signalproof rules and command contracts, applicable law, Terms of Service/platform policy, licenses/third-party notices, security/access-control rules, protected-state rules, and current Known Failure intelligence.
+- Do not proceed from memory, stale chat context, guessed doctrine, or an assumed inherited rule when current Git can establish it.
+- Record a compact preflight result bound to repo/ref/head/workstream. A missing, stale, contradictory, or unverified mandatory source is a STOP/design condition, not permission to improvise.
+- The owner may explicitly override this hook for a specific task; the override must be scoped and may not waive law, TOS/platform policy, licenses, security/access controls, or other non-waivable constraints.
+
+Required state before build/design actuation:
+
+`FRAMEWORK HOOK -> GIT RECONCILED -> BRAND/RULES/COMMANDS VERIFIED -> LAW/TOS/LICENSES VERIFIED -> SECURITY/KNOWN-ERRORS VERIFIED -> AUTHORITY/PROTECTED STATE VERIFIED -> PASS`
+
+### Complete inheritance rule
+
+`/dsp complete` does not bypass this hook. Any design/build path inside Complete must carry a current `design-git` Framework Hook result into `build-git` before actuation. `complete` inherits the requirement through the build path, but the Complete Authorization Envelope must make the hook state explicit so inheritance can never be silently assumed.
+
 ## Required behavior
 
-1. Refetch current Git and current public command contracts before consequential action.
-2. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
-3. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
-4. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
-5. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
-6. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
-7. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
-8. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
-9. Continue across materially distinct failure classes while evidence supports another bounded correction.
-10. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
-11. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
-12. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
-13. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
-14. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
+1. Run or consume the current **Mandatory Signalproof Framework pre-build/design hook** for any design/build work inside this completion envelope. UNKNOWN/FAIL blocks build/design actuation.
+2. Refetch current Git and current public command contracts before consequential action.
+3. Resolve the current workstream, exact objective, protected state, acceptance target, and recovery path.
+4. If the workstream is not sufficiently bounded, STOP with the smallest missing scope decision. Do not invent a target simply because the word `complete` was used.
+5. Create one `COMPLETE AUTHORIZATION ENVELOPE` bound to the current workstream.
+6. Treat the invocation as explicit owner authorization for all normal owner-authorizable build, spawn, investigate, debug, test, verify, review, security-check, recovery, and learning actions required by the current `build-spawn-debug` envelope.
+7. Preserve all objective prerequisites, known-error guards, retry limits, protected-state rules, exact-final-artifact checks, and recovery requirements.
+8. Do not stop for routine intermediate owner approvals that are already inside the Complete Authorization Envelope.
+9. Run the current canonical `build-spawn-debug` command rather than reimplementing its internals.
+10. Continue across materially distinct failure classes while evidence supports another bounded correction.
+11. Same-failure retry limits remain binding. A new attempt against the same failure requires materially new evidence, a newly localized cause, a materially changed implementation/environment condition, a proven mitigation, or an owner decision that resolves the blocked branch.
+12. When all machine-verifiable gates pass, present `USER UI TEST READY` with the exact candidate, launch action, minimum test steps, expected behavior, and the specific user-visible acceptance claim.
+13. Human UI FAIL is not a terminal stop. Preserve the exact observation and candidate identity, then resume the same Build Spawn Debug workstream automatically under the still-valid Complete Authorization Envelope when the failure remains inside scope.
+14. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
+15. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
 
 ## Complete Authorization Envelope
 
@@ -58,6 +84,7 @@ COMPLETE AUTHORIZATION ENVELOPE
 Workstream: <exact current bounded workstream>
 Objective: <user-visible outcome>
 Git basis: <repo/ref/head>
+Framework hook state: <PASS identity | STOP reason | OWNER-OVERRIDE scope>
 Protected state: <must remain true>
 Acceptance target: <machine gates + human UI gate>
 Allowed authority: all owner-authorizable actions required by current build-spawn-debug envelope
