@@ -1,265 +1,269 @@
 ---
 name: signalproof-print
-description: Single canonical Signalproof document-output workflow. Resolve document class and author identity, apply the accepted Signalproof house paper/report style, build and visually verify one authoritative DOCX, then create a native Google Doc by importing that completed DOCX through Google Drive conversion. PDF is produced only when explicitly requested. Default authoring identity is Doc Reo unless otherwise stated; formal citations to the operator's work normalize under Lawson.
+description: Complete-first Signalproof document workflow. Load the current /dsp complete contract and completion children, finish the bounded paper/report with academically sound APA 7 evidence discipline, build and visually verify one authoritative light-style DOCX, upload that exact DOCX automatically to Google Drive, verify its identity, and return the local and Drive links. Native Google Docs conversion and PDF are opt-in.
 ---
 
 # Signalproof Print
 
 ## Purpose
 
-`signalproof-print` is the artifact-output specialist behind `/dsp print`.
+`signalproof-print` is the artifact specialist behind `/dsp print`.
 
 Its central rule is:
 
-> **Keep one print pipeline. Resolve author/voice separately from layout. Build the authoritative Signalproof-styled DOCX first, visually verify it, then import that finished DOCX into Google Docs. Produce PDF only when explicitly requested.**
+> **Use Signalproof Complete behavior to finish the bounded document, then deliver one authoritative academically sound APA 7 DOCX in the accepted Signalproof light print style and automatically upload that exact DOCX to Google Drive.**
 
-"Print" means create/export the durable document artifact set, not send content to a physical printer.
+"Print" means complete, render, verify, and deliver the durable document artifact. It does not mean physical printing.
 
-## Canonical Output Contract
+## Complete-first composition
 
-Default `/dsp print` output:
+At the beginning of every consequential print run, refetch current Git and load:
 
-1. authoritative Signalproof-styled DOCX;
-2. native Google Doc created from that DOCX through Google Drive native conversion.
+- `commands/complete.md`;
+- `commands/build-spawn-debug.md`;
+- `skills/signalproof-build-spawn-debug/SKILL.md`;
+- this Skill and `commands/print.md`;
+- only the additional current children needed for the bounded document, such as Known Errors, Research, Document, Build, Debug/Full Debug, Investigate, Verify, Review, Security, Recovery, and Learn.
 
-Do not automatically create a PDF.
+Do not recursively re-enter the shell. Apply Complete's bounded authorization, evidence, retry, recovery, and STOP semantics to the print workstream.
 
-Explicit behavior:
+Routine research, document-build, rendering, QA, correction, and Drive-upload steps inside the bounded print envelope should not require repeated owner approval.
 
-```text
-/dsp print docx      -> DOCX only
-/dsp print docs      -> native Google Doc from authoritative DOCX workflow
-/dsp print pdf       -> PDF only, derived from authoritative DOCX when possible
-/dsp print all       -> DOCX + PDF + native Google Doc
-```
+## Canonical default output
 
-## One Print System, Multiple Author Voices
+Default `/dsp print` produces:
 
-Formatting/output behavior does not change when the author changes.
+1. an authoritative `.docx`;
+2. automatic upload of that exact `.docx` to Google Drive;
+3. verification that the Drive object is the expected DOCX file;
+4. a local/download link and Google Drive/Google Docs link.
 
-### Default author: Doc Reo
+Default Drive storage preserves the DOCX MIME type:
 
-Unless the operator explicitly states otherwise, assume the visible author/byline is:
+`application/vnd.openxmlformats-officedocument.wordprocessingml.document`
 
-**Doc Reo**
+The file may open inside the Google Docs editor, but it remains a DOCX.
 
-Use this authoring mode for papers, essays, publication-oriented analysis, thought leadership, opinion-informed pieces, academic-style writing, and documents that incorporate the operator's interpretation, outlook, or argument.
+Native Google Docs conversion is not required unless explicitly requested.
 
-Do not automatically expand the visible byline to the operator's full legal/professional name.
+PDF is not created unless explicitly requested.
 
-### Formal citation identity
+## Academic standard
 
-For APA 7 and similar author-date citation systems, citations to the operator's own work normalize under the surname:
+Unless the operator specifies otherwise, use APA 7 as the academic/citation framework.
 
-**Lawson**
+A completed document must:
 
-Examples:
+- ground material factual claims in appropriate evidence;
+- distinguish evidence, interpretation, inference, and opinion;
+- research unresolved material facts when necessary;
+- prefer primary, scholarly, official, or authoritative sources appropriate to the topic;
+- use accurate APA 7 in-text citations and references when applicable;
+- preserve correct authorship, title, date, DOI/URL, and source identity;
+- never invent citations, quotations, page numbers, DOIs, or sources;
+- represent internal Git/file/test evidence as internal technical evidence rather than pretending it is external scholarship;
+- preserve uncertainty and source limitations.
 
-```text
-(Lawson, 2026)
-Lawson (2026)
-```
+If an explicit source-bound rewrite requires preserving the supplied content, do not introduce unsupported factual material merely to make it look academic.
 
-APA 7 reference-list author fields do not include professional titles, honorifics, or academic degrees. Use the bibliographic author name required by the source record, but do not append credentials such as M.Ed. or M.A. to the citation author field.
+## Author identity
 
-The visible publication byline and the formal citation identity are separate concerns:
+Default visible byline: **Doc Reo**.
 
-- visible byline default: `Doc Reo`;
-- formal citation surname: `Lawson`;
-- full name/credentials: only when explicitly requested or materially required by submission, credential, legal, or publication context.
+For formal citations to the operator's published work, use the bibliographic author name required by the source record and normalize author-date references under **Lawson** where appropriate. APA reference fields do not include degrees or honorifics.
 
-### Dr. Signalproof reports
+Use **Dr. Signalproof** only when explicitly requested or when the bounded artifact is clearly a Signalproof system-authored technical/assessment report.
 
-When the operator explicitly requests a Dr. Signalproof report, or the work is clearly an internal technical/assessment/reporting artifact authored by the Signalproof system, use **Dr. Signalproof** as the reporting voice.
+Honor any other explicit author/byline.
 
-Dr. Signalproof represents synthesis of the relevant team's findings. Its prose should emphasize evidence, findings, status, implications, risk, and recommendations rather than presenting personal opinion as Doc Reo's viewpoint.
+## Signalproof house presentation
 
-### Other author identities
+Default print styling is light and paper-readable:
 
-Honor explicitly requested bylines such as:
-
-- Signalproof;
-- Mareo-Ahmir Lawson;
-- Mareo-Ahmir Lawson, M.Ed., M.A.;
-- another named author.
-
-Changing the author identity must not change the print/layout pipeline.
-
-## Document-Class Distinction
-
-### Publication / paper
-
-Typical characteristics:
-
-- defaults to Doc Reo unless otherwise stated;
-- may include the operator's opinion, analysis, outlook, interpretation, argument, or synthesis;
-- more academic/publication-oriented structure where appropriate;
-- may use APA 7 or other requested citation conventions;
-- should preserve uncertainty and distinguish evidence from interpretation.
-
-### Report
-
-Typical characteristics:
-
-- may use Dr. Signalproof when explicitly requested or clearly system-authored;
-- more reporting/assessment-oriented than personal;
-- emphasizes observed state, evidence, analysis, implications, risks, and next actions;
-- avoids attributing team synthesis to Doc Reo personally unless the source supports that attribution.
-
-These are content/voice distinctions only. Both use the same Signalproof print system.
-
-## Signalproof House Style Gate
-
-Before output, determine the closest accepted Signalproof document class and apply the established style unless the operator supplies a specific template or explicitly requests a different style.
-
-Current preferred characteristics:
-
-- Aptos body typography;
-- Aptos Display titles and major headings;
+- white page background;
+- dark body text;
+- Aptos body text;
+- Aptos Display for title and major headings unless a submission template requires another accepted font;
 - restrained Signalproof navy/blue hierarchy;
-- clean U.S. Letter page geometry with disciplined margins;
+- limited green/amber accents for status or analytical emphasis;
+- U.S. Letter page geometry with disciplined margins;
 - compact professional spacing;
-- consistent headers, footers, page numbering, captions, tables, and reference formatting;
-- clear section hierarchy;
-- preservation of APA 7 conventions when APA 7 is requested;
-- no generic Word-default styling when an accepted Signalproof style exists;
-- no unnecessary gradients, decorative rules, or presentation-style effects.
+- consistent page numbering, headers/footers, tables, figures, captions, and references;
+- no white body text on black pages;
+- no dark dashboard background for ordinary report/paper output;
+- no decorative excess that harms print readability.
 
-Style selection order:
+Selection order:
 
-1. operator-specified template/style;
-2. accepted style already established for the same paper/report series;
-3. closest accepted Signalproof paper/report style;
-4. current Signalproof security-report typography as technical fallback.
+1. operator-specified template;
+2. accepted same-series Signalproof style;
+3. accepted Signalproof light paper/report style;
+4. technical/security-report typography fallback.
 
-Fail the style gate rather than silently returning a generic manuscript when an accepted Signalproof style is available.
+## Print Complete Envelope
 
-## Authoritative Document Pipeline
+Before creating artifacts, preserve:
 
-### A. Resolve source and target
+```text
+PRINT COMPLETE ENVELOPE
+Target
+Objective
+Author/byline
+Document class
+Evidence basis
+Academic standard
+Style baseline
+Authoritative DOCX filename
+Google Drive destination
+Automated gates
+Human acceptance boundary
+Recovery/non-overwrite path
+Excluded authority
+```
 
-Resolve the current bounded item using the smallest authoritative path:
+The envelope survives bounded corrections and owner-reported FAIL for the same document.
 
-1. explicit current conversation item or selected attachment;
-2. exact named current artifact/document;
-3. exact filename in accessible conversation/library/authorized connected storage;
-4. explicitly identified Git repository + file path;
-5. explicitly identified accessible server/local path;
-6. current bounded work item when the operator says only `/dsp print` or `/dsp print <type>`.
+## Authoritative artifact pipeline
 
-Never guess a repository, server, path, or similarly named file.
+### 1. Resolve and complete content
 
-### B. Resolve author and document class
+Resolve the exact target from current conversation, attached/library file, connected source, explicit Git file, or current bounded work item.
 
-Determine:
+Complete missing evidence and writing necessary for the requested document. Do not invent missing facts or silently widen the subject.
 
-- publication/paper vs report;
-- visible author/byline;
-- citation identity if relevant;
-- requested citation system;
-- whether the source intentionally contains operator opinion or only team findings.
+### 2. Build DOCX
 
-Default to **Doc Reo** for authoring unless the operator states otherwise.
-
-### C. Build authoritative DOCX
-
-Create or reuse one finished DOCX.
+Create one finished DOCX as the authoritative artifact.
 
 Required checks:
 
-1. document opens/validates;
-2. accepted Signalproof styling is present and internally consistent;
-3. headings, tables, references, captions, headers/footers, pagination, and figures are not clipped or broken;
-4. render to page images and visually inspect the full document when tooling supports it.
+- valid/openable package;
+- correct title/byline and document class;
+- APA 7 citation/reference consistency;
+- accepted Signalproof light style;
+- tables/figures/captions intact;
+- headers/footers/page numbers intact;
+- no clipped or overlapping content.
 
-The DOCX is authoritative for sibling outputs.
+### 3. Render and visually verify
 
-### D. Google Docs
+When tooling supports rendering, render the exact DOCX and inspect all pages.
 
-Create the native Google Doc by importing/uploading the finished DOCX through Google Drive native conversion.
+Repair:
 
-Required path:
+- clipping;
+- overflow;
+- unreadable contrast;
+- broken tables/charts;
+- bad page breaks;
+- orphaned headings;
+- malformed references;
+- accidental dark-page styling.
+
+Rerender after material corrections.
+
+### 4. Upload exact DOCX to Google Drive
+
+Upload the exact verified DOCX bytes to Google Drive.
+
+Verify the returned file title/identity and DOCX MIME type. Return the provider link.
+
+Do not stop at a failed native-conversion action when raw DOCX upload is supported.
+
+Do not silently overwrite an existing Drive file.
+
+### 5. Optional outputs
+
+`/dsp print pdf`: create PDF only when explicitly requested.
+
+`/dsp print all`: DOCX + Drive DOCX + PDF.
+
+`/dsp print native google doc`: preserve the DOCX, then explicitly convert/import that exact verified DOCX to a native Google Doc and return both links.
+
+Never use the forbidden degraded path:
 
 ```text
-SIGNALPROOF-STYLED DOCX
-     -> Google Drive import/conversion
-     -> NATIVE GOOGLE DOC
+DOCX/PDF -> extract plain text -> blank Google Doc -> insert paragraphs
 ```
 
-Forbidden fallback:
+## Completion loop
+
+Use the current Complete/Build Spawn Debug discipline:
 
 ```text
-DOCX/PDF -> extract text -> blank Google Doc -> insert paragraphs
+CURRENT TRUTH
+-> KNOWN ERROR / PRIOR FAILURE MEMORY
+-> COMPLETE BOUNDED CONTENT
+-> BUILD DOCX
+-> VERIFY + VISUAL QA
+-> FAIL? LOCALIZE + CORRECT + RETEST
+-> DRIVE UPLOAD
+-> VERIFY DRIVE IDENTITY
+-> USER REVIEW READY
+-> USER FAIL? RESUME WITH NEW EVIDENCE
+-> USER PASS? USER ACCEPTED
 ```
 
-If conversion fails:
+Same-failure retries require materially new evidence or a materially changed condition. Do not repeat unchanged failed upload/render paths indefinitely.
 
-- preserve the verified DOCX;
-- report `GOOGLE DOC BLOCKED` with the actual failure;
-- do not fabricate success;
-- do not silently create a degraded native Doc;
-- do not create a PDF as a substitute unless explicitly requested.
+## Output classifications
 
-### E. PDF
+Use:
 
-PDF is opt-in.
+- `CREATED`;
+- `RESTYLED / CREATED`;
+- `REUSED EXACT SOURCE`;
+- `VERIFIED EQUIVALENT`;
+- `PRINT COMPLETE / USER REVIEW READY`;
+- `PRINT COMPLETE / USER ACCEPTED`;
+- `BLOCKED`;
+- `STOP / OWNER DECISION REQUIRED`.
 
-When explicitly requested, derive/render it from the completed DOCX when possible so pagination and styling remain aligned with the authoritative source.
+Never claim Google Drive success, APA 7 PASS, visual QA PASS, or owner acceptance without supporting evidence.
 
-## Naming
+## Anti-patterns
 
-Use the accepted source title/filename unless the operator requests a different name.
+Repair or stop when the run:
 
-Do not force the full author name into filenames or visible document titles merely because it is available.
+- ignores current `/dsp complete` and completion-child contracts;
+- returns an unfinished draft when bounded corrections remain available;
+- uses black/dark paper backgrounds for ordinary report output;
+- treats APA 7 as decorative rather than evidence/citation discipline;
+- invents references;
+- creates a generic Word-default document despite an applicable Signalproof style;
+- declares completion before visual QA when rendering is available;
+- converts to native Google Docs by default;
+- stops after native conversion fails without trying supported exact-DOCX Drive upload;
+- uploads a different DOCX than the exact verified artifact;
+- returns no Drive link after a confirmed upload;
+- reconstructs a Google Doc from extracted plain text;
+- creates PDF without request;
+- silently overwrites a prior Drive file;
+- claims user PASS before the owner reports it.
 
-## Output Classification
+## Completion criteria
 
-For each requested artifact, report one of:
+Default `/dsp print` is complete enough for owner review when:
 
-- `CREATED`
-- `RESTYLED / CREATED`
-- `REUSED EXACT SOURCE`
-- `VERIFIED EQUIVALENT`
-- `BLOCKED`
+1. the bounded target is resolved;
+2. required content/evidence work is finished;
+3. APA 7 academic requirements pass for the applicable document class;
+4. Signalproof light print styling is applied;
+5. the authoritative DOCX validates;
+6. full-document visual QA passes when supported;
+7. that exact DOCX is uploaded to Google Drive;
+8. Drive file identity/MIME is verified;
+9. local and Drive links are returned.
 
-Do not claim Google conversion success without connector confirmation.
-
-## Anti-Patterns
-
-Fail or repair the run when the system:
-
-- resolves `/dsp print` from a historical Build Ledger definition instead of current `main`;
-- combines multiple historical print behaviors;
-- uses a generic document layout despite an applicable Signalproof style;
-- changes print layout merely because author identity changes;
-- automatically expands `Doc Reo` to the full name/credentials without cause;
-- appends professional titles or academic degrees to APA 7 citation author fields;
-- reconstructs Google Docs from plain extracted text;
-- automatically produces a PDF when none was requested;
-- generates separate content states for DOCX and Google Doc;
-- skips visual DOCX QA when supported;
-- claims artifact/conversion success without evidence.
-
-## Completion Criteria
-
-A default `/dsp print` run is complete when:
-
-1. the target is safely resolved;
-2. document class and author identity are resolved;
-3. the accepted Signalproof style is applied;
-4. one authoritative DOCX passes validation and visual QA;
-5. the finished DOCX is imported through native Google Drive conversion;
-6. DOCX and native Google Doc are delivered, or any blocked output is explicitly identified.
-
-PDF completion is required only when PDF or `all` is explicitly requested.
+Owner acceptance remains a separate human-observed final state.
 
 ## Identity
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-print`
-- **Version:** `0.3.0`
+- **Version:** `0.4.0`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
-- **Works with:** `signalproof-document`, `signalproof-verify`, `signalproof-release`, `signalproof-closeout`
-- **Domain:** Signalproof-styled document output, author/voice resolution, DOCX-first Google Docs conversion, optional PDF, citation identity, cross-surface delivery
+- **Works with:** `complete`, `signalproof-build-spawn-debug`, `signalproof-research`, `signalproof-document`, `signalproof-verify`, `signalproof-review`, `signalproof-learn`
+- **Domain:** complete-first APA 7 document completion, Signalproof print styling, DOCX validation, visual QA, Google Drive DOCX delivery
 - **Created by:** Doc Reo / Signalproof
