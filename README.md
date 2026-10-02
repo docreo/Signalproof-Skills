@@ -84,6 +84,7 @@ This is a guided route, not a mandatory conveyor belt. `/dsp` resolves the minim
 | [`research`](commands/research.md) | Minimum necessary source-grounded research |
 | [`authorize`](commands/authorize.md) | Exact bounded authorization handler |
 | [`complete`](commands/complete.md) | Bounded authorize-all completion through Build Spawn Debug and real user acceptance |
+| [`stop-hermes`](commands/stop-hermes.md) | Bounded Hermes shutdown/autostart containment with explicit authoritative-root resolution |
 | [`print`](commands/print.md) | Complete-first APA 7 Signalproof DOCX output with verified Google Drive delivery and link |
 | [`qc`](commands/qc.md) | Exact-candidate human QC after automated PASS |
 | [`deploy`](commands/deploy.md) | Authorized exact-artifact deployment and post-deploy verification |
@@ -141,6 +142,7 @@ Command versions and Active status remain governed by [`commands/COMMAND-REGISTR
 | [`signalproof-rollback`](skills/signalproof-rollback/SKILL.md) | 0.1.0 | Rollback target selection and identity verification |
 | [`signalproof-restore`](skills/signalproof-restore/SKILL.md) | 0.1.0 | Bounded restoration and verification |
 | [`signalproof-cleanup`](skills/signalproof-cleanup/SKILL.md) | 0.1.0 | Owned partial-operation cleanup |
+| [`signalproof-stop-hermes`](skills/signalproof-stop-hermes/SKILL.md) | 0.1.0 | Hermes runtime shutdown and autostart containment while preserving Ollama and recoverable state |
 | [`signalproof-recovery-continuity`](skills/signalproof-recovery-continuity/SKILL.md) | 0.1.0 | Recovery journals, ownership state and remaining options |
 | [`signalproof-security`](skills/signalproof-security/SKILL.md) | 0.2.0 | Cross-cutting defensive security coordination |
 | [`signalproof-secrets`](skills/signalproof-secrets/SKILL.md) | 0.1.0 | Credentials, tokens, keys and secret exposure |
@@ -177,6 +179,7 @@ prompt/code injection      -> signalproof-execution-security
 rollback selection         -> signalproof-rollback
 actual restoration         -> signalproof-restore
 partial-operation cleanup  -> signalproof-cleanup
+stop Hermes runtime        -> signalproof-stop-hermes
 UI clipping/wrapping       -> signalproof-ui-polish
 keyboard/screen-reader     -> signalproof-accessibility
 full debug                 -> signalproof-full-debug
