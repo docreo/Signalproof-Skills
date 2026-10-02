@@ -46,6 +46,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-rollback` - select and verify rollback identity;
 - `signalproof-restore` - execute bounded restoration;
 - `signalproof-cleanup` - clean up owned partial-operation resources safely;
+- `signalproof-stop-hermes` - explicitly authorized Hermes runtime shutdown with verified ownership while preserving Ollama and recoverable state;
 - `signalproof-recovery-continuity` - preserve recovery state, journals, remaining rollback paths, and unresolved ownership;
 - `signalproof-security` - coordinate cross-cutting defensive security review;
 - `signalproof-secrets` - credential/secret exposure and handling;
