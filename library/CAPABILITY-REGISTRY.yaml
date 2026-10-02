@@ -68,6 +68,7 @@ capabilities:
   - {id: signalproof-restore, state: ACTIVE, kind: specialist_skill, purpose: execute bounded restoration and verify it, triggers: [restore, replace with rollback, recover install]}
   - {id: signalproof-cleanup, state: ACTIVE, kind: specialist_skill, purpose: clean up owned partial-operation resources, triggers: [cleanup, orphan process, partial install, partial resource]}
   - {id: signalproof-recovery-continuity, state: ACTIVE, kind: specialist_skill, purpose: preserve recovery journals/ownership/remaining options, triggers: [recovery journal, unresolved ownership, recovery handoff]}
+  - {id: signalproof-stop-hermes, state: ACTIVE, kind: specialist_skill, purpose: bounded Hermes runtime shutdown and autostart containment, triggers: [stop hermes, shut hermes down, keep hermes stopped]}
 
   - id: signalproof-security
     state: ACTIVE
