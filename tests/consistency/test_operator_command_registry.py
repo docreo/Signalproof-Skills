@@ -114,6 +114,32 @@ class OperatorCommandRegistryAcceptance(unittest.TestCase):
         ]:
             self.assertIn(required, text)
 
+    def test_print_is_complete_first_apa7_docx_drive_delivery(self):
+        command = self.read("commands/print.md").lower()
+        skill = self.read("skills/signalproof-print/SKILL.md").lower()
+        dsp = self.read("commands/dsp.md").lower()
+        for required in [
+            "load current /dsp complete contract",
+            "academically sound apa 7",
+            "white page background",
+            "dark body text",
+            "upload that exact verified docx to google drive",
+            "default /dsp print does not require native google docs conversion",
+            "return both links",
+        ]:
+            self.assertIn(required, command)
+        for required in [
+            "complete-first composition",
+            "automatic upload of that exact",
+            "render and visually verify",
+            "native google docs conversion is not required unless explicitly requested",
+            "google drive success",
+        ]:
+            self.assertIn(required, skill)
+        self.assertIn("complete-first document-output route", dsp)
+        self.assertLess(len((ROOT / "commands/print.md").read_bytes()), 15000)
+        self.assertLess(len((ROOT / "skills/signalproof-print/SKILL.md").read_bytes()), 15000)
+
     def test_cut_chase_preserves_truth_and_action(self):
         text = self.read("commands/cut-chase.md").lower()
         for required in [
