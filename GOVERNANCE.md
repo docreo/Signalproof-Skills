@@ -100,6 +100,22 @@ Public skills must not include:
 
 Synthetic examples should be preferred where they preserve the lesson without exposing private material.
 
+
+
+## External Standards Crosswalk
+
+Signalproof governance may be mapped to external frameworks to improve traceability, interoperability, testing discipline, and communication.
+
+The current public NIST crosswalk lives under [`standards/`](standards/README.md) and covers:
+
+- NIST AI RMF 1.0 — **GOVERN / MAP / MEASURE / MANAGE**;
+- NIST AI 600-1 — Generative AI Profile;
+- NIST AI 200-2 Initial Public Draft — TEVV-Athlon (**Test / Evaluation / Verification / Validation**).
+
+Standards mapping does not create new authority and does not substitute for implementation evidence. A component must describe its actual state as **IMPLEMENTED, PARTIAL, PLANNED, N/A, or UNVERIFIED** and preserve evidence appropriate to the claim.
+
+Signalproof must not represent itself or a component as NIST-certified or NIST-endorsed unless an authoritative basis for that exact claim exists. Generic use of “NIST compliant” is prohibited as a substitute for scoped evidence.
+
 ## Change Control
 
 The root `signalproof` skill should change less frequently than specialist skills.

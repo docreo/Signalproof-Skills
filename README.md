@@ -7,6 +7,25 @@
 
 Signalproof Skills is the public operating-skill library for Signalproof. It provides small routeable operating contracts, bounded loops, registries, tests, tools, and provenance for governed AI-assisted work.
 
+
+## Standards and risk-management alignment
+
+Signalproof's public governance architecture is **NIST-informed** and is explicitly cross-mapped to selected concepts in the **NIST AI Risk Management Framework (AI RMF)**, **NIST AI 600-1 Generative AI Profile**, and the **NIST AI 200-2 Initial Public Draft / TEVV-Athlon Framework**.
+
+The mapping is evidence-aware and component-specific. It does **not** claim NIST certification, NIST endorsement, or universal NIST compliance.
+
+Canonical public mapping:
+
+- [Signalproof Standards Mapping](standards/README.md)
+- [NIST AI RMF Mapping](standards/NIST-AI-RMF-MAPPING.md)
+- [NIST TEVV Mapping](standards/NIST-TEVV-MAPPING.md)
+- [NIST GAI Profile Mapping](standards/NIST-GAI-PROFILE-MAPPING.md)
+- [Signalproof AI Acceptance Protocol](standards/SIGNALPROOF-AI-ACCEPTANCE-PROTOCOL.md)
+- [Standards Evidence Requirements](standards/EVIDENCE-REQUIREMENTS.md)
+
+At the highest level, Signalproof maps existing operating responsibilities to **GOVERN -> MAP -> MEASURE -> MANAGE** while preserving distinct **Test -> Evaluation -> Verification -> Validation** responsibilities for AI acceptance work.
+
+
 ## Signalproof Library
 
 The repository follows the **Signalproof Library** architecture:
