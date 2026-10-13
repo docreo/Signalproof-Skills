@@ -15,6 +15,10 @@ The standalone pack includes 16 starter skills, 15 core extensions, 10 media wor
 
 Choose this pack when you want portable instructions without internal project records, scripts, models, private infrastructure, or brand creative assets. Public-content approval is recorded; runtime-host validation remains pending. The existing `/dsp` contracts and Active skill registry below continue to describe the operational suite.
 
+## Recommended Skill Sources & Credits
+
+[Explore recommended upstream skills and related tools](RECOMMENDED-SKILLS.md), including Matt Pocock, Nate Herk, NVIDIA SkillSpector, NVIDIA NeMo Switchyard, and the other reviewed sources. Each entry links to its original repository and explains its relationship to Signalproof.
+
 ## Signalproof Library
 
 The repository follows the **Signalproof Library** architecture:
