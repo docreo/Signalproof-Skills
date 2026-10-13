@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Release
+  short_description: Govern whether an exact accepted artifact may be promoted or
+    dis
+  default_prompt: Use $signalproof-release for the requested bounded task and report
+    evidence and limitations.

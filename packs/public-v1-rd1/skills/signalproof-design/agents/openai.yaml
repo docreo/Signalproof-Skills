@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Design
+  short_description: Govern Signalproof product information architecture, workflow
+    hi
+  default_prompt: Use $signalproof-design for the requested bounded task and report
+    evidence and limitations.

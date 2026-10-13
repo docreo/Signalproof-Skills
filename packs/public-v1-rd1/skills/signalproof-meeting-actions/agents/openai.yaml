@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Meeting Actions
+  short_description: Convert supplied meeting notes into cited decisions and accounta
+  default_prompt: Use $signalproof-meeting-actions for the requested bounded task
+    and report evidence and limitations.

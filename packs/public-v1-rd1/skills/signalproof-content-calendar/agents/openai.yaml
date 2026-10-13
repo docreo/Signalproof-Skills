@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Content Calendar
+  short_description: Plan a factual, rights-aware content calendar with platform-spec
+  default_prompt: Use $signalproof-content-calendar for the requested bounded task
+    and report evidence and limitations.

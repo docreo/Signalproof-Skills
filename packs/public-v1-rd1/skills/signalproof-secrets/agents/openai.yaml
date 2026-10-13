@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Secrets
+  short_description: Review and govern credentials, tokens, keys, passwords, secret
+    s
+  default_prompt: Use $signalproof-secrets for the requested bounded task and report
+    evidence and limitations.

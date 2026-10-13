@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Shot Aware Layout
+  short_description: Place cards and captions from actual shot geometry
+  default_prompt: Use $signalproof-shot-aware-layout for the requested bounded task
+    and report evidence and limitations.

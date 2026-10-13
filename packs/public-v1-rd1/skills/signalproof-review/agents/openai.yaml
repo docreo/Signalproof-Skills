@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Review
+  short_description: Review completed or proposed work for scope fidelity, protected-
+  default_prompt: Use $signalproof-review for the requested bounded task and report
+    evidence and limitations.

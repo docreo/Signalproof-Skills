@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Plan
+  short_description: Convert an ambiguous or consequential request into a bounded,
+    ev
+  default_prompt: Use $signalproof-plan for the requested bounded task and report
+    evidence and limitations.

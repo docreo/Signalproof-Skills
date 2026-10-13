@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Research
+  short_description: Conduct evidence-controlled research by defining the question,
+    s
+  default_prompt: Use $signalproof-research for the requested bounded task and report
+    evidence and limitations.

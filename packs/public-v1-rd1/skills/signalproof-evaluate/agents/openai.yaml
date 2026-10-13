@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Evaluate
+  short_description: 'Evaluate researched options against explicit decision criteria, '
+  default_prompt: Use $signalproof-evaluate for the requested bounded task and report
+    evidence and limitations.

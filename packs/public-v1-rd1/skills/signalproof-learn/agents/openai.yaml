@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Learn
+  short_description: Convert completed evidence-backed work into governed reusable
+    le
+  default_prompt: Use $signalproof-learn for the requested bounded task and report
+    evidence and limitations.

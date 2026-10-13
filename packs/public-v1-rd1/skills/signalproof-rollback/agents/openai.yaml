@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Rollback
+  short_description: 'Select and verify a trustworthy known-good rollback target from '
+  default_prompt: Use $signalproof-rollback for the requested bounded task and report
+    evidence and limitations.

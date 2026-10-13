@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Accessibility
+  short_description: Govern accessible interaction and presentation for Signalproof
+    i
+  default_prompt: Use $signalproof-accessibility for the requested bounded task and
+    report evidence and limitations.

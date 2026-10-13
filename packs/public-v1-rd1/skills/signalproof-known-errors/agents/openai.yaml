@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Known Errors
+  short_description: Check a user-provided failure catalog before repeating materiall
+  default_prompt: Use $signalproof-known-errors for the requested bounded task and
+    report evidence and limitations.

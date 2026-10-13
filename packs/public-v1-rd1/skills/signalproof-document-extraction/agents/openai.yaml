@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Document Extraction
+  short_description: Extract document text with coverage and confidence evidence
+  default_prompt: Use $signalproof-document-extraction for the requested bounded task
+    and report evidence and limitations.

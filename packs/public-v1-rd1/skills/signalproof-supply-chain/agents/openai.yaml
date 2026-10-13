@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Supply Chain
+  short_description: Review dependencies, package sources, publishers, immutable iden
+  default_prompt: Use $signalproof-supply-chain for the requested bounded task and
+    report evidence and limitations.

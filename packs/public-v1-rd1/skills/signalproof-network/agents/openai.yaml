@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Network
+  short_description: Review listening interfaces, outbound destinations, transport
+    va
+  default_prompt: Use $signalproof-network for the requested bounded task and report
+    evidence and limitations.

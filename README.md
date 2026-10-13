@@ -7,6 +7,14 @@
 
 Signalproof Skills is the public operating-skill library for Signalproof. It provides small routeable operating contracts, bounded loops, registries, tests, tools, and provenance for governed AI-assisted work.
 
+## Approved public pack — 48 skills
+
+[Browse the 48-skill public pack](packs/public-v1-rd1/CATALOG.md), curated and adapted by **Doc Reo / Signalproof** and approved for public distribution on 2026-10-13.
+
+The standalone pack includes 16 starter skills, 15 core extensions, 10 media workflows, one document workflow, and six attributed productivity adaptations. It carries its own [manifest](packs/public-v1-rd1/MANIFEST.json), [checksums](packs/public-v1-rd1/SHA256SUMS.txt), [public scope](packs/public-v1-rd1/PUBLIC-SCOPE.md), and [source notices](packs/public-v1-rd1/THIRD-PARTY-NOTICES.md).
+
+Choose this pack when you want portable instructions without internal project records, scripts, models, private infrastructure, or brand creative assets. Public-content approval is recorded; runtime-host validation remains pending. The existing `/dsp` contracts and Active skill registry below continue to describe the operational suite.
+
 ## Signalproof Library
 
 The repository follows the **Signalproof Library** architecture:

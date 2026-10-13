@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Debug
+  short_description: Diagnose and correct reproducible defects through evidence-led
+    r
+  default_prompt: Use $signalproof-debug for the requested bounded task and report
+    evidence and limitations.

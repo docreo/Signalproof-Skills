@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Voice Retiming
+  short_description: Retime a visual reel to approved recorded narration using monoto
+  default_prompt: Use $signalproof-voice-retiming for the requested bounded task and
+    report evidence and limitations.

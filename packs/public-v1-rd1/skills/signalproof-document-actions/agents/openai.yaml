@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Document Actions
+  short_description: Extract traceable obligations and proposed tasks from documents
+  default_prompt: Use $signalproof-document-actions for the requested bounded task
+    and report evidence and limitations.

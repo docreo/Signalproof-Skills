@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Closeout
+  short_description: 'Close a meaningful project milestone with recoverable state
+    and '
+  default_prompt: Use $signalproof-closeout for the requested bounded task and report
+    evidence and limitations.

@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof
+  short_description: Govern consequential AI-assisted work through bounded scope,
+    evi
+  default_prompt: Use $signalproof for the requested bounded task and report evidence
+    and limitations.
