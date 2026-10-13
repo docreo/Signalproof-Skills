@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Audio Mix
+  short_description: Mix dialogue, licensed music, and sound effects while preserving
+  default_prompt: Use $signalproof-audio-mix for the requested bounded task and report
+    evidence and limitations.

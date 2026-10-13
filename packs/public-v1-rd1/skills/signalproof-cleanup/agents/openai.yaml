@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Cleanup
+  short_description: 'Safely contain or remove resources created by failed or partial '
+  default_prompt: Use $signalproof-cleanup for the requested bounded task and report
+    evidence and limitations.

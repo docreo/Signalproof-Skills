@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Cut Cost
+  short_description: Audit AI operating cost and repeated work using measured evidenc
+  default_prompt: Use $signalproof-cut-cost for the requested bounded task and report
+    evidence and limitations.

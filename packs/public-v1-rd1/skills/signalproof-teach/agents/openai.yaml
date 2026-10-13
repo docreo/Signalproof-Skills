@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Teach
+  short_description: Teach a concept or skill through mission-grounded, source-backed
+  default_prompt: Use $signalproof-teach for the requested bounded task and report
+    evidence and limitations.

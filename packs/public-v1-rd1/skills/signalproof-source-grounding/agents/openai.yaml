@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Source Grounding
+  short_description: Bind research claims to actually retrieved sources and locators
+  default_prompt: Use $signalproof-source-grounding for the requested bounded task
+    and report evidence and limitations.

@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Build
+  short_description: Execute an approved, bounded implementation plan while preservin
+  default_prompt: Use $signalproof-build for the requested bounded task and report
+    evidence and limitations.

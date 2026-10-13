@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Router
+  short_description: Select the smallest appropriate skill set from this candidate
+    pa
+  default_prompt: Use $signalproof-router for the requested bounded task and report
+    evidence and limitations.

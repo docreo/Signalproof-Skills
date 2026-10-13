@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Overlay Render
+  short_description: Reduce overlay rendering work by reusing proven static frames
+  default_prompt: Use $signalproof-overlay-render for the requested bounded task and
+    report evidence and limitations.

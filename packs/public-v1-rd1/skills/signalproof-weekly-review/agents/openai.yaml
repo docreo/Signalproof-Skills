@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Weekly Review
+  short_description: Reconcile commitments and plan a capacity-aware week
+  default_prompt: Use $signalproof-weekly-review for the requested bounded task and
+    report evidence and limitations.

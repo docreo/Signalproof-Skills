@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Document
+  short_description: Create or update durable project documentation from verified
+    sta
+  default_prompt: Use $signalproof-document for the requested bounded task and report
+    evidence and limitations.

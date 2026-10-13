@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Cut Chase
+  short_description: Compress a complex report into decision-ready prose while retain
+  default_prompt: Use $signalproof-cut-chase for the requested bounded task and report
+    evidence and limitations.

@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Readiness
+  short_description: Determine whether the prerequisites, capabilities, configuration
+  default_prompt: Use $signalproof-readiness for the requested bounded task and report
+    evidence and limitations.

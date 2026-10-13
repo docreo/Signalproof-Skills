@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Recovery
+  short_description: Coordinate bounded restoration after failed or rejected change
+  default_prompt: Use $signalproof-recovery for the requested bounded task and report
+    evidence and limitations.

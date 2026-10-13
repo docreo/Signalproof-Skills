@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Execution Security
+  short_description: Review untrusted input and dynamic execution boundaries includin
+  default_prompt: Use $signalproof-execution-security for the requested bounded task
+    and report evidence and limitations.

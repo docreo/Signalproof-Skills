@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Speaker Framing
+  short_description: Reframe speaking footage across landscape and portrait outputs
+    w
+  default_prompt: Use $signalproof-speaker-framing for the requested bounded task
+    and report evidence and limitations.

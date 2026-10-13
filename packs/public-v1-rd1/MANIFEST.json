@@ -1,0 +1,344 @@
+{
+  "version": "V1 RD1",
+  "status": "OWNER-APPROVED PUBLIC DISTRIBUTION",
+  "skills": [
+    {
+      "name": "signalproof",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "ccc8b7787ee2ebc29806f0ab791e9512dba2a7691443805aeb39d1894d6b160b",
+      "bytes": 2754
+    },
+    {
+      "name": "signalproof-router",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "cecefa0139bd6ae33818e7e64231e2d275cac9a74c45b777a7784c1f27aa6825",
+      "bytes": 2739
+    },
+    {
+      "name": "signalproof-plan",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "a9755d409eaee7f3b1901ca888cd835a14e40ae93f2eb6ea3c191d6502ce0e45",
+      "bytes": 3673
+    },
+    {
+      "name": "signalproof-investigate",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "5e1da039182cf65eaabddccf1a389526efe46133e31d39cafb6561e51da96e8a",
+      "bytes": 3718
+    },
+    {
+      "name": "signalproof-build",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "87ae1425557047e428de21c04374867df80b54153dfa850dd1b7162c63ef2736",
+      "bytes": 4662
+    },
+    {
+      "name": "signalproof-debug",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "e35a01878b7396f85e1ae3583eb87bbe72c99bf1686a0a2307eb6056bc98ddfc",
+      "bytes": 3868
+    },
+    {
+      "name": "signalproof-verify",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "0cfab3a0a799240b9e16a5833c6a1865e5a280e54f31e9660859253f93751f7e",
+      "bytes": 3476
+    },
+    {
+      "name": "signalproof-review",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "cf72cdd08553e84fc859fc3bdcad98ff3e1b980de1b5f20171cfe1b150a4b931",
+      "bytes": 4196
+    },
+    {
+      "name": "signalproof-research",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "a4ceeab2145d8c6c27736b5dd5882789e4da61241c02838ac192411664cecb3b",
+      "bytes": 3748
+    },
+    {
+      "name": "signalproof-evaluate",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "6946880bad4388509d5b37f6f25465e924d3947ca458b3f8677394afc178b809",
+      "bytes": 3159
+    },
+    {
+      "name": "signalproof-readiness",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "b341a69477cf3dacd59b58665b71769707b51f422868817131e9cb2e2eba6c3a",
+      "bytes": 4087
+    },
+    {
+      "name": "signalproof-design",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "68ea9889b9bfcbff4c92107292c95ccc68435d65976444b1386e73b063389aea",
+      "bytes": 3294
+    },
+    {
+      "name": "signalproof-ui-polish",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "af7f0e09f08a34774943c1b6fad73af2ac09481984a4a7768234887fc65dda72",
+      "bytes": 3115
+    },
+    {
+      "name": "signalproof-accessibility",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "37b1472a8937460ed29723cb2b90f3a636cece0f1dd1452b7dab34ec9c6e3a22",
+      "bytes": 3158
+    },
+    {
+      "name": "signalproof-secrets",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "8125f3cf3e23e41a5e20840540bc5336e4f798180adad8c7f3cc7f22b86e8508",
+      "bytes": 2992
+    },
+    {
+      "name": "signalproof-permissions",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "241030e4e2e17ab1f0bfeba7a332f40ae58148fcf508673837f4686da1c2b7d8",
+      "bytes": 2750
+    },
+    {
+      "name": "signalproof-supply-chain",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "1d7fa6f4d8a85ab0b686f4f9fb6563385b96ca1b62436eb86e990c1ee921892d",
+      "bytes": 2795
+    },
+    {
+      "name": "signalproof-network",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "884664ba55b5c517fc17a04ef057f5d260943a5bcfe8090dbfd21718ca3f6a3d",
+      "bytes": 2710
+    },
+    {
+      "name": "signalproof-execution-security",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "389c872fe0fcd157776b799e437cd8997f48438a2aee745e87b7361a5ed37795",
+      "bytes": 3258
+    },
+    {
+      "name": "signalproof-recovery",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "583c395fd7c41703165d6e8b4ce4e0cec0f796aa92154426667c124110bd1a29",
+      "bytes": 2614
+    },
+    {
+      "name": "signalproof-rollback",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "98372491886a5251d01f480740be9cb7bfe92d39a4440e9c4c57d7994ee12e95",
+      "bytes": 2662
+    },
+    {
+      "name": "signalproof-cleanup",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "123383339e300b30ce2d725465d7033eedbd50b8c18c0576a318db4d1a455051",
+      "bytes": 2759
+    },
+    {
+      "name": "signalproof-document",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "ef4c59bc24a6d918c00d9119c7627cc0ad792c24e62032692c916ddf43daf57f",
+      "bytes": 4161
+    },
+    {
+      "name": "signalproof-handoff",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "8658e98fa9aad7784e7c27352a55b8b0fae39d3fa260b585bc609082f360a466",
+      "bytes": 2614
+    },
+    {
+      "name": "signalproof-teach",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "2e1c4a8db136f32ebc4b01a1e302ebc0dc3a5b718481844154bbd636ddbab699",
+      "bytes": 2882
+    },
+    {
+      "name": "signalproof-cut-cost",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "a8a5ab179606ac1ad888b348ac054905ffe2e023ecb252671d9bfa217200bcb5",
+      "bytes": 2730
+    },
+    {
+      "name": "signalproof-cut-chase",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "bcdd580635ae78c1cb884d009467fcaacac34d1230851a2c2dd05cfa3a48815d",
+      "bytes": 2519
+    },
+    {
+      "name": "signalproof-release",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "c02d867cb6c0dc4351f7c84634ab32a7d6eee412e3300cb50c06568b0c147e89",
+      "bytes": 4549
+    },
+    {
+      "name": "signalproof-closeout",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "ad3716eb8edee8425e42094301eb17467f4a15e251fced3db86de6350cc622d6",
+      "bytes": 2758
+    },
+    {
+      "name": "signalproof-learn",
+      "category": "Core extension",
+      "license": "Apache-2.0",
+      "public_sha256": "f5d3d2c7abff9a281f768b90fba606b7b520212c34920ca5b80e168411a51a70",
+      "bytes": 3445
+    },
+    {
+      "name": "signalproof-known-errors",
+      "category": "Core starter",
+      "license": "Apache-2.0",
+      "public_sha256": "174e6ebf2d70a4c410394c9d219f1d19db32b0d792362bbc171eabbd9cc5b979",
+      "bytes": 2709
+    },
+    {
+      "name": "signalproof-media-source-lock",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "94f596b52472d644f7da38fc32f506866eede59e828f710f02f89bb0cd97f9e0",
+      "bytes": 2847
+    },
+    {
+      "name": "signalproof-transcript-lock",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "234b93abc9cc6a94001c3366c3683bb44f3d88c0616a41081c109fd95cddbb29",
+      "bytes": 2755
+    },
+    {
+      "name": "signalproof-speaker-framing",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "d3ebd05d6454795f1dcdb3a91461b4862270e22a07e0f4e9262ac39e200ac10e",
+      "bytes": 2663
+    },
+    {
+      "name": "signalproof-word-captions",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "ec164d81e5af683bb658eb2994d17506a3557a3dbe176d83e8713092f983b5b8",
+      "bytes": 2568
+    },
+    {
+      "name": "signalproof-audio-mix",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "b71b8ce14252d63224caa13e735fe0fb382e24a31f2f1e046768361ce3990fde",
+      "bytes": 2743
+    },
+    {
+      "name": "signalproof-render-verification",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "a325fb3d462c15e79a5f4645399d4768c9fb34415397400baab8f6f4a2620c83",
+      "bytes": 2688
+    },
+    {
+      "name": "signalproof-music-cue-map",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "fd032dbbcd27b8f7abe4c11c45406b4daec5e3d6be2d4d569de804dc06d57d4a",
+      "bytes": 2651
+    },
+    {
+      "name": "signalproof-voice-retiming",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "e7fdc78347cc13316ec50caa7367e2f4fd188aa733355f6a3a64fd1edbb2ecd2",
+      "bytes": 2692
+    },
+    {
+      "name": "signalproof-overlay-render",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "d699315f6d9030cd350f20203b3b23b91952471d90f78aad32d1ea1c87bf895a",
+      "bytes": 2748
+    },
+    {
+      "name": "signalproof-shot-aware-layout",
+      "category": "Media",
+      "license": "Apache-2.0",
+      "public_sha256": "186cb9b31bbee16ceef0654a69f2ca26a6c97f9428a125defc666695323e3101",
+      "bytes": 2604
+    },
+    {
+      "name": "signalproof-print",
+      "category": "Documents",
+      "license": "Apache-2.0",
+      "public_sha256": "22ae83d6df73a8ae753cc800c84797e1518086dbc3a167b708dd6554274255de",
+      "bytes": 2886
+    },
+    {
+      "name": "signalproof-document-actions",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "1079fb1cc4e25022317ce06c86edb6b6697fccb29fe02733bbae45e708c4592e",
+      "bytes": 2749
+    },
+    {
+      "name": "signalproof-meeting-actions",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "5db38bfad97208ca423eaf1294ed52ff143aa6a8817b8fbaf98d61f2725f5d15",
+      "bytes": 2794
+    },
+    {
+      "name": "signalproof-weekly-review",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "ff25528a7a78e616e562ef5a0ab2b155a89b09d01685a83ec2837082e20ae57c",
+      "bytes": 2663
+    },
+    {
+      "name": "signalproof-content-calendar",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "8e2cf6fdc4899e4a15b4ef9d1ff3cccae7479c1b17433c8ad8fd2cb610ea481b",
+      "bytes": 2816
+    },
+    {
+      "name": "signalproof-source-grounding",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "4687a250c3c0256c0ebc1639b87d894b4e85ea1c2a7ef8bfcfe2ee8422680140",
+      "bytes": 2836
+    },
+    {
+      "name": "signalproof-document-extraction",
+      "category": "Adapted productivity",
+      "license": "MIT",
+      "public_sha256": "f75096ff8171bdaa5139a07078dc0ee2e03118343ffe147c8d91fc8580b9d4ec",
+      "bytes": 2848
+    }
+  ],
+  "approval_date": "2026-10-13",
+  "runtime_host_validation": "PENDING"
+}

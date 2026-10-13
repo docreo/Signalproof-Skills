@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Media Source Lock
+  short_description: Inspect and lock authorized media sources before editing
+  default_prompt: Use $signalproof-media-source-lock for the requested bounded task
+    and report evidence and limitations.

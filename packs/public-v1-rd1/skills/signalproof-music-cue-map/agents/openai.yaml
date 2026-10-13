@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Music Cue Map
+  short_description: Map music sections, lyrics, and visual cues before editing
+  default_prompt: Use $signalproof-music-cue-map for the requested bounded task and
+    report evidence and limitations.

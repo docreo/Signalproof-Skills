@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Ui Polish
+  short_description: Refine interface readability, wrapping, spacing, alignment, dens
+  default_prompt: Use $signalproof-ui-polish for the requested bounded task and report
+    evidence and limitations.

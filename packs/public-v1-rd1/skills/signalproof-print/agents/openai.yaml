@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Print
+  short_description: Create an evidence-backed formatted document, render it for visu
+  default_prompt: Use $signalproof-print for the requested bounded task and report
+    evidence and limitations.

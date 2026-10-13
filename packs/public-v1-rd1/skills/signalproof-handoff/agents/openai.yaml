@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Handoff
+  short_description: Preserve project continuity across sessions or operators
+  default_prompt: Use $signalproof-handoff for the requested bounded task and report
+    evidence and limitations.

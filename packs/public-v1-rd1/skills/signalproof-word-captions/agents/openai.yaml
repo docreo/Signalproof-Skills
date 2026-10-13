@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Word Captions
+  short_description: Build readable synchronized captions from a locked transcript
+  default_prompt: Use $signalproof-word-captions for the requested bounded task and
+    report evidence and limitations.

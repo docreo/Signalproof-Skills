@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Investigate
+  short_description: Investigate failures, regressions, suspicious behavior, unexpect
+  default_prompt: Use $signalproof-investigate for the requested bounded task and
+    report evidence and limitations.

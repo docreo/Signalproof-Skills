@@ -64,3 +64,7 @@ No untested specialist names are declared as planned Active capability here. Fut
 10. The public `Signalproof-Skills` registry is the `/dsp` Skill Library authority after governed promotion; private Build Ledger mirrors are continuity evidence, not public capability authority.
 11. `signalproof-print` resolves exclusively from current `main` command/Skill state; historical `/dsp print` definitions remain provenance and must not override current runtime behavior.
 12. `signalproof-print` 0.4.0 makes current `/dsp complete` and applicable child completion contracts a required preflight and makes verified Google Drive delivery part of default print completion.
+
+## Owner-approved standalone public pack
+
+The [48-skill Public Pack V1 RD1](packs/public-v1-rd1/CATALOG.md) was approved for public distribution on 2026-10-13. Its [manifest](packs/public-v1-rd1/MANIFEST.json) identifies all 48 files and their exact hashes. This is a standalone portable distribution; it does not replace the Active operational suite listed above. Public-content approval and runtime-host activation/testing remain distinct.

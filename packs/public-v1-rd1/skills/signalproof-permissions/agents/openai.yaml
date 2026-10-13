@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Permissions
+  short_description: Review and govern identity, authentication, authorization, privi
+  default_prompt: Use $signalproof-permissions for the requested bounded task and
+    report evidence and limitations.

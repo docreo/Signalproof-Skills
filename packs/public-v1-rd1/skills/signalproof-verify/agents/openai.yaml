@@ -1,0 +1,6 @@
+interface:
+  display_name: Signalproof Verify
+  short_description: Verify whether a specific claim is actually supported by the
+    ava
+  default_prompt: Use $signalproof-verify for the requested bounded task and report
+    evidence and limitations.

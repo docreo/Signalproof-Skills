@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Transcript Lock
+  short_description: Create timestamped text suitable for editing and captioning
+  default_prompt: Use $signalproof-transcript-lock for the requested bounded task
+    and report evidence and limitations.

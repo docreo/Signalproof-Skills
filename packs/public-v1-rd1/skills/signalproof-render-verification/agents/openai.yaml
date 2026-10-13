@@ -1,0 +1,5 @@
+interface:
+  display_name: Signalproof Render Verification
+  short_description: 'Render timed visual compositions and verify the exact delivered '
+  default_prompt: Use $signalproof-render-verification for the requested bounded task
+    and report evidence and limitations.
