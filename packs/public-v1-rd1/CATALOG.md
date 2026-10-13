@@ -4,6 +4,8 @@
 
 The public pack intentionally excludes private project evidence, internal IP assets, server access details, credentials, models, application code, source scripts, historical logs, and raw audit data.
 
+[Recommended Skill Sources & Credits](../../RECOMMENDED-SKILLS.md) — original creators, repositories, selected skills, and related tools.
+
 | Skill | Lane | Role |
 |---|---|---|
 | [signalproof](skills/signalproof/SKILL.md) | Core starter | Govern consequential AI-assisted work through bounded scope, evidence, verification, and recovery. Use when planning or executing complex project work. |
