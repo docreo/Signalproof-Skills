@@ -6,6 +6,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 |---|---:|---|---|---|
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract and meaningful-milestone continuity | Active |
 | `signalproof-router` | 0.2.5 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
+| `signalproof-ghl` | 1.0.0 | Active public baseline | GoHighLevel coordinator and sanitized public GHL Skills pack router | Active |
 | `signalproof-known-errors` | 0.1.0 | Active public baseline | Repeatable-error lookup and prevention preflight | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | External evidence and source-grounded research | Active |
 | `signalproof-evaluate` | 0.1.0 | Active public baseline | Evidence-to-disposition evaluation | Active |

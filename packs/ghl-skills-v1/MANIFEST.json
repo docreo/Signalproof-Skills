@@ -1,0 +1,129 @@
+{
+  "name": "GHL Skills",
+  "version": "1.0.0",
+  "status": "OWNER-AUTHORIZED PUBLIC BASELINE",
+  "created_by": "Doc Reo / Signalproof",
+  "specialist_count": 20,
+  "skills": [
+    {
+      "name": "ghl-account-audit",
+      "title": "Account Audit",
+      "sha256": "55302ff0c085e18bcb5bdf2c1394d8795ae2b48e3cde9f29ab34c12e9ff40466",
+      "bytes": 2053
+    },
+    {
+      "name": "ghl-agency-locations",
+      "title": "Agency and Location Boundaries",
+      "sha256": "b0100110df0d0074a88f1badd83988e0e09a7ff10daf1d4f52d123bc4c9435e1",
+      "bytes": 1974
+    },
+    {
+      "name": "ghl-users-permissions",
+      "title": "Users and Permissions",
+      "sha256": "9ea219061caf26278960bb1627cee48c120234b83bda8258551ba03f42a4ff10",
+      "bytes": 1957
+    },
+    {
+      "name": "ghl-contacts-companies",
+      "title": "Contacts and Companies",
+      "sha256": "67b08b222e2cf2a50e9be8445d546e7e6961ca31c2d8cbc62d8e135fc1e88096",
+      "bytes": 2015
+    },
+    {
+      "name": "ghl-custom-fields-values",
+      "title": "Custom Fields and Values",
+      "sha256": "c3d9cc0bb8eb4a850b2c2d20096bcfce64e8213c2e678799f19141f908310b7d",
+      "bytes": 1992
+    },
+    {
+      "name": "ghl-opportunities-pipelines",
+      "title": "Opportunities and Pipelines",
+      "sha256": "f1dc4eb4a91418897d065ac2840427ba21437ca3daab0dac354ff8f9fb087e0a",
+      "bytes": 1973
+    },
+    {
+      "name": "ghl-calendars-appointments",
+      "title": "Calendars and Appointments",
+      "sha256": "a45eebd21e2fdd426c16b474d79e15ca3495113e496c630d67b0847bb5ae2013",
+      "bytes": 2150
+    },
+    {
+      "name": "ghl-workflows-automation",
+      "title": "Workflows and Automation",
+      "sha256": "e9e518c6301707dcd4e36fed6fedcdaff9dc733b041291503338e56488bd4693",
+      "bytes": 1973
+    },
+    {
+      "name": "ghl-conversations-messaging",
+      "title": "Conversations and Messaging",
+      "sha256": "a610d768691a89351b2c4dace83be6227bac39e56c69cd9e18cc66a4f15f0670",
+      "bytes": 1996
+    },
+    {
+      "name": "ghl-forms-surveys",
+      "title": "Forms and Surveys",
+      "sha256": "4e4a19c7037dc901c858ac6449081456b19812b062a993d2986fda4a455ed74e",
+      "bytes": 2049
+    },
+    {
+      "name": "ghl-funnels-websites",
+      "title": "Funnels and Websites",
+      "sha256": "d76089e90bf7fb24d0d395d6eb80cab36ac39e07be374f894454e00c026a21cb",
+      "bytes": 2100
+    },
+    {
+      "name": "ghl-products-payments",
+      "title": "Products and Payments",
+      "sha256": "2503c95681109d9e3271068246d549f6356020e9af1d647785b243b38adcea7f",
+      "bytes": 2129
+    },
+    {
+      "name": "ghl-documents-contracts",
+      "title": "Documents and Contracts",
+      "sha256": "9a25987e96aef33784172aaada1918985f0067a43637f14c24c04c9a6f1b59c2",
+      "bytes": 2021
+    },
+    {
+      "name": "ghl-content-social",
+      "title": "Blogs, Social, and Content",
+      "sha256": "c59695286b20238d7c3435962f512dabb7511a979037de13045d913763a79311",
+      "bytes": 1982
+    },
+    {
+      "name": "ghl-reputation",
+      "title": "Reputation Management",
+      "sha256": "9fcca67f2be38e49f4e3573fb8d6f8b8d8a01d44da9acfb4a7733353da46d8d9",
+      "bytes": 1940
+    },
+    {
+      "name": "ghl-memberships-courses",
+      "title": "Memberships and Courses",
+      "sha256": "71189e4ed5efdd0a345fa4e4a43a06d25415842f8ebdb78a9a3bdbfb569c3e58",
+      "bytes": 1980
+    },
+    {
+      "name": "ghl-integrations-webhooks",
+      "title": "Integrations and Webhooks",
+      "sha256": "aa591707550f85c9492f2121839a5c92cc89e012c9be78aff1a3e7ca52b4d0e3",
+      "bytes": 2015
+    },
+    {
+      "name": "ghl-snapshots-migrations",
+      "title": "Snapshots and Migrations",
+      "sha256": "6fe2253d4d386049d8142d90ca4b0cfb979cc5a2f1cabdd7e08a810c500fe12b",
+      "bytes": 2016
+    },
+    {
+      "name": "ghl-reporting-attribution",
+      "title": "Reporting and Attribution",
+      "sha256": "225deadf88114147ed4fb0ce06f09da5868d969b8f8a2bbc80c62fdcd5d779c2",
+      "bytes": 1992
+    },
+    {
+      "name": "ghl-safe-testing-recovery",
+      "title": "Safe Testing and Recovery",
+      "sha256": "5b5d97acf5f02ee21c27daec99322943afdf33168d6d4309d885a4a95245e617",
+      "bytes": 2121
+    }
+  ]
+}

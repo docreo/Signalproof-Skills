@@ -15,6 +15,11 @@ The standalone pack includes 16 starter skills, 15 core extensions, 10 media wor
 
 Choose this pack when you want portable instructions without internal project records, scripts, models, private infrastructure, or brand creative assets. Public-content approval is recorded; runtime-host validation remains pending. The existing `/dsp` contracts and Active skill registry below continue to describe the operational suite.
 
+
+## GHL Skills - public pack
+
+[Browse GHL Skills](packs/ghl-skills-v1/CATALOG.md), a sanitized public GoHighLevel pack with 20 specialist procedures covering account audit, tenant boundaries, permissions, CRM, fields/tags, opportunities, calendars, workflows, messaging, forms, funnels, commerce, contracts, content, reputation, memberships, integrations, migrations, reporting, testing, and recovery.
+
 ## VideoCraft — public candidate
 
 [VideoCraft](skills/candidates/videocraft/SKILL.md) is the portable video-editing coordinator: lock approved words/audio, plan coherent cuts and versions, map cues to one timeline, verify the exact export, and deliver timestamped review evidence. It includes job/cut/cue/delivery forms, known-error guidance, optional Signalproof styling, and conditional generated-shot guidance.
@@ -136,6 +141,7 @@ Command versions and Active status remain governed by [`commands/COMMAND-REGISTR
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
 | [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.5 | Registry-driven minimum-context routing |
+| [`signalproof-ghl`](skills/signalproof-ghl/SKILL.md) | 1.0.0 | GoHighLevel coordinator and sanitized public GHL Skills pack |
 | [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Repeatable-error lookup/prevention preflight |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | External evidence and source-grounded research |
 | [`signalproof-evaluate`](skills/signalproof-evaluate/SKILL.md) | 0.1.0 | Evidence-to-disposition evaluation |

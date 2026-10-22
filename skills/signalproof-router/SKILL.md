@@ -20,6 +20,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 ## Current Routing Set
 
 - `signalproof` - root governing contract/fallback;
+- `signalproof-ghl` - GoHighLevel coordinator and GHL Skills pack router;
 - `signalproof-known-errors` - repeatable-error preflight;
 - `signalproof-research` - current external evidence;
 - `signalproof-evaluate` - evidence-to-disposition decision;
