@@ -11,9 +11,7 @@ description: Active public-safe catalog of repeatable Signalproof error fingerpr
 
 ## Purpose
 
-`signalproof-known-errors` is the public Signalproof repeatable-error catalog.
-
-It contains generalized error fingerprints and their supported prevention or mitigation patterns only. It intentionally excludes private Build Ledger chronology, private paths, protected hashes, unreleased implementation details, customer data, secrets, private security evidence, and other private provenance.
+`signalproof-known-errors` is the public repeatable-error catalog. It contains generalized fingerprints and supported prevention or mitigation patterns, excluding private chronology, paths, hashes, implementation details, customer data, secrets, security evidence, and provenance.
 
 Core rule:
 

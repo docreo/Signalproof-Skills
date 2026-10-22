@@ -15,6 +15,7 @@ routing_defaults:
 capabilities:
   - {id: signalproof, state: ACTIVE, kind: root, purpose: universal human-authority and evidence contract, triggers: [fallback, governance]}
   - {id: signalproof-router, state: ACTIVE, kind: routing_kernel, purpose: select minimum justified capability set, triggers: [route, select skill, coordinate]}
+  - {id: signalproof-ghl, state: ACTIVE, kind: coordinator_skill, purpose: coordinate safe GoHighLevel work through the sanitized GHL Skills pack, triggers: [ghl, gohighlevel, highlevel, crm automation]}
   - {id: signalproof-known-errors, state: ACTIVE, kind: skill, purpose: prevent known repeatable failures, triggers: [known error, repeat failure, retry preflight]}
   - {id: signalproof-research, state: ACTIVE, kind: skill, purpose: establish external evidence, triggers: [research, sources, current evidence], loops: [SP-LOOP-RESEARCH]}
   - {id: signalproof-evaluate, state: ACTIVE, kind: skill, purpose: convert evidence into bounded disposition, triggers: [evaluate, adopt, adapt, integrate, reject, watch]}

@@ -1,0 +1,39 @@
+---
+name: ghl-users-permissions
+description: Review HighLevel user access, ownership, assignment, and least-privilege boundaries.
+---
+
+# Users and Permissions
+
+## Purpose
+
+Review HighLevel user access, ownership, assignment, and least-privilege boundaries.
+
+## Procedure
+
+1. Inventory users, roles, teams, assigned locations, calendars, conversations, opportunities, and notification recipients.
+2. Distinguish visibility from permission and connector capability from human authorization.
+3. Use least privilege for private integrations, OAuth scopes, API tokens, and staff roles.
+4. Verify owner/assignee changes by reading back the exact target record and testing the affected workflow with synthetic data.
+5. Never publish credentials, session cookies, recovery codes, or private permission evidence.
+
+## Public safety contract
+
+- Replace all examples with placeholders such as `<LOCATION_ID>`, `<CONTACT_ID>`, and `test@example.invalid`.
+- Never expose API keys, OAuth tokens, private-integration secrets, cookies, webhook secrets, customer records, private URLs, or internal filesystem paths.
+- Capability and connector visibility do not grant permission. Keep inspection, mutation, publication, messaging, payment, deletion, and legal approval separate.
+- Before consequential work, establish current state and recovery, make the smallest reversible change, then read back the exact target.
+- Do not claim UI, delivery, payment, signature, conversion, or production PASS from an API success alone.
+
+## Completion evidence
+
+Return the target scope, authority used, before-state, exact actions, readback, automated checks, human/UI checks still required, side effects, cleanup/rollback state, unresolved unknowns, and next bounded action.
+
+## Identity
+
+- **Pack:** GHL Skills
+- **Skill:** `ghl-users-permissions`
+- **Version:** `1.0.0`
+- **Maturity:** Public pack baseline
+- **Platform:** GoHighLevel / HighLevel
+- **Created by:** Doc Reo / Signalproof
