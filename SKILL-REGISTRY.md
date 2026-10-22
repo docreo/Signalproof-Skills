@@ -46,6 +46,14 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-handoff` | 0.1.0 | Active public baseline | Conversation-boundary continuity | Active |
 | `signalproof-closeout` | 0.2.0 | Active public baseline | Milestone closeout, Build Ledger continuity, and Skill/library architecture governance | Active |
 
+## Public candidates
+
+| Skill | Version | Maturity | Role | Status |
+|---|---:|---|---|---|
+| `videocraft` | 0.1.0 | Public distribution candidate | Portable video editing, cut/version planning, protected audio, cue-based verification and delivery | Candidate |
+
+**VideoCraft**: [skill folder](skills/candidates/videocraft/SKILL.md), [acceptance record](acceptance/videocraft-v0.1.0.md). Publication does not activate it in the operational router or establish media-runtime acceptance.
+
 ## Planned Specialist Lanes
 
 No untested specialist names are declared as planned Active capability here. Future additions must follow the governed lifecycle before they enter the Active table.

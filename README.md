@@ -15,6 +15,14 @@ The standalone pack includes 16 starter skills, 15 core extensions, 10 media wor
 
 Choose this pack when you want portable instructions without internal project records, scripts, models, private infrastructure, or brand creative assets. Public-content approval is recorded; runtime-host validation remains pending. The existing `/dsp` contracts and Active skill registry below continue to describe the operational suite.
 
+## VideoCraft — public candidate
+
+[VideoCraft](skills/candidates/videocraft/SKILL.md) is the portable video-editing coordinator: lock approved words/audio, plan coherent cuts and versions, map cues to one timeline, verify the exact export, and deliver timestamped review evidence. It includes job/cut/cue/delivery forms, known-error guidance, optional Signalproof styling, and conditional generated-shot guidance.
+
+Install the complete `skills/candidates/videocraft/` folder into your agent's skill directory as `videocraft/`, following that host's skill-loading instructions. Keep its references, forms, license, and notice together. Invoke it as `$videocraft` on hosts supporting that syntax. No private repository, production renderer, brand asset, paid generator, or device bridge is included or required. Supply your own authorized media and available editing tools.
+
+Version 0.1.0 is published as a **candidate**, separate from the fixed 48-skill pack and the Active operational suite. Skill structure and scenario checks are distinct from end-to-end media-runtime validation; see the [acceptance record](acceptance/videocraft-v0.1.0.md).
+
 ## Recommended Skill Sources & Credits
 
 [Explore recommended upstream skills and related tools](RECOMMENDED-SKILLS.md), including Matt Pocock, Nate Herk, NVIDIA SkillSpector, NVIDIA NeMo Switchyard, and the other reviewed sources. Each entry links to its original repository and explains its relationship to Signalproof.

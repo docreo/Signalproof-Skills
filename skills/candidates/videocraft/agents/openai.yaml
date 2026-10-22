@@ -1,0 +1,4 @@
+interface:
+  display_name: "VideoCraft"
+  short_description: "Plan, edit, verify, and deliver videos with proof"
+  default_prompt: "Use $videocraft to plan and edit my video while preserving my words and approved audio."
