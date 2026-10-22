@@ -89,6 +89,11 @@ capabilities:
   - {id: signalproof-closeout, state: ACTIVE, kind: skill, purpose: close meaningful milestone and preserve transition evidence, triggers: [closeout, milestone complete, phase transition]}
 
 candidates:
+  - id: videocraft
+    state: CANDIDATE
+    kind: coordinator_skill
+    purpose: portable video edit planning, words/audio preservation, cue-based finishing and verified delivery
+    path: skills/candidates/videocraft/SKILL.md
   - id: signalproof-failure-intelligence
     state: CANDIDATE
     kind: skill
