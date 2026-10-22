@@ -6,6 +6,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PACK = ROOT / "packs" / "ghl-skills-v1"
+def canonical_bytes(path):
+    """Hash Git's canonical LF text bytes consistently across platforms."""
+    return path.read_bytes().replace(b"\r\n", b"\n")
+
+
 EXPECTED = {
     "ghl-account-audit", "ghl-agency-locations", "ghl-users-permissions",
     "ghl-contacts-companies", "ghl-custom-fields-values",
@@ -29,7 +34,7 @@ class GHLSkillsPackAcceptance(unittest.TestCase):
         manifest = json.loads((PACK / "MANIFEST.json").read_text(encoding="utf-8"))
         for item in manifest["skills"]:
             path = PACK / "skills" / item["name"] / "SKILL.md"
-            payload = path.read_bytes()
+            payload = canonical_bytes(path)
             self.assertEqual(item["bytes"], len(payload))
             self.assertEqual(item["sha256"], hashlib.sha256(payload).hexdigest())
 
@@ -38,7 +43,7 @@ class GHLSkillsPackAcceptance(unittest.TestCase):
         self.assertEqual(23, len(lines))
         for line in lines:
             digest, relative = line.split("  ", 1)
-            self.assertEqual(digest, hashlib.sha256((PACK / relative).read_bytes()).hexdigest())
+            self.assertEqual(digest, hashlib.sha256(canonical_bytes(PACK / relative)).hexdigest())
 
     def test_public_placeholders_and_boundaries(self):
         combined = "\n".join(path.read_text(encoding="utf-8") for path in PACK.rglob("*.md"))
