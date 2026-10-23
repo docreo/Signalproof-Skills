@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def active_registry_ids(text: str) -> set[str]:
     ids = set()
     for line in text.splitlines():
-        m = re.match(r"\| `(?P<id>signalproof[^`]*)` \| [^|]+ \| [^|]+ \| [^|]+ \| Active \|", line)
+        m = re.match(r"\| `(?P<id>[A-Za-z0-9][A-Za-z0-9._-]*)` \| [^|]+ \| [^|]+ \| [^|]+ \| Active \|", line)
         if m:
             ids.add(m.group("id"))
     return ids
@@ -19,7 +19,7 @@ def active_registry_ids(text: str) -> set[str]:
 
 def capability_ids(text: str) -> set[str]:
     before_candidates = text.split("\ncandidates:\n", 1)[0]
-    ids = set(re.findall(r"\bid:\s*(signalproof[-\w]*)", before_candidates))
+    ids = set(re.findall(r"\bid:\s*([A-Za-z0-9][A-Za-z0-9._-]*)", before_candidates))
     return ids
 
 

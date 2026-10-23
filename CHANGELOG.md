@@ -2,6 +2,15 @@
 
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
+## [VideoCraft 1.0.0 / V1 RD1] - Active - 2026-10-22
+
+- Complete the owner-approved public release of the existing working VideoCraft editing method. Move the full portable package to `skills/videocraft/` and register it as Active.
+- Add VideoCraft to `signalproof-router` 0.2.6, the Active skill table, and compact capability metadata. Retain the display name VideoCraft and identifier `videocraft`.
+- Extend consistency checks to validate registered skill names without requiring a `signalproof` prefix. Preserve rejection of missing, unknown, and non-Active routing entries.
+- Carry forward owner-confirmed use, inspected production run-log evidence, and prior public-package/scenario checks; do not require a replay of the working media workflow to correct publication status.
+- Retain per-job tool, media, delivery, and acceptance checks. Optional generated-shot backends remain subject to their actual available environment, not a global candidate label.
+- Preserve the fixed 48-skill pack, private production assets, and prior release history. See [release evidence](acceptance/videocraft-v1-rd1.md).
+
 ## [signalproof-build-capsule 0.1.0] - Active
 
 ### Added

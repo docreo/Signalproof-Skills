@@ -35,10 +35,10 @@ IDENTITY_VERSION_RE = re.compile(r"^- \*\*Version:\*\*\s*`(?P<version>[^`]+)`\s*
 IDENTITY_MATURITY_RE = re.compile(r"^- \*\*Maturity:\*\*\s*(?P<maturity>.+?)\s*$", re.MULTILINE)
 # Router entries historically used an em dash. Hyphen-delimited entries are also valid.
 ROUTER_BULLET_RE = re.compile(
-    r"^\s*-\s*`(?P<name>signalproof(?:-[A-Za-z0-9._-]+)?)`\s+(?:\u2014|-)\s+",
+    r"^\s*-\s*`(?P<name>[A-Za-z0-9][A-Za-z0-9._-]*)`\s+(?:\u2014|-)\s+",
     re.MULTILINE,
 )
-PLANNED_SKILL_RE = re.compile(r"`(?P<name>signalproof(?:-[A-Za-z0-9._-]+)?)`")
+PLANNED_SKILL_RE = re.compile(r"`(?P<name>[A-Za-z0-9][A-Za-z0-9._-]*)`")
 
 
 @dataclass(frozen=True)

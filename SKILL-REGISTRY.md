@@ -5,7 +5,8 @@ This registry identifies public Signalproof skills and their current maturity. `
 | Skill | Version | Maturity | Role | Status |
 |---|---:|---|---|---|
 | `signalproof` | 0.1.1 | Active public baseline | Root governing contract and meaningful-milestone continuity | Active |
-| `signalproof-router` | 0.2.5 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
+| `signalproof-router` | 0.2.6 | Active public baseline | Registry-driven minimal-context routing kernel | Active |
+| `videocraft` | 1.0.0 | Active public release | VideoCraft editing, cut/version planning, protected audio, cue verification and delivery | Active |
 | `signalproof-ghl` | 1.0.0 | Active public baseline | GoHighLevel coordinator and sanitized public GHL Skills pack router | Active |
 | `signalproof-known-errors` | 0.1.0 | Active public baseline | Repeatable-error lookup and prevention preflight | Active |
 | `signalproof-research` | 0.1.0 | Active public baseline | External evidence and source-grounded research | Active |
@@ -46,14 +47,6 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-learn` | 0.1.0 | Active public baseline | Governed institutional learning and candidate extraction | Active |
 | `signalproof-handoff` | 0.1.0 | Active public baseline | Conversation-boundary continuity | Active |
 | `signalproof-closeout` | 0.2.0 | Active public baseline | Milestone closeout, Build Ledger continuity, and Skill/library architecture governance | Active |
-
-## Public candidates
-
-| Skill | Version | Maturity | Role | Status |
-|---|---:|---|---|---|
-| `videocraft` | 0.1.0 | Public distribution candidate | Portable video editing, cut/version planning, protected audio, cue-based verification and delivery | Candidate |
-
-**VideoCraft**: [skill folder](skills/candidates/videocraft/SKILL.md), [acceptance record](acceptance/videocraft-v0.1.0.md). Publication does not activate it in the operational router or establish media-runtime acceptance.
 
 ## Planned Specialist Lanes
 

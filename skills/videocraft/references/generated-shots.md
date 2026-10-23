@@ -1,6 +1,6 @@
 # Generated shots
 
-Read only when animation, Blender, Unreal, or AI-generated material is requested. This release has no tested backend integration. Historical smoke tests in another environment do not prove a tool is installed here.
+Read only when animation, Blender, Unreal, or AI-generated material is requested. Discover and verify the available backend for that job. The released editing workflow does not bundle an engine or claim that every Blender/Unreal version has been tested; prior use in another environment does not establish the current installation.
 
 ## Common preparation
 

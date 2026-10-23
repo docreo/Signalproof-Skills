@@ -19,6 +19,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 
 ## Current Routing Set
 
+- `videocraft` - video editing, coherent cuts/versions, protected audio, cue verification and delivery;
 - `signalproof` - root governing contract/fallback;
 - `signalproof-ghl` - GoHighLevel coordinator and GHL Skills pack router;
 - `signalproof-known-errors` - repeatable-error preflight;
@@ -105,6 +106,7 @@ Only skills marked Active in canonical `SKILL-REGISTRY.md` are routable on `main
 
 ### Actuation
 
+- VideoCraft: edit, assemble, split, repurpose, version, and verify video through the owner's approved words, audio, cut plan, and delivery requirements.
 - Build: bounded implementation.
 - Debug: bounded defect correction.
 - Full Debug: strongest bounded debug coordination for repeated, cross-layer, or high-consequence defects.
@@ -203,7 +205,7 @@ Routing is complete when the minimum justified capability set is selected, known
 
 - **Suite:** Signalproof Skills
 - **Skill:** `signalproof-router`
-- **Version:** `0.2.5`
+- **Version:** `0.2.6`
 - **Maturity:** Active public baseline
 - **Parent:** `signalproof` 0.1.1+
 - **Domain:** Registry-driven capability routing, minimal context selection, bounded sequencing
