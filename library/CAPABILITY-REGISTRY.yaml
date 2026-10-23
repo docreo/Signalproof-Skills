@@ -13,6 +13,12 @@ routing_defaults:
   governor_required_for_side_effects: true
 
 capabilities:
+  - id: videocraft
+    state: ACTIVE
+    kind: coordinator_skill
+    purpose: coordinate video editing, cut/version planning, protected audio, cue verification and delivery
+    path: skills/videocraft/SKILL.md
+    triggers: [videocraft, edit video, split footage, repurpose video, video versions, timestamped video fix]
   - {id: signalproof, state: ACTIVE, kind: root, purpose: universal human-authority and evidence contract, triggers: [fallback, governance]}
   - {id: signalproof-router, state: ACTIVE, kind: routing_kernel, purpose: select minimum justified capability set, triggers: [route, select skill, coordinate]}
   - {id: signalproof-ghl, state: ACTIVE, kind: coordinator_skill, purpose: coordinate safe GoHighLevel work through the sanitized GHL Skills pack, triggers: [ghl, gohighlevel, highlevel, crm automation]}
@@ -90,11 +96,6 @@ capabilities:
   - {id: signalproof-closeout, state: ACTIVE, kind: skill, purpose: close meaningful milestone and preserve transition evidence, triggers: [closeout, milestone complete, phase transition]}
 
 candidates:
-  - id: videocraft
-    state: CANDIDATE
-    kind: coordinator_skill
-    purpose: portable video edit planning, words/audio preservation, cue-based finishing and verified delivery
-    path: skills/candidates/videocraft/SKILL.md
   - id: signalproof-failure-intelligence
     state: CANDIDATE
     kind: skill

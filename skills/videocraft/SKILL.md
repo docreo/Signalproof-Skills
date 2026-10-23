@@ -5,6 +5,8 @@ description: Plan, edit, brand, repurpose, split, assemble, and verify videos, a
 
 # VideoCraft
 
+**Status:** ACTIVE - V1 RD1 (1.0.0)
+
 **Lock the words. Plan the cuts. Draw on the word. Protect the mix. Verify the delivery.**
 
 ## Authority and readiness
@@ -58,7 +60,8 @@ Report `AUTOMATED CHECKS`, `DELIVERY`, and `HUMAN ACCEPTANCE` separately, with s
 ## Identity
 
 - **Owner:** Doc Reo / Signalproof
-- **Version:** `0.1.0`
-- **Maturity:** Public distribution candidate; media-runtime validation pending
+- **Version:** `1.0.0`
+- **Build:** V1 RD1
+- **Maturity:** Active public release
 - **License:** Apache-2.0; retain accompanying license and notice. Brand rights remain separate.
-- **Provenance:** Public-safe adaptation of the owner's VideoCraft editing method, prepared 2026-10-22. Excludes private media, production code, personal paths, conversation history, and infrastructure details.
+- **Provenance:** Public-safe adaptation of the owner's working VideoCraft editing method, released 2026-10-22 with owner confirmation and approval. Excludes private media, production code, personal paths, conversation history, and infrastructure details. Verify each job's actual tools and deliverables under this released workflow.

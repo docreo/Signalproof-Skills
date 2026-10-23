@@ -20,13 +20,13 @@ Choose this pack when you want portable instructions without internal project re
 
 [Browse GHL Skills](packs/ghl-skills-v1/CATALOG.md), a sanitized public GoHighLevel pack with 20 specialist procedures covering account audit, tenant boundaries, permissions, CRM, fields/tags, opportunities, calendars, workflows, messaging, forms, funnels, commerce, contracts, content, reputation, memberships, integrations, migrations, reporting, testing, and recovery.
 
-## VideoCraft — public candidate
+## VideoCraft - Active release
 
-[VideoCraft](skills/candidates/videocraft/SKILL.md) is the portable video-editing coordinator: lock approved words/audio, plan coherent cuts and versions, map cues to one timeline, verify the exact export, and deliver timestamped review evidence. It includes job/cut/cue/delivery forms, known-error guidance, optional Signalproof styling, and conditional generated-shot guidance.
+[VideoCraft](skills/videocraft/SKILL.md) is the portable video-editing coordinator: lock approved words/audio, plan coherent cuts and versions, map cues to one timeline, verify the exact export, and deliver timestamped review evidence. It includes job/cut/cue/delivery forms, known-error guidance, optional Signalproof styling, and conditional generated-shot guidance.
 
-Install the complete `skills/candidates/videocraft/` folder into your agent's skill directory as `videocraft/`, following that host's skill-loading instructions. Keep its references, forms, license, and notice together. Invoke it as `$videocraft` on hosts supporting that syntax. No private repository, production renderer, brand asset, paid generator, or device bridge is included or required. Supply your own authorized media and available editing tools.
+Install the complete `skills/videocraft/` folder into your agent's skill directory as `videocraft/`, following that host's skill-loading instructions. Keep its references, forms, license, and notice together. Invoke it as `$videocraft` on hosts supporting that syntax. No private repository, production renderer, brand asset, paid generator, or device bridge is included or required. Supply your own authorized media and available editing tools.
 
-Version 0.1.0 is published as a **candidate**, separate from the fixed 48-skill pack and the Active operational suite. Skill structure and scenario checks are distinct from end-to-end media-runtime validation; see the [acceptance record](acceptance/videocraft-v0.1.0.md).
+**V1 RD1 / 1.0.0 is Active**, with owner-confirmed working use and explicit approval for completion. VideoCraft is registered in the operational suite; the fixed 48-skill pack retains its original contents. See the [release and acceptance record](acceptance/videocraft-v1-rd1.md) for evidence and scope.
 
 ## Recommended Skill Sources & Credits
 
@@ -140,7 +140,8 @@ Command versions and Active status remain governed by [`commands/COMMAND-REGISTR
 | Skill | Version | Purpose |
 |---|---:|---|
 | [`signalproof`](skills/signalproof/SKILL.md) | 0.1.1 | Root governing contract and milestone continuity |
-| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.5 | Registry-driven minimum-context routing |
+| [`signalproof-router`](skills/signalproof-router/SKILL.md) | 0.2.6 | Registry-driven minimum-context routing |
+| [`videocraft`](skills/videocraft/SKILL.md) | 1.0.0 | VideoCraft editing, cut/version planning, protected audio, cue verification and delivery |
 | [`signalproof-ghl`](skills/signalproof-ghl/SKILL.md) | 1.0.0 | GoHighLevel coordinator and sanitized public GHL Skills pack |
 | [`signalproof-known-errors`](skills/signalproof-known-errors/SKILL.md) | 0.1.0 | Repeatable-error lookup/prevention preflight |
 | [`signalproof-research`](skills/signalproof-research/SKILL.md) | 0.1.0 | External evidence and source-grounded research |

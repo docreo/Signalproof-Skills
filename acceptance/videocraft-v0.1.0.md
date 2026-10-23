@@ -1,5 +1,7 @@
 # VideoCraft 0.1.0 — public candidate
 
+**Historical publication record, superseded by [VideoCraft V1 RD1 / 1.0.0 Active release](videocraft-v1-rd1.md).** The owner subsequently confirmed the editing method was already working and explicitly directed completion. The statuses below describe the earlier publication step, not current skill maturity.
+
 **Date:** 2026-10-22
 
 **Owner:** Doc Reo / Signalproof

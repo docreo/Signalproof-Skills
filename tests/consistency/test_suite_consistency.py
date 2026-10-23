@@ -82,6 +82,36 @@ class SuiteConsistencyTests(unittest.TestCase):
     def test_good_fixture_passes(self):
         self.assertEqual([], checker.check_repository(self.make_repo()))
 
+    def test_active_skill_without_signalproof_prefix_passes(self):
+        rows = [
+            ("signalproof", "0.1.1", "Active public baseline", "Active"),
+            ("signalproof-router", "0.1.0", "Active public baseline", "Active"),
+            ("videocraft", "1.0.0", "Active public release", "Active"),
+        ]
+        self.assertEqual([], checker.check_repository(self.make_repo(rows=rows)))
+
+    def test_missing_unprefixed_active_route_fails(self):
+        rows = [
+            ("signalproof", "0.1.1", "Active public baseline", "Active"),
+            ("signalproof-router", "0.1.0", "Active public baseline", "Active"),
+            ("videocraft", "1.0.0", "Active public release", "Active"),
+        ]
+        self.assertFailsWith(self.make_repo(rows=rows, router_targets=["signalproof"]),
+                             "Router omits Active routable skill: videocraft")
+
+    def test_unprefixed_candidate_cannot_route(self):
+        rows = [
+            ("signalproof", "0.1.1", "Active public baseline", "Active"),
+            ("signalproof-router", "0.1.0", "Active public baseline", "Active"),
+            ("videocraft", "0.1.0", "Public candidate", "Candidate"),
+        ]
+        self.assertFailsWith(self.make_repo(rows=rows, router_targets=["signalproof", "videocraft"]),
+                             "Router references non-Active or unknown skill: videocraft")
+
+    def test_unknown_unprefixed_route_fails(self):
+        self.assertFailsWith(self.make_repo(router_targets=["signalproof", "signalproof-plan", "unknown-skill"]),
+                             "Router references non-Active or unknown skill: unknown-skill")
+
     def test_missing_readme_active_skill_fails(self):
         root = self.make_repo(readme_rows=[("signalproof", "0.1.1"), ("signalproof-router", "0.1.0")])
         self.assertFailsWith(root, "missing from README Active table: signalproof-plan")
