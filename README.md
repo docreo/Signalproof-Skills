@@ -159,6 +159,7 @@ Command versions and Active status remain governed by [`commands/COMMAND-REGISTR
 | [`signalproof-ui-polish`](skills/signalproof-ui-polish/SKILL.md) | 0.1.0 | Wrapping, readability, responsive finish and micro-interactions |
 | [`signalproof-accessibility`](skills/signalproof-accessibility/SKILL.md) | 0.1.0 | Accessible interaction and presentation |
 | [`signalproof-readiness`](skills/signalproof-readiness/SKILL.md) | 0.1.0 | Target prerequisites/capability readiness |
+| [`signalproof-app-launch`](skills/signalproof-app-launch/SKILL.md) | 0.1.0 | Mandatory terminal-free operator-facing application launch, reopen and safe exit |
 | [`signalproof-build`](skills/signalproof-build/SKILL.md) | 0.1.1 | Bounded implementation and protected execution |
 | [`signalproof-debug`](skills/signalproof-debug/SKILL.md) | 0.1.1 | Evidence-led defect correction and regression protection |
 | [`signalproof-full-debug`](skills/signalproof-full-debug/SKILL.md) | 0.1.0 | High-governance debug coordination with failure memory, bounded authorization, role separation, and verification |
