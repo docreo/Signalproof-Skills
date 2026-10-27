@@ -38,6 +38,7 @@ This skill inherits the active root `signalproof` contract. Routing never create
 - `signalproof-ui-polish` - interface detail, readability, spacing, wrapping, motion, responsive finish;
 - `signalproof-accessibility` - accessible interaction and presentation requirements;
 - `signalproof-readiness` - target prerequisite/capability assessment;
+- `signalproof-app-launch` - mandatory user-facing web/native app packaging, terminal-free launch, reopen and safe exit;
 - `signalproof-build` - bounded implementation;
 - `signalproof-debug` - evidence-led defect correction;
 - `signalproof-full-debug` - high-governance debug coordination for repeated, cross-layer, or high-consequence defects;
