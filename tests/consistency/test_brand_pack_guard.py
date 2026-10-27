@@ -40,7 +40,7 @@ class BrandPackGuardAcceptance(unittest.TestCase):
     def test_registry_versions_match_brand_guard_release(self):
         registry = self.read("commands/COMMAND-REGISTRY.md")
         self.assertIn("| `design-git` | 0.2.2 |", registry)
-        self.assertIn("| `build-git` | 0.2.7 |", registry)
+        self.assertIn("| `build-git` | 0.2.8 |", registry)
 
     def test_generated_material_avoids_u2014(self):
         for rel in [
