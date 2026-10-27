@@ -18,7 +18,7 @@
 - Apply `library/BUILD-IDENTITY.md`: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Preferred artifact: `<Product>-V#-RD#.<ext>`.
 ## Mandatory application launch gate
 
-For every user-facing app build, consume Active `signalproof-app-launch`. Its non-terminal entrypoint, package, reopen, exit, OS runtime and human UI checks are mandatory; headless/CLI exceptions must be justified. Hosted web launches by URL.
+For user-facing applications, consume Active `signalproof-app-launch`: terminal-free launch, package, reopen/exit and OS/human testing. Document justified CLI exceptions.
 
 ## Runtime context
 
