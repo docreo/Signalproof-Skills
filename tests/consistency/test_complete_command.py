@@ -15,7 +15,7 @@ class CompleteCommandAcceptance(unittest.TestCase):
         registry = self.read("commands/COMMAND-REGISTRY.md")
         self.assertIn("**Status:** ACTIVE", command)
         self.assertLess(len(command_path.read_bytes()), 15000)
-        self.assertIn("| `complete` | 0.1.2 |", registry)
+        self.assertIn("| `complete` | 0.1.3 |", registry)
         self.assertIn("`complete` -> `commands/complete.md`", registry)
 
     def test_complete_is_bounded_authorize_all_plus_build_spawn_debug(self):
