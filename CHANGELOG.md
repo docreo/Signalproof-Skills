@@ -1,5 +1,12 @@
 # Changelog
 
+## [signalproof-app-launch 0.1.0 / complete 0.1.3 / build-git 0.2.8] - Active - 2026-10-27
+
+- Owner accepted the direct, console-free Signal Caster Windows EXE launch; the exact implementation uses Windows GUI-subsystem compilation and a self-owned loopback host, not OS installer registration.
+- Add mandatory no-terminal application packaging/lifecycle standard for hosted web, PWA, local browser desktop, native and hybrid products, with explicit CLI/headless exemptions.
+- Route this Active standard through /dsp complete and build-git; distinguish static GUI subsystem checks, target-OS runtime and human UI acceptance.
+- Record sensitive product evidence privately in the Build Ledger; public generalized mechanism and standard only.
+
 All notable public changes to the Signalproof Skill Suite should be recorded here.
 
 ## [VideoCraft 1.0.0 / V1 RD1] - Active - 2026-10-22
