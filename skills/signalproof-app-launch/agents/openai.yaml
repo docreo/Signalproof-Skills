@@ -1,0 +1,4 @@
+interface:
+  display_name: "Signalproof App Launch"
+  short_description: "Mandatory terminal-free application launch and lifecycle checks"
+  brand_color: "#990000"
