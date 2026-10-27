@@ -1,7 +1,7 @@
-# `build-git` - Active Operator Command V0.2.7
+# `build-git` - Active Operator Command V0.2.8
 
 **Status:** ACTIVE  
-**Version:** 0.2.7  
+**Version:** 0.2.8  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -16,6 +16,10 @@
 
 - First mandate: **do not violate the Signalproof Framework**. Reconcile law, Terms of Service, licenses, security, brand, commands, and known-error state; consume a current `design-git` **Mandatory Signalproof Framework pre-build/design hook** PASS. `build-git` inherits this gate from `design-git` but may not assume it passed.
 - Apply `library/BUILD-IDENTITY.md`: `Vn/RD1` through `Vn/RD9`, then `V(n+1)/RD1`; there is no `RD10`. Preferred artifact: `<Product>-V#-RD#.<ext>`.
+## Mandatory application launch gate
+
+For operator-facing hosted web, PWA, local browser-based desktop, hybrid or native desktop builds, **consume the Active `signalproof-app-launch` Skill**. The build contract must include a terminal-free normal launch, package-integrity, a usable first-run UI, same-instance reopen or safe refusal, graceful exit, exact target-OS verification and a human UI gate. Do not hand off a user-facing application whose only startup requires an end-user to run/keep open CMD, PowerShell, Python, npm or another terminal. Hosted web applications launch via their deployed URL and do not require a fictitious installer. CLI/headless-only deliverables must carry a justified NOT_APPLICABLE classification. Keep build PASS, human OS PASS and deployment authority separate.
+
 ## Runtime context
 
 Use `library/EXECUTION-PIPELINE.yaml` and `library/STATE-CAPSULE.md`; load minimum current context and evidence.
