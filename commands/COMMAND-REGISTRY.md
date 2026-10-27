@@ -10,7 +10,7 @@
 | `help` | 0.1.0 | Registry-backed command discovery |
 | `research` | 0.1.0 | Minimum necessary evidence gathering through `signalproof-research` |
 | `authorize` | 0.1.0 | Exact bounded authorization handler |
-| `complete` | 0.1.2 | Bounded authorize-all completion with Framework inheritance, governed host staging/quarantine discovery, Build Spawn Debug, and real user acceptance |
+| `complete` | 0.1.3 | Bounded completion with Framework inheritance and mandatory no-terminal application launch gate, Build Spawn Debug and human acceptance |
 | `download` | 0.1.0 | Recover and re-deliver prior artifacts across supported chat/library/storage surfaces without fabricating identity |
 | `stop-hermes` | 0.1.0 | Bounded Hermes runtime shutdown/autostart containment with explicit root resolution and preserved Ollama/state |
 | `print` | 0.4.0 | Complete-first APA 7 Signalproof DOCX workflow with mandatory Google Drive delivery and verified link |
@@ -24,7 +24,7 @@
 | `cut-cost` | 0.1.0 | Read-only measured AI operating-efficiency audit |
 | `git-check` | 0.1.0 | Deterministic read-only repository/ref/HEAD/worktree/upstream preflight |
 | `design-git` | 0.2.2 | Smallest governed Git-backed design/next-action route with mandatory Signalproof Framework pre-build/design hook, brand-pack preflight, and packaging guard |
-| `build-git` | 0.2.7 | Compact governed repository-backed execution with explicit Signalproof Framework hook inheritance, proof reuse, deterministic failure guards, and brand-pack packaging enforcement |
+| `build-git` | 0.2.8 | Governed repository execution with Framework, branding and mandatory operator-facing application launch/lifecycle enforcement |
 | `build-git this` | 0.1.0 | Apply Build Git to the current bounded work unit |
 | `build-git spawn` | 0.1.0 | Builder, Design, Governor role separation |
 | `build-git-debug` | 0.1.0 | Git-backed defect localization/correction |

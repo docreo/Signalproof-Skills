@@ -1,7 +1,7 @@
-# `complete` - Active Operator Command V0.1.2
+# `complete` - Active Operator Command V0.1.3
 
 **Status:** ACTIVE  
-**Version:** 0.1.2  
+**Version:** 0.1.3  
 **Owner:** Doc Reo
 
 ## Purpose
@@ -75,6 +75,12 @@ Required state before build/design actuation:
 14. Human UI PASS means the stated user-visible acceptance gate is satisfied. Record `COMPLETE / USER ACCEPTED` for the bounded workstream and stop unless a separately excluded release/deployment/canonical-ledger gate remains explicitly requested.
 15. Do not claim user acceptance before the user actually reports that the result works and is properly usable. Complete cannot manufacture user PASS.
 
+## Mandatory application launch inheritance
+
+When the bounded workstream builds, edits, packages, or delivers a **user-facing application**, load the Active `skills/signalproof-app-launch/SKILL.md` and enforce its **APPLICATION LAUNCH GATE** through Build Spawn Debug. Classify `HOSTED_WEB | PWA | LOCAL_WEB_DESKTOP | NATIVE_DESKTOP | HYBRID | NOT_APPLICABLE`; include classification, target platform, normal non-terminal launch, reopening, safe exit, recovery and user acceptance in the Complete Authorization Envelope.
+
+**A finished user-facing application must not require CMD, PowerShell, Python, Node dev server or an open terminal to function.** Hosted browser applications open through the deployed URL; local web applications must have an owned console-free launcher; native desktop applications open by normal app/executable action. Do not assume an installer, registration or signing from a portable EXE. A CLI/headless deliverable can be marked NOT_APPLICABLE with reason. Unknown required evidence blocks an unqualified USER UI TEST READY. Human target-machine acceptance remains a separate gate.
+
 ## Host staging and quarantine discovery
 
 For host-local files, downloads, runners, source, evidence, or build artifacts, establish the active governed staging/quarantine root before execution. Prefer current handoff/session evidence or Signalproof configuration/state; if unresolved, use a bounded read-only host discovery scan. Do not assume `%USERPROFILE%\\Downloads`, `C:`, `F:`, or another machine-specific path.
@@ -95,6 +101,7 @@ Protected state: <must remain true>
 Acceptance target: <machine gates + human UI gate>
 Allowed authority: all owner-authorizable actions required by current build-spawn-debug envelope
 Host staging/quarantine: <verified root/artifact identity | NOT-APPLICABLE | UNRESOLVED>
+Application launch gate: <class/platform/normal launch/reopen/exit/evidence | NOT-APPLICABLE with reason>
 Known failures / retry memory: <ids/fingerprints/attempt counts>
 Recovery: <rollback/non-mutation path>
 Excluded authority: <explicit classes below>

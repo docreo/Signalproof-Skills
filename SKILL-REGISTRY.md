@@ -24,6 +24,7 @@ This registry identifies public Signalproof skills and their current maturity. `
 | `signalproof-ui-polish` | 0.1.0 | Active public baseline | UI readability, wrapping, responsive finish and micro-interactions | Active |
 | `signalproof-accessibility` | 0.1.0 | Active public baseline | Accessible interaction and presentation | Active |
 | `signalproof-readiness` | 0.1.0 | Active public baseline | Target-environment prerequisites and capability readiness | Active |
+| `signalproof-app-launch` | 0.1.0 | Active public baseline | Mandatory no-terminal user-facing web, local-web and native app launch/lifecycle gate | Active |
 | `signalproof-build` | 0.1.1 | Active public baseline | Bounded implementation and protected execution | Active |
 | `signalproof-debug` | 0.1.1 | Active public baseline | Evidence-led defect correction and regression protection | Active |
 | `signalproof-full-debug` | 0.1.0 | Active public baseline | High-governance debug coordinator combining bounded authorization, persistent failure memory, debug continuity, spawn role separation, verification, and STOP controls | Active |
