@@ -45,6 +45,7 @@ capabilities:
   - {id: signalproof-accessibility, state: ACTIVE, kind: specialist_skill, purpose: accessible interaction and presentation, triggers: [keyboard, focus, screen reader, contrast, scaling, captions, reduced motion]}
 
   - {id: signalproof-readiness, state: ACTIVE, kind: skill, purpose: verify exact target prerequisites and capability readiness, triggers: [readiness, prerequisites, target environment]}
+  - {id: signalproof-app-launch, state: ACTIVE, kind: specialist_skill, purpose: mandatory user-facing application no-terminal launch lifecycle and package acceptance, path: skills/signalproof-app-launch/SKILL.md, triggers: [desktop app, web app, local browser app, app launch, no command prompt, installer, console free, double click, packaging]}
   - {id: signalproof-build, state: ACTIVE, kind: skill, purpose: bounded implementation under protected-state controls, triggers: [build, implement, modify, create software], loops: [SP-LOOP-BUILD-VERIFY]}
   - {id: signalproof-debug, state: ACTIVE, kind: skill, purpose: reproduce/localize/correct/regression-test defects, triggers: [bug, defect, failing behavior, regression], loops: [SP-LOOP-DEBUG, SP-LOOP-RETRY]}
   - id: signalproof-full-debug
